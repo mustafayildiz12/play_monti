@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:play_monti/constants/app_translation.dart';
 import 'package:play_monti/firebase_options.dart';
+import 'package:play_monti/screens/Onboarding/first_onboarding.dart';
+import 'package:play_monti/screens/Onboarding/fourth_onboarding.dart';
+import 'package:play_monti/screens/Onboarding/second_onboarding.dart';
+import 'package:play_monti/screens/Onboarding/third_onboarding.dart';
 import 'package:play_monti/screens/tab_screens.dart';
 import 'package:provider/provider.dart';
 import 'contexts/user_context.dart';
@@ -35,7 +39,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF91A88E)),
           useMaterial3: true,
         ),
-        home: const HomePage(),
+        home: const MontessoriFirstOnboarding(),
       ),
     );
   }
