@@ -1,0 +1,131 @@
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:play_monti/screens/Auth/register_page.dart';
+import 'package:play_monti/service/authentication_service.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  bool _obscure = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28.0),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.lock_outline, size: 64, color: Colors.blue[700]),
+                  const SizedBox(height: 24),
+                  const Text(
+                    "Giriş Yap",
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 32),
+                  TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      labelText: "E-posta",
+                      prefixIcon: const Icon(Icons.email_outlined),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(height: 18),
+                  TextField(
+                    controller: passwordController,
+                    obscureText: _obscure,
+                    decoration: InputDecoration(
+                      labelText: "Şifre",
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                            _obscure ? Icons.visibility : Icons.visibility_off),
+                        onPressed: () => setState(() => _obscure = !_obscure),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        await authenticationService.login(context,
+                            email: emailController.text,
+                            password: passwordController.text);
+                      }, // Sen bağlayacaksın
+                      child: const Text("Giriş Yap"),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Row(
+                    children: [
+                      Expanded(child: Divider()),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: Text("veya"),
+                      ),
+                      Expanded(child: Divider()),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: OutlinedButton.icon(
+                      icon: Image.asset(
+                        "assets/google.png",
+                        height: 24,
+                      ),
+                      label: const Text("Google ile Giriş"),
+                      onPressed: () {}, // Google sign-in
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  if (Platform.isIOS)
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: OutlinedButton.icon(
+                        icon: const Icon(Icons.apple, size: 24),
+                        label: const Text("Apple ile Giriş"),
+                        onPressed: () {}, // Apple sign-in
+                      ),
+                    ),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegisterPage(),
+                      ),
+                    ),
+                    child: const Text("Hesabın yok mu? Kayıt Ol"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

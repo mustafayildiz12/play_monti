@@ -38,10 +38,20 @@ dependencies:
   ionicons: ^0.2.2
 
   get: ^4.6.6
+  get_storage: ^2.1.1
+
   provider: ^6.1.1
   smooth_page_indicator: ^1.2.1
+  crypto: ^3.0.6
 
   firebase_core: ^4.0.0
+  firebase_auth: ^6.0.0
+  firebase_database: ^12.0.0
+
+
+  google_sign_in: ^6.3.0
+  sign_in_with_apple: ^7.0.1
+  googleapis_auth: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -47,29 +47,32 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAwlVjnGWo1C2i4vXuh2nz5uAZCUTgJY44',
-    appId: '1:370553554615:web:f495f679d5166afa08ef32',
-    messagingSenderId: '370553554615',
-    projectId: 'playmonti-9b5c9',
-    authDomain: 'playmonti-9b5c9.firebaseapp.com',
-    storageBucket: 'playmonti-9b5c9.firebasestorage.app',
-    measurementId: 'G-402098BYYQ',
-  );
+      apiKey: 'AIzaSyAwlVjnGWo1C2i4vXuh2nz5uAZCUTgJY44',
+      appId: '1:370553554615:web:f495f679d5166afa08ef32',
+      messagingSenderId: '370553554615',
+      projectId: 'playmonti-9b5c9',
+      authDomain: 'playmonti-9b5c9.firebaseapp.com',
+      storageBucket: 'playmonti-9b5c9.firebasestorage.app',
+      measurementId: 'G-402098BYYQ',
+      databaseURL:
+          "https://playmonti-9b5c9-default-rtdb.europe-west1.firebasedatabase.app");
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB5ZmfAO1nWWbYqqtrtJQ3SKT6KmMq3L1g',
-    appId: '1:370553554615:android:058b58e3a5dee23e08ef32',
-    messagingSenderId: '370553554615',
-    projectId: 'playmonti-9b5c9',
-    storageBucket: 'playmonti-9b5c9.firebasestorage.app',
-  );
+      apiKey: 'AIzaSyB5ZmfAO1nWWbYqqtrtJQ3SKT6KmMq3L1g',
+      appId: '1:370553554615:android:058b58e3a5dee23e08ef32',
+      messagingSenderId: '370553554615',
+      projectId: 'playmonti-9b5c9',
+      storageBucket: 'playmonti-9b5c9.firebasestorage.app',
+      databaseURL:
+          'https://playmonti-9b5c9-default-rtdb.europe-west1.firebasedatabase.app');
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB_HRAkI4kbSRKGtWzTOOIM312qxk0nBVw',
-    appId: '1:370553554615:ios:20ef5337aa6afe8d08ef32',
-    messagingSenderId: '370553554615',
-    projectId: 'playmonti-9b5c9',
-    storageBucket: 'playmonti-9b5c9.firebasestorage.app',
-    iosBundleId: 'com.example.playMonti',
-  );
+      apiKey: 'AIzaSyB_HRAkI4kbSRKGtWzTOOIM312qxk0nBVw',
+      appId: '1:370553554615:ios:20ef5337aa6afe8d08ef32',
+      messagingSenderId: '370553554615',
+      projectId: 'playmonti-9b5c9',
+      storageBucket: 'playmonti-9b5c9.firebasestorage.app',
+      iosBundleId: 'com.example.playMonti',
+      databaseURL:
+          "https://playmonti-9b5c9-default-rtdb.europe-west1.firebasedatabase.app");
 }

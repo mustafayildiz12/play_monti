@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "370553554615",
+    "firebase_url": "https://playmonti-9b5c9-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "playmonti-9b5c9",
     "storage_bucket": "playmonti-9b5c9.firebasestorage.app"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.yildiz.play_monti"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "370553554615-j269io3qdree1q31o7abpvrfs81ctv9n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB5ZmfAO1nWWbYqqtrtJQ3SKT6KmMq3L1g"
@@ -20,7 +26,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370553554615-j269io3qdree1q31o7abpvrfs81ctv9n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "370553554615-ip7qe9l885ssbmgv3m5inci221ev13eh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.playMonti"
+              }
+            }
+          ]
         }
       }
     }
