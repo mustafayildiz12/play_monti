@@ -101,38 +101,7 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
                       fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
                   textAlign: TextAlign.center,
                 ),
-                const Spacer(flex: 3),
-                Container(
-                  width: 180,
-                  height: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 24),
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                  child: FractionallySizedBox(
-                    alignment: Alignment.centerLeft,
-                    widthFactor: 0.8,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF4A90A4),
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4A90A4),
-                    shape: const StadiumBorder(),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 16),
-                    textStyle: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Next →'),
-                ),
+                const Spacer(flex: 4),
               ],
             ),
           ),

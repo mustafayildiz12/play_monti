@@ -31,19 +31,24 @@ class MontessoriThirdOnboarding extends StatelessWidget {
               const Spacer(flex: 2),
               const Text(
                 "What Builds a Brain?",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF2C3E50)),
+                style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF2C3E50)),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
               const Text(
                 "Real play builds real brains. 🖐️👀👂",
-                style: TextStyle(fontSize: 16, color: Color(0xFF5A6C7D), height: 1.4),
+                style: TextStyle(
+                    fontSize: 16, color: Color(0xFF5A6C7D), height: 1.4),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 6),
               const Text(
                 "Active exploration wires the brain faster than passive screen viewing.",
-                style: TextStyle(fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
+                style: TextStyle(
+                    fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
@@ -56,36 +61,7 @@ class MontessoriThirdOnboarding extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const Spacer(flex: 3),
-              Container(
-                width: 180,
-                height: 4,
-                margin: const EdgeInsets.symmetric(vertical: 24),
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-                child: FractionallySizedBox(
-                  alignment: Alignment.centerLeft,
-                  widthFactor: 0.6,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF4A90A4),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4A90A4),
-                  shape: const StadiumBorder(),
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                  textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {},
-                child: const Text('Next →'),
-              ),
+              const Spacer(flex: 4),
             ],
           ),
         ),

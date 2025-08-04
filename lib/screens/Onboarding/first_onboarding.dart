@@ -114,50 +114,15 @@ class _MontessoriFirstOnboardingState extends State<MontessoriFirstOnboarding>
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.language, size: 36, color: Colors.blue),
-                  SizedBox(width: 8),
-                  Icon(Icons.block, size: 36, color: Colors.red),
+                  Image.asset('assets/globe.png', width: 36, height: 36),
+                  const SizedBox(width: 12),
+                  Image.asset('assets/block.png', width: 36, height: 36)
                 ],
               ),
-              const Spacer(flex: 3),
-              // Progress bar ve buton
-              Container(
-                width: 180,
-                height: 4,
-                margin: const EdgeInsets.symmetric(vertical: 24),
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-                child: FractionallySizedBox(
-                  alignment: Alignment.centerLeft,
-                  widthFactor: 0.2,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF4A90A4),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4A90A4),
-                  shape: const StadiumBorder(),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                  textStyle: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Next',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              const Spacer(flex: 4),
             ],
           ),
         ),
