@@ -429,7 +429,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: isSelected
-                                      ? Colors.white.withOpacity(0.8)
+                                      ? Colors.white.withValues(alpha: 0.8)
                                       : const Color(0xFF666666),
                                 ),
                               ),
