@@ -4,7 +4,7 @@ import 'package:play_monti/screens/Onboarding/first_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/fourth_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/second_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/third_onboarding.dart';
-import 'package:play_monti/screens/tab_screens.dart';
+import 'package:play_monti/screens/onboarding_flow.dart';
 
 class OnboardingFlowScreen extends StatefulWidget {
   const OnboardingFlowScreen({super.key});
@@ -46,7 +46,8 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
           children: [
             PageView.builder(
               controller: _controller,
-              physics: const NeverScrollableScrollPhysics(), // Butonla geçiş için
+              physics:
+                  const NeverScrollableScrollPhysics(), // Butonla geçiş için
               itemCount: _pages.length,
               onPageChanged: (i) => setState(() => _currentIndex = i),
               itemBuilder: (context, index) => _pages[index],
@@ -59,7 +60,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
               child: Column(
                 children: [
                   // İsteğe bağlı dot göstergesi
-      
+
                   Container(
                     width: 180,
                     height: 4,
@@ -86,7 +87,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Geri butonu
-      
+
                         Visibility(
                           visible: _currentIndex > 0,
                           maintainState: true,
@@ -108,7 +109,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                             ),
                           ),
                         ),
-      
+
                         // İleri veya Get Started
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -125,7 +126,8 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                                   // Onboarding bittiğinde yapılacak işlem (örn: ana ekrana yönlendir)
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                      builder: (_) => const MainTabNavigator(),
+                                      builder: (_) =>
+                                          const OnboardingFlow(),
                                     ), // Ana sayfanız burada
                                   );
                                 },
