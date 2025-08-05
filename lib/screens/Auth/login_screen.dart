@@ -96,7 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                         height: 24,
                       ),
                       label: const Text("Google ile Giriş"),
-                      onPressed: () {}, // Google sign-in
+                      onPressed: () async {
+                        await authenticationService.signInWithGoogle(
+                            context: context);
+                      }, // Google sign-in
                     ),
                   ),
                   const SizedBox(height: 12),

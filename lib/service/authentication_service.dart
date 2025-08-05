@@ -225,7 +225,7 @@ class AuthenticationService {
 
         await Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const LoginPage()),
+            MaterialPageRoute(builder: (context) => const MainTabNavigator()),
             (route) => false);
       } else {
         debugPrint("User bulunamadı.");

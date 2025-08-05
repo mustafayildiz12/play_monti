@@ -41,6 +41,8 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
+      top: false,
       child: Scaffold(
         body: Stack(
           children: [
