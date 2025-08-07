@@ -1,0 +1,4342 @@
+final List<Map<String, dynamic>> firstList = [
+  {
+    "day": 1,
+    "activity_name": "Bez Mendille Saklambaç (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Nesne Sürekliliği",
+    "materials":
+        "Bir küçük havlu veya mendil, tanıdık küçük bir oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı göster ve mendille kapat.\n2. 'Nerede?' diyerek çocuğun açmasını bekle.\n3. Oyuncak bulunduğunda sevinçle karşıla.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Mendili çocuğun kendisinin koymasına zaman tanıyarak süreci tersine çevirin."
+  },
+  {
+    "day": 2,
+    "activity_name": "Yumuşak Nesneleri Sınıflandır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Yumuşak 3-4 farklı nesne (ponpon, kumaş top, sünger vb.) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneleri sepete koyun.\n2. Çocuğa tek tek gösterin ve dokunmasını sağlayın.\n3. Renk ya da yumuşaklığa göre gruplayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Nesneleri kutulara ayırarak basit bir sınıflandırma oyunu haline getirin."
+  },
+  {
+    "day": 3,
+    "activity_name": "Su Damlatma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Bir bardak, küçük damlalık, su + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bardağa az miktarda su koyun.\n2. Damlalıkla su çekip başka kaba damlatın.\n3. Çocuğa tekrar etme fırsatı verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine renkli gıda boyası ekleyerek daha cazip hale getirin."
+  },
+  {
+    "day": 4,
+    "activity_name": "Topu Yuvaya Bırakma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Nesne Kontrolü",
+    "materials":
+        "Yumuşak toplar, büyük ağızlı bir kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topları yere yuvarla.\n2. Kutuyu göstererek topları içine atmayı teşvik et.\n3. Her başarılı atışı alkışla destekle.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı yükseklikten atmalar yaparak denge becerisi de ekleyin."
+  },
+  {
+    "day": 5,
+    "activity_name": "Yüz İfadeleri Taklit Etme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sosyal-Duygusal",
+    "materials":
+        "Ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aynanın karşısında çeşitli yüz ifadeleri yap.\n2. Çocuğun taklit etmesine izin ver.\n3. Gülme, şaşırma, kaş çatma gibi ifadelerle devam et.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Çocuğun kendi yüzünü incelediği anları isimlendirerek duygulara dair farkındalık katın."
+  },
+  {
+    "day": 6,
+    "activity_name": "Kapağı Aç/Kapa (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Farklı kapaklı 2-3 boş plastik kap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapları çocuğun önüne koy.\n2. Açma ve kapama işlemini göster.\n3. Kendi başına tekrar etmesine izin ver.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kapak boyutlarını farklılaştırarak zorluk seviyesi ayarlanabilir."
+  },
+  {
+    "day": 7,
+    "activity_name": "Zil Çalma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Algı",
+    "materials":
+        "Küçük el zili veya bisiklet zili + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Zili çal ve sesi tanıt.\n2. Çocuğun çalmasına fırsat ver.\n3. Yüksek/sessiz ortam farkını deneyimle.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İki farklı zil verip ses karşılaştırması yaptırabilirsiniz."
+  },
+  {
+    "day": 8,
+    "activity_name": "Tahta Kaşıkla Karıştır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Boş bir kase, tahta kaşık, kuru baklagiller + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Malzemeleri kaseye koyun.\n2. Kaşıkla karıştırma gösterin.\n3. Çocuğun karıştırmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Farklı malzemelerle (pirinç, mercimek) dokusal çeşitlilik sağlayın."
+  },
+  {
+    "day": 9,
+    "activity_name": "Küçük Kutuları Üst Üste Dizme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "3–4 farklı boyutta boş kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuları sırayla üst üste dizin.\n2. Dengeyi sağlama oyununa çevirin.\n3. Çocuğun kendi yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Düşme anlarını 'yeniden dene' şeklinde cesaretlendirin."
+  },
+  {
+    "day": 10,
+    "activity_name": "Farklı Kumaşları Hissetme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Algı",
+    "materials":
+        "Pamuk, kadife, yün, keten kumaş parçaları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her bir kumaşı çocuğun ellerine verin.\n2. 'Yumuşak mı? Sert mi?' gibi sorularla dikkat yönlendirin.\n3. Kendi seçim yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kumaşları ayırma veya eşleştirme oyunu olarak genişletilebilir."
+  },
+  {
+    "day": 11,
+    "activity_name": "Minik Şişeye Boncuk Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Boş pet şişe, büyük boncuklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Boncukları göstererek birini şişeye at.\n2. Çocuğun tekrar etmesini teşvik et.\n3. Tamamladığında dinleme fırsatı sun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli boncuklarla sırayla atma gibi kural eklenebilir."
+  },
+  {
+    "day": 12,
+    "activity_name": "Ayna Karşısında Hareket Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Görsel-Duyusal",
+    "materials":
+        "Ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aynada başınızı sallayın.\n2. Ellerinizi açıp kapatın.\n3. Çocuğun sizi taklit etmesini teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Zıplama, oturma gibi hareketleri ekleyerek beden farkındalığını geliştirin."
+  },
+  {
+    "day": 13,
+    "activity_name": "Sürgülü Kapak Açma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Sürgülü kapaklı plastik kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı nasıl açtığınızı gösterin.\n2. Kapatmayı gösterin.\n3. Çocuğun kendi yapmasına fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutunun içine ilgi çekici küçük nesne koyarak motivasyon sağlayın."
+  },
+  {
+    "day": 14,
+    "activity_name": "Basit Şarkı Ritmi Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İşitsel Ritim",
+    "materials":
+        "El çırpma veya tef + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Basit bir çocuk şarkısı ritmiyle el çırp.\n2. Çocuğun seni takip etmesini iste.\n3. Kendi ritmini yaratmasına izin ver.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Müzikli oyuncak yerine el çırpma tercih edilmelidir."
+  },
+  {
+    "day": 15,
+    "activity_name": "Küçük Şişelere Su Doldurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "2 küçük şişe, minik sürahi + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sürahiden suyu nasıl dökeceğini göster.\n2. Çocuğun kendisi yapmasına izin ver.\n3. Dökülürse sorun etmeyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli sürahi ve farklı su seviyesiyle deneme yapın."
+  },
+  {
+    "day": 16,
+    "activity_name": "Tahta Mandal Aç-Kapa (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Tahta mandallar, kutu kenarı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Mandalı açıp kapamayı göster.\n2. Kutunun kenarına takmayı dene.\n3. Çocuğun kendi denemesine izin ver.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli mandallar ile renge göre dizme yapılabilir."
+  },
+  {
+    "day": 17,
+    "activity_name": "Yumuşak Topu Ayakla İtme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor",
+    "materials":
+        "Yumuşak büyük top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu yere koyun.\n2. Ayakla yavaşça itme hareketini gösterin.\n3. Çocuğun topu itmesini teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Topu hedefe ulaştırmak gibi basit hedefler ekleyin."
+  },
+  {
+    "day": 18,
+    "activity_name": "Saklama Kutusunu Bul (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Nesne Sürekliliği",
+    "materials":
+        "Boş kutular, içlerinden birine konmuş oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutulardan birine küçük bir oyuncak koyun.\n2. Kutuları karıştırın.\n3. 'Hangisinde?' diyerek çocuğu yönlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "3 kutudan fazlası ile zorluk artırılabilir."
+  },
+  {
+    "day": 19,
+    "activity_name": "Basit Nesne Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Görsel Ayırt Etme",
+    "materials":
+        "Aynı türden 2'şer tane objeler (kaşık, top, taş) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Objeleri sırayla yere dizin.\n2. Eşi olanı bulmasını isteyin.\n3. Eşleştirme yaptığında onaylayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Görsel kartlarla da yapılabilir."
+  },
+  {
+    "day": 20,
+    "activity_name": "Plastik Kapları Üst Üste Koyma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Farklı boyutta plastik saklama kapları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. En büyükten başlayarak dizmeyi gösterin.\n2. Çocuğa kendi dizmesini önerin.\n3. Devirdiğinde yeniden başlama cesareti verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kuleyi devirip yeniden inşa etmeyi eğlenceye dönüştürün."
+  },
+  {
+    "day": 21,
+    "activity_name": "Tümceye Uygun Oyuncağı Seç (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Dil Anlayışı",
+    "materials":
+        "3 farklı oyuncak: örneğin araba, top, ayı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Topu bana verir misin?' diyerek talimat verin.\n2. Doğru objeyi seçmesini bekleyin.\n3. Her doğru seçimde övün.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Günlük nesneleri kullanarak gerçek yaşamdan bağ kurun."
+  },
+  {
+    "day": 22,
+    "activity_name": "Islak – Kuru Keşfi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Duyusal Algı",
+    "materials":
+        "Islak sünger, kuru sünger, tepsi + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her iki süngeri çocuğun ellerine verin.\n2. 'Hangisi ıslak?' gibi sorular sorun.\n3. Sıkma ve bırakma hareketini gösterin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli su ekleyerek daha cazip hale getirin."
+  },
+  {
+    "day": 23,
+    "activity_name": "Tahta Yüzeyde Parmak Sürme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hareket Koordinasyonu",
+    "materials":
+        "Düz tahta tabla, un veya irmik + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Unu tabla üzerine yayın.\n2. Parmağınızla çizgiler çizin.\n3. Çocuğun kendi şekiller çizmesini teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Basit şekiller veya daireler yaparak çeşitlendirin."
+  },
+  {
+    "day": 24,
+    "activity_name": "Renkli Kapakları Sınıflandır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Tanıma",
+    "materials":
+        "Farklı renkte plastik şişe kapakları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapakları renklerine göre ayırın.\n2. Aynısını çocuktan isteyin.\n3. Her grup için isimlendirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kapak sayısı artarak zorluk seviyesi ayarlanabilir."
+  },
+  {
+    "day": 25,
+    "activity_name": "Kitapta Hayvanları Göster (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Dil Gelişimi",
+    "materials":
+        "Hayvan resimli kitap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Kedi nerede?' gibi sorularla yönlendirin.\n2. Göstermesi için zaman verin.\n3. Doğru gösterdiğinde takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Hayvan seslerini taklit ederek dikkat çekin."
+  },
+  {
+    "day": 26,
+    "activity_name": "Kapı Açma-Kapama Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Neden-Sonuç",
+    "materials":
+        "Küçük dolap kapağı veya oyuncak kapı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapıyı açıp kapatın.\n2. Çocuğun da aynı işlemi yapmasına izin verin.\n3. Aç-Kapa ilişkisini gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine küçük nesne koyarak dikkat artırılabilir."
+  },
+  {
+    "day": 27,
+    "activity_name": "Denge Taşıma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor",
+    "materials":
+        "Küçük tepsi, hafif nesneler (ponpon, sünger vb.) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Tepsiye nesneleri koyun.\n2. Yavaşça taşıma örneği verin.\n3. Çocuğun yürüyerek taşımasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zemine şerit yaparak yolda yürüme oyunu eklenebilir."
+  },
+  {
+    "day": 28,
+    "activity_name": "Gölge Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Görsel Algı",
+    "materials":
+        "Basit objelerin siyah beyaz gölge kartları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Objeleri sırayla gösterin.\n2. Uygun gölgeyi bulmasını isteyin.\n3. Doğru eşleşmede cesaretlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kendi gölgesini gösterip eşleştirme mantığını geliştirin."
+  },
+  {
+    "day": 29,
+    "activity_name": "Ritimle Yürüyüş (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Ritim",
+    "materials":
+        "Bir çalgı (tef, zil) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çalgıyla ritmik şekilde tempo tutun.\n2. Çocuğun ritme uygun hareket etmesini sağlayın.\n3. Hızlı-yavaş değişiklikleri deneyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yavaşlayan ya da duran müzikle dur-kalk oyunu eklenebilir."
+  },
+  {
+    "day": 30,
+    "activity_name": "Kokuları Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Koku Algısı",
+    "materials":
+        "Portakal kabuğu, vanilya, sabun (farklı kokular) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kokuyu sırayla tanıtın.\n2. Koklamasına zaman tanıyın.\n3. Hangisini sevdiğini sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gözlerini kapatarak tahmin oyunu eklenebilir."
+  },
+  {
+    "day": 31,
+    "activity_name": "Boncukları Renge Göre Ayır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Eşleme",
+    "materials":
+        "Renkli boncuklar, 3 küçük kase + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Boncukları karışık şekilde koyun.\n2. Aynı renkten olanları ilgili kaseye koymasını gösterin.\n3. Çocuğun kendi denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Çubukla alma veya cımbızla alma gibi zorluk ekleyin."
+  },
+  {
+    "day": 32,
+    "activity_name": "Hayvan Seslerini Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sesli İfade",
+    "materials":
+        "Telefon veya oyuncak üzerinden hayvan sesleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Hayvanın sesini çalın.\n2. Hangi hayvan olduğunu söyleyin.\n3. Çocuğun sesi taklit etmesini isteyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gerçek hayvan fotoğraflarıyla eşleştirme yapılabilir."
+  },
+  {
+    "day": 33,
+    "activity_name": "Kırmızı Objeleri Bul (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Algısı",
+    "materials":
+        "Ortamda kırmızı nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Kırmızı olanı bul' diyerek yönlendirin.\n2. Her bulduğu nesneyi isimlendirin.\n3. Sayarak sayma becerisi de katın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Diğer renklerle tekrar ederek karşılaştırmalı çalışma yapılabilir."
+  },
+  {
+    "day": 34,
+    "activity_name": "Tarakla Saç Tarama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Kişisel Bakım",
+    "materials":
+        "Çocuk tarağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kendi saçınızı tarayarak örnek olun.\n2. Çocuğa tarağı verin.\n3. Saçını kendi taramasına teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aynada yaparak görsel farkındalık eklenebilir."
+  },
+  {
+    "day": 35,
+    "activity_name": "Yumuşak Oyuncakları Kutudan Çıkar (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Nesne Kontrolü",
+    "materials":
+        "Kutu içinde 3–4 yumuşak oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuyu çocuğun önüne koyun.\n2. Oyuncakları tek tek çıkarmasını sağlayın.\n3. Her birini isimlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutunun ağzını hafif kapatarak zorluk ekleyin."
+  },
+  {
+    "day": 36,
+    "activity_name": "Rüzgarla Oynayan Kurdele (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Takip",
+    "materials":
+        "Uzun ince renkli kurdele + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kurdeleyi rüzgarlı bir yerde hafifçe savurun.\n2. Çocuğun gözleriyle takip etmesini sağlayın.\n3. Eline verip sallamasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "İç mekânda hafifçe yelpaze yaparak da rüzgar etkisi yaratabilirsiniz."
+  },
+  {
+    "day": 37,
+    "activity_name": "Kavanoza Taş Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Boş kavanoz, büyük taşlar veya büyük boncuklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Taşları sırayla kavanoza atmayı gösterin.\n2. Çocuğun kendi yapmasına izin verin.\n3. Ses çıkaran nesnelerle tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Taş yerine bakliyat ile daha düşük sesli uygulama yapılabilir."
+  },
+  {
+    "day": 38,
+    "activity_name": "Baloncuk Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Takip ve Denge",
+    "materials":
+        "Baloncuk sabunu ve çubuğu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Baloncuk üfleyin.\n2. Çocuğun bakmasını, yakalamaya çalışmasını teşvik edin.\n3. Yakalamayı başardığında cesaretlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Yerde oturarak ya da ayakta farklı denge duruşlarıyla uygulanabilir."
+  },
+  {
+    "day": 39,
+    "activity_name": "Küçük Kitabı Kendi Açma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Motor ve Dil",
+    "materials":
+        "Küçük boy, kalın sayfalı bebek kitabı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitabı çocuğun önüne koyun.\n2. Sayfaları çevirmesini teşvik edin.\n3. İlgilendiği resimleri adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sadece resim olan kitaplar başlangıçta daha uygundur."
+  },
+  {
+    "day": 40,
+    "activity_name": "Su Yüzeyinde Yüzenleri İzleme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Algı",
+    "materials":
+        "Şeffaf plastik leğen, su, yüzen oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncakları suya bırakın.\n2. Yüzdüklerini birlikte gözlemleyin.\n3. Dilerseniz parmakla hareket ettirme imkanı sunun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yüzen ve batan nesneleri karşılaştırarak farkındalık artırın."
+  },
+  {
+    "day": 41,
+    "activity_name":
+        "Ahşap Yüzey Üzerinde Parmakla Yürütme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Parmak Kontrolü",
+    "materials":
+        "Düz ahşap yüzey, küçük oyuncak araç + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aracı yüzeye yerleştirip parmakla iterek hareket ettirin.\n2. Çocuğun taklit etmesini teşvik edin.\n3. Hızlı-yavaş gibi kavramlarla genişletin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Farklı yüzeylerde (halı, tahta, plastik) deneyerek farklı dirençleri keşfedin."
+  },
+  {
+    "day": 42,
+    "activity_name": "Tahta Kaşıkla Ritim Tutma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İşitsel Algı ve Ritim",
+    "materials":
+        "İki tahta kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkları birbirine vurup ritim tutun.\n2. Çocuğun kaşıkları alarak aynı ritmi denemesini isteyin.\n3. Kendi ritmini bulmasına fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Çeşitli hızlarda deneyerek tempo duygusunu geliştirin."
+  },
+  {
+    "day": 43,
+    "activity_name": "Kapakları Kapatma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Kapakları açık plastik şişe veya kavanozlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Şişeleri gösterin ve kapağını kapatmayı gösterin.\n2. Çocuğun kendi denemesine izin verin.\n3. Kapanınca takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı boyda kapaklarla zorluk derecesi ayarlanabilir."
+  },
+  {
+    "day": 44,
+    "activity_name": "Ellerle Küçük Top Yuvarlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İkili Oyun ve Hareket",
+    "materials":
+        "Yumuşak küçük top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu çocuğun karşısına yuvarlayın.\n2. Geri yuvarlamasını isteyin.\n3. Temasla değil yuvarlayarak devam edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yuvarlama mesafesini artırarak dikkat süresi de desteklenir."
+  },
+  {
+    "day": 45,
+    "activity_name": "Kaşıkla Nesne Aktarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "2 küçük kase, plastik boncuk veya fasulye, plastik kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkla bir kaptan diğerine aktarım gösterin.\n2. Çocuğa kendi yapması için alan verin.\n3. Dökülmeleri önemsemeyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Başlangıçta daha büyük nesneler tercih edilebilir."
+  },
+  {
+    "day": 46,
+    "activity_name": "Hayvan Figürlerini Sınıflandırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Kategori Algısı",
+    "materials":
+        "Evcil ve yabani hayvan figürleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Hayvanları iki kategoriye ayırın.\n2. Çocuğun doğru gruba yerleştirmesini teşvik edin.\n3. Her yerleştirme sonrası açıklama yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Küçük hikâyelerle eşleştirme derinleştirilebilir."
+  },
+  {
+    "day": 47,
+    "activity_name": "Yuvarlak Parçaları Döndür (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Nesne Kontrolü",
+    "materials":
+        "Ahşap tekerlekli oyuncak veya CD kutusu kapağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneyi düz zeminde döndürerek gösterin.\n2. Çocuğun kendi denemesine izin verin.\n3. Hızlı-yavaş farkını keşfettirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ayna üstünde yaparak görsel etkisini artırabilirsiniz."
+  },
+  {
+    "day": 48,
+    "activity_name": "Giyinmeye Yardım Etme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Öz Bakım",
+    "materials":
+        "Mont veya hırka + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kolunu uzatması için yönlendirin.\n2. Kolunu geçirmesine yardımcı olun.\n3. Her seferde daha az yardım sunun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yavaş yavaş fermuar çekme ya da düğme gösterilebilir."
+  },
+  {
+    "day": 49,
+    "activity_name": "Mini Sepete Oyuncak Toplama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Toplama ve Dikkat",
+    "materials":
+        "Küçük sepet, 3–4 oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncakları etrafa serpin.\n2. Sepete koymayı modelleyin.\n3. Hepsini toplayana kadar teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Oyuncakların rengine göre toplama yönlendirmesi eklenebilir."
+  },
+  {
+    "day": 50,
+    "activity_name": "Makasla Kağıt Kesme (ön hazırlık) (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Kasları ve Kavrama",
+    "materials":
+        "Çocuk makası, kalın renkli kağıt + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Makası iki elinizle birlikte tutarak nasıl açılıp kapandığını gösterin.\n2. Kalın kağıtla birlikte kesin.\n3. Çocuğun tutmasına ve denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Henüz tam kesme beklenmez, sadece hareketi tanıması yeterlidir."
+  },
+  {
+    "day": 51,
+    "activity_name": "Yastık Üzerinde Denge Yürümesi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Denge",
+    "materials":
+        "Geniş ve düşük yastıklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yastıkları yere dizin.\n2. Üzerinde yürümeyi modelleyin.\n3. Çocuğun yardım almadan yürüyüşünü izleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla iki yastık arası boşluk bırakılarak zorluk artırılabilir."
+  },
+  {
+    "day": 52,
+    "activity_name": "Şeffaf Torbaya Nesne Koyma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Şeffaf fermuarlı çanta, renkli yumuşak nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneleri sırayla çantaya koyarak örnek olun.\n2. Çocuğun kendi doldurmasına izin verin.\n3. Sonrasında birlikte içindekileri gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Torbayı kapatıp sallayarak içerikleri tanımlama oyunu oynanabilir."
+  },
+  {
+    "day": 53,
+    "activity_name": "Kokulu Poşetleri Sık (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Koku ve Dokunma Algısı",
+    "materials":
+        "Küçük fermuarlı poşetler, lavanta, tarçın, portakal kabuğu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her poşete farklı koku yerleştirin.\n2. Poşetleri çocuğun sıkmasına ve koklamasına izin verin.\n3. Hangi kokuyu sevdiğini sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Poşetlere renkli etiketler koyarak görsel çeşit ekleyin."
+  },
+  {
+    "day": 54,
+    "activity_name": "Yastıkları Renge Göre Ayır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Eşleme",
+    "materials":
+        "Farklı renklerde küçük yastıklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yastıkları yere karışık yerleştirin.\n2. Aynı renkte olanları gruplandırmayı gösterin.\n3. Çocuğun tekrar etmesine fırsat tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yastık yerine farklı renkli oyuncaklar da kullanılabilir."
+  },
+  {
+    "day": 55,
+    "activity_name": "Mini Tırmıkla Yaprak Toplama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Brüt Motor ve Göz-Kas Koordinasyonu",
+    "materials":
+        "Küçük el tırmığı, kuru yapraklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yaprakları yere serpin.\n2. Tırmığı nasıl kullandığınızı gösterin.\n3. Çocuğun tırmıkla yaprakları bir araya getirmesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İç mekânda kağıt parçaları ile benzeri oyun kurulabilir."
+  },
+  {
+    "day": 56,
+    "activity_name": "El Aynasında Kendini Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kendilik Farkındalığı",
+    "materials":
+        "El aynası + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aynayı çocuğun eline verin.\n2. 'Kim bu?' diye sorun.\n3. Göz, burun, ağız gibi bölümleri isimlendirerek gösterin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aynayı farklı ışıklarda göstererek ilgi artırılabilir."
+  },
+  {
+    "day": 57,
+    "activity_name": "Kavanozdan Pamuk Çekme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Dikkat",
+    "materials":
+        "Geniş ağızlı kavanoz, pamuk topları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Pamuğu kavanoza yerleştirin.\n2. Bir tanesini nasıl çıkaracağınızı gösterin.\n3. Çocuğun sırayla çekmesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla daha dar ağızlı kavanozla zorluk artırılabilir."
+  },
+  {
+    "day": 58,
+    "activity_name": "İki Nesne Arasından Seçim Yap (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Tercih Gelişimi",
+    "materials":
+        "İki oyuncak veya kitap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. İki nesneyi çocuğun önüne koyun.\n2. 'Hangisini istersin?' diye sorun.\n3. Seçim yapmasını bekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Seçimden sonra birlikte oynayarak kararını destekleyin."
+  },
+  {
+    "day": 59,
+    "activity_name": "Boncukları Sıraya Dizme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "İri boncuklar, şerit veya çubuk + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Boncukları sırayla dizerken örnek olun.\n2. Çocuğun kendi dizmesini isteyin.\n3. Sıralamayı değiştirerek tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renk sıralaması ekleyerek farklı varyasyonlar sunulabilir."
+  },
+  {
+    "day": 60,
+    "activity_name": "Basit Resmi Tamamlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Görsel Algı",
+    "materials":
+        "Yarısı eksik basit hayvan resimleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Hayvanın eksik tarafını gösterin.\n2. Tamamlanmış halini yanına koyarak açıklama yapın.\n3. 'Hangisi eksik?' gibi sorularla ilgisini artırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Parçaları eşleştirme kartı haline getirin."
+  },
+  {
+    "day": 61,
+    "activity_name": "Kutuya Giriş–Çıkış (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Beden Algısı",
+    "materials":
+        "Büyük karton kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutunun içine girip çıkmayı modelleyin.\n2. Çocuğun kendi başına yapmasına izin verin.\n3. Gülerek ve oyunla süreci pekiştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Kutuya girerken 'ev', 'araba' gibi isimler vererek oyunu çeşitlendirin."
+  },
+  {
+    "day": 62,
+    "activity_name": "Çıngırağı Sallayıp Durdur (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Ses Algısı ve Kontrol",
+    "materials":
+        "Küçük çıngırak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çıngırağı çalın ve sonra aniden durdurun.\n2. Çocuğun da bunu taklit etmesini isteyin.\n3. 'Şimdi sessiz!' gibi ifadelerle oyunu yönetin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Müzikle sessiz anları karıştırarak kontrol becerisi geliştirilir."
+  },
+  {
+    "day": 63,
+    "activity_name": "Islak ve Kuru Mendil Karşılaştırması (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Ayırt Etme",
+    "materials":
+        "Islak mendil, kuru mendil + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. İki mendili sırayla eline verin.\n2. Hangisinin ıslak olduğunu sorun.\n3. Kendi seçimini ifade etmesine fırsat tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Mendilleri farklı yüzeylerde gezdirerek dokunsal etkiyi artırın."
+  },
+  {
+    "day": 64,
+    "activity_name": "Kaşıkla Su Aktarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "İki küçük kap, su, plastik kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Suyu kaşıkla bir kaptan diğerine aktarmayı gösterin.\n2. Çocuğun kendi denemesine izin verin.\n3. Dökülmelerde cesaret verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gıda boyalı su kullanılarak görsel ilgi artırılabilir."
+  },
+  {
+    "day": 65,
+    "activity_name": "Ahşap Bloklarla Yol Yapma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Planlama ve Denge",
+    "materials":
+        "Ahşap bloklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bloklarla düz bir çizgi oluşturun.\n2. Çocuğun bu yolu yürüyerek takip etmesini sağlayın.\n3. Kendi yolunu yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kavislere ve dönüşlere izin vererek oyunu esnetin."
+  },
+  {
+    "day": 66,
+    "activity_name": "Resimli Kartları Adlandırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sözcük Hazinesi",
+    "materials":
+        "Hayvan, meyve veya araç resimli kartlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartları sırayla göstererek isimlerini söyleyin.\n2. Çocuğun tekrar etmesine teşvik edin.\n3. Tanıdık nesnelerle eşleştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Kartları ters çevirip 'hangisiydi?' sorusuyla hafıza oyunu yapılabilir."
+  },
+  {
+    "day": 67,
+    "activity_name": "Kavanoza Sıkıştırarak Yerleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Problem Çözme",
+    "materials":
+        "Kavanoz, sünger veya pamuk parçaları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Malzemeleri kavanoza sıkıştırarak koymayı gösterin.\n2. Çocuğun kendi yöntemini keşfetmesine izin verin.\n3. Doldurma ve boşaltma ile devam edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Zamanla daha dar ağızlı kavanoz kullanarak zorluk artırabilirsiniz."
+  },
+  {
+    "day": 68,
+    "activity_name": "Basit Yön Talimatlarıyla Hareket Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Dinleme ve Uygulama",
+    "materials":
+        "Boş alan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Eller yukarı', 'çömel' gibi talimatlar verin.\n2. Hareketleri birlikte yapın.\n3. Sonra çocuğun kendi yapmasına alan tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla üçlü yönergeler eklenerek gelişim desteklenebilir."
+  },
+  {
+    "day": 69,
+    "activity_name": "Şeffaf Bardakta Su Seviyesi Gözlemi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Görsel Karşılaştırma",
+    "materials":
+        "Şeffaf bardaklar, su + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bardakları farklı seviyede suyla doldurun.\n2. 'Hangisi daha dolu?' gibi sorular sorun.\n3. Su seviyesini eşitlemeye teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bardak sayısını artırarak zorluk düzeyi arttırılabilir."
+  },
+  {
+    "day": 70,
+    "activity_name": "Büyük-Delikli Boncuk Geçirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Sabır",
+    "materials":
+        "Kalın ip, büyük delikli boncuklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir boncuğu geçirerek örnek olun.\n2. Çocuğun kendi denemesine alan tanıyın.\n3. Başardığında birlikte kutlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Boncuk renklerine göre dizilim de eklenebilir."
+  },
+  {
+    "day": 71,
+    "activity_name": "Farklı Doku Kartlarını Keşfet (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Farkındalık",
+    "materials":
+        "Kumaş, zımpara, sünger, pamuk gibi yüzeylerden kartlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartları sırayla eline verin.\n2. Hissini tanımlamak için yönlendirin.\n3. 'Hangisi sert?' gibi sorularla dikkat çekin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kartları eşleştirme veya gruplama için de kullanabilirsiniz."
+  },
+  {
+    "day": 72,
+    "activity_name": "Çekmeceyi Aç – Kapat (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Nesneyle Etkileşim",
+    "materials":
+        "Düşük ve güvenli çekmece + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çekmeceyi yavaşça açın ve kapatın.\n2. Çocuğun denemesine izin verin.\n3. İçine basit nesneler koyarak ilgisini artırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Birden fazla çekmeceyle karşılaştırmalı oyun kurulabilir."
+  },
+  {
+    "day": 73,
+    "activity_name": "Su Sıçratma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal ve Görsel Duyular",
+    "materials":
+        "Geniş kap, az miktarda su + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Suyu kaba koyun.\n2. Ellerinizi sokup yavaşça sıçratın.\n3. Çocuğun elleriyle serbestçe suyla oynamasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Güneşli bir alanda suyun ışıkla etkileşimini gösterin."
+  },
+  {
+    "day": 74,
+    "activity_name": "Minderleri Yığ ve Atlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Denge",
+    "materials":
+        "3–4 küçük minder + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Minderleri üst üste veya yan yana koyun.\n2. Üzerinden yürüme veya atlama örneği verin.\n3. Çocuğun hareketi kendi denemesine bırakın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla minder sayısını artırarak farklı yollar oluşturun."
+  },
+  {
+    "day": 75,
+    "activity_name": "İpe Giysi Mandalı Takma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor Becerisi",
+    "materials":
+        "İp, 4–5 giysi mandalı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. İpi sabit bir yere bağlayın.\n2. Mandalı ipe nasıl taktığınızı gösterin.\n3. Çocuğun kendi takmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Mandallar renkli olursa eşleme oyunu da eklenebilir."
+  },
+  {
+    "day": 76,
+    "activity_name": "Sesli Kitap Dinleme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İşitsel Dikkat",
+    "materials":
+        "Sesli kitap veya okuma uygulaması + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitabı açın ve dinlemeye başlayın.\n2. Resimlere bakarak sesi takip etmesini sağlayın.\n3. Dinledikten sonra ana öğeleri konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Aynı kitabı birkaç gün tekrar dinleyerek anlama gelişimi desteklenebilir."
+  },
+  {
+    "day": 77,
+    "activity_name": "Renkli Kartlara Basarak Yürüme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Renk Tanıma ve Denge",
+    "materials":
+        "Büyük renkli kartonlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartonları yere aralıklı serin.\n2. 'Kırmızıya bas!' diyerek yönlendirme yapın.\n3. Renkleri tanıdıkça kendi yürüyüşünü yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkler yerine numaralarla da oynanabilir."
+  },
+  {
+    "day": 78,
+    "activity_name": "Kum Kutusunda Kazı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "El-Kol Koordinasyonu",
+    "materials":
+        "Sığ bir kap, kum, plastik kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kumu kaba koyun.\n2. Kaşıkla kazma örneği verin.\n3. Çocuğun kumu kazıp oynamasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kuma küçük nesneler gömerek bulma oyunu eklenebilir."
+  },
+  {
+    "day": 79,
+    "activity_name": "Küçük Halka Takma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Kavrama",
+    "materials":
+        "Çubuklu halka oyuncağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Halka takmayı gösterin.\n2. Çocuğun aynı işlemi yapmasını isteyin.\n3. Renk sırasına göre dizilimi destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Başta tek renk ve boydan başlamak kolaylık sağlar."
+  },
+  {
+    "day": 80,
+    "activity_name": "Kapı Zili Dinletme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Duyarlılık",
+    "materials":
+        "Taşınabilir kapı zili veya telefon zili + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Zili çalın ve dinlemesini isteyin.\n2. Nereden geldiğini birlikte keşfedin.\n3. Sesi tekrar ettiğinde takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı türde zil sesleri deneyerek karşılaştırma yapılabilir."
+  },
+  {
+    "day": 81,
+    "activity_name": "Balık Kartlarıyla Hikaye Uydurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Hayal Gücü ve Kelime Dağarcığı",
+    "materials":
+        "Resimli balık kartları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartlardan birini seçin.\n2. 'Bu balık nereye gidiyor?' gibi sorularla hikaye başlatın.\n3. Çocuğun tepkilerine göre yönlendirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kartlara uygun küçük oyuncaklarla hikaye desteklenebilir."
+  },
+  {
+    "day": 82,
+    "activity_name": "Tepsiyle Nesne Taşıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Koordinasyon ve Sabır",
+    "materials":
+        "Küçük tepsi, hafif nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Tepsiye birkaç nesne koyup taşıma örneği verin.\n2. Çocuğun dikkatlice taşımasını isteyin.\n3. Başardıkça alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı ağırlıktaki nesnelerle denge becerisi artırılır."
+  },
+  {
+    "day": 83,
+    "activity_name": "Nesneyle ‘Kayboldu’ Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Nesne Sürekliliği",
+    "materials":
+        "Küçük oyuncak, örtü + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı gösterin ve örtünün altına saklayın.\n2. 'Nereye gitti?' diyerek yönlendirin.\n3. Bulduğunda sevinçle karşılayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla örtüyü daha geniş yaparak zorlaştırabilirsiniz."
+  },
+  {
+    "day": 84,
+    "activity_name": "Poşette Jel Oyun (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Basınç ve Görsel Algı",
+    "materials":
+        "Şeffaf poşet, jel (örneğin saç jeli), küçük nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Poşete jeli ve minik nesneleri koyun.\n2. Poşeti kapatın ve çocuğun bastırarak oynamasını sağlayın.\n3. İçindekileri gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Poşetleri farklı renklerde hazırlayarak ilgiyi artırın."
+  },
+  {
+    "day": 85,
+    "activity_name": "Küçük Kapı Açma-Kapama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Nesne Manipülasyonu",
+    "materials":
+        "Oyuncak mutfak veya kutu kapağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı açma-kapama hareketini gösterin.\n2. Çocuğun tekrarlamasına izin verin.\n3. İçeriye küçük nesneler koyarak oyunlaştırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Birden fazla kapak ile çeşitlilik sağlanabilir."
+  },
+  {
+    "day": 86,
+    "activity_name": "Aynada Hayvan Taklidi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Beden ve Ses İfadesi",
+    "materials":
+        "Ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Ayna karşısında hayvan seslerini ve hareketlerini taklit edin.\n2. Çocuğun aynada kendini izlemesini sağlayın.\n3. Taklit etmesi için cesaretlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün farklı hayvanla tekrar edebilirsiniz."
+  },
+  {
+    "day": 87,
+    "activity_name": "Süzgeçten Nesne Geçirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor",
+    "materials":
+        "Makarna süzgeci, ince çubuklar veya kürdan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir çubuğu süzgeç deliğine sokmayı gösterin.\n2. Çocuğun aynı hareketi yapmasına fırsat verin.\n3. Deliğe denk getirmenin zorlayıcılığını deneyimlemesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Çubuk yerine pipet kullanarak daha kolay bir versiyonla başlanabilir."
+  },
+  {
+    "day": 88,
+    "activity_name": "Renkli Kağıtları Yırtma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Kas Gelişimi",
+    "materials":
+        "Renkli A4 kağıtlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kağıdı iki elinizle yırtmayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Renkleri birlikte isimlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Yırtılan parçaları farklı bir etkinlikte yapıştırarak değerlendirin."
+  },
+  {
+    "day": 89,
+    "activity_name": "Büyük Düğmeyi Delikten Geçir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Kalın ip, büyük delikli düğmeler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Düğmeyi ipe geçirirken örnek olun.\n2. Çocuğun aynı işlemi yapmasını teşvik edin.\n3. Sıra ile birkaç düğme geçirmesini destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı renk ve boyuttaki düğmelerle çeşitlendirilebilir."
+  },
+  {
+    "day": 90,
+    "activity_name": "Ayak Parmaklarıyla Havlu Toplama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Farklı Kas Kullanımı",
+    "materials":
+        "İnce havlu veya kumaş parçası + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Havluyu yere serin.\n2. Ayak parmaklarınızla sıkıştırarak havluyu toplayın.\n3. Çocuğun da denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Islak havlu ile deneyerek hissi fark ettirin."
+  },
+  {
+    "day": 91,
+    "activity_name":
+        "Küçük Kitapları Raf Yerine Yerleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Sıralama ve Düzenleme",
+    "materials":
+        "3–4 küçük kitap, çocuk kitap rafı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitapları nasıl yerleştirdiğinizi gösterin.\n2. Çocuğun her birini sırayla rafa koymasına destek olun.\n3. Rafı doldurduğunda birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Yere ters çevrilmiş kitapları düz çevirip koyma gibi görev eklenebilir."
+  },
+  {
+    "day": 92,
+    "activity_name": "Topla Hedefe Yuvarla (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Kol Koordinasyonu",
+    "materials":
+        "Yumuşak top, boş sepet + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu yere koyun ve sepete doğru yuvarlayın.\n2. Çocuğu da denemeye teşvik edin.\n3. Başardığında cesaretlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Sepet yerine kutu, çember veya daire şeklinde hedef kullanılabilir."
+  },
+  {
+    "day": 93,
+    "activity_name": "Tüy ile Yüzü Gıdıklama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunma ve Sosyal Tepki",
+    "materials":
+        "Temiz, hafif bir tüy + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Tüyü elinize alın ve çocuğun yanağını hafifçe gıdıklayın.\n2. Yüzünde oluşan tepkileri gözlemleyin.\n3. Tüyü onun eline vererek denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı tüyler veya yumuşak fırçalarla çeşitlendirilebilir."
+  },
+  {
+    "day": 94,
+    "activity_name": "Köpükle Oyun (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal ve Görsel Uyarım",
+    "materials":
+        "Köpük sabunu, tepsi + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Köpüğü hazırlayıp tepsiye koyun.\n2. Ellerinizle oynayıp model olun.\n3. Çocuğun keşfetmesine alan bırakın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Parmakla çizim yaptırarak ince motor becerisi desteklenebilir."
+  },
+  {
+    "day": 95,
+    "activity_name": "Tahta Kaşığı Doğru Kaba Yerleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Eşleştirme ve Problem Çözme",
+    "materials":
+        "2–3 farklı boyda kase, tahta kaşıklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kaseye uygun boydaki kaşığı gösterin.\n2. Karıştırıp çocuğun eşleştirmesini isteyin.\n3. Yardımcı olmadan yapmasına fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün yeni bir kombinasyonla farklı materyaller kullanın."
+  },
+  {
+    "day": 96,
+    "activity_name": "Kutuya Yumak Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve El Becerisi",
+    "materials":
+        "Yün yumakları, küçük kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yumakları sırayla kutuya atmayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Kutudan çıkarıp tekrar oynayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutuyu biraz uzağa koyarak hedef zorluğu artırabilirsiniz."
+  },
+  {
+    "day": 97,
+    "activity_name": "Kart Üzerindeki Hayvanı Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Dil ve Görsel Tanıma",
+    "materials":
+        "Hayvan resimli kartlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartı gösterip 'Bu ne?' diye sorun.\n2. Adını söyleyin ve tekrar etmesini bekleyin.\n3. Ses taklidi ile destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kartları ters çevirip hafıza oyunu başlatılabilir."
+  },
+  {
+    "day": 98,
+    "activity_name": "Kurumuş Hamuru Ezme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Basınç ve Parmak Gücü",
+    "materials":
+        "Kurumuş oyun hamuru + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Hamuru çocuğun önüne koyun.\n2. Ellerinizle bastırmayı gösterin.\n3. Çocuğun ezme deneyimine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine boncuk yerleştirerek dokunsal sürprizler yaratabilirsiniz."
+  },
+  {
+    "day": 99,
+    "activity_name": "Küplerle Kule Kurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Planlama",
+    "materials":
+        "Ahşap küpler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 2–3 küple küçük bir kule yapın.\n2. Çocuğun yapmasına izin verin.\n3. Devirmesine ve tekrar denemesine destek olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli küplerle görsel çeşitlilik artırılabilir."
+  },
+  {
+    "day": 100,
+    "activity_name": "Hayvan Seslerini Eşleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İşitsel Ayırt Etme",
+    "materials":
+        "Sesli oyuncaklar veya ses kayıtları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sesi çalın.\n2. Hangi hayvana ait olduğunu sorun.\n3. Resmiyle veya figürüyle eşleştirmesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gerçek hayvan videolarıyla desteklenebilir."
+  },
+  {
+    "day": 101,
+    "activity_name": "Taneleri Şişeye Dök (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Koordinasyon",
+    "materials":
+        "Huni, plastik şişe, mercimek veya pirinç + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Huniyi şişeye yerleştirin.\n2. Taneleri yavaşça dökerek model olun.\n3. Çocuğun aynı işlemi yapmasını sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı renkli bakliyatlarla zenginleştirilebilir."
+  },
+  {
+    "day": 102,
+    "activity_name": "Mini Sandalyeye Oyuncak Oturt (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Rol Oyunları ve Beden Bilinci",
+    "materials":
+        "Oyuncak sandalye, küçük oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı sandalyeye oturtun.\n2. Çocuğun da aynı hareketi yapmasını sağlayın.\n3. 'Ayakta kalmaz, oturalım!' gibi yönlendirmeler yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yemek sahnesi gibi küçük rol oyunları ile genişletilebilir."
+  },
+  {
+    "day": 103,
+    "activity_name": "Çeşitli Kumaşları Katlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İki El Kullanımı ve Planlama",
+    "materials":
+        "Küçük kare kumaşlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kumaşı ortadan ikiye katlamayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Başardıkça birlikte katlamaya devam edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı desenli kumaşlarla dikkat çekici hale getirilebilir."
+  },
+  {
+    "day": 104,
+    "activity_name": "Ağaç Altına Oyuncak Saklama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Nesne Yer Bilinci",
+    "materials":
+        "Peluş oyuncak, sandalye veya küçük bitki + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı nesnenin altına saklayın.\n2. 'Nereye koyduk?' sorusuyla hafıza tetikleyin.\n3. Bulduğunda birlikte sevinin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Evin farklı köşelerinde tekrar edilerek yön kavramı gelişir."
+  },
+  {
+    "day": 105,
+    "activity_name": "Sulu Boya ile Parmak Baskısı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Sanatsal İfade ve Dokunsal Keşif",
+    "materials":
+        "Yıkanabilir sulu boya, kalın kağıt + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Parmağınızı boyaya batırıp bastırmayı gösterin.\n2. Çocuğun denemesine fırsat tanıyın.\n3. Eserini birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Ağaç yaprağı, çiçek gibi şekilleri tamamlamak için yönlendirme eklenebilir."
+  },
+  {
+    "day": 106,
+    "activity_name": "Kilitli Kutu Açma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Problem Çözme",
+    "materials":
+        "Basit tıklamalı kutu veya küçük çanta + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuya nesne koyup kilitleyin.\n2. Açma işlemini yavaşça gösterin.\n3. Çocuğun kendi başına çözmesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine sürpriz küçük nesneler koyarak merak uyandırabilirsiniz."
+  },
+  {
+    "day": 107,
+    "activity_name": "Karton Tüpten Bakma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Odak ve Görsel Yönlendirme",
+    "materials":
+        "Boş kağıt havlu rulosu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Rulodan bakmayı gösterin.\n2. Çocuğun da aynı şekilde bakmasına izin verin.\n3. Hedef bir nesneye yönlendirerek dikkat çekin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Dışarıyı gösteren pencereye doğrultarak ilgisini artırabilirsiniz."
+  },
+  {
+    "day": 108,
+    "activity_name": "Meyve Dilimi Tadımı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Tat Alma ve Tercih Geliştirme",
+    "materials":
+        "Elma, muz, portakal dilimleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Meyve dilimlerini küçük parçalar halinde sunun.\n2. Her birini tatmasına izin verin.\n3. Hangisini sevdiğini gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Tatlı-ekşi ayrımı gibi kelimelerle farkındalık artırabilirsiniz."
+  },
+  {
+    "day": 109,
+    "activity_name": "Mini Halka Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Hedef Koordinasyonu",
+    "materials":
+        "Boş şişe, halka şeklinde karton + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Halka atmayı modelleyin.\n2. Çocuğun sırayla denemesine fırsat verin.\n3. Başarıyı olumlu ifadelerle destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı boyutta halkalarla kolaydan zora geçiş yapılabilir."
+  },
+  {
+    "day": 110,
+    "activity_name": "Şekilli Oyuncakla Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Şekil Tanıma ve Sıralama",
+    "materials":
+        "Şekilli kutu (üçgen, kare, daire) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Şekli elinize alarak uygun yere nasıl yerleştirdiğinizi gösterin.\n2. Çocuğun da denemesine izin verin.\n3. Uygun olmayan şekillerde yönlendirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün farklı bir şekil üzerinden odak oyun kurulabilir."
+  },
+  {
+    "day": 111,
+    "activity_name": "Minik Kurdeleleri Kavrama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Dikkat",
+    "materials":
+        "Küçük renkli kurdele parçaları, plastik kap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kurdeleleri kaba yerleştirin.\n2. Parmaklarınızla birini çıkararak model olun.\n3. Çocuğun tekrarlamasını izleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kurdeleleri farklı boylarda ve dokularda sunarak çeşitlendirin."
+  },
+  {
+    "day": 112,
+    "activity_name": "Hayvan Figürlerini Taşıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yürüyüş ve Koordinasyon",
+    "materials":
+        "Küçük hayvan figürleri, kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Figürleri kutuya taşıyacağınızı gösterin.\n2. Çocuğun birer birer taşımasına teşvik edin.\n3. Her taşıma sonrası hayvanın adını söyleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Taşıma mesafesini uzatarak fiziksel eforu artırabilirsiniz."
+  },
+  {
+    "day": 113,
+    "activity_name": "Su Damlalarıyla İz Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Takip ve Dikkat",
+    "materials":
+        "Damlalık, su, büyük taş veya tepsi + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Damlalıkla yüzeye su damlatın.\n2. İzleri birlikte gözlemleyin.\n3. Çocuğun damlalıkla denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli su kullanarak ilgiyi artırabilirsiniz."
+  },
+  {
+    "day": 114,
+    "activity_name": "Basit Melodiye Eşlik (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İşitsel Algı ve Ritim",
+    "materials":
+        "Basit müzik kutusu veya ritmik çocuk şarkısı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Müziği başlatın.\n2. Ellerinizi çırparak ritme eşlik edin.\n3. Çocuğun da katılmasına alan tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla enstrümanlar (zil, tef) eklenebilir."
+  },
+  {
+    "day": 115,
+    "activity_name": "Çakıl Taşı Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Görsel Eşleme",
+    "materials":
+        "Farklı şekil ve renkte çakıl taşları (ikili) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her taştan birini sırayla dizin.\n2. Eşini bulması için çocuğu yönlendirin.\n3. Doğru eşleşmeyi takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Taşlar yerine kapak ya da düğme gibi nesneler de kullanılabilir."
+  },
+  {
+    "day": 116,
+    "activity_name": "Yüz Taklidi Kartlarıyla Oyun (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Duygusal Farkındalık",
+    "materials":
+        "Farklı yüz ifadeleri içeren kartlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Karttaki ifadeyi gösterin (gülme, kızgınlık vb.).\n2. Aynısını yaparak model olun.\n3. Çocuğun taklidine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aynayla birlikte çalışarak öz farkındalık artırılabilir."
+  },
+  {
+    "day": 117,
+    "activity_name": "İsim Çağrıldığında Yanıt Verme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sosyal Dikkat ve İletişim",
+    "materials":
+        "Boş alan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çocuğun ilgisi dağınıkken adını net şekilde söyleyin.\n2. Göz kontağı kurduğunda olumlu tepki verin.\n3. Adını oyun içinde tekrar kullanın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla başka kişilerin adlarını da tanıtabilirsiniz."
+  },
+  {
+    "day": 118,
+    "activity_name": "Renkli Şişeleri Sıralama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk ve Boyut Algısı",
+    "materials":
+        "Renkli boş şişeler (küçük–büyük) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Şişeleri karışık şekilde dizin.\n2. Renk veya boyuta göre sıralama yapın.\n3. Çocuğun kendi sırasını yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Etiketlerle (mavi, büyük, küçük) kelime gelişimi de desteklenebilir."
+  },
+  {
+    "day": 119,
+    "activity_name": "Açık–Kapalı Kavramı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Nesneyle Etkileşim",
+    "materials":
+        "Kutular, kitaplar, kapaklı nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aç-kapa hareketini gösterin.\n2. Her seferinde 'açtık', 'kapadık' deyin.\n3. Çocuğun kendi yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gerçek nesnelerde uygulama (dolap, çekmece) yapılabilir."
+  },
+  {
+    "day": 120,
+    "activity_name": "Yumuşak Oyuncakla Renk Tahmini (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Tanıma",
+    "materials":
+        "Farklı renkte yumuşak oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir oyuncağı gösterin ve rengini söyleyin.\n2. Aynı renkte başka bir oyuncak bulmasını isteyin.\n3. Başarıyı olumlu dille pekiştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Her renk için bir gün ayırarak yoğunlaştırılmış renk çalışması yapılabilir."
+  },
+  {
+    "day": 121,
+    "activity_name": "Su Spreyi ile Bitki Sulama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Sorumluluk Gelişimi",
+    "materials":
+        "Boş sprey şişesi, küçük bitki + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Spreyle nasıl sulama yapıldığını gösterin.\n2. Çocuğun kendi sulamasına izin verin.\n3. Her sabah tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bitkiye isim vererek bağ kurmasını destekleyin."
+  },
+  {
+    "day": 122,
+    "activity_name": "Küçük Nesneleri Avuçlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Tutuş Gücü ve Parmak Kontrolü",
+    "materials":
+        "Bakliyat, sünger toplar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Malzemeyi avucunuza alıp bırakmayı gösterin.\n2. Çocuğun aynı hareketleri yapmasına fırsat verin.\n3. İki elini de kullanmasına olanak tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı boyutta nesnelerle zorluk seviyesini değiştirin."
+  },
+  {
+    "day": 123,
+    "activity_name": "Şekilli Kalıpları Doldurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Şekil Tanıma",
+    "materials":
+        "Karton şekiller, uygun nesneler (daireye top, kareye blok) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her şeklin içine uygun nesneyi yerleştirin.\n2. Çocuğun aynı işlemi denemesine izin verin.\n3. Gelişimini takip edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Boş kalıplar renkli hale getirilerek görsel destek artırılır."
+  },
+  {
+    "day": 124,
+    "activity_name": "Tencereden Nesne Çıkarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Görsel Arama ve El Becerisi",
+    "materials":
+        "Kapaklı küçük tencere, 3–4 oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncakları tencereye koyup kapağını kapatın.\n2. Kapağı açıp tek tek çıkarın.\n3. Çocuğun aynı işlemleri tekrar etmesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kapağı biraz sıkı yaparak problem çözme becerisini destekleyin."
+  },
+  {
+    "day": 125,
+    "activity_name": "Kavanozdan Kapağı Ayırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor ve Dikkat",
+    "materials":
+        "Vidalı kapaklı boş kavanoz + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı yavaşça açmayı gösterin.\n2. Çocuğun açma-kapama hareketini yapmasını izleyin.\n3. Farklı boyda kavanozlarla çeşitlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine küçük nesne koyarak motivasyonu artırabilirsiniz."
+  },
+  {
+    "day": 126,
+    "activity_name": "Karton Borudan Top Yuvarlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep–Sonuç ve Yön",
+    "materials":
+        "Boş rulo, küçük top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Boruyu eğik yerleştirerek topu yuvarlayın.\n2. Çocuğun aynı hareketi tekrar etmesine izin verin.\n3. Topun nereye gittiğini gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Boruyu farklı yönlere eğerek sonuç farkını gösterin."
+  },
+  {
+    "day": 127,
+    "activity_name": "Oyun Halısı Üzerinde Rota Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Yön",
+    "materials":
+        "Üzerinde yol deseni olan oyun halısı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı yol boyunca yürütün.\n2. Çocuğun aynı rotayı takip etmesini isteyin.\n3. Dönemeçlerde yavaşlama gibi kavramları anlatın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı oyuncaklarla her gün yeni rota oluşturabilirsiniz."
+  },
+  {
+    "day": 128,
+    "activity_name": "Kapı Tokmağını Döndürme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Bilek Hareketi ve Nesne Kontrolü",
+    "materials":
+        "Oyuncak kapı tokmağı veya gerçek kapı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Tokmağı çevirerek nasıl çalıştığını gösterin.\n2. Çocuğun denemesine izin verin.\n3. Kapının açılma etkisini gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kapı sesiyle ilişkili hikâyeler kurabilirsiniz."
+  },
+  {
+    "day": 129,
+    "activity_name": "Renkli Kaşıkları Ayırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Sınıflandırma",
+    "materials":
+        "Farklı renkte plastik kaşıklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkları karışık şekilde dizin.\n2. Aynı renkte olanları gruplandırın.\n3. Çocuğun da aynı gruplamayı yapmasını isteyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sadece 2 renkle başlayıp zamanla çeşit artırılabilir."
+  },
+  {
+    "day": 130,
+    "activity_name": "Ponponları Renkli Kaseye At (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Eşleme ve Atış",
+    "materials":
+        "Farklı renklerde ponponlar, aynı renkli küçük kaseler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kaseye karşılık gelen ponponu gösterin.\n2. Doğru kaseye atma örneği verin.\n3. Çocuğun sıralama ve atışını gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Cımbızla atış gibi zorluk seviyesi artırılabilir."
+  },
+  {
+    "day": 131,
+    "activity_name": "Çek Bırak Oyuncağıyla Hareket (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep–Sonuç İlişkisi",
+    "materials":
+        "Geriye çekince giden oyuncak araba + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı çekip bırakmayı gösterin.\n2. Hareketini birlikte izleyin.\n3. Çocuğun da denemesine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yarışma gibi küçük hedefler oyuna dahil edilebilir."
+  },
+  {
+    "day": 132,
+    "activity_name": "Koku Şişelerini Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Koku Algısı ve Hafıza",
+    "materials":
+        "Kapalı küçük şişelerde vanilya, limon, lavanta gibi kokular + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Şişeleri sırayla koklatın.\n2. 'Hangisi limon?' gibi tanımlama soruları sorun.\n3. Çocuğun tercihini gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kokuları saklayıp 'hangi koku eksik?' oyununa çevrilebilir."
+  },
+  {
+    "day": 133,
+    "activity_name": "Hayvan Kartı Eşleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Görsel Tanıma",
+    "materials":
+        "İkili hayvan kartları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir kartı yere koyun.\n2. Eşini bulup yanına koymayı modelleyin.\n3. Çocuğun kendi başına eşleştirmesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Eşleştirme sonrası hayvan sesiyle ilişki kurulabilir."
+  },
+  {
+    "day": 134,
+    "activity_name": "Şeffaf Poşette Malzeme Sıkma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Basınç Algısı",
+    "materials":
+        "Fermuarlı poşet, un/nişasta ve su karışımı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Poşeti doldurup sıkıca kapatın.\n2. Sıkma hareketini gösterin.\n3. Çocuğun keşfetmesine alan tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gıda boyası ekleyerek görsel ilgi artırılabilir."
+  },
+  {
+    "day": 135,
+    "activity_name": "Küçük Yastıkları Üst Üste Diz (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Konsantrasyon",
+    "materials":
+        "3–4 hafif, küçük yastık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yastıkları üst üste dizmeyi gösterin.\n2. Çocuğun kendi dizmesine izin verin.\n3. Kule yıkıldıkça yeniden denemeyi teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Farklı yumuşaklıkta malzemeler kullanılarak çeşitlilik sağlanabilir."
+  },
+  {
+    "day": 136,
+    "activity_name": "Nesne Altında Saklananı Bul (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Nesne Sürekliliği",
+    "materials":
+        "3–4 küçük kutu, içlerinden birine konmuş oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı bir kutunun altına saklayın.\n2. 'Nerede?' diye sorun.\n3. Bulduğunda kutlama yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla kutu sayısı artırılarak dikkat becerisi geliştirilir."
+  },
+  {
+    "day": 137,
+    "activity_name": "Tahta Mandalları Kutu Kenarına Tak (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Gücü ve Koordinasyon",
+    "materials":
+        "Boş karton kutu, 4–5 tahta mandal + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Mandalı kutuya nasıl takacağınızı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Zamanla mandal sayısını artırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Mandal renkleriyle sıralama veya eşleştirme eklenebilir."
+  },
+  {
+    "day": 138,
+    "activity_name": "Ayna Önünde Kendi Adını Duyma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kendilik Bilinci",
+    "materials":
+        "Ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çocuğu aynanın önüne yerleştirin.\n2. Adını söyleyerek kendini göstermesini isteyin.\n3. Başardığında sevinçle pekiştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "‘Merhaba [isim]’ gibi ifadelerle sosyal konuşma desteklenebilir."
+  },
+  {
+    "day": 139,
+    "activity_name": "Masa Üzerinde El Yürüyüşü (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Keşif",
+    "materials":
+        "Düz masa yüzeyi, oyuncak hayvan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı yürütür gibi masada gezdirin.\n2. Çocuğun elini yönlendirerek eşlik etmesini sağlayın.\n3. Hayvan sesleriyle oyunu zenginleştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Masada yol çizebilir veya desenli kumaşlarla çeşitlendirebilirsiniz."
+  },
+  {
+    "day": 140,
+    "activity_name": "Küçük Huni ile Su Aktarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Koordinasyon ve Sabır",
+    "materials":
+        "Huni, iki küçük bardak, su + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Huniyi bardağa yerleştirerek su dökün.\n2. Çocuğun dikkatlice aktarmasını destekleyin.\n3. Dökülmeleri sorun etmeden süreci izleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Su yerine pirinç kullanarak kuru bir versiyon yapılabilir."
+  },
+  {
+    "day": 141,
+    "activity_name": "Tahta Blokları Sırala (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Boyut Algısı",
+    "materials":
+        "Farklı boyutlarda 3–4 ahşap blok + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Büyükten küçüğe dizmeyi gösterin.\n2. Çocuğun kendi sıralamasına alan tanıyın.\n3. Bloklar hakkında konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli bloklarla görsel dikkat artırılabilir."
+  },
+  {
+    "day": 142,
+    "activity_name": "Küçük Kavanozlara Boncuk Doldur (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve El-Göz Koordinasyonu",
+    "materials":
+        "Boncuk, küçük cam/plastik kavanozlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Boncukları bir kavanoza doldurmayı gösterin.\n2. Çocuğun denemesine fırsat verin.\n3. Her kavanoz dolduğunda birlikte sayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Boncukları renge göre ayırarak kombinasyon oyunu oluşturabilirsiniz."
+  },
+  {
+    "day": 143,
+    "activity_name": "Farklı Zeminlerde Yürüme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Ayak Altı Duyusal Uyarım",
+    "materials":
+        "Halı, ahşap, peluş, kabartılı yüzeyler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çıplak ayakla her zeminde yürümesini teşvik edin.\n2. Hissettiklerini kelimelere dökün.\n3. Zemin değişikliklerini gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ayakta dururken denge oyunu olarak da uygulanabilir."
+  },
+  {
+    "day": 144,
+    "activity_name": "Gizli Nesneyi Bul (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Nesne Sürekliliği ve Hafıza",
+    "materials":
+        "Yastık altı, battaniye kıvrımı, örtü + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı çocuğun gözü önünde saklayın.\n2. Bulması için cesaretlendirin.\n3. Başardığında alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Nesneleri sırayla saklayarak çeşitlendirme yapılabilir."
+  },
+  {
+    "day": 145,
+    "activity_name": "Kaşıkla Mercimek Karıştır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Dikkat",
+    "materials":
+        "Derin kase, mercimek, tahta kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Karıştırmayı gösterin.\n2. Kaşığı eline verin.\n3. Serbestçe karıştırmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "İçine birkaç farklı bakliyat koyarak ayıklama oyunu da eklenebilir."
+  },
+  {
+    "day": 146,
+    "activity_name": "Karton Üzerine Sticker Yapıştır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Parmak Koordinasyonu",
+    "materials":
+        "Renkli stickerlar, kalın karton + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir sticker'ı alıp yapıştırmayı gösterin.\n2. Çocuğun kendi seçmesini sağlayın.\n3. Sonra birlikte gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Çıkartmaları belirli alanlara yapıştırarak hedefli oyun kurabilirsiniz."
+  },
+  {
+    "day": 147,
+    "activity_name": "Kapıdan Geçen Sesleri Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Dikkat",
+    "materials":
+        "Sessiz oda, kapı, dış ortam sesleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sessizce kapının yanında bekleyin.\n2. Dış sesleri birlikte dinleyin.\n3. 'Ne sesi bu?' gibi sorular sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla sesleri ayırt etmeye teşvik edebilirsiniz."
+  },
+  {
+    "day": 148,
+    "activity_name": "Gölgeyle Oynama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Takip ve Hayal Gücü",
+    "materials":
+        "Lamba veya güneş ışığı, duvar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. El gölgeleriyle çeşitli şekiller yapın.\n2. Çocuğun gölgeyi takip etmesini sağlayın.\n3. Kendi gölgesini fark etmesine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Hayvan şekilleriyle kısa hikâyeler oluşturabilirsiniz."
+  },
+  {
+    "day": 149,
+    "activity_name": "Yumuşak Oyuncakları Yıkayıp Kurula (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Sorumluluk ve Öz Bakım",
+    "materials":
+        "Yumuşak oyuncak, su kabı, bez + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı suya batırıp yıkamayı gösterin.\n2. Bezle kurulama işlemini yapın.\n3. Çocuğun yıkamasına ve kurutmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gün sonunda oyuncakları kurutma yerine birlikte asabilirsiniz."
+  },
+  {
+    "day": 150,
+    "activity_name": "Zemin Üzerinde Oyuncak Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Görsel Takip ve Yön",
+    "materials":
+        "Tekerlekli oyuncak araba veya top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı ileri geri yuvarlayın.\n2. Çocuğun bakışlarıyla takip etmesini sağlayın.\n3. Kendi hareketiyle takip etmesini teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bir yol üzerinde (halı çizgisi vb.) yönlendirme yapabilirsiniz."
+  },
+  {
+    "day": 151,
+    "activity_name": "Renkli Pipetleri Deliğe Tak (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor Becerisi",
+    "materials":
+        "Renkli pipetler, delikli kapak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Pipeti kapağın deliğine nasıl sokacağınızı gösterin.\n2. Çocuğun aynısını yapmasını isteyin.\n3. Başarıyla tamamladığında destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renk eşleştirmesi de eklenerek çeşitlendirilebilir."
+  },
+  {
+    "day": 152,
+    "activity_name": "Hayvan Figürleriyle Mini Tiyatro (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sosyal ve Dil Gelişimi",
+    "materials":
+        "Hayvan figürleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Hayvanları seslendirerek kısa hikâye anlatın.\n2. Çocuğu figürlerle oynamaya teşvik edin.\n3. Taklitlerini destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Oyun alanı içinde sahne kurarak ilgi çekebilirsiniz."
+  },
+  {
+    "day": 153,
+    "activity_name": "Kitap Sayfası Çevirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "El Kullanımı ve Görsel Algı",
+    "materials":
+        "Kalın sayfalı çocuk kitabı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitabı açıp sayfa çevirme hareketini gösterin.\n2. Çocuğun kendi çevirmesine izin verin.\n3. Her sayfada kısa açıklama yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla hikâye ilerlemesini fark etmeye başlayacaktır."
+  },
+  {
+    "day": 154,
+    "activity_name": "İtme ve Çekme Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Beden Gücü ve Denge",
+    "materials":
+        "Oyuncak kutu veya sandalye + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuyu iterek yürümeyi modelleyin.\n2. Çocuğun itme ve çekme hareketini tekrarlamasına izin verin.\n3. Dengeyi birlikte sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine oyuncak koyarak taşıma motivasyonu oluşturabilirsiniz."
+  },
+  {
+    "day": 155,
+    "activity_name": "Şeffaf Kutuda Nesne Tahmini (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Algı",
+    "materials":
+        "Şeffaf kutu, içinde 3–4 farklı nesne + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutudaki nesneleri gösterin ve isimlendirin.\n2. 'Neyi görüyorsun?' gibi sorular sorun.\n3. Kutunun dışından tanımasını sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutuya yeni nesneler koyarak merak duygusu artırılabilir."
+  },
+  {
+    "day": 156,
+    "activity_name": "Farklı Malzeme Seslerini Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Ayırt Etme",
+    "materials":
+        "Tahta kaşık, metal kaşık, plastik kap, tahta + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her malzeme ile yüzeye vurun.\n2. Çıkan sesleri dinletin.\n3. 'Hangisi ince?' 'Hangisi tok?' gibi sorular sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gözleri kapalı şekilde tahmin oyunu yapılabilir."
+  },
+  {
+    "day": 157,
+    "activity_name": "Oyuncakları Kendi Rafına Yerleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Düzen ve Sıralama",
+    "materials":
+        "Basit oyuncaklar, çocuk seviyesinde raf + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncakları rafa nasıl yerleştirdiğinizi gösterin.\n2. Çocuğun kendi yerleştirmesine izin verin.\n3. Her gün aynı düzende tekrarlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Görsel ipuçları (resim, renk) ile yönlendirme yapılabilir."
+  },
+  {
+    "day": 158,
+    "activity_name": "Sesli Komutla Nesne Getirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Dil Anlayışı",
+    "materials":
+        "Oyuncak ayı, top, kitap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Lütfen ayıyı getir.' komutunu verin.\n2. Doğru nesneyi getirdiğinde övün.\n3. Diğer nesnelerle tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İleride iki nesne içeren yönergelerle zenginleştirilebilir."
+  },
+  {
+    "day": 159,
+    "activity_name": "Yüzeylerde Yuvarlanma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Esneklik",
+    "materials":
+        "Yumuşak örtü veya yatak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kendiniz yere uzanıp yuvarlanmayı gösterin.\n2. Çocuğun serbestçe yuvarlanmasına alan tanıyın.\n3. Yavaş ve kontrollü yönlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Engellerle mini parkur yapılabilir."
+  },
+  {
+    "day": 160,
+    "activity_name": "Mini Sıralama Oyunu (Küçük–Büyük) (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Boyut Karşılaştırması",
+    "materials":
+        "3 farklı boyda top veya blok + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Küçükten büyüğe sıralama yapın.\n2. Çocuğun kendi sırasını kurmasına izin verin.\n3. Doğru sıralamayı konuşarak pekiştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı temalarla (hayvan, kapak, kaşık) tekrarlanabilir."
+  },
+  {
+    "day": 161,
+    "activity_name": "Küp Oyuncakları Yuvaya Yerleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve Sabır",
+    "materials":
+        "Küpler, uygun delikli kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Küpü deliğe bırakma hareketini gösterin.\n2. Çocuğun el-göz koordinasyonu ile yapmasına izin verin.\n3. Denemeleri olumlu karşılayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Küplerin renk veya sayılarına göre de varyasyon oluşturulabilir."
+  },
+  {
+    "day": 162,
+    "activity_name": "Bitki Yaprağını Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel ve Dokunsal Tanıma",
+    "materials":
+        "Gerçek veya yapay yapraklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yaprağı eline vererek dokunmasını sağlayın.\n2. 'Pürüzlü mü?' 'Yumuşak mı?' gibi sorularla yönlendirin.\n3. Farklı yaprakları karşılaştırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bahçede gerçek yapraklarla doğrudan çalışma yapılabilir."
+  },
+  {
+    "day": 163,
+    "activity_name": "Mini Çekmeceye Nesne Yerleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Amaçlı El Hareketi",
+    "materials":
+        "2–3 gözlü küçük çekmece, küçük nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her nesneyi belirli göze koymayı gösterin.\n2. Çocuğun da kendi yerleştirmesine izin verin.\n3. Çekmeceleri açıp kapatarak pekiştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Etiketleme sistemi ile oyunlaştırılabilir."
+  },
+  {
+    "day": 164,
+    "activity_name": "Yuvarlak Nesneleri Sınıflandır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Şekil Farkındalığı",
+    "materials":
+        "Top, daire şekilli bloklar, düğmeler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yuvarlak nesneleri seçip gruplayın.\n2. 'Hepsi yuvarlak mı?' gibi sorular sorun.\n3. Çocuğun da gruplamasına destek olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Karışık şekiller ekleyerek ayrım yetisini geliştirin."
+  },
+  {
+    "day": 165,
+    "activity_name": "Tekerlekli Oyuncağı Çekerek Takip (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yürüyüş ve Yön",
+    "materials":
+        "İpi olan tekerlekli oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı çekerek yürüyün.\n2. Çocuğun da çekerek takip etmesini sağlayın.\n3. Dönüşlerde yönlendirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı uzunlukta iplerle denge oyunu kurulabilir."
+  },
+  {
+    "day": 166,
+    "activity_name": "Halka Geçirme Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Sıralama",
+    "materials":
+        "Dikey çubuk ve farklı boyutta halkalar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Halka geçirmeyi gösterin.\n2. Küçükten büyüğe dizilimini modelleyin.\n3. Çocuğun dilediği gibi tekrar etmesine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla renk ve sıra yönergeleri ekleyebilirsiniz."
+  },
+  {
+    "day": 167,
+    "activity_name": "Yastıkların Üzerinde Dengede Durma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge Gelişimi",
+    "materials":
+        "Yere serilmiş farklı kalınlıkta yastıklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yastık üzerine çıkıp dengede durmayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Gülümseyerek destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yastıkların arası açılarak adım atma oyunu yapılabilir."
+  },
+  {
+    "day": 168,
+    "activity_name": "Mini Arabaları Tünelden Geçirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Oyuncak arabalar, karton tünel + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Tüneli masa altına ya da kutudan hazırlayın.\n2. Arabayı içinden geçirerek model olun.\n3. Çocuğun da denemesine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Tünel uzunluğu artırılarak zorluk derecesi artırılabilir."
+  },
+  {
+    "day": 169,
+    "activity_name": "Ahşap Kaşıkla Oyuncak Karıştırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "El Hareketi ve Taklit",
+    "materials":
+        "Küçük tencere, ahşap kaşık, oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncakları tencereye koyup karıştırmayı gösterin.\n2. Çocuğun taklit etmesine fırsat verin.\n3. Karıştırma sesine dikkat çekin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gerçek sebzelerle yapılacak versiyona geçiş için hazırlık olur."
+  },
+  {
+    "day": 170,
+    "activity_name": "Boş Şişeye Kapak Takma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Dikkat ve El Yönelimi",
+    "materials":
+        "Boş plastik şişe ve kapağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı yavaşça takıp çevirmeyi gösterin.\n2. Çocuğun da aynı işlemi yapmasını teşvik edin.\n3. Başardığında birlikte açıp kapatın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı büyüklükte şişe ve kapaklarla denge algısı da gelişir."
+  },
+  {
+    "day": 171,
+    "activity_name": "Ev Eşyalarının İsimlendirilmesi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kelime Gelişimi",
+    "materials":
+        "Ev içindeki gerçek objeler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Odanızdaki eşyaları sırayla gösterip adını söyleyin.\n2. Çocuğun tekrarlamasına fırsat verin.\n3. Her nesneye dokunmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Günlük rutinin parçası haline getirilirse kalıcılık artar."
+  },
+  {
+    "day": 172,
+    "activity_name": "Makasla Kağıt Kesme (Gözlemli) (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Görsel Takip",
+    "materials":
+        "Çocuk makası, renkli kağıt + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Makasla kesme işlemini çocuğun yanında dikkatli şekilde yapın.\n2. Sadece gözlemlemesine izin verin.\n3. Küçük parçaları birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İleride güvenli makasla deneme yapması için ön hazırlık olur."
+  },
+  {
+    "day": 173,
+    "activity_name": "Kendini Aynada Tanıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kendilik Farkındalığı",
+    "materials":
+        "Çocuk aynası + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çocuğu aynanın karşısına alın.\n2. Adını söyleyip 'bak bu sensin' deyin.\n3. Hareketlerini taklit etmesine fırsat tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yüz mimiklerini yaparak aynada gözlemlemesi teşvik edilebilir."
+  },
+  {
+    "day": 174,
+    "activity_name": "Renkli Yumuşak Küpleri Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Yön",
+    "materials":
+        "Yumuşak sünger küpler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Küpleri sepet veya hedefe doğru atın.\n2. Çocuğun da aynı hedefe atmasına izin verin.\n3. İsabet ettiğinde sevinç gösterin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Hedefi kutudan yumuşak halkaya çevirebilirsiniz."
+  },
+  {
+    "day": 175,
+    "activity_name": "Farklı Dokularla Kart Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Hafıza",
+    "materials":
+        "Kadife, tül, peluş vb. dokulu kartlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kartı tanıtıp dokusunu hissettirin.\n2. Aynı dokuları eşlemesini isteyin.\n3. Eşleştirme sonrası isimlendirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kartlar görsel olarak benzemesin, sadece dokusal olarak eşleşsin."
+  },
+  {
+    "day": 176,
+    "activity_name": "Kitap Kapaklarını Ayırt Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Yön ve Görsel Algı",
+    "materials":
+        "2 farklı kitap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitapları kapalı olarak sunun.\n2. 'Hangisinin kapağı burada?' diye sorun.\n3. Açılma yönü üzerine konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla kitapları kendi başına açmaya başlayacaktır."
+  },
+  {
+    "day": 177,
+    "activity_name": "Oyuncakları Yumuşak Sepete At (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve Dönüt",
+    "materials":
+        "Yumuşak oyuncak, çamaşır sepeti + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncakla sepete atma hareketini gösterin.\n2. Çocuğun serbestçe denemesine izin verin.\n3. Başardıkça pozitif destek verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sepetin yerine göre zorluk seviyesi artırılabilir."
+  },
+  {
+    "day": 178,
+    "activity_name": "Yavaş ve Hızlı Müzik Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Algı ve Ritim",
+    "materials":
+        "Telefon veya basit ritmik müzik çalar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yavaş bir şarkı çalın ve yavaş hareket edin.\n2. Hızlı müziğe geçip hareketleri hızlandırın.\n3. Çocuğun da tempoya uymasını destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Oyuncakları da müziğe göre hareket ettirerek ilişki kurdurun."
+  },
+  {
+    "day": 179,
+    "activity_name": "Meyve veya Sebze Yıkama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Duyu ve Sorumluluk",
+    "materials":
+        "Meyve/sebze, su kabı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Meyveyi suya daldırıp hafifçe ovuşturmayı gösterin.\n2. Çocuğun kendi yıkamasına izin verin.\n3. Yıkadıktan sonra birlikte kurulayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Günlük mutfak rutininin parçası haline getirilebilir."
+  },
+  {
+    "day": 180,
+    "activity_name": "Hafif Kitaplarla Kule Yapma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve İnşa",
+    "materials":
+        "3–4 yumuşak kapaklı kitap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitapları üst üste dizin.\n2. Çocuğun kendi kulesini yapmasına fırsat verin.\n3. Kule yıkıldığında yeniden denemesini destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kitapları renklerine göre de gruplayabilirsiniz."
+  },
+  {
+    "day": 181,
+    "activity_name": "Yerde Sürünerek Hedefe Git (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor Gelişimi",
+    "materials":
+        "Yumuşak zemin, hedef oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sürünerek oyuncağa ulaşmayı gösterin.\n2. Çocuğu aynı hareketi denemesi için teşvik edin.\n3. Ulaştığında birlikte sevinin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı yüksekliklerde oyuncak koyarak çeşitlendirilebilir."
+  },
+  {
+    "day": 182,
+    "activity_name": "Farklı Boy Kapakları Karşılaştır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Boyut Algısı",
+    "materials":
+        "Küçük, orta, büyük kapaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapakları sıraya koyun.\n2. Büyükten küçüğe dizin.\n3. Çocuğun da kendi sıralamasına alan tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kavanozlara uygun kapak takma oyunu ile pekiştirilebilir."
+  },
+  {
+    "day": 183,
+    "activity_name": "Karton Üzerinde Nokta Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Takip",
+    "materials":
+        "Büyük karton, renkli kalemle çizilmiş noktalar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Noktaları sırayla takip ederek parmağınızı gezdirin.\n2. Çocuğun da aynı şekilde takip etmesini sağlayın.\n3. Noktalar üzerine isim etiketleri yapıştırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "İleri seviyede çizgiye dönüştürülerek çizim çalışmasına geçilebilir."
+  },
+  {
+    "day": 184,
+    "activity_name": "Şişeye Tahta Çubuk Yerleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor Becerisi",
+    "materials":
+        "Boş şişe, dondurma çubuğu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çubuğu şişeye yerleştirmeyi gösterin.\n2. Çocuğun tek tek çubukları yerleştirmesini sağlayın.\n3. Sayarak birlikte takip edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli çubuklarla renge göre yerleştirme yapılabilir."
+  },
+  {
+    "day": 185,
+    "activity_name": "Büyük Butonları Kutudan Çıkarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Tutuş Gücü",
+    "materials":
+        "Delikli kutu, içindeki büyük düğmeler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutudan bir düğme çıkararak örnek olun.\n2. Çocuğun kendisinin çıkarmasına alan tanıyın.\n3. Her başarıda ismini tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Düğmelerin rengi veya şekli hakkında konuşarak kelime dağarcığı gelişir."
+  },
+  {
+    "day": 186,
+    "activity_name": "Parmakla Su Boyama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Duyu Keşfi",
+    "materials":
+        "Tepsi, su, fırça veya parmak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Suya parmağınızı batırıp tepsiye şekil çizin.\n2. Çocuğun parmaklarıyla denemesine fırsat verin.\n3. Şekiller hakkında konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gıda boyası ile renkli su kullanılarak ilgisi artırılabilir."
+  },
+  {
+    "day": 187,
+    "activity_name": "Hedefe Top Yuvarlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yön ve Denge",
+    "materials":
+        "Küçük top, belirlenmiş hedef (çember veya kutu) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu hedefe yuvarlamayı gösterin.\n2. Çocuğun aynı hareketi denemesine izin verin.\n3. İsabet ettiğinde alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İki hedef koyarak seçim yaptırabilirsiniz."
+  },
+  {
+    "day": 188,
+    "activity_name": "Nesne Sesini Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Hafıza",
+    "materials":
+        "Kapalı kutularda düğme, boncuk, pirinç gibi farklı ses çıkaran nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kutuyu sallayıp sesini dinletin.\n2. Kutuyu açmadan tahmin etmesini isteyin.\n3. Açıp doğru olup olmadığını gösterin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sayı yerine seslerin tonu ve şiddeti hakkında konuşabilirsiniz."
+  },
+  {
+    "day": 189,
+    "activity_name": "Su Bardaklarını Diz (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Boyut Sıralama",
+    "materials":
+        "3 farklı boyutta plastik su bardağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bardakları küçükten büyüğe sıralayın.\n2. Çocuğun da sıralamasını sağlayın.\n3. 'Bu en büyük' gibi ifadelerle tanıtın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "İç içe geçebilen bardaklar kullanarak ileri düzey oyun kurabilirsiniz."
+  },
+  {
+    "day": 190,
+    "activity_name": "Basit Renk Kartı Tanıtımı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kelime Öğrenimi",
+    "materials":
+        "Kırmızı, sarı, mavi kartlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her bir kartı göstererek rengini net şekilde söyleyin.\n2. Aynı rengi birlikte tekrar edin.\n3. Seçmesini isteyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renklerle eşya eşleştirme oyunu yapılabilir."
+  },
+  {
+    "day": 191,
+    "activity_name": "Çekmece Açma-Kapama Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Kasları ve Neden-Sonuç",
+    "materials":
+        "Düşmeyecek sabit küçük çekmece + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çekmeceyi açıp kapama hareketini gösterin.\n2. Çocuğun da aynısını denemesine izin verin.\n3. İçine bir nesne koyarak ilgisini artırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçerisine günlük bir eşya yerleştirme oyunu yapılabilir."
+  },
+  {
+    "day": 192,
+    "activity_name": "Ağzı Kapalı Kavanozları Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Ses Keşfi",
+    "materials":
+        "Kapalı küçük cam kavanozlar, farklı sesli içeriklerle (kum, su, taş) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kavanozu sallayıp çıkan sesi dinletin.\n2. Benzerlerini bulmasını isteyin.\n3. Sesleri birlikte tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kavanozları renge göre de gruplayabilirsiniz."
+  },
+  {
+    "day": 193,
+    "activity_name": "Sebze Parçalarını Ayır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Parça-Bütün Algısı",
+    "materials":
+        "Haşlanmış havuç, bezelye, patates vb. karışık sebzeler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her sebzeyi tanıtın.\n2. Aynı türleri ayrı tabağa koymayı gösterin.\n3. Çocuğun da yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sonra birlikte yemek bu süreci daha anlamlı kılar."
+  },
+  {
+    "day": 194,
+    "activity_name": "Daireleri Tahta Üzerine Yerleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Delikli tahta ve farklı boyda yuvarlak şekiller + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Deliklere uygun parçaları yerleştirin.\n2. Çocuğun da aynı şekilde yapmasına alan tanıyın.\n3. Uymayanları birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Parçaları boyayarak daha dikkat çekici hale getirebilirsiniz."
+  },
+  {
+    "day": 195,
+    "activity_name": "Topları Renge Göre Ayır (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Ayrımı",
+    "materials":
+        "Kırmızı, mavi, sarı küçük toplar ve eşleşen kaplar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topları renkli kaplara koymayı gösterin.\n2. Çocuğun aynı renkten eşleştirmesini isteyin.\n3. Karışıklık olduğunda açıklama yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her renk için o rengi çağrıştıran eşyalarla ilişki kurulabilir."
+  },
+  {
+    "day": 196,
+    "activity_name": "Ritmik Alkış Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Dikkat ve Taklit",
+    "materials":
+        "Eller + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Belirli ritimde alkış yapın.\n2. Çocuğun sizi taklit etmesini isteyin.\n3. Ritmi birlikte ilerletin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı vücut bölgesi ile ritim (bacak, masa) uygulanabilir."
+  },
+  {
+    "day": 197,
+    "activity_name": "Ağzı Açık Kutulara Nesne At (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve Denge",
+    "materials":
+        "Farklı renklerde açık kutular, küçük nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneleri kutuya nasıl atacağınızı gösterin.\n2. Çocuğun aynı hareketi denemesine fırsat tanıyın.\n3. Renkli kutularla yönlendirme yapılabilir.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla uzaklıktan atış denenebilir."
+  },
+  {
+    "day": 198,
+    "activity_name": "Banyo Sonrası Kendi Kurulanma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Öz Bakım",
+    "materials":
+        "Yumuşak havlu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kurulanma hareketlerini gösterin.\n2. Kol, bacak gibi basit bölgelerde çocuğun kendini kurulamasını teşvik edin.\n3. Gözlemleyerek yardım edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Havluda isim etiketi varsa sahiplenme duygusu artar."
+  },
+  {
+    "day": 199,
+    "activity_name": "Oyuncakları Büyükten Küçüğe Diz (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Sıralama ve Boyut Farkındalığı",
+    "materials":
+        "Farklı boyutlarda 3–4 oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Büyükten küçüğe sıralama yapın.\n2. Çocuğun da denemesine izin verin.\n3. Boyut farklarını konuşarak vurgulayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla sayma eklentisi yapılabilir."
+  },
+  {
+    "day": 200,
+    "activity_name": "Suda Yüzeyde Kalanları Seç (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Hafiflik ve Batmazlık",
+    "materials":
+        "Su kabı, batmayan nesneler (ponpon, plastik parça) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneleri suya bırakın.\n2. Hangi nesnenin yüzdüğünü gösterin.\n3. Çocuğun batmayanları seçmesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yüzenleri bir kutuya aktarma oyunu yapılabilir."
+  },
+  {
+    "day": 201,
+    "activity_name": "Ahşap Halkaları Askıya Tak (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor Becerisi",
+    "materials":
+        "Askı, ahşap halka veya çember + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Askıya halka geçirmeyi gösterin.\n2. Çocuğun da aynı şekilde denemesine fırsat verin.\n3. Dengede kalması için yönlendirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli halkalarla görsel ilgisi artırılabilir."
+  },
+  {
+    "day": 202,
+    "activity_name": "Mutfakta Karıştırma Yardımı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Takip ve Görev Alma",
+    "materials":
+        "Kap, tahta kaşık, sıvı karışım + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Karıştırma hareketini gösterin.\n2. Çocuğun da karıştırmasına izin verin.\n3. Sıçramaları önemsemeden tekrarına destek olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yoğurt veya mama gibi basit malzemelerle başlayabilirsiniz."
+  },
+  {
+    "day": 203,
+    "activity_name": "Yerde Renkli Yol Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Görsel Takip ve Yürüyüş",
+    "materials":
+        "Renkli bantla yapılmış şeritler (halı veya parke üzerinde) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yolda yürümeyi modelleyin.\n2. Çocuğun da aynı çizgi boyunca yürümesini teşvik edin.\n3. Çizgiyi takip ettiğinde övün.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Dönemeçli yollarla denge gelişimini artırabilirsiniz."
+  },
+  {
+    "day": 204,
+    "activity_name": "Kitapta Hayvanı Bulma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kavram Tanıma ve Dil Gelişimi",
+    "materials":
+        "Hayvan görselleri içeren kitap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sayfayı açın ve 'Kedi nerede?' diye sorun.\n2. Hayvanı bulduğunda işaretlemesini teşvik edin.\n3. Hayvan sesiyle ilişki kurun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün farklı 2–3 hayvanla tekrar edilebilir."
+  },
+  {
+    "day": 205,
+    "activity_name":
+        "Poşet İçinde Boyalı Pirinç Karıştırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel ve Duyusal Uyarım",
+    "materials":
+        "Renkli pirinç, fermuarlı poşet + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Pirinci poşet içine koyup ağzını kapatın.\n2. Karıştırmayı ve bastırmayı modelleyin.\n3. Çocuğun keşfetmesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine küçük oyuncaklar eklenerek saklama oyunu yapılabilir."
+  },
+  {
+    "day": 206,
+    "activity_name": "Küçük Kutuları Üst Üste Diz (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnşa ve Denge",
+    "materials":
+        "Farklı boyda 3–4 küçük karton kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuları üst üste dizerek kule yapın.\n2. Çocuğun da denemesine alan tanıyın.\n3. Kule yıkıldığında birlikte yeniden yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her kutuya resim yapıştırarak temalı kule oluşturabilirsiniz."
+  },
+  {
+    "day": 207,
+    "activity_name": "Kapakları Uygun Kavanozlara Tak (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Farklı boy ve renkte plastik kavanoz ve kapaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kavanozları ve kapakları karışık şekilde sunun.\n2. Uygun kapakları göstererek takmayı modelleyin.\n3. Çocuğun denemesine fırsat tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Kavanozlara renk etiketi yapıştırarak yönlendirme kolaylaştırılabilir."
+  },
+  {
+    "day": 208,
+    "activity_name": "Müzik Dinlerken Hareket Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Ritim Takibi",
+    "materials":
+        "Telefon, yavaş tempolu çocuk şarkısı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Müziği açıp ritme uygun şekilde sallanmayı gösterin.\n2. Çocuğun da dans etmesine fırsat tanıyın.\n3. Hareketleri birlikte çeşitlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aynı şarkıyı her gün dinleyerek ritim farkındalığı artırılabilir."
+  },
+  {
+    "day": 209,
+    "activity_name": "Farklı Malzeme ile Ses Testi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Dikkat",
+    "materials":
+        "Ahşap kaşık, metal kaşık, plastik tabak, cam kavanoz + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kaşıkla farklı yüzeye vurun.\n2. Çıkan sesleri dikkatle dinletin.\n3. Hangi kaşığın hangi ses çıkardığını konu edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gözleri kapalıyken sesin kaynağını tahmin oyunu yapılabilir."
+  },
+  {
+    "day": 210,
+    "activity_name": "Tırmanma Matı Üzerinde İlerleme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Kas Gücü",
+    "materials":
+        "Yumuşak minder, yastık, tırmanma rampası + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Engelleri aşarak nasıl tırmanıldığını gösterin.\n2. Çocuğun denemesine izin verin.\n3. Başarıyı takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Evdeki yastıklarla güvenli tırmanma yolu hazırlanabilir."
+  },
+  {
+    "day": 211,
+    "activity_name": "Kavanoz İçinden Top Çıkarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Sabır",
+    "materials":
+        "Geniş ağızlı kavanoz, yumuşak küçük toplar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topları kavanoza koyup birini çıkarın.\n2. Çocuğun kendi parmaklarıyla denemesini sağlayın.\n3. Teker teker çıkarmasını destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Farklı malzemedeki toplar kullanılarak dokunsal zenginlik sağlanabilir."
+  },
+  {
+    "day": 212,
+    "activity_name": "Islak ve Kuru Nesne Ayırt Etme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Duyusal Karşılaştırma",
+    "materials":
+        "Bir tabakta kuru pamuk, diğerinde ıslak pamuk + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Pamukları gösterin ve farkını anlatın.\n2. Çocuğun dokunarak incelemesine izin verin.\n3. Hangi his daha yumuşak veya soğuk, birlikte konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bez ya da sünger gibi farklı materyallerle çeşitlendirilebilir."
+  },
+  {
+    "day": 213,
+    "activity_name": "Küçük Nesneleri Maşa ile Taşı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Konsantrasyon",
+    "materials":
+        "Büyük maşa, büyük boncuklar veya ponpon + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Maşayı kullanarak nesneyi almayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Başardığında övgü ile pekiştirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İlk etapta el ile başlayıp sonradan maşaya geçilebilir."
+  },
+  {
+    "day": 214,
+    "activity_name": "Aynı Renk Nesneleri Grupla (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Görsel Eşleştirme",
+    "materials":
+        "Farklı renkte küçük nesneler (lego, taş, düğme) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kırmızı olanları bir araya getirip örnek gösterin.\n2. Diğer renklerle çocuğun denemesine fırsat tanıyın.\n3. Her grubun rengi üzerine konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli tabaklara eşleştirerek pekiştirme yapılabilir."
+  },
+  {
+    "day": 215,
+    "activity_name": "Bir Oyuncağı Biriyle Paylaş (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sosyal Gelişim ve Empati",
+    "materials":
+        "Paylaşılabilir bir oyuncak (top, peluş) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı bir başkasına verir gibi yapın.\n2. 'Sana veriyorum' diyerek model olun.\n3. Çocuğun da paylaşma hareketini denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bu eylem sırasında 'teşekkür ederim' gibi ifadeler öğretilir."
+  },
+  {
+    "day": 216,
+    "activity_name": "Kaşıkla Kuru Gıda Taşıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Denge ve El Kontrolü",
+    "materials":
+        "Plastik kaşık, mercimek, iki küçük kase + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkla mercimeği diğer kaba nasıl taşıdığınızı gösterin.\n2. Çocuğun da denemesine alan tanıyın.\n3. Döküldüğünde destekleyici olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Fasulye, nohut gibi daha büyük malzemelerle kolaylaştırılabilir."
+  },
+  {
+    "day": 217,
+    "activity_name": "Hayvan Seslerini Dinleme ve Taklit (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Ses Tanıma ve Taklit",
+    "materials":
+        "Hayvan sesi çıkaran oyuncak veya telefon uygulaması + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir hayvan sesi dinletin.\n2. Hayvanın ismini söyleyin.\n3. Çocuğun aynı sesi taklit etmesini isteyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Hayvan kartları eşliğinde çalışma yapılabilir."
+  },
+  {
+    "day": 218,
+    "activity_name": "İleri-Geri Hareket Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yön ve Hareket",
+    "materials":
+        "Tekerlekli oyuncak veya kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı ileri geri hareket ettirin.\n2. Çocuğun takip etmesini sağlayın.\n3. Hareket yönlerini söyleyerek destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aynı yönler yürüme sırasında da uygulanabilir."
+  },
+  {
+    "day": 219,
+    "activity_name": "Kapı Açma-Kapama Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep-Sonuç Farkındalığı",
+    "materials":
+        "Çekmeceli oyuncak kapısı, dolap kapağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapıyı açıp içindekini gösterin.\n2. Sonra kapatın ve tekrar açmasını sağlayın.\n3. İçindekine tekrar dikkat çekin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kapağın ardında saklı nesne oyunu ile geliştirilebilir."
+  },
+  {
+    "day": 220,
+    "activity_name": "Tekerlekli Oyuncakla Çek-Bırak Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yön ve Sabır",
+    "materials":
+        "Geri çekince ilerleyen oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı geri çekip bırakmayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Oyuncak ilerlediğinde heyecanı paylaşın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Mesafe ölçümüyle ileri aşama oyun oluşturulabilir."
+  },
+  {
+    "day": 221,
+    "activity_name": "Suda Kaygan Cisimleri Topla (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "El-Duyu Koordinasyonu",
+    "materials":
+        "Su kabı, kaygan materyaller (silikon balık, sabun) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Malzemeleri suya bırakın.\n2. Avuçla almayı modelleyin.\n3. Çocuğun kayganlık hissini deneyimlemesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Tutma becerisi gelişimi için önemlidir."
+  },
+  {
+    "day": 222,
+    "activity_name": "Renkli Şişe Kapaklarını Eşleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Tanıma ve Eşleme",
+    "materials":
+        "Aynı renkten 2’şerli plastik şişe kapağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aynı renkleri eşleştirerek başlayın.\n2. Çocuğun da denemesine izin verin.\n3. Eşleşenleri birlikte sayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Kapaklara hayvan/nesne çıkartması yapıştırarak çeşitlendirilebilir."
+  },
+  {
+    "day": 223,
+    "activity_name": "Yüzeyleri Sürerek Temizleme Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Sorumluluk ve Motor Becerisi",
+    "materials":
+        "Mikrofiber bez, masa + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Masa yüzeyini ileri geri silerek gösterin.\n2. Çocuğun da denemesine fırsat verin.\n3. Temizliği birlikte kontrol edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yüzeyin tozlu/lekeli gösterilmesi motivasyonu artırır."
+  },
+  {
+    "day": 224,
+    "activity_name": "Aynı Şekilleri Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Şekil Algısı",
+    "materials":
+        "Yuvarlak, kare, üçgen kartlar, eşleştirme tahtası + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her şekli tanıtın.\n2. Aynı şekli bulup yerine koymayı gösterin.\n3. Çocuğun kendi yapmasına fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla karışık sıralama yaparak zorluğu artırabilirsiniz."
+  },
+  {
+    "day": 225,
+    "activity_name": "Basit Sıvı Dökme Denemesi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "El Kontrolü ve Sabır",
+    "materials":
+        "Plastik sürahi ve küçük bardak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sürahiden bardağa nasıl döküleceğini gösterin.\n2. Çocuğun kendi dökmesine izin verin.\n3. Dökülürse birlikte silin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sıvı yerine kuru bakliyatla ilk deneme yapılabilir."
+  },
+  {
+    "day": 226,
+    "activity_name": "Taşları Sayarak Sepete Koy (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Sayma ve El Hareketi",
+    "materials":
+        "5 küçük taş, sepet + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Taşları sayarak sepete koyun.\n2. Çocuğun aynı işlemi yapmasına izin verin.\n3. Sayıları birlikte tekrarlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün farklı nesnelerle sayma alışkanlığı geliştirilir."
+  },
+  {
+    "day": 227,
+    "activity_name": "Kapaktan Ses Tahmini (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Hafıza",
+    "materials":
+        "Farklı büyüklükte plastik şişe kapakları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapakları teker teker masaya vurarak seslerini dinletin.\n2. Her seferinde kapalı gözle hangisinin olduğunu tahmin ettirin.\n3. Sonrasında birlikte kontrol edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ahşap, metal gibi farklı malzeme kapaklar da eklenebilir."
+  },
+  {
+    "day": 228,
+    "activity_name": "Yastık Üzerinde Dengede Durma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Brüt Motor ve Denge",
+    "materials":
+        "Büyük, yumuşak yastık veya denge pedi + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yastığın üzerine çıkın ve dengede durmayı gösterin.\n2. Çocuğun kendi başına yapmasına izin verin.\n3. Düşerse destek olun ve tekrar deneyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Müzik eşliğinde dengede durma süresi artırılabilir."
+  },
+  {
+    "day": 229,
+    "activity_name": "Dokun-Hisset Poşeti (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Algı",
+    "materials":
+        "Şeffaf fermuarlı poşet, jel, düğme veya boncuklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Malzemeleri poşetin içine koyup ağzını sıkıca kapatın.\n2. Poşeti çocuğa verin ve içindekileri hissetmesini sağlayın.\n3. Nesneleri sayın veya adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Poşetin altına siyah karton koyarak içindekiler daha net görülebilir."
+  },
+  {
+    "day": 230,
+    "activity_name": "Mutfak Gereçlerini Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kelime Dağarcığı",
+    "materials":
+        "Gerçek mutfak gereçleri (tahta kaşık, spatula, kepçe) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her birini gösterip adını söyleyin.\n2. Ne işe yaradığını kısa şekilde anlatın.\n3. Çocuğun dokunmasına ve tekrar etmesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yemek hazırlığı sırasında eşleştirerek pekiştirilebilir."
+  },
+  {
+    "day": 231,
+    "activity_name": "Pipetleri Delikten Geçirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor Becerisi",
+    "materials":
+        "Boş yoğurt kabı, delikler, pipetler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Pipeti delikten geçirerek gösterin.\n2. Çocuğun aynı işlemi denemesine izin verin.\n3. Her başarılı denemede birlikte sayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Pipetlerin uzunluklarını farklılaştırarak çeşitlilik sağlanabilir."
+  },
+  {
+    "day": 232,
+    "activity_name": "Su ve Suda Yüzme Etkinliği (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Sıvı ve Yüzey Fiziği",
+    "materials":
+        "Küçük leğen, yüzen oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı suya bırakıp yüzmesini izleyin.\n2. Batma-yüzme üzerine konuşun.\n3. Yüzeyde kalmasını sağlayanları birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Köpük malzemeden yapılmış oyuncaklar tercih edilebilir."
+  },
+  {
+    "day": 233,
+    "activity_name": "Gölge Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Dikkat ve Farkındalık",
+    "materials":
+        "Güneş ışığı olan alan, oyuncak veya el + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Gölge oluşturup dikkat çekin.\n2. Gölgenin hareketini izletin.\n3. Çocuğun da kendi gölgesini bulmasını sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "El hareketleriyle hayvan şekli yapılarak ilgisi artırılabilir."
+  },
+  {
+    "day": 234,
+    "activity_name": "Kuma Gömülü Nesne Bulma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Keşif",
+    "materials":
+        "Bir tepsi kum ve içine gömülmüş küçük oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bir nesneyi çıkararak örnek gösterin.\n2. Çocuğun eliyle arayıp çıkarmasını sağlayın.\n3. Her bulduğu nesne üzerine konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İçine saklanan nesneler değiştirilebilir."
+  },
+  {
+    "day": 235,
+    "activity_name": "Sebzeleri Adlandırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kelime Öğrenme",
+    "materials":
+        "Gerçek havuç, domates, salatalık gibi sebzeler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sebzeleri teker teker gösterip adını söyleyin.\n2. Koklamasına, dokunmasına ve incelemesine izin verin.\n3. Beraber tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sonrasında sebzelerle tabak hazırlama sürecine dahil edilebilir."
+  },
+  {
+    "day": 236,
+    "activity_name": "Basit Renk Dizisi Oluşturma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Farkındalığı",
+    "materials":
+        "3 kırmızı, 3 sarı nesne (lego, kapak) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Renkleri sırayla dizecek şekilde örnek olun.\n2. Çocuğun kendi dizisini oluşturmasına izin verin.\n3. Renkleri birlikte tekrarlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "2 renkli kısa desenler, ilk basit örüntü farkındalığı oluşturur."
+  },
+  {
+    "day": 237,
+    "activity_name": "Kolay Kitap Sayfası Çevirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Parmak Koordinasyonu",
+    "materials":
+        "Kalın sayfalı bebek kitabı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sayfayı çevirme hareketini yavaşça gösterin.\n2. Çocuğun aynı hareketi yapmasına destek olun.\n3. İçerik üzerine konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sayfa köşelerine minik çıkıntılar konularak kolaylaştırılabilir."
+  },
+  {
+    "day": 238,
+    "activity_name": "Duvara Ayna Yerleştirme ve İnceleme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kendilik Farkındalığı",
+    "materials":
+        "Duvara sabitlenmiş güvenli ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aynaya birlikte bakın.\n2. 'Bu kim?' diye sorarak yönlendirin.\n3. Mimik yaparak yüzünü gözlemlemesini teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ayna karşısında hareket taklit oyunu yapılabilir."
+  },
+  {
+    "day": 239,
+    "activity_name": "Poşet İçinde Baloncuk Patlatma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Basınç ve Sebep-Sonuç",
+    "materials":
+        "Küçük baloncuklu naylon, şeffaf poşet + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Poşetin içine küçük baloncuklu naylon koyun.\n2. Bastırarak ses çıkarmayı gösterin.\n3. Çocuğun kendi denemesine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli naylonlar ilgi artırır."
+  },
+  {
+    "day": 240,
+    "activity_name": "Minik Kartları Kutulara At (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yönlendirme ve Atış Becerisi",
+    "materials":
+        "Renkli kartlar, küçük açık kutular + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartı kutuya atma hareketini gösterin.\n2. Kutulara mesafe ayarlayın.\n3. Hedefe ulaştığında birlikte sevinin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her kutuya farklı renk veya şekil koyulabilir."
+  },
+  {
+    "day": 241,
+    "activity_name": "Aynı Nesneleri Yan Yana Koy (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Benzerlik Algısı",
+    "materials":
+        "Aynı modelden 2’şerli nesneler (taş, top, düğme) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aynı iki nesneyi yan yana koymayı gösterin.\n2. Çocuğun kendi gruplamasına izin verin.\n3. Hangi nesnelerin eş olduğunu konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı doku ya da renkte benzer nesnelerle çeşitlendirilebilir."
+  },
+  {
+    "day": 242,
+    "activity_name": "Yavaşça Üfleyerek Top Hareket Ettir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Ağız Kontrolü ve Nefes Gelişimi",
+    "materials":
+        "Hafif plastik top, düz yüzey + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Hafifçe üfleyerek topu hareket ettirin.\n2. Çocuğun da üflemeyi denemesine fırsat tanıyın.\n3. Hedefe ulaştığında övgü verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli tüylü toplar kullanılabilir."
+  },
+  {
+    "day": 243,
+    "activity_name": "Yumuşak Malzeme İle Rulo Sarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Parmak Hareketi ve Sarma",
+    "materials":
+        "Küçük havlu, kalın çubuk + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Havluyu çubuğa sarmayı gösterin.\n2. Çocuğun da kendi başına yapmasına izin verin.\n3. Gerekirse parmaklarına yön verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kağıt havlu ruloları da kullanılabilir."
+  },
+  {
+    "day": 244,
+    "activity_name": "Nesne Altında Ne Var? (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Nesne Sürekliliği",
+    "materials":
+        "Bez parçası, küçük oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı bezle kapatın.\n2. 'Nerede?' diyerek sormaya başlayın.\n3. Çocuğun açıp bulmasını sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aynı oyunu farklı nesnelerle tekrarlayabilirsiniz."
+  },
+  {
+    "day": 245,
+    "activity_name": "Mini Sepetle Nesne Taşıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yürüme ve Denge",
+    "materials":
+        "Küçük plastik sepet, hafif nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Sepeti doldurup yürümeyi gösterin.\n2. Çocuğun sepeti taşımasına fırsat tanıyın.\n3. Hedefe ulaştığında içindekileri birlikte boşaltın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Eşyaların taşınacağı farklı hedef alanlar belirlenebilir."
+  },
+  {
+    "day": 246,
+    "activity_name": "Karton Kutuyu Renkli Bantla Süsle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yapıştırma ve Estetik Gelişim",
+    "materials":
+        "Karton kutu, renkli bantlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Renkli bantları kutuya yapıştırmayı gösterin.\n2. Çocuğun da kendi süslemesine izin verin.\n3. Renkleri konuşarak yönlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Çıkartmalarla süsleme oyunu olarak genişletilebilir."
+  },
+  {
+    "day": 247,
+    "activity_name": "Tahta Bloklarla Sesli İnşa (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yapı Kurma ve Dinleme",
+    "materials":
+        "Ahşap bloklar, düz zemin + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Blokları yere düşürerek çıkan sesi dikkatle dinletin.\n2. Bloklarla küçük bir kule yapın.\n3. Çocuğun aynı işlemi denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Blokları farklı yüzeylere düşürerek ses farkı anlatılabilir."
+  },
+  {
+    "day": 248,
+    "activity_name": "Islak Bezle Masa Silme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Sorumluluk ve Motor Becerisi",
+    "materials":
+        "Islak bez, masa veya sandalye + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bezi ıslatıp nasıl sıktığınızı gösterin.\n2. Silme hareketini uygulayın.\n3. Çocuğun da denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Küçük döküntüleri birlikte silerek içselleştirme sağlanabilir."
+  },
+  {
+    "day": 249,
+    "activity_name": "Taşları Ağırdan Hafife Sırala (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Ağırlık Algısı",
+    "materials":
+        "3–4 farklı büyüklükte taş + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Taşları elinizde tartarak ağırlık farklarını anlatın.\n2. Ağırdan hafife doğru sıralayın.\n3. Çocuğun sıralamasına destek olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Nesnelerin ağırlığını tartmak için mutfak terazisi eklenebilir."
+  },
+  {
+    "day": 250,
+    "activity_name": "Plastik Kaşıkla Yönlü Taşıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Koordinasyon",
+    "materials":
+        "Plastik kaşık, yumuşak nesne, iki kase + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneyi kaşıkla bir kaptan diğerine taşımayı gösterin.\n2. Çocuğun yavaşça yapmasına izin verin.\n3. Her taşıma sonrası olumlu pekiştirme yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Nesne yerine pamuk kullanılabilir."
+  },
+  {
+    "day": 251,
+    "activity_name": "Mekanik Sesleri Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Uyarım",
+    "materials":
+        "Mikser, elektrikli diş fırçası, zil + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Aleti çalıştırıp çıkan sesi dinletin.\n2. Sesin neye ait olduğunu açıklayın.\n3. Çocuğun tekrar dinlemesine fırsat verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Çocuğun gözleri kapalıyken tahmin oyunu yapılabilir."
+  },
+  {
+    "day": 252,
+    "activity_name": "Geriye Doğru Emekleme Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Kas Farkındalığı",
+    "materials":
+        "Yumuşak zemin veya halı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Emekleyerek nasıl geri gidileceğini modelleyin.\n2. Çocuğun sizi taklit etmesini sağlayın.\n3. Bir hedefe doğru geriye gitmesini teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Arkasına sevdiği oyuncak konarak motivasyon sağlanabilir."
+  },
+  {
+    "day": 253,
+    "activity_name": "Küçük Objeyi Tabağa Dökme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "El Kasları ve Kontrol",
+    "materials":
+        "Küçük bardakta nohut, boş tabak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bardaktaki nohutları tabağa dökün.\n2. Çocuğun aynı işlemi yapmasına fırsat tanıyın.\n3. Dökerken sabırlı olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli boncuklarla görsel farkındalık artırılabilir."
+  },
+  {
+    "day": 254,
+    "activity_name": "Aynadaki Duygu Takibi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kendini Tanıma ve Duygular",
+    "materials":
+        "Ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Gülümseyin ve 'mutluyum' deyin.\n2. Kaş çatıp 'kızgınım' deyin.\n3. Çocuğun mimiklerini aynada fark etmesine destek olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Fotoğraf kartlarıyla duygular tekrar edilebilir."
+  },
+  {
+    "day": 255,
+    "activity_name": "Yavaşça Rulo Açma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Bilek Koordinasyonu",
+    "materials":
+        "Kağıt havlu rulosu, yumuşak bez + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Rulonun içinden bezi nasıl çektiğinizi gösterin.\n2. Çocuğun yavaşça çekerek açmasına izin verin.\n3. Dökülmesini birlikte gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Daha sonra yeniden sarma çalışmasıyla pekiştirilebilir."
+  },
+  {
+    "day": 256,
+    "activity_name": "Yüzeylere Çizgi Çizme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Kontrolü ve Dikkat",
+    "materials":
+        "Renkli kalem, büyük kağıt + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kalemle düz çizgi çizmeyi gösterin.\n2. Çocuğun benzer hareket yapmasına destek olun.\n3. Renkleri birlikte adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kalın kalem kullanarak kontrol kolaylaştırılır."
+  },
+  {
+    "day": 257,
+    "activity_name": "Kuru ve Islak Havluyu Ayırt Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Algı",
+    "materials":
+        "Bir kuru bir ıslak havlu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her iki havluyu da dokunarak tanıtın.\n2. Farkını birlikte konuşun.\n3. Hangisi kuru/hangisi ıslak seçmesini isteyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı kumaşlarla doku çeşitliliği sunulabilir."
+  },
+  {
+    "day": 258,
+    "activity_name": "Boncukları Şişe İçine Dökme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve Sabır",
+    "materials":
+        "Geniş ağızlı plastik şişe, büyük boncuklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Boncukları dikkatle dökerek örnek olun.\n2. Çocuğun kendi başına yapmasına izin verin.\n3. Her düşüşü birlikte izleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Boncuklar yerine makarna veya fasulye de kullanılabilir."
+  },
+  {
+    "day": 259,
+    "activity_name": "Mutfak Seslerini Tanıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İşitsel Dikkat",
+    "materials":
+        "Tava sesi, karıştırma sesi, musluk sesi + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her sesi ayrı ayrı dinletin.\n2. Ne olduğunu söyleyin.\n3. Çocuğun sesin kaynağını göstermesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gerçek sesler yerine kayıt da kullanılabilir."
+  },
+  {
+    "day": 260,
+    "activity_name": "Tahta Çubukları Dizme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve İnce Motor",
+    "materials":
+        "Dondurma çubuğu, sünger + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Süngerde delik açarak çubuğu yerleştirin.\n2. Çocuğun aynısını yapmasını sağlayın.\n3. Renkli çubuklarla dikkat artırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Çubuklar farklı yönlere konarak zorluk artırılabilir."
+  },
+  {
+    "day": 261,
+    "activity_name": "Topla Tekme Atma Denemesi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Ayak Koordinasyonu",
+    "materials":
+        "Hafif plastik top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topa ayakla nasıl vurduğunuzu gösterin.\n2. Çocuğun denemesine izin verin.\n3. Başardığında alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Topun rengi veya boyutu değiştirilerek dikkat çekici hale getirilebilir."
+  },
+  {
+    "day": 262,
+    "activity_name": "İçine Nesne Saklanan Kutuyu Bul (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Nesne Sürekliliği",
+    "materials":
+        "3 kutudan birinde küçük oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı bir kutuya koyun.\n2. Kutuları karıştırın.\n3. 'Hangisinde?' diye sorarak bulmasını teşvik edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutular farklı renkte olursa seçim kolaylaşır."
+  },
+  {
+    "day": 263,
+    "activity_name": "Islak Fırça ile Yüzey Boyama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Suya Karşı Duyusal Tepki",
+    "materials":
+        "Yassı fırça, sadece su, düz yüzey + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Fırçayı suya batırarak yüzeye sürün.\n2. Çocuğun benzer hareketi yapmasına izin verin.\n3. Kurumayı birlikte gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Güneş ışığında suyun buharlaşması da izlenebilir."
+  },
+  {
+    "day": 264,
+    "activity_name": "Boş Kutuya Elini Sok ve Tanı (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunma ile Tanıma",
+    "materials":
+        "Kapağı delikli kutu, yumuşak ve sert nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutunun içindeki nesneleri tanıtarak başlayın.\n2. Elini sokarak ne olduğunu tahmin etmesini isteyin.\n3. Sonra kutuyu açıp gösterin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue":
+        "Kutunun dışını gizemli şekilde süsleyerek ilgisini artırabilirsiniz."
+  },
+  {
+    "day": 265,
+    "activity_name": "Sepetten Eşya Seçme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İsim–Nesne İlişkisi",
+    "materials":
+        "Sepette 4–5 tanıdık nesne (fırça, kaşık, top, çorap) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Bana çorabı verir misin?' şeklinde istekte bulunun.\n2. Çocuğun doğru nesneyi seçmesini sağlayın.\n3. Her seçimden sonra adı tekrarlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün farklı nesne seçimiyle kelime dağarcığı genişletilir."
+  },
+  {
+    "day": 266,
+    "activity_name": "Farklı Malzemelere Basma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Ayak Altı Duyusal Farkındalık",
+    "materials":
+        "Yumuşak halı, pirinç dolu leğen, köpük mat + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Malzemeleri yere sıralayın.\n2. Çıplak ayakla üzerine basarak keşfetmesini sağlayın.\n3. Her hissi birlikte adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ayak tabanları için hafif masaj yapılabilir."
+  },
+  {
+    "day": 267,
+    "activity_name": "Boş Şişeye Kapak Takma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "Plastik şişe ve uyumlu kapaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı yerine yerleştirip çevirerek kapatmayı gösterin.\n2. Çocuğun kendi başına denemesine izin verin.\n3. Her denemeyi takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı boyut ve renkte kapaklarla seçenek artırılabilir."
+  },
+  {
+    "day": 268,
+    "activity_name": "Dönerek Hareket Etme Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Vücut Farkındalığı",
+    "materials":
+        "Geniş boş alan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yavaşça kendi etrafınızda dönerek hareketi modelleyin.\n2. Çocuğun sizi taklit etmesine fırsat tanıyın.\n3. Denge kurmasına yardımcı olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Dans müziğiyle oyun daha eğlenceli hale getirilebilir."
+  },
+  {
+    "day": 269,
+    "activity_name": "Topu Kutunun İçine Yuvarla (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yönlendirme ve Amaçlı Hareket",
+    "materials":
+        "Yumuşak top, ayaklı kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu kutuya doğru yuvarlayarak örnek olun.\n2. Çocuğun aynı hedefi tutturmasına destek olun.\n3. Başardığında birlikte alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutu yüksekliği değiştirilebilir."
+  },
+  {
+    "day": 270,
+    "activity_name": "Yumuşak ve Sert Nesne Ayırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Karşılaştırma",
+    "materials":
+        "Pamuk, tahta blok, sünger, metal parça + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneleri tanıtarak gösterin.\n2. Sert ve yumuşak olanları ayırmayı modelleyin.\n3. Çocuğun dokunarak ayırmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her biri için 'sert', 'yumuşak' gibi kelimeleri tekrarlayın."
+  },
+  {
+    "day": 271,
+    "activity_name": "Şeffaf Poşette Jel Sıkma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Parmak Gücü ve Dokunsal Algı",
+    "materials":
+        "Ağzı kapalı jel dolu şeffaf poşet + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Poşeti sıkıp içindeki jeli hareket ettirmeyi gösterin.\n2. Çocuğun da bastırmasına fırsat verin.\n3. Renkli şekilleri takip ettirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Glitter eklenmiş jel ilgisini artırır."
+  },
+  {
+    "day": 272,
+    "activity_name":
+        "Aynı Sesle Başlayan Kelimeleri Söyleme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Fonetik Farkındalık",
+    "materials":
+        "Top, tavşan, tabak gibi T harfiyle başlayan nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her nesneyi adlandırarak söyleyin.\n2. Hepsinin 'T' harfiyle başladığını açıklayın.\n3. 'Hangi sesle başlıyor?' diye sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İlk harfi abartılı vurgulayarak dikkat çekebilirsiniz."
+  },
+  {
+    "day": 273,
+    "activity_name": "Tekerlekli Oyuncağı Takip Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedef Takibi ve Yön Algısı",
+    "materials":
+        "Tekerlekli küçük oyuncak araba + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı ileri doğru iterek hareket ettirin.\n2. Çocuğun ardından sürünmesini veya yürümesini teşvik edin.\n3. Oyuncağa ulaştığında durun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yavaş yavaş hız artırarak refleksleri destekleyebilirsiniz."
+  },
+  {
+    "day": 274,
+    "activity_name": "İki Nesne Arasından Seçim Yap (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Karar Verme ve İfade",
+    "materials":
+        "2 farklı oyuncak veya nesne + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her ikisini de göstererek adlarını söyleyin.\n2. 'Hangisini istersin?' diye sorun.\n3. Seçim yapmasını bekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zamanla sayısı artırılarak seçim becerisi gelişir."
+  },
+  {
+    "day": 275,
+    "activity_name": "Parmakla Ritim Vurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Ritim Algısı ve Parmak Kullanımı",
+    "materials":
+        "Ahşap masa veya davul benzeri yüzey + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Parmak uçlarıyla masa yüzeyine ritmik şekilde vurun.\n2. Çocuğun sizi taklit etmesine izin verin.\n3. Ritim değiştirerek devam edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Şarkı eşliğinde ritim çalışılabilir."
+  },
+  {
+    "day": 276,
+    "activity_name": "Kilit Aç-Kapa Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep-Sonuç ve İnce Motor",
+    "materials":
+        "Basit mandallı veya fermuarlı kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuyu açıp kapamayı gösterin.\n2. Çocuğun kendi açmasına fırsat tanıyın.\n3. Kapatma becerisini destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kilitli Montessori pano ile de uygulanabilir."
+  },
+  {
+    "day": 277,
+    "activity_name": "Kırmızı Nesne Bulma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Tanıma",
+    "materials":
+        "Ortamda 3–4 kırmızı ve farklı renk nesne + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Kırmızı olanı bul' diyerek yönlendirin.\n2. Doğru nesneyi gösterdiğinde pekiştirin.\n3. Diğer kırmızıları da birlikte bulun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı renkler için tekrar edilebilir."
+  },
+  {
+    "day": 278,
+    "activity_name": "Oyuncağı Yukarı Kaldır–İndir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Kol Hareketi ve Denge",
+    "materials":
+        "Yumuşak bir oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı yukarı kaldırıp 'yukarı', sonra 'aşağı' diyerek indirin.\n2. Çocuğun da aynı yönergeleri takip etmesine izin verin.\n3. Hareketleri birlikte tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bu hareketlere müzik de eşlik edebilir."
+  },
+  {
+    "day": 279,
+    "activity_name": "Yumuşak Silgilerle Baskı Yapma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Basınç Uygulama ve Parmak Gücü",
+    "materials":
+        "Farklı desenli silgiler, yastık gibi yüzey + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Silgiyi bastırarak desen çıkarmayı gösterin.\n2. Çocuğun da aynı baskıyı yapmasına fırsat verin.\n3. Desenleri birlikte gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Silgiler suya batırılarak iz daha görünür hale getirilebilir."
+  },
+  {
+    "day": 280,
+    "activity_name": "Hareketleri Taklit Etme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sosyal İletişim ve Taklit",
+    "materials":
+        "Boş alan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Zıplama, dönme, elleri çırpma gibi hareketler yapın.\n2. Çocuğun sizi taklit etmesini isteyin.\n3. Her başarılı taklitten sonra alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ayna karşısında yapılması etkiyi artırır."
+  },
+  {
+    "day": 281,
+    "activity_name": "Meyve Resmini Gerçeğiyle Eşleştir (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Görsel ve Somut İlişkilendirme",
+    "materials":
+        "Meyve kartları ve gerçek meyveler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Karttaki resmi gösterin.\n2. Aynı meyveyi bulmasını isteyin.\n3. Doğru eşleştirme yaptığında birlikte adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Meyveyi koklamasına ve dokunmasına izin verin."
+  },
+  {
+    "day": 282,
+    "activity_name": "Yavaş ve Hızlı Hareket Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hareket Kontrolü",
+    "materials":
+        "Müzik veya komut + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Yavaş yürü', 'hızlı yürü' gibi yönergeler verin.\n2. Çocuğun bu komutları uygulamasına destek olun.\n3. Hareket sonrası değerlendirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Hayvan yürüyüşleriyle de pekiştirilebilir (kaplumbağa gibi)."
+  },
+  {
+    "day": 283,
+    "activity_name": "Açık-Koyu Renk Ayırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Karşılaştırma",
+    "materials":
+        "Aynı rengin açık ve koyu tonlu nesneleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Açık ve koyu renkteki nesneleri gösterin.\n2. Ayırarak sıralamayı modelleyin.\n3. Çocuğun da gruplamasına destek olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kırmızı–bordo gibi benzer tonlarla başlanabilir."
+  },
+  {
+    "day": 284,
+    "activity_name": "Topu Sırt Üzerinden Yuvarla (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Vücut Farkındalığı",
+    "materials":
+        "Orta boy yumuşak top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu sırtınıza alıp yuvarlamayı gösterin.\n2. Çocuğun kendi sırtında bunu denemesine yardım edin.\n3. Gülümseyerek süreci eğlenceli hale getirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yardımla başlatılabilir, sonra bağımsız deneme desteklenir."
+  },
+  {
+    "day": 285,
+    "activity_name": "Kumaşları Katlama Denemesi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "İnce Motor ve Bağımsızlık",
+    "materials":
+        "Küçük kumaş parçaları (mendil, havlu) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kumaşı ikiye katlayarak nasıl yapıldığını gösterin.\n2. Çocuğun kendi denemesine izin verin.\n3. Katlananları birlikte gözden geçirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kolay katlanabilir kare kumaşlarla başlamak süreci kolaylaştırır."
+  },
+  {
+    "day": 286,
+    "activity_name": "Yuvarlak–Köşeli Nesne Ayırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Şekil Tanıma",
+    "materials":
+        "Top, küp, silgi, halka gibi karışık nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yuvarlak ve köşeli nesneleri tanıtın.\n2. Ayırarak iki gruba koymayı modelleyin.\n3. Çocuğun kendi ayırmasına fırsat tanıyın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Nesneleri toplarken isimlerini de tekrar edebilirsiniz."
+  },
+  {
+    "day": 287,
+    "activity_name": "Karton Üzerine Delik Açma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Parmak Gücü ve Sebep–Sonuç",
+    "materials":
+        "Yumuşak karton, kalın kürdan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartona nasıl bastırıldığını ve delik açıldığını gösterin.\n2. Çocuğun denemesine izin verin.\n3. Açılan delikleri birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli kartonlar kullanılabilir."
+  },
+  {
+    "day": 288,
+    "activity_name": "Rüzgarı Hisset ve Anlat (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dış Uyaranlara Duyarlılık",
+    "materials":
+        "Açık pencere ya da balkon, ince kumaş + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Rüzgar esintisini birlikte hissetmeye çalışın.\n2. Kumaşın hareketini gözlemleyin.\n3. “Rüzgar esti” gibi ifadeler kullanın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Minik rüzgar değirmeniyle farkındalık artırılabilir."
+  },
+  {
+    "day": 289,
+    "activity_name":
+        "Küçük Nesne Çıkarma (Sıkı Kapalı Kutudan) (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Problem Çözme",
+    "materials":
+        "Sıkı ağızlı kumaş torba içinde top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneyi nasıl çıkaracağınızı modelleyin.\n2. Çocuğun kendi başına başarmasına fırsat verin.\n3. Her denemeyi takdir edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ağız kısmı yavaşça gevşetilerek zorluk seviyesi ayarlanabilir."
+  },
+  {
+    "day": 290,
+    "activity_name": "Farklı Dokulu Kumaşları Tanıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Karşılaştırma",
+    "materials":
+        "Kadife, polar, keten, tül + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kumaşları tek tek tanıtın ve adlandırın.\n2. Gözleri kapalıyken tahmin ettirin.\n3. Hangisini sevdiğini sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kumaşları küçük parçalara kesip torba içinde sunabilirsiniz."
+  },
+  {
+    "day": 291,
+    "activity_name": "Zili Çal ve Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Duyarlılık",
+    "materials":
+        "Masa zili veya minik çıngırak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Zili çalarak sesini tanıtın.\n2. Çocuğun kendisinin çalmasına izin verin.\n3. Sesi birlikte dinleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı ses seviyelerinde zil sunabilirsiniz."
+  },
+  {
+    "day": 292,
+    "activity_name": "Kendi Elini Kağıda Çizme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Farkındalığı",
+    "materials":
+        "A4 kağıt, kalın pastel kalem + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çocuğun elini kağıda koyarak çizin.\n2. Elinin çevresini birlikte takip edin.\n3. Renklerle süsleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kendi eliyle çizmeye çalışmasına da fırsat verin."
+  },
+  {
+    "day": 293,
+    "activity_name": "Düşmeden Taşıma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Sabır",
+    "materials":
+        "Kitap üstünde top taşıma (peluş top) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kitabın üstüne top koyarak taşıyın.\n2. Çocuğun düşürmeden hedefe gitmesini isteyin.\n3. Her başarıda övgü verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Başlangıçta iki elle desteklenebilir."
+  },
+  {
+    "day": 294,
+    "activity_name": "Gölge ve Işık Farkını Anlatma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Algı",
+    "materials":
+        "El feneri ve oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Fenerle ışık gölgesi oluşturun.\n2. Gölgenin yönünü ve boyunu gösterin.\n3. El ve oyuncak gölgeleriyle oynayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gölge oyunlarıyla hikâyeleştirme yapılabilir."
+  },
+  {
+    "day": 295,
+    "activity_name": "Topu Halka İçine Yuvarla (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve Alan Algısı",
+    "materials":
+        "Halka şeklinde kordon veya çember, top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu yuvarlayıp halka içine sokmayı gösterin.\n2. Çocuğun aynısını denemesine izin verin.\n3. Hedefi tutturunca birlikte sevinin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Halka boyutu değiştirilebilir."
+  },
+  {
+    "day": 296,
+    "activity_name": "Çift Nesne Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Benzerlik ve Sayı",
+    "materials":
+        "Her nesneden iki adet (top-top, kaşık-kaşık) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Eş nesneleri bulup yan yana koymayı gösterin.\n2. Çocuğun aynıları eşleştirmesine destek olun.\n3. Eşleştirilenleri birlikte tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "3 veya 4 farklı eşle eş zamanlı çalışma yapılabilir."
+  },
+  {
+    "day": 297,
+    "activity_name": "Kokularla Tanışma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Koku Alma ve Bellek",
+    "materials":
+        "Limon, nane, sabun, kahve + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kokuyu burnuna yavaşça yaklaştırın.\n2. Adını söyleyin.\n3. En çok hangisini sevdiğini sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kokular kapalı kapta sunularak gizemli hale getirilebilir."
+  },
+  {
+    "day": 298,
+    "activity_name": "Islak Bezle Oyuncak Silme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Temizlik Sorumluluğu",
+    "materials":
+        "Islak bez, plastik oyuncaklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Bezi hafif nemlendirin.\n2. Oyuncağı nasıl sildiğinizi gösterin.\n3. Çocuğun da aynısını yapmasına izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli oyuncaklar ilgi çekiciliği artırır."
+  },
+  {
+    "day": 299,
+    "activity_name": "İleri–Geri Yürüme Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Yön Algısı ve Koordinasyon",
+    "materials":
+        "Boş koridor veya geniş alan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. İleri doğru birkaç adım atın ve çocuğun sizi takip etmesini isteyin.\n2. Sonra geri geri yürümeyi modelleyin.\n3. Hareketleri birlikte tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zemin üzerine yön okları çizilebilir."
+  },
+  {
+    "day": 300,
+    "activity_name": "Suya Damlayan Sesi Dinle (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Odaklanma",
+    "materials":
+        "Musluk, kase, su damlatan şişe + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Su damlalarının sesini dinleyin.\n2. “Şıp şıp” gibi kelimelerle ses taklidi yapın.\n3. Damla sıklığını gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Karartılmış ortamda işitsel duyarlılık artar."
+  },
+  {
+    "day": 301,
+    "activity_name": "Taşlarla Sıra Yapma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Sıralama ve Ritim",
+    "materials":
+        "5–6 düz taş + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Taşları tek sıra halinde dizmeyi gösterin.\n2. Çocuğun kendi sırasını oluşturmasına destek olun.\n3. Sayarak ilerleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Taşlar yerine bloklar da kullanılabilir."
+  },
+  {
+    "day": 302,
+    "activity_name": "Renkli Kağıtları Yırtma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Parmak Gücü ve Dikkat",
+    "materials":
+        "Renkli A4 kâğıtlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kağıdı yavaşça yırtarak örnek olun.\n2. Çocuğun yırtmasına izin verin.\n3. Parçaları birlikte inceleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yırtılan parçalarla kolaj yapılabilir."
+  },
+  {
+    "day": 303,
+    "activity_name": "Görsel Takip Kartları (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Görsel–Dil Bağlantısı",
+    "materials":
+        "Basit resim kartları (top, elma, ayı) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kartı gösterip adını söyleyin.\n2. 'Top nerede?' diyerek kartı bulmasını isteyin.\n3. Her nesne için tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Resim–oyuncak eşlemesiyle pekiştirilebilir."
+  },
+  {
+    "day": 304,
+    "activity_name": "Eğik Yüzeyde Top Yuvarlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep–Sonuç ve Göz Takibi",
+    "materials":
+        "Kitapla yapılan eğik yüzey, küçük top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu yukarıdan bırakıp yuvarlanmasını gösterin.\n2. Çocuğun gözleriyle takip etmesini sağlayın.\n3. Sonra kendi denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yüzey eğimi artırıldıkça hız da gözlemlenir."
+  },
+  {
+    "day": 305,
+    "activity_name": "Kavanoz Kapağı Çevirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Bilek Koordinasyonu",
+    "materials":
+        "Boş cam kavanoz ve kapağı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı nasıl çevirdiğinizi gösterin.\n2. Çocuğun kapağı açıp kapamasına fırsat verin.\n3. Her denemede destekleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı boyutlarda kavanozlarla tekrarlanabilir."
+  },
+  {
+    "day": 306,
+    "activity_name": "Oyuncaklara Yatak Yapma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Şefkat ve Sıralı Hareket",
+    "materials":
+        "Bez bebek, küçük havlu, minik kutu + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı kutuya yerleştirin.\n2. Üzerini havluyla örtün.\n3. 'İyi geceler' diyerek model olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her gün farklı oyuncaklarla tekrar yapılabilir."
+  },
+  {
+    "day": 307,
+    "activity_name": "Kaşıkla Su Aktarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials":
+        "İki kase, çocuk kaşığı, az su + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkla bir kaptan diğerine su aktarmayı gösterin.\n2. Çocuğun kendisinin yapmasına izin verin.\n3. Dökülen suları birlikte silin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İlk denemelerde kuru malzeme ile başlanabilir."
+  },
+  {
+    "day": 308,
+    "activity_name": "Renkli Poşetleri Ezme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Uyarım",
+    "materials":
+        "Renkli şeffaf poşetler, baloncuklu naylon + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Poşetleri ezerek sesini dinleyin.\n2. Çocuğun da sıkmasını teşvik edin.\n3. Hangi rengin olduğunu konuşun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Baloncuklu poşet dikkat çeker."
+  },
+  {
+    "day": 309,
+    "activity_name": "Hayvan Yürüyüşü Taklidi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Vücut Farkındalığı",
+    "materials":
+        "Boş alan + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Tavşan gibi zıpla', 'ördek gibi yürü' deyin.\n2. Çocuğun taklit etmesini sağlayın.\n3. Hareketleri birlikte yapın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Hayvan resimleriyle eşleştirme eklenebilir."
+  },
+  {
+    "day": 310,
+    "activity_name": "Kapı Aç-Kapat Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep-Sonuç ve Dikkat",
+    "materials":
+        "Küçük dolap kapağı veya Montessori pano + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kapağı açıp kapamayı modelleyin.\n2. Çocuğun denemesine fırsat verin.\n3. Kapandığında sesine dikkat çekin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Yavaş kapanan menteşeler tercih edilebilir."
+  },
+  {
+    "day": 311,
+    "activity_name": "Suda Nesne Batıyor mu Yüzüyor mu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Nesne Özelliklerini Ayırt Etme",
+    "materials":
+        "Küçük leğen, farklı nesneler (taş, plastik top, kaşık) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her nesneyi suya bırakmadan önce tahminde bulunun.\n2. Batıp batmadığını gözlemleyin.\n3. Sonuçları adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Bir tablo yaparak batma/yüzme ayrımı gösterilebilir."
+  },
+  {
+    "day": 312,
+    "activity_name": "Kavanoza Pamuk Doldurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Dikkat",
+    "materials":
+        "Boş cam kavanoz, pamuk topları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Pamuğu alıp kavanoza atmayı gösterin.\n2. Çocuğun denemesine izin verin.\n3. Dolduğunda birlikte gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kavanozun üzerine seviye çizgisi çizilebilir."
+  },
+  {
+    "day": 313,
+    "activity_name": "İki El Arasında Nesne Aktarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İki Eli Koordineli Kullanma",
+    "materials":
+        "Top, küçük oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneyi bir elinizden diğerine geçirin.\n2. Çocuğun aynısını yapmasına yardımcı olun.\n3. Hızlanarak devam edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ritmik müzik eşliğinde de denenebilir."
+  },
+  {
+    "day": 314,
+    "activity_name": "Kendini Aynada Tanıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Kendilik Farkındalığı",
+    "materials":
+        "Büyük ayna + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Bu kim?' diyerek aynayı gösterin.\n2. Çocuğun kendi yüzünü tanımasını teşvik edin.\n3. Yüz bölümlerini adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kendi ismini aynada söylemeye teşvik edilebilir."
+  },
+  {
+    "day": 315,
+    "activity_name": "Yumuşak Nesneyle Vurma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "El Kasları ve Güç Uygulama",
+    "materials":
+        "Peluş oyuncak veya sünger blok + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneyle yavaşça yere vurmayı gösterin.\n2. Çocuğun da denemesine izin verin.\n3. Ne kadar sert vurduğunu gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı yüzeylere vurulabilir (halı, tahta, minder)."
+  },
+  {
+    "day": 316,
+    "activity_name": "Koku Kavanozlarıyla Eşleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Koku Belleği",
+    "materials":
+        "2 çift kavanoz: biri nane, biri limon aromalı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kokuyu sırayla tanıtın.\n2. Eşini bulmasını isteyin.\n3. Doğru eşleşmede alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli kurdelelerle süslenebilir."
+  },
+  {
+    "day": 317,
+    "activity_name": "Aç–Kapat Kavramı İçin Kutulu Nesne (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "daily life",
+    "improvement_name": "Sebep–Sonuç",
+    "materials":
+        "Küçük kutuda minik oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kutuyu açarak içindekini gösterin.\n2. Kapayıp 'nerede?' deyin.\n3. Açıp yeniden bulmasına yardımcı olun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kapaklı metal kutular daha dikkat çekicidir."
+  },
+  {
+    "day": 318,
+    "activity_name": "Parmaklarıyla Ritim Tutma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel-Ritmik Farkındalık",
+    "materials":
+        "Ahşap masa veya davul + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Parmaklarınızla masa yüzeyine vurarak ritim yapın.\n2. Çocuğun sizi taklit etmesini teşvik edin.\n3. Basit ritimleri tekrar edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ellerle dizlere vurarak da uygulanabilir."
+  },
+  {
+    "day": 319,
+    "activity_name": "Sıcak–Soğuk Su Deneyimi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Isı Farkı Algısı",
+    "materials":
+        "İki kap: biri ılık, biri soğuk su + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Elinizi ılık suya daldırıp 'sıcak' deyin.\n2. Aynısını soğuk suyla yapın.\n3. Çocuğun iki suyu ayırt etmesini sağlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Aşırı sıcak olmamasına dikkat edilmelidir."
+  },
+  {
+    "day": 320,
+    "activity_name": "Kumaşları Kat Yerinden Katlama (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Görsel ve Elsel Uyum",
+    "materials":
+        "İkiye katlı mendil veya tülbent + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kat yerinden tutup nasıl katlayacağınızı gösterin.\n2. Çocuğun katlamayı denemesine izin verin.\n3. Katlananları birlikte düzeltin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İki renkli kumaşla yön farkı kolaylaştırılabilir."
+  },
+  {
+    "day": 321,
+    "activity_name": "Ses Taklit Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "İfade Yetisi",
+    "materials":
+        "Hayvan veya araç sesleri + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Araba nasıl ses çıkarır?' diyerek taklit edin.\n2. Çocuğun aynı sesi yapmasına destek olun.\n3. Diğer seslerle devam edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Resim kartları eşliğinde çeşitlendirilebilir."
+  },
+  {
+    "day": 322,
+    "activity_name": "Küçük Nesneleri Renge Göre Ayırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Renk Gruplama",
+    "materials":
+        "Kırmızı, mavi, sarı düğmeler ve 3 kap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Düğmeleri kaplara göre ayırmayı gösterin.\n2. Çocuğun kendi yapmasına izin verin.\n3. Renkleri adlandırarak tekrarlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kaplar da aynı renklerde seçilerek kolaylaştırılabilir."
+  },
+  {
+    "day": 323,
+    "activity_name": "Yumuşak Oyuncağı Yuvarla ve Takip Et (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hareket Takibi",
+    "materials":
+        "Yumuşak oyuncak veya peluş top + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı ileri yuvarlayın.\n2. Çocuğun ardından emeklemesini veya yürümesini teşvik edin.\n3. Oyuncağı yakaladığında birlikte sevinin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Oyuncak zil içeren bir peluş olursa ilgiyi artırır."
+  },
+  {
+    "day": 324,
+    "activity_name": "Çekmece Açıp İçine Bakma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep-Sonuç Algısı",
+    "materials":
+        "Alçak bir çekmece (boş ya da güvenli nesnelerle) + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Çekmeceyi çekip içine bakmayı gösterin.\n2. Çocuğun kendi başına yapmasına fırsat verin.\n3. İçindekileri birlikte adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Gizli nesne koyarak küçük sürprizler eklenebilir."
+  },
+  {
+    "day": 325,
+    "activity_name": "Pamuk Topunu Hedefe Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Hedefleme ve El Koordinasyonu",
+    "materials":
+        "Kase, pamuk topları + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaseye nasıl atıldığını gösterin.\n2. Çocuğun denemesine izin verin.\n3. Başarıda birlikte kutlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kase yere çizilen daire içinde yer alabilir."
+  },
+  {
+    "day": 326,
+    "activity_name": "Nesne Düşürme Kulesi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor ve Sebep–Sonuç",
+    "materials":
+        "Boş mutfak rulosu, küçük toplar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Topu rulodan düşürerek nasıl hareket ettiğini gösterin.\n2. Çocuğun tekrar etmesine fırsat verin.\n3. Sonucu birlikte gözlemleyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı yüksekliklerde tüpler deneyebilirsiniz."
+  },
+  {
+    "day": 327,
+    "activity_name": "Şekilli Kurabiyeleri Tanıma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Şekil Tanıma",
+    "materials":
+        "Yıldız, kalp, daire şeklinde bisküvi/kurabiye + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kurabiyeleri tek tek gösterin ve adlandırın.\n2. Hangi şekil olduğunu sorun.\n3. Sonra birlikte yiyin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kurabiyeler gerçek değilse ahşap oyuncaklar da kullanılabilir."
+  },
+  {
+    "day": 328,
+    "activity_name": "Kitapta Nesne Bulma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Görsel Tarama",
+    "materials":
+        "Görsel yoğunluklu çocuk kitabı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Top nerede?' gibi bir nesneyi sorun.\n2. Çocuğun kitabı tarayarak bulmasını bekleyin.\n3. Başarıyı adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Her okuma zamanında farklı nesnelerle tekrarlanabilir."
+  },
+  {
+    "day": 329,
+    "activity_name": "Bezden Balık Tutma Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Amaçlı Hareket",
+    "materials":
+        "Metal kap, küçük bez parçaları, tahta kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkla bez balığı kaptan çıkarmayı gösterin.\n2. Çocuğun kendi denemesine izin verin.\n3. Her yakalamada birlikte sevinin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Manyetik olmayan versiyon bu yaş için daha uygundur."
+  },
+  {
+    "day": 330,
+    "activity_name": "Büyük–Küçük Nesne Karşılaştırması (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "math",
+    "improvement_name": "Boyut Farkındalığı",
+    "materials":
+        "Büyük ve küçük bloklar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. 'Hangisi büyük? Hangisi küçük?' sorularını sorun.\n2. Nesneleri yan yana koyun.\n3. Elleyerek fark ettirin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İki boyuttan fazlası eklenerek seviye yükseltilebilir."
+  },
+  {
+    "day": 331,
+    "activity_name": "Gölgeyi Takip Etme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Görsel Farkındalık",
+    "materials":
+        "Açık havada gölge ortamı + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kendi gölgenizi göstererek tanıtın.\n2. Çocuğun kendi gölgesini fark etmesini sağlayın.\n3. Gölgeyle yavaş hareket edin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Zıplayarak gölgenin hareketini keşfetmesi sağlanabilir."
+  },
+  {
+    "day": 332,
+    "activity_name": "Nesneleri Sepete Atma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Amaçlı Atış ve Koordinasyon",
+    "materials":
+        "Sepet, yumuşak nesneler + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Nesneyi sepete atmayı modelleyin.\n2. Çocuğun bunu denemesine izin verin.\n3. Kaç nesne atabildiğini birlikte sayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sepet yerine kova da kullanılabilir."
+  },
+  {
+    "day": 333,
+    "activity_name": "Renkli Kartları Adlandırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Dil Gelişimi ve Renk Bilgisi",
+    "materials":
+        "Temel renklerde 4–5 kart + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her kartı göstererek adını söyleyin.\n2. Çocuğun tekrar etmesini teşvik edin.\n3. 'Hangisi kırmızı?' gibi sorular sorun.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kart yerine renkli nesneler de kullanılabilir."
+  },
+  {
+    "day": 334,
+    "activity_name": "Kutuya Yumuşak Nesne Yerleştirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Eşya Yerleştirme Becerisi",
+    "materials":
+        "Karton kutu, küçük peluşlar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Peluşu kutuya koymayı modelleyin.\n2. Çocuğun aynısını yapmasını teşvik edin.\n3. 'İçine koyduk' gibi ifadeler kullanın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Kutunun kapağı varsa kapatması da gösterilebilir."
+  },
+  {
+    "day": 335,
+    "activity_name": "Suya Batır–Çıkar Oyunu (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Sebep–Sonuç ve Duyusal Keşif",
+    "materials":
+        "Plastik oyuncak, su dolu kap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Oyuncağı batırıp çıkarmayı modelleyin.\n2. Çocuğun kendisinin yapmasına izin verin.\n3. Suyun sesine dikkat çekin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Sıçrama etkisiyle eğlenceli hale gelir."
+  },
+  {
+    "day": 336,
+    "activity_name": "Kapakta Ses Çıkarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "İşitsel Uyarım",
+    "materials":
+        "Tencere kapağı, tahta kaşık + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkla kapağa hafifçe vurun.\n2. Çocuğun sesi duymasını sağlayın.\n3. Kendi denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Farklı boyda kapaklarla deney yapılabilir."
+  },
+  {
+    "day": 337,
+    "activity_name": "Yüksekten Nesne Bırakma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Sebep–Sonuç",
+    "materials":
+        "Masa üstü, top veya peluş + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Yüksekten düşürmeyi gösterin.\n2. Çocuğun dikkatle takip etmesini sağlayın.\n3. Kendi denemesine izin verin.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Düşme sesini betimleyerek dikkat çekebilirsiniz."
+  },
+  {
+    "day": 338,
+    "activity_name": "İsimle Nesne Çağırma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "language",
+    "improvement_name": "Sözel Tanıma",
+    "materials":
+        "3–4 oyuncak + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Her oyuncak için 'Bu top, bu araba' gibi tanıtım yapın.\n2. 'Topu getir' gibi yönerge verin.\n3. Doğru nesne getirdiğinde övün.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "İsimleri kısa tutarak anlaşılır hale getirin."
+  },
+  {
+    "day": 339,
+    "activity_name": "Kaşıkla Katı Nesne Aktarma (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "İnce Motor Koordinasyon",
+    "materials":
+        "Fasulye, nohut, çocuk kaşığı, iki kap + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Kaşıkla bir kaptan diğerine aktarımı gösterin.\n2. Çocuğun kendi başına denemesine fırsat verin.\n3. Dökülürse birlikte toparlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Daha büyük tanelerle başlayabilirsiniz."
+  },
+  {
+    "day": 340,
+    "activity_name": "Küçük Halka Geçirme (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "motor",
+    "improvement_name": "Parmak Kontrolü",
+    "materials":
+        "Tahta çubuk ve büyük halkalar + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Halka geçirerek nasıl yapıldığını gösterin.\n2. Çocuğun denemesine izin verin.\n3. Her başarıda alkışlayın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Renkli halkalar ilgiyi artırır."
+  },
+  {
+    "day": 341,
+    "activity_name": "Müzik Eşliğinde Beden Hareketi (Zenginleştirilmiş)",
+    "age_group": "18–24 Ay (Uyarlanmış)",
+    "activity_type": "sensory",
+    "improvement_name": "Ritim ve Vücut Farkındalığı",
+    "materials":
+        "Rahatlatıcı ritmik müzik + ek olarak farklı renk veya boyut alternatifi sunulabilir.",
+    "step_by_step":
+        "1. Müziği açın ve yavaş hareketlerle dans edin.\n2. Çocuğun sizi taklit etmesini destekleyin.\n3. Her figürü adlandırın.\n4. Bu kez çocuğun kendi başına denemesi teşvik edilir.",
+    "clue": "Ellerle alkış, başla sallama gibi hareketler kullanılabilir."
+  },
+  {
+    "day": 342,
+    "activity_name": "Gölgeleri Eşleştir",
+    "age_group": "18–24 Ay",
+    "activity_type": "cognitive",
+    "improvement_name": "Görsel Algı ve Eşleştirme",
+    "materials": "Objelerin fotoğrafları, siyah gölge baskıları",
+    "step_by_step":
+        "1. Gerçek nesneleri ve gölge baskılarını sırayla gösterin.\n2. Hangi nesne hangi gölgeye ait bulmasını isteyin.",
+    "clue": "Nesneleri kendi çevresinden seçerek daha ilgi çekici hale getirin."
+  },
+  {
+    "day": 343,
+    "activity_name": "Gizli Nesneyi Bul",
+    "age_group": "18–24 Ay",
+    "activity_type": "cognitive",
+    "improvement_name": "Problem Çözme ve Hafıza",
+    "materials": "Bez torba, 3 farklı nesne",
+    "step_by_step":
+        "1. Torbaya nesneleri koyun.\n2. Elini sokup bir nesneyi tarif etmesini isteyin.\n3. Sonra dışarı çıkarıp kontrol edin.",
+    "clue": "Nesne sayısını artırarak zorluk seviyesi yükseltilebilir."
+  },
+  {
+    "day": 344,
+    "activity_name": "Bardaktan Bardağa Dökme",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "El-Göz Koordinasyonu",
+    "materials": "2 plastik bardak, su",
+    "step_by_step":
+        "1. Suyu bir bardaktan diğerine dökmesini isteyin.\n2. Taşırmadan yapmasını teşvik edin.",
+    "clue":
+        "Kırmızı meyve suyu gibi renkli sıvılarla daha eğlenceli hale getirilebilir."
+  },
+  {
+    "day": 345,
+    "activity_name": "Mini Bahçe Kur",
+    "age_group": "18–24 Ay",
+    "activity_type": "daily life",
+    "improvement_name": "Sorumluluk ve Doğa Bilinci",
+    "materials": "Saksı, toprak, fasulye tohumu",
+    "step_by_step":
+        "1. Saksıya toprak doldurmasını sağlayın.\n2. Tohumu koyup üzerine kapatmasını gösterin.\n3. Sulamasını sağlayın.",
+    "clue": "Her gün kontrol ederek gözlem yeteneği geliştirilir."
+  },
+  {
+    "day": 346,
+    "activity_name": "Yumuşak – Sert Ayırma",
+    "age_group": "18–24 Ay",
+    "activity_type": "sensory",
+    "improvement_name": "Dokunsal Ayırt Etme",
+    "materials": "Sert oyuncak, yumuşak oyuncak, kutular",
+    "step_by_step":
+        "1. Nesneleri karışık verin.\n2. Sert olanları bir kutuya, yumuşakları başka kutuya koymasını isteyin.",
+    "clue": "Malzeme çeşitliliği artırılabilir: kumaşlar, tahta bloklar vb."
+  },
+  {
+    "day": 347,
+    "activity_name": "Kendi Kitabımı Yapıyorum",
+    "age_group": "18–24 Ay",
+    "activity_type": "language",
+    "improvement_name": "Dil Gelişimi ve İfade",
+    "materials": "Boş A4 kağıt, resimli çıkartmalar, yapıştırıcı",
+    "step_by_step":
+        "1. Sayfalara sevdiği nesneleri yapıştırmasını isteyin.\n2. Sayfaları zımbalayarak kitap yapın.\n3. Kitabı birlikte okuyun.",
+    "clue": "Sayfalara ad vererek kelime gelişimi desteklenir."
+  },
+  {
+    "day": 348,
+    "activity_name": "Kokuları Tanı",
+    "age_group": "18–24 Ay",
+    "activity_type": "sensory",
+    "improvement_name": "Koku Duyusunu Geliştirme",
+    "materials": "Portakal, nane, vanilya, tarçın gibi doğal kokular",
+    "step_by_step":
+        "1. Kokuları bez parçalarına damlatın.\n2. Koklatıp neye benzediğini sorun.",
+    "clue": "Kokuları resimlerle eşleştirme oyunu olarak genişletilebilir."
+  },
+  {
+    "day": 349,
+    "activity_name": "Çorap Eşleştirme",
+    "age_group": "18–24 Ay",
+    "activity_type": "daily life",
+    "improvement_name": "Görsel Ayırt Etme ve Düzen",
+    "materials": "Karışık çocuk çorapları",
+    "step_by_step":
+        "1. Çorapları yere serin.\n2. Aynı desene sahip çiftleri bulmasını isteyin.",
+    "clue": "Çiftleri lastikle bağlayarak düzen kavramı da işlenebilir."
+  },
+  {
+    "day": 350,
+    "activity_name": "Yumuşak Oyuncak Tırmanışı",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "Kas Gücü ve Denge",
+    "materials": "Yumuşak minderler, peluş oyuncaklar",
+    "step_by_step":
+        "1. Mindere oyuncakları dizin.\n2. Üzerinden geçmesini ve almasını isteyin.",
+    "clue": "Denge yeteneği için oyuncakları sıraya dizin."
+  },
+  {
+    "day": 351,
+    "activity_name": "Suda Batan – Yüzen Nesneler",
+    "age_group": "18–24 Ay",
+    "activity_type": "cognitive",
+    "improvement_name": "Sebep – Sonuç Gözlemi",
+    "materials": "Leğen, su, tahta blok, kaşık, plastik oyuncak",
+    "step_by_step":
+        "1. Nesneleri suya atarak batıp batmadığını birlikte gözlemleyin.\n2. Neden böyle olduğunu açıklayın.",
+    "clue": "Yüzme tahmin kartları hazırlayarak oyunlaştırabilirsiniz."
+  },
+  {
+    "day": 352,
+    "activity_name": "Büyük – Küçük Ayırma",
+    "age_group": "18–24 Ay",
+    "activity_type": "math",
+    "improvement_name": "Boyut Kavramı",
+    "materials": "Büyük ve küçük oyuncaklar, iki kutu",
+    "step_by_step":
+        "1. Oyuncakları karışık şekilde verin.\n2. Büyükleri bir kutuya, küçükleri diğerine koymasını isteyin.",
+    "clue": "Orta boy oyuncaklarla 3 seviyeli bir ayrım yapılabilir."
+  },
+  {
+    "day": 353,
+    "activity_name": "Farklı Zeminlerde Yürüme",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve Duyusal Farkındalık",
+    "materials": "Halı, köpük zemin, taş, yastık",
+    "step_by_step":
+        "1. Bu zeminleri arka arkaya serin.\n2. Üzerinde yavaşça yürümesini isteyin.",
+    "clue": "Zeminleri göz kapalıyken tanımasını isteyin."
+  },
+  {
+    "day": 354,
+    "activity_name": "Oyuncak Hikayesi Anlat",
+    "age_group": "18–24 Ay",
+    "activity_type": "language",
+    "improvement_name": "Hayal Gücü ve İfade",
+    "materials": "2-3 favori oyuncak",
+    "step_by_step":
+        "1. Oyuncakları sıraya koyun.\n2. Her birine bir isim verin.\n3. Kısa bir hikaye kurarak anlatmasını sağlayın.",
+    "clue": "Oyun sırasında oyuncakları konuşturarak ifade becerisi gelişir."
+  },
+  {
+    "day": 355,
+    "activity_name": "Bardakları Kule Yap",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "Denge ve İnce Motor",
+    "materials": "Plastik bardaklar (5–6 adet)",
+    "step_by_step":
+        "1. Bardakları üst üste koyarak kule yapmasını sağlayın.\n2. Kuleyi devirmeden kaç kat çıkabileceğini deneyin.",
+    "clue": "Zamanla daha küçük ya da büyük bardaklarla zorluk artırılır."
+  },
+  {
+    "day": 356,
+    "activity_name": "Zıt Kavram Kartları",
+    "age_group": "18–24 Ay",
+    "activity_type": "language",
+    "improvement_name": "Dil ve Kavram Gelişimi",
+    "materials": "Sıcak–soğuk, büyük–küçük, hızlı–yavaş görseller",
+    "step_by_step":
+        "1. Kartları gösterin ve anlamlarını açıklayın.\n2. Hangisi hızlı? Hangisi büyük? gibi sorular sorun.",
+    "clue": "Gerçek nesnelerle eşleştirerek pekiştirilebilir."
+  },
+  {
+    "day": 357,
+    "activity_name": "Çek – Bırak Oyunu",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "Kaba Motor ve Kuvvet Kontrolü",
+    "materials": "Yastık altına saklanmış battaniye, çekilebilir oyuncak",
+    "step_by_step":
+        "1. Battaniyenin ucunu çekmesini söyleyin.\n2. Altındaki oyuncağı çıkarmasını sağlayın.",
+    "clue": "Kuvveti farklı yönlere uygulayarak yön algısı geliştirilebilir."
+  },
+  {
+    "day": 358,
+    "activity_name": "Hedefe Top Yuvarlama",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "Koordinasyon ve Amaçlı Hareket",
+    "materials": "Top, boş kutu",
+    "step_by_step":
+        "1. Kutuyu biraz uzağa koyun.\n2. Topu kutuya yuvarlamasını söyleyin.",
+    "clue": "Kutuyu farklı yönlere koyarak hedef yönü öğretebilirsiniz."
+  },
+  {
+    "day": 359,
+    "activity_name": "Ritim Aletleri ile Müzik",
+    "age_group": "18–24 Ay",
+    "activity_type": "sensory",
+    "improvement_name": "Ritim ve İşitsel Farkındalık",
+    "materials": "Tencere kapağı, tahta kaşık, zil gibi ritim aletleri",
+    "step_by_step":
+        "1. Basit bir ritim tutun.\n2. Çocuktan aynısını tekrar etmesini isteyin.",
+    "clue": "Çocuğun kendi ritmini yaratmasına da izin verin."
+  },
+  {
+    "day": 360,
+    "activity_name": "Kolaj Tablosu Yap",
+    "age_group": "18–24 Ay",
+    "activity_type": "motor",
+    "improvement_name": "Sanat ve Yaratıcılık",
+    "materials": "Gazete kupürleri, yapıştırıcı, A4 kâğıt",
+    "step_by_step":
+        "1. Kupürleri birlikte kesin.\n2. Kağıda yapıştırarak resim oluşturmasını sağlayın.",
+    "clue": "Her temaya özel kolaj yaparak çeşitlendirin."
+  }
+];

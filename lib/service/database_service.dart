@@ -70,6 +70,26 @@ class DatabaseService {
         .update({"status": 1});
     await authenticationService.logoutFromFirebase(context);
   }
+
+  Future<void> add1824({required Map<String, dynamic> item}) async {
+    String milliSecondTime = DateTime.now().millisecond.toString();
+    await _realtimeDatabase.ref("18-24").child(milliSecondTime).set(item);
+  }
+
+  Future<void> add2436({required Map<String, dynamic> item}) async {
+    String milliSecondTime = DateTime.now().millisecond.toString();
+    await _realtimeDatabase.ref("24-36").child(milliSecondTime).set(item);
+  }
+
+  Future<void> add3648({required Map<String, dynamic> item}) async {
+    String milliSecondTime = DateTime.now().millisecond.toString();
+    await _realtimeDatabase.ref("36-48").child(milliSecondTime).set(item);
+  }
+
+  Future<void> add4860({required Map<String, dynamic> item}) async {
+    String milliSecondTime = DateTime.now().millisecond.toString();
+    await _realtimeDatabase.ref("48-60").child(milliSecondTime).set(item);
+  }
 }
 
 final DatabaseService databaseService = DatabaseService();
