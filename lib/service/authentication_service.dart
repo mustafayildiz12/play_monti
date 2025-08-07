@@ -8,14 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/monti_user_model.dart';
-import 'package:play_monti/screens/Auth/login_screen.dart';
-import 'package:play_monti/screens/tab_screens.dart';
 import 'package:play_monti/service/database_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-/// TercihAuthService, kullanıcı kimlik doğrulama işlemlerini yöneten servis sınıfıdır.
+/// AuthenticationService, kullanıcı kimlik doğrulama işlemlerini yöneten servis sınıfıdır.
 /// Firebase Authentication kullanarak kullanıcı girişi, kayıt, çıkış ve anonim giriş gibi
 /// işlemleri gerçekleştirir.
 class AuthenticationService {
@@ -53,11 +52,8 @@ class AuthenticationService {
 
         if (isUserExist && isUserDataExist) {
           if (currentTercihUser?.status != 1) {
-            await Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainTabNavigator()),
-                (route) => false);
+            await Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.navigationBarPage, (route) => false);
           } else {
             customSnackBar.error(
                 "Bu hesap silinmiş. Lütfen farklı bir hesap ile tekrar deneyiniz.");
@@ -110,12 +106,8 @@ class AuthenticationService {
         await databaseService
             .getAdminBasicInfoFromRealTime(credential.user!.uid);
 
-        await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const MainTabNavigator(),
-            ),
-            (route) => false);
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.navigationBarPage, (route) => false);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -167,12 +159,8 @@ class AuthenticationService {
       if (currentUser == null) {
         await localStorage.erase();
 
-        await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const LoginPage(),
-            ),
-            (route) => false);
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.navigationBarPage, (route) => false);
       }
     } catch (e) {
       print(e.toString());
@@ -223,10 +211,8 @@ class AuthenticationService {
           });
         }
 
-        await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const MainTabNavigator()),
-            (route) => false);
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.navigationBarPage, (route) => false);
       } else {
         debugPrint("User bulunamadı.");
       }
@@ -285,12 +271,8 @@ class AuthenticationService {
           });
         }
 
-        await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const MainTabNavigator(),
-            ),
-            (route) => false);
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.navigationBarPage, (route) => false);
       } else {
         debugPrint("User bulunamadı.");
       }

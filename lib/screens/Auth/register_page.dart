@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:play_monti/screens/Auth/login_screen.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -91,12 +91,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 20),
                   TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
-                      ),
-                    ),
+                    onPressed: () => Navigator.pushReplacementNamed(
+                        context, AppRoutes.loginPage),
                     child: const Text("Zaten hesabın var mı? Giriş Yap"),
                   ),
                 ],

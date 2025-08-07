@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:play_monti/screens/Auth/register_page.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -115,12 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   const SizedBox(height: 20),
                   TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RegisterPage(),
-                      ),
-                    ),
+                    onPressed: () => Navigator.pushReplacementNamed(
+                        context, AppRoutes.registerPage),
                     child: const Text("Hesabın yok mu? Kayıt Ol"),
                   ),
                 ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/user_model.dart';
-import 'package:play_monti/screens/tab_screens.dart';
 import 'package:provider/provider.dart';
 import '../contexts/user_context.dart';
 
@@ -64,10 +64,8 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         language: _language,
         ageGroup: _ageGroup,
       ));
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const MainTabNavigator()),
-          (g) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.navigationBarPage, (g) => false);
     }
   }
 
@@ -78,10 +76,8 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
       language: 'Turkish',
       ageGroup: '1-3',
     ));
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const MainTabNavigator()),
-        (g) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context, AppRoutes.navigationBarPage, (g) => false);
   }
 
   bool _canProceed() {

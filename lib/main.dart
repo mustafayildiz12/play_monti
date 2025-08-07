@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:play_monti/constants/app_pages.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/constants/app_translation.dart';
 import 'package:play_monti/firebase_options.dart';
-import 'package:play_monti/screens/Onboarding/onboarding_flow.dart';
+import 'package:play_monti/service/authentication_service.dart';
+import 'package:play_monti/service/database_service.dart';
 import 'package:provider/provider.dart';
 import 'contexts/user_context.dart';
 
@@ -22,15 +26,26 @@ Future<void> main() async {
     GetStorage.init("info"),
   ]);
 
-  runApp(const MyApp());
+  final User? user = authenticationService.getUser();
+
+  if (user != null) {
+    final bool isUserExist =
+        await databaseService.getAdminBasicInfoFromRealTime(user.uid);
+    if (isUserExist) {
+      AppRoutes.initialRoute = AppRoutes.navigationBarPage;
+    } else {
+      AppRoutes.initialRoute = AppRoutes.loginPage;
+    }
+  } else {
+    AppRoutes.initialRoute = AppRoutes.loginPage;
+  }
+
+  runMyApp();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+Future<void> runMyApp() async {
+  runApp(
+    ChangeNotifierProvider(
       create: (context) => UserProvider(),
       child: GetMaterialApp(
         title: 'MontiTime',
@@ -43,8 +58,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF91A88E)),
           useMaterial3: true,
         ),
-        home: const OnboardingFlowScreen(),
+        initialRoute: AppRoutes.initialRoute,
+        getPages: AppPages.pages,
       ),
-    );
-  }
+    ),
+  );
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/screens/Onboarding/fifth_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/first_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/fourth_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/second_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/third_onboarding.dart';
-import 'package:play_monti/screens/onboarding_flow.dart';
 
 class OnboardingFlowScreen extends StatefulWidget {
   const OnboardingFlowScreen({super.key});
@@ -126,12 +126,8 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                               ? _next
                               : () {
                                   // Onboarding bittiğinde yapılacak işlem (örn: ana ekrana yönlendir)
-                                  Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (_) =>
-                                          const OnboardingFlow(),
-                                    ), // Ana sayfanız burada
-                                  );
+                                  Navigator.of(context).pushReplacementNamed(
+                                      AppRoutes.onboFlowPage);
                                 },
                           child: _currentIndex < _pages.length - 1
                               ? const Row(
