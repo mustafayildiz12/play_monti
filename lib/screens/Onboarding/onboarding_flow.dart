@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/screens/Onboarding/fifth_onboarding.dart';
 import 'package:play_monti/screens/Onboarding/first_onboarding.dart';
@@ -124,10 +127,11 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                           ),
                           onPressed: _currentIndex < _pages.length - 1
                               ? _next
-                              : () {
-                                  // Onboarding bittiğinde yapılacak işlem (örn: ana ekrana yönlendir)
-                                  Navigator.of(context).pushReplacementNamed(
-                                      AppRoutes.onboFlowPage);
+                              : () async {
+                                  await infoStorage.write("onboarding", true);
+                                  await Navigator.of(context)
+                                      .pushReplacementNamed(
+                                          AppRoutes.onboFlowPage);
                                 },
                           child: _currentIndex < _pages.length - 1
                               ? const Row(

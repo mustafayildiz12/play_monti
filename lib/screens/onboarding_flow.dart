@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/user_model.dart';
+import 'package:play_monti/service/database_service.dart';
 import 'package:provider/provider.dart';
 import '../contexts/user_context.dart';
 
@@ -36,19 +36,22 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
       'id': '0-1',
       'label': '0–1 years',
       'icon': '👶',
-      'description': 'Infant activities'
+      'description': 'Infant activities',
+      'age-group': '18-24',
     },
     {
       'id': '1-3',
       'label': '1–3 years',
       'icon': '🚼',
-      'description': 'Toddler development'
+      'description': 'Toddler development',
+      'age-group': '24-36',
     },
     {
       'id': '3-8',
       'label': '3–8 years',
       'icon': '🧒',
-      'description': 'Preschool & early school'
+      'description': 'Preschool & early school',
+      'age-group': '36-48',
     }
   ];
 
@@ -64,20 +67,10 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         language: _language,
         ageGroup: _ageGroup,
       ));
-      Navigator.pushNamedAndRemoveUntil(
-          context, AppRoutes.navigationBarPage, (g) => false);
-    }
-  }
 
-  void _handleSkip() {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    userProvider.setUserData(UserData(
-      name: 'Guest',
-      language: 'Turkish',
-      ageGroup: '1-3',
-    ));
-    Navigator.pushNamedAndRemoveUntil(
-        context, AppRoutes.navigationBarPage, (g) => false);
+      databaseService.updateUserTimeData(
+          ageActivity: _ageGroup, userName: _name, language: _language);
+    }
   }
 
   bool _canProceed() {
@@ -248,17 +241,6 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
           style: const TextStyle(fontSize: 16, color: Color(0xFF333333)),
           autofocus: true,
         ),
-        const SizedBox(height: 16),
-        TextButton(
-          onPressed: _handleSkip,
-          child: const Text(
-            'Continue as Guest',
-            style: TextStyle(
-              fontSize: 14,
-              color: Color(0xFF666666),
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -382,14 +364,14 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         const SizedBox(height: 32),
         Column(
           children: _ageGroups.map((group) {
-            final isSelected = _ageGroup == group['id'];
+            final isSelected = _ageGroup == group['age-group'];
 
             return Container(
               margin: const EdgeInsets.only(bottom: 16),
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () => setState(() => _ageGroup = group['id']!),
+                  onTap: () => setState(() => _ageGroup = group['age-group']!),
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
                     padding: const EdgeInsets.all(24),

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_pages.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/constants/app_translation.dart';
@@ -37,7 +38,13 @@ Future<void> main() async {
       AppRoutes.initialRoute = AppRoutes.loginPage;
     }
   } else {
-    AppRoutes.initialRoute = AppRoutes.loginPage;
+    bool isOnboSeen = infoStorage.read("onboarding") ?? false;
+
+    if (isOnboSeen) {
+      AppRoutes.initialRoute = AppRoutes.loginPage;
+    } else {
+      AppRoutes.initialRoute = AppRoutes.onboardingPage;
+    }
   }
 
   runMyApp();

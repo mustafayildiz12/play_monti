@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_constants.dart';
@@ -60,6 +61,18 @@ class DatabaseService {
   /// @param user - Eklenecek kullanıcı modeli
   Future<void> addUserToRealTime(MontiUserModel user) async {
     await _realtimeDatabase.ref('users').child(user.uid!).set(user.toMap());
+  }
+
+  Future<void> updateUserTimeData(
+      {required String ageActivity,
+      required String userName,
+      required String language}) async {
+    User? user = authenticationService.getUser();
+    await _realtimeDatabase.ref('users').child(user!.uid).update({
+      "userName": userName,
+      "ageActivity": ageActivity,
+      "language": language
+    });
   }
 
   /// Kullanıcı hesabını siler.

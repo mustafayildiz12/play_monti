@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/screens/Home/home_screen.dart';
 import 'package:play_monti/screens/dummy_screens.dart';
+import 'package:play_monti/screens/onboarding_flow.dart';
 
 class MainTabNavigator extends StatefulWidget {
   const MainTabNavigator({super.key});
@@ -16,7 +17,7 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     const CalendarScreen(),
-    const BadgesScreen(),
+    const OnboardingFlow(),
     const FavoritesScreen(),
     const SettingsScreen(),
   ];
