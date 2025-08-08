@@ -3,6 +3,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/models/monti_user_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
@@ -72,23 +73,44 @@ class DatabaseService {
   }
 
   Future<void> add1824({required Map<String, dynamic> item}) async {
-    String milliSecondTime = DateTime.now().millisecond.toString();
+    String milliSecondTime = DateTime.now().millisecondsSinceEpoch.toString();
     await _realtimeDatabase.ref("18-24").child(milliSecondTime).set(item);
   }
 
   Future<void> add2436({required Map<String, dynamic> item}) async {
-    String milliSecondTime = DateTime.now().millisecond.toString();
+    String milliSecondTime = DateTime.now().millisecondsSinceEpoch.toString();
     await _realtimeDatabase.ref("24-36").child(milliSecondTime).set(item);
   }
 
   Future<void> add3648({required Map<String, dynamic> item}) async {
-    String milliSecondTime = DateTime.now().millisecond.toString();
+    String milliSecondTime = DateTime.now().millisecondsSinceEpoch.toString();
     await _realtimeDatabase.ref("36-48").child(milliSecondTime).set(item);
   }
 
   Future<void> add4860({required Map<String, dynamic> item}) async {
-    String milliSecondTime = DateTime.now().millisecond.toString();
+    String milliSecondTime = DateTime.now().millisecondsSinceEpoch.toString();
     await _realtimeDatabase.ref("48-60").child(milliSecondTime).set(item);
+  }
+
+  Future<List<ActivityListModel>> getActivities({required String path}) async {
+    final List<ActivityListModel> activities = [];
+
+    final DatabaseReference ref = _realtimeDatabase.ref(path);
+
+    final DataSnapshot snapshot = await ref.get();
+
+    if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
+      final Map<String, dynamic> data =
+          Map<String, dynamic>.from(snapshot.value as Map);
+
+      for (final entry in data.entries) {
+        final Map<String, dynamic> activityData =
+            Map<String, dynamic>.from(entry.value);
+        activities.add(ActivityListModel.fromJson(activityData));
+      }
+    }
+
+    return activities;
   }
 }
 
