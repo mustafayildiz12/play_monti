@@ -65,7 +65,7 @@ Future<void> runMyApp() async {
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF91A88E)),
           useMaterial3: true,
         ),
-        initialRoute: AppRoutes.initialRoute,
+        initialRoute: AppRoutes.activityDetailPage,
         getPages: AppPages.pages,
       ),
     ),

@@ -7,4 +7,6 @@ class AppRoutes {
   static String registerPage = "/registerPage";
 
   static String navigationBarPage = "/navigationBar";
+
+  static String activityDetailPage = "/activityDetail";
 }
