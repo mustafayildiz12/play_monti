@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:play_monti/models/activity_model.dart';
+import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
-import 'package:play_monti/service/generate_activity_service.dart';
+import 'package:play_monti/service/database_service.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   // MOCK DATA (bunları ileride Provider vs ile alabilirsin)
   final String userName = "Guest";
-  final int completedCount = 8; // Örnek ilerleme
 
-  final List<Activity> todaysActivities =
-      generateActivitiesDatabase().take(5).toList();
+  final int completedCount = 8;
+  // Örnek ilerleme
+  List<ActivityListModel> todaysActivities = [];
 
-
+  @override
+  void initState() {
+    getTodaysActivities();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,10 +165,14 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    ActivitiesCarousel(
-                      activities: todaysActivities, // List<Activity>
-                      cardWidth: cardWidth,
-                    ),
+                    todaysActivities.isNotEmpty
+                        ? ActivitiesCarousel(
+                            activities: todaysActivities, // List<Activity>
+                            cardWidth: cardWidth,
+                          )
+                        : const Center(
+                            child: Text("Aktivite Bulunamadı."),
+                          ),
                   ],
                 ),
               ),
@@ -206,5 +219,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> getTodaysActivities() async {
+    List<ActivityListModel> todaysA =
+        await databaseService.getTodayActivities(activitiesPath: "18-24");
+
+    setState(() {
+      todaysActivities = todaysA;
+    });
   }
 }

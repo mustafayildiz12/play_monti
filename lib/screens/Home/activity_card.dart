@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:play_monti/models/activity_model.dart';
+import 'package:play_monti/models/activity_list_model.dart';
 
 class ActivityCard extends StatelessWidget {
-  final Activity activity;
+  final ActivityListModel activity;
   final VoidCallback onTap;
 
   const ActivityCard({
@@ -33,10 +33,10 @@ class ActivityCard extends StatelessWidget {
                 end: Alignment.bottomRight,
               ),
             ),
-            child: Center(
+            child: const Center(
               child: Text(
-                activity.emoji,
-                style: const TextStyle(fontSize: 64),
+                "💧",
+                style: TextStyle(fontSize: 64),
               ),
             ),
           ),
@@ -58,7 +58,7 @@ class ActivityCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        activity.category,
+                        activity.improvementName,
                         style: const TextStyle(
                           fontSize: 12,
                           color: Color(0xFF6BAA75),
@@ -67,7 +67,7 @@ class ActivityCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      activity.ageRange,
+                      activity.ageGroup.split("(").first,
                       style: const TextStyle(
                         fontSize: 12,
                         color: Color(0xFF666666),
@@ -77,7 +77,7 @@ class ActivityCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  activity.name,
+                  activity.activityName.split("(").first,
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -86,7 +86,7 @@ class ActivityCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  activity.description,
+                  activity.clue,
                   style: const TextStyle(
                     fontSize: 14,
                     color: Color(0xFF666666),
@@ -97,27 +97,20 @@ class ActivityCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 // Tags
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 4,
-                  children: (activity.tags as List)
-                      .take(2)
-                      .map<Widget>((tag) => Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF9F5F0),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              tag,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF666666),
-                              ),
-                            ),
-                          ))
-                      .toList(),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF9F5F0),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    activity.activityType,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFF666666),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 // Start Activity Button

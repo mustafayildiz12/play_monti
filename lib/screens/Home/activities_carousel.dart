@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:play_monti/models/activity_model.dart';
+import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activity_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ActivitiesCarousel extends StatefulWidget {
-  final List<Activity> activities;
+  final List<ActivityListModel> activities;
   final double cardWidth;
 
   const ActivitiesCarousel(
@@ -53,7 +53,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
       clipBehavior: Clip.none,
       children: [
         SizedBox(
-          height: 460,
+          height: 465,
           child: PageView.builder(
             controller: _pageController,
             itemCount: activityCount,
