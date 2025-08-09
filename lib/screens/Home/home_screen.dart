@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
 import 'package:play_monti/service/database_service.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final double cardWidth = width - 48;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F5F0),
+      backgroundColor: AppColors.appBgColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF333333),
+                                  color: AppColors.kTitleBlackTextColor,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "Today's Montessori activities are ready",
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Color(0xFF666666),
+                                  color: AppColors.kSubtitleTextColor,
                                 ),
                               ),
                             ],
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 48,
                           height: 48,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF91A88E),
+                            color: AppColors.kButtonGreenColor,
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: const Center(
@@ -100,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
+                                  color: AppColors.kTitleBlackTextColor,
                                 ),
                               ),
                               const Spacer(),
@@ -109,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF91A88E),
+                                  color: AppColors.kButtonGreenColor,
                                 ),
                               ),
                             ],
@@ -130,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: ((completedCount / 30) * width)
                                     .clamp(0, width - 88),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF91A88E),
+                                  color: AppColors.kButtonGreenColor,
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
@@ -141,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             "A new Montessori set unlocks each day",
                             style: TextStyle(
                               fontSize: 12,
-                              color: Color(0xFF666666),
+                              color: AppColors.kSubtitleTextColor,
                             ),
                           ),
                         ],
@@ -161,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF333333),
+                        color: AppColors.kTitleBlackTextColor,
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -183,7 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     gradient: const LinearGradient(
-                      colors: [Color(0xFF6BAA75), Color(0xFF5A9A65)],
+                      colors: [
+                        AppColors.kDarkGreenColor,
+                        AppColors.kLightGreenColor
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),

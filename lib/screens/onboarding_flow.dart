@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/user_model.dart';
 import 'package:play_monti/service/database_service.dart';
 import 'package:provider/provider.dart';
@@ -89,7 +90,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F5F0),
+      backgroundColor: AppColors.appBgColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -124,7 +125,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-              color: const Color(0xFF91A88E),
+              color: AppColors.kButtonGreenColor,
               borderRadius: BorderRadius.circular(32),
             ),
             child: const Center(
@@ -140,7 +141,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF333333),
+              color: AppColors.kTitleBlackTextColor,
             ),
           ),
           const SizedBox(height: 8),
@@ -148,7 +149,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             'Daily Montessori activities for your child',
             style: TextStyle(
               fontSize: 14,
-              color: Color(0xFF666666),
+              color: AppColors.kSubtitleTextColor,
             ),
             textAlign: TextAlign.center,
           ),
@@ -169,7 +170,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               margin: const EdgeInsets.symmetric(horizontal: 2),
               decoration: BoxDecoration(
                 color: index < _step
-                    ? const Color(0xFF91A88E)
+                    ? AppColors.kButtonGreenColor
                     : const Color(0xFFC2B9A1),
                 borderRadius: BorderRadius.circular(2),
               ),
@@ -201,7 +202,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             Icon(
               Icons.person_outline,
               size: 48,
-              color: Color(0xFF91A88E),
+              color: AppColors.kButtonGreenColor,
             ),
             SizedBox(height: 16),
             Text(
@@ -209,7 +210,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF333333),
+                color: AppColors.kTitleBlackTextColor,
               ),
             ),
             SizedBox(height: 8),
@@ -217,7 +218,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               'What should we call you?',
               style: TextStyle(
                 fontSize: 16,
-                color: Color(0xFF666666),
+                color: AppColors.kSubtitleTextColor,
               ),
               textAlign: TextAlign.center,
             ),
@@ -238,7 +239,8 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           ),
-          style: const TextStyle(fontSize: 16, color: Color(0xFF333333)),
+          style: const TextStyle(
+              fontSize: 16, color: AppColors.kTitleBlackTextColor),
           autofocus: true,
         ),
       ],
@@ -253,7 +255,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             Icon(
               Icons.language_outlined,
               size: 48,
-              color: Color(0xFF91A88E),
+              color: AppColors.kButtonGreenColor,
             ),
             SizedBox(height: 16),
             Text(
@@ -261,7 +263,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF333333),
+                color: AppColors.kTitleBlackTextColor,
               ),
             ),
             SizedBox(height: 8),
@@ -269,7 +271,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               'Select your preferred language',
               style: TextStyle(
                 fontSize: 16,
-                color: Color(0xFF666666),
+                color: AppColors.kSubtitleTextColor,
               ),
               textAlign: TextAlign.center,
             ),
@@ -307,8 +309,9 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 16),
                       decoration: BoxDecoration(
-                        color:
-                            isSelected ? const Color(0xFF91A88E) : Colors.white,
+                        color: isSelected
+                            ? AppColors.kButtonGreenColor
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -317,7 +320,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                           fontSize: 16,
                           color: isSelected
                               ? Colors.white
-                              : const Color(0xFF333333),
+                              : AppColors.kTitleBlackTextColor,
                         ),
                       ),
                     ),
@@ -339,7 +342,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             Icon(
               Icons.people_outline,
               size: 48,
-              color: Color(0xFF91A88E),
+              color: AppColors.kButtonGreenColor,
             ),
             SizedBox(height: 16),
             Text(
@@ -347,7 +350,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF333333),
+                color: AppColors.kTitleBlackTextColor,
               ),
             ),
             SizedBox(height: 8),
@@ -355,7 +358,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               'This helps us show age-appropriate activities',
               style: TextStyle(
                 fontSize: 16,
-                color: Color(0xFF666666),
+                color: AppColors.kSubtitleTextColor,
               ),
               textAlign: TextAlign.center,
             ),
@@ -376,8 +379,9 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                   child: Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color:
-                          isSelected ? const Color(0xFF91A88E) : Colors.white,
+                      color: isSelected
+                          ? AppColors.kButtonGreenColor
+                          : Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
@@ -398,7 +402,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                                   fontWeight: FontWeight.w500,
                                   color: isSelected
                                       ? Colors.white
-                                      : const Color(0xFF333333),
+                                      : AppColors.kTitleBlackTextColor,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -408,7 +412,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                                   fontSize: 14,
                                   color: isSelected
                                       ? Colors.white.withValues(alpha: 0.8)
-                                      : const Color(0xFF666666),
+                                      : AppColors.kSubtitleTextColor,
                                 ),
                               ),
                             ],
@@ -434,9 +438,8 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         child: ElevatedButton(
           onPressed: _canProceed() ? _handleNext : null,
           style: ElevatedButton.styleFrom(
-            backgroundColor: _canProceed()
-                ? const Color(0xFF91A88E)
-                : const Color(0xFFC2B9A1),
+            backgroundColor:
+                _canProceed() ? AppColors.kButtonGreenColor : const Color(0xFFC2B9A1),
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

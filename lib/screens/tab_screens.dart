@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/screens/Home/home_screen.dart';
 import 'package:play_monti/screens/dummy_screens.dart';
 import 'package:play_monti/screens/onboarding_flow.dart';
@@ -15,7 +16,7 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+    const HomeScreen(),
     const CalendarScreen(),
     const OnboardingFlow(),
     const FavoritesScreen(),
@@ -35,7 +36,7 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xFF6BAA75),
+        selectedItemColor: AppColors.kDarkGreenColor,
         unselectedItemColor: const Color(0xFF999999),
         showUnselectedLabels: true,
         selectedLabelStyle:

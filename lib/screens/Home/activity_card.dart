@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 
 class ActivityCard extends StatelessWidget {
@@ -28,7 +29,10 @@ class ActivityCard extends StatelessWidget {
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
               gradient: LinearGradient(
-                colors: [Color(0xFF91A88E), Color(0xFF6BAA75)],
+                colors: [
+                  AppColors.kButtonGreenColor,
+                  AppColors.kDarkGreenColor
+                ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -54,14 +58,14 @@ class ActivityCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF0F8F0),
+                        color: AppColors.kMoreLightGreenColor,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         activity.improvementName,
                         style: const TextStyle(
                           fontSize: 12,
-                          color: Color(0xFF6BAA75),
+                          color: AppColors.kDarkGreenColor,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -70,7 +74,7 @@ class ActivityCard extends StatelessWidget {
                       activity.ageGroup.split("(").first,
                       style: const TextStyle(
                         fontSize: 12,
-                        color: Color(0xFF666666),
+                        color: AppColors.kSubtitleTextColor,
                       ),
                     ),
                   ],
@@ -81,7 +85,7 @@ class ActivityCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF333333),
+                    color: AppColors.kTitleBlackTextColor,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -89,7 +93,7 @@ class ActivityCard extends StatelessWidget {
                   activity.clue,
                   style: const TextStyle(
                     fontSize: 14,
-                    color: Color(0xFF666666),
+                    color: AppColors.kSubtitleTextColor,
                     height: 1.43,
                   ),
                   maxLines: 2,
@@ -101,14 +105,14 @@ class ActivityCard extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF9F5F0),
+                    color: AppColors.appBgColor,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     activity.activityType,
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF666666),
+                      color: AppColors.kSubtitleTextColor,
                     ),
                   ),
                 ),
@@ -118,7 +122,7 @@ class ActivityCard extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF91A88E),
+                      backgroundColor: AppColors.kButtonGreenColor,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),

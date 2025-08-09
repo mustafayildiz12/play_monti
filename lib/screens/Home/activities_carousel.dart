@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activity_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -63,8 +65,10 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                   width: widget.cardWidth,
                   child: ActivityCard(
                     activity: widget.activities[index],
-                    onTap: () {
-                      // Detaya gitmek için kullanabilirsin
+                    onTap: () async {
+                      await Navigator.pushNamed(
+                          context, AppRoutes.activityDetailPage,
+                          arguments: widget.activities[index]);
                     },
                   ),
                 ),
@@ -85,7 +89,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                 onTap: () => _goToPage(_currentIndex - 1),
                 radius: 28,
                 child: const Icon(Icons.chevron_left_rounded,
-                    size: 40, color: Color(0xFF91A88E)),
+                    size: 40, color: AppColors.kButtonGreenColor),
               ),
             ),
           ),
@@ -102,7 +106,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                 onTap: () => _goToPage(_currentIndex + 1),
                 radius: 28,
                 child: const Icon(Icons.chevron_right_rounded,
-                    size: 40, color: Color(0xFF91A88E)),
+                    size: 40, color: AppColors.kButtonGreenColor),
               ),
             ),
           ),
@@ -118,7 +122,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
               effect: WormEffect(
                 dotHeight: 10,
                 dotWidth: 10,
-                activeDotColor: const Color(0xFF6BAA75),
+                activeDotColor: AppColors.kDarkGreenColor,
                 dotColor: Colors.grey.shade300,
                 spacing: 8,
               ),

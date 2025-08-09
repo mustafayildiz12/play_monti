@@ -1,27 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/models/activity_list_model.dart';
 
-class ActivityDetailPage extends StatefulWidget {
+class ActivityDetailPage extends StatelessWidget {
   const ActivityDetailPage({super.key});
 
   @override
-  State<ActivityDetailPage> createState() => _ActivityDetailPageState();
-}
-
-class _ActivityDetailPageState extends State<ActivityDetailPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // Extract the arguments from the current ModalRoute
+    // settings and cast them as ScreenArguments.
+    final activity =
+        ModalRoute.of(context)!.settings.arguments as ActivityListModel;
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
       appBar: AppBar(
         backgroundColor: AppColors.appBgColor,
-        leading: const Icon(Icons.arrow_back),
-        actions: const [Icon(Icons.favorite), Icon(Icons.download)],
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(
+              Icons.arrow_back,
+              color: AppColors.kTitleBlackTextColor,
+            ),
+          ),
+        ),
+        actions: const [
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(
+              Icons.favorite,
+              color: AppColors.kTitleBlackTextColor,
+            ),
+          ),
+          SizedBox(width: 8),
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(
+              Icons.download,
+              color: AppColors.kTitleBlackTextColor,
+            ),
+          ),
+          SizedBox(width: 20),
+        ],
         bottom: const PreferredSize(
             preferredSize: Size(double.infinity, 1), child: Divider()),
       ),
@@ -62,40 +85,40 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF0F8F0),
+                    color: AppColors.kMoreLightGreenColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Text(
-                    "practical life",
-                    style: TextStyle(
+                  child: Text(
+                    activity.improvementName,
+                    style: const TextStyle(
                       fontSize: 14,
                       color: AppColors.kDarkGreenColor,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
-                const Text(
-                  "1-3 Years",
-                  style: TextStyle(
+                Text(
+                  activity.ageGroup.split("(").first,
+                  style: const TextStyle(
                     fontSize: 14,
-                    color: Color(0xFF666666),
+                    color: AppColors.kSubtitleTextColor,
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            const Text(
-              "Water Pouring",
-              style: TextStyle(
+            Text(
+              activity.activityName.split("(").first,
+              style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w600,
                 color: AppColors.kTitleBlackTextColor,
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              "Build practical life skills and hand coordination through careful water pouring.",
-              style: TextStyle(
+            Text(
+              activity.clue,
+              style: const TextStyle(
                 fontSize: 15,
                 color: AppColors.kSubtitleTextColor,
                 height: 1.6,
@@ -180,21 +203,67 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                       ),
                     ),
                     customStepItem(
-                      number: "1",
-                      title: "Fill the pitcher with water"
-                    ),
-                     customStepItem(
-                      number: "2",
-                      title: "Clean up spills together"
-                    ),
-                     customStepItem(
-                      number: "3",
-                      title: "Fill the pitcher with water"
-                    ),
+                        number: "1", title: "Fill the pitcher with water"),
+                    customStepItem(
+                        number: "2", title: "Clean up spills together"),
+                    customStepItem(
+                        number: "3", title: "Fill the pitcher with water"),
                   ],
                 ),
               ),
             ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: AppColors.kMoreLightGreenColor,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.query_builder,
+                    color: AppColors.kDarkGreenColor,
+                    size: 28,
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      "Duration: 15-20 Minutes",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: AppColors.kDarkGreenColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.kButtonColor2,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 0,
+                ),
+                icon: const Icon(Icons.check, size: 28, color: Colors.white),
+                label: const Text(
+                  "Mark as Done",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+            )
           ],
         ),
       ),

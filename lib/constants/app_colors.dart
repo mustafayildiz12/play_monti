@@ -5,8 +5,11 @@ class AppColors {
 
   static const Color kDarkGreenColor = Color(0xFF6BAA75);
   static const Color kLightGreenColor = Color(0xFF5A9A65);
+  static const Color kMoreLightGreenColor = Color(0xFFF0F8F0);
 
   static const Color kButtonGreenColor = Color(0xFF91A88E);
+
+  static const Color kButtonColor2 = Color(0xFF92a88f);
 
   static const Color kTitleBlackTextColor = Color(0xFF333333);
   static const Color kSubtitleTextColor = Color(0xFF666666);
