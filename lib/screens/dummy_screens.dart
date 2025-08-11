@@ -5,16 +5,7 @@ import 'package:play_monti/constants/jsonfiles/48-60.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/service/database_service.dart';
 
-class CalendarScreen extends StatelessWidget {
-  const CalendarScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Calendar Screen')),
-    );
-  }
-}
 
 class BadgesScreen extends StatelessWidget {
   const BadgesScreen({super.key});

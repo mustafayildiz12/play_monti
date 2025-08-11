@@ -11,6 +11,8 @@ class ActivityDetailPage extends StatelessWidget {
     // settings and cast them as ScreenArguments.
     final activity =
         ModalRoute.of(context)!.settings.arguments as ActivityListModel;
+
+    List<String> steps = createSteps(activity.stepByStep);
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
       appBar: AppBar(
@@ -202,12 +204,18 @@ class ActivityDetailPage extends StatelessWidget {
                         color: AppColors.kTitleBlackTextColor,
                       ),
                     ),
-                    customStepItem(
-                        number: "1", title: "Fill the pitcher with water"),
-                    customStepItem(
-                        number: "2", title: "Clean up spills together"),
-                    customStepItem(
-                        number: "3", title: "Fill the pitcher with water"),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: steps.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: customStepItem(
+                              number: (index + 1).toString(),
+                              title: steps[index]),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -270,8 +278,18 @@ class ActivityDetailPage extends StatelessWidget {
     );
   }
 
-  Row customStepItem({required String number, required String title}) {
-    return Row(
+  List<String> createSteps(String stepByStep) {
+    // Satırlara böl
+    RegExp exp = RegExp(r'\d+\.\s');
+
+    List<String> steps =
+        stepByStep.split(exp).where((e) => e.trim().isNotEmpty).toList();
+
+    return steps;
+  }
+
+  Widget customStepItem({required String number, required String title}) {
+    return Stack(
       children: [
         Container(
           width: 36,
@@ -285,13 +303,20 @@ class ActivityDetailPage extends StatelessWidget {
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
           ),
         ),
-        const SizedBox(width: 16),
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: AppColors.kTitleBlackTextColor,
+        Positioned(
+          left: 48,
+          top: 5,
+          right: 0,
+          child: Text(
+            title,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            strutStyle: const StrutStyle(height: 1.2, forceStrutHeight: true),
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.kTitleBlackTextColor,
+            ),
           ),
         )
       ],
@@ -307,12 +332,14 @@ class ActivityDetailPage extends StatelessWidget {
           size: 16,
         ),
         const SizedBox(width: 16),
-        Text(
-          itemName,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: AppColors.kTitleBlackTextColor,
+        Expanded(
+          child: Text(
+            itemName,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.kTitleBlackTextColor,
+            ),
           ),
         )
       ],

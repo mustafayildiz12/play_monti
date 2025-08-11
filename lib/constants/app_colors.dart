@@ -11,6 +11,10 @@ class AppColors {
 
   static const Color kButtonColor2 = Color(0xFF92a88f);
 
+  static const Color kCalendarLightGreenColor = Color(0xFFf0f9f1);
+  static const Color kCalendarLockBgColor = Color(0xFFf4f5f4);
+  static const Color kCalendarLockTextColor = Color(0xFFC2B9A1);
+
   static const Color kTitleBlackTextColor = Color(0xFF333333);
   static const Color kSubtitleTextColor = Color(0xFF666666);
 }

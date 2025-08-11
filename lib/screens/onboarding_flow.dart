@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:play_monti/constants/app_colors.dart';
-import 'package:play_monti/models/user_model.dart';
 import 'package:play_monti/service/database_service.dart';
-import 'package:provider/provider.dart';
-import '../contexts/user_context.dart';
 
 class OnboardingFlow extends StatefulWidget {
   const OnboardingFlow({
@@ -62,12 +59,6 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         _step++;
       });
     } else {
-      final userProvider = Provider.of<UserProvider>(context, listen: false);
-      userProvider.setUserData(UserData(
-        name: _name,
-        language: _language,
-        ageGroup: _ageGroup,
-      ));
 
       databaseService.updateUserTimeData(
           ageActivity: _ageGroup, userName: _name, language: _language);

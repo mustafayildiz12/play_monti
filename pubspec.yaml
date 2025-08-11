@@ -40,9 +40,10 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
 
-  provider: ^6.1.1
   smooth_page_indicator: ^1.2.1
   crypto: ^3.0.6
+  table_calendar: ^3.2.0
+  intl: ^0.20.2
 
   firebase_core: ^4.0.0
   firebase_auth: ^6.0.0

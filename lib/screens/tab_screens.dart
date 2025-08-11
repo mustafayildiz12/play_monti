@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/screens/Calendar/calendar_screen.dart';
 import 'package:play_monti/screens/Home/home_screen.dart';
 import 'package:play_monti/screens/dummy_screens.dart';
 import 'package:play_monti/screens/onboarding_flow.dart';
@@ -15,13 +16,26 @@ class MainTabNavigator extends StatefulWidget {
 class _MainTabNavigatorState extends State<MainTabNavigator> {
   int _selectedIndex = 0;
 
-  static final List<Widget> _widgetOptions = <Widget>[
-    const HomeScreen(),
-    const CalendarScreen(),
-    const OnboardingFlow(),
-    const FavoritesScreen(),
-    const SettingsScreen(),
-  ];
+  // Örneğin bir yerde çağır:
+  static final registration = DateTime(2025, 8, 1);
+
+  static DateTime d(int y, int m, int d) => DateTime(y, m, d);
+
+  static Map<DateTime, List<DailyEvent>> sampleEvents = {
+    d(2025, 8, 1): [
+      DailyEvent(id: '1A', isDone: true),
+      DailyEvent(id: '1B', isDone: false)
+    ],
+    d(2025, 8, 2): [
+      DailyEvent(id: '2A', isDone: true),
+      DailyEvent(id: '2B', isDone: true)
+    ],
+    d(2025, 8, 3): [
+      DailyEvent(id: '3A', isDone: false),
+      DailyEvent(id: '3B', isDone: false)
+    ],
+    // ... her aktif gün için 2 event
+  };
 
   void _onItemTapped(int index) {
     setState(() {
@@ -31,8 +45,18 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> widgetOptions = <Widget>[
+      const HomeScreen(),
+      StyledCalendarPage(
+        registrationDate: registration,
+        eventsByDay: sampleEvents,
+      ),
+      const OnboardingFlow(),
+      const FavoritesScreen(),
+      const SettingsScreen(),
+    ];
     return Scaffold(
-      body: _widgetOptions[_selectedIndex],
+      body: widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
