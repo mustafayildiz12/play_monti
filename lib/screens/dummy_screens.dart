@@ -6,29 +6,6 @@ import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/service/database_service.dart';
 
 
-
-class BadgesScreen extends StatelessWidget {
-  const BadgesScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Badges Screen')),
-    );
-  }
-}
-
-class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Favorites Screen')),
-    );
-  }
-}
-
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 

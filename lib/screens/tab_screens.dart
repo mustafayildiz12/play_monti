@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/screens/Badges/badges_screen.dart';
 import 'package:play_monti/screens/Calendar/calendar_screen.dart';
+import 'package:play_monti/screens/Favorites/favorites_screen.dart';
+import 'package:play_monti/screens/Guide/guide_screen.dart';
 import 'package:play_monti/screens/Home/home_screen.dart';
+import 'package:play_monti/screens/Settings/settings_screen.dart';
 import 'package:play_monti/screens/dummy_screens.dart';
-import 'package:play_monti/screens/onboarding_flow.dart';
 
 class MainTabNavigator extends StatefulWidget {
   const MainTabNavigator({super.key});
@@ -51,9 +54,31 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
         registrationDate: registration,
         eventsByDay: sampleEvents,
       ),
-      const OnboardingFlow(),
-      const FavoritesScreen(),
-      const SettingsScreen(),
+      const BadgesScreen(),
+      const FavoritesScreen(activities: [
+        FavActivity(
+          id: 'water_pouring',
+          title: 'Water Pouring',
+          description:
+              'Build practical life skills and hand coordination through careful water pouring.',
+          emoji: '💧',
+          category: 'practical life',
+          ageRange: '1–3 years',
+          tags: ['life skills', 'motor control', 'focus'],
+        ),
+        FavActivity(
+          id: 'banana-pealing',
+          title: 'Banana Pealing',
+          description:
+              'Build practical life skills and hand coordination through careful water pouring.',
+          emoji: '🍌',
+          category: 'practical life',
+          ageRange: '1–3 years',
+          tags: ['life skills', 'motor control', 'focus'],
+        ),
+      ]),
+      const GuidePage(),
+      const SettingsPage(),
     ];
     return Scaffold(
       body: widgetOptions[_selectedIndex],
@@ -89,6 +114,11 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
             icon: Icon(Ionicons.heart_outline),
             activeIcon: Icon(Ionicons.heart),
             label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Ionicons.book_outline),
+            activeIcon: Icon(Ionicons.book),
+            label: 'Guide',
           ),
           BottomNavigationBarItem(
             icon: Icon(Ionicons.settings_outline),
