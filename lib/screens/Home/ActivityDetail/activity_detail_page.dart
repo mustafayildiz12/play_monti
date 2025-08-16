@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/service/activty_service.dart';
 
-class ActivityDetailPage extends StatelessWidget {
+class ActivityDetailPage extends StatefulWidget {
   const ActivityDetailPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Extract the arguments from the current ModalRoute
-    // settings and cast them as ScreenArguments.
-    final activity =
-        ModalRoute.of(context)!.settings.arguments as ActivityListModel;
+  State<ActivityDetailPage> createState() => _ActivityDetailPageState();
+}
 
+class _ActivityDetailPageState extends State<ActivityDetailPage> {
+  late ActivityListModel activity;
+
+  bool _argsLoaded = false;
+  bool isMarked = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_argsLoaded) {
+      final args =
+          ModalRoute.of(context)?.settings.arguments as ActivityListModel?;
+      if (args != null) {
+        activity = args; // late değişkeni burada initialize oluyor
+        _argsLoaded = true;
+        getPageData(); // burada çağır
+      } else {}
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_argsLoaded) {
+      return const SizedBox(); // veya bir loader
+    }
     List<String> steps = createSteps(activity.stepByStep);
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
@@ -37,15 +60,7 @@ class ActivityDetailPage extends StatelessWidget {
               color: AppColors.kTitleBlackTextColor,
             ),
           ),
-          SizedBox(width: 8),
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Icon(
-              Icons.download,
-              color: AppColors.kTitleBlackTextColor,
-            ),
-          ),
-          SizedBox(width: 20),
+          SizedBox(width: 16),
         ],
         bottom: const PreferredSize(
             preferredSize: Size(double.infinity, 1), child: Divider()),
@@ -253,7 +268,9 @@ class ActivityDetailPage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.kButtonColor2,
+                  backgroundColor: isMarked
+                      ? AppColors.kDarkGreenColor
+                      : AppColors.kButtonColor2,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -261,15 +278,23 @@ class ActivityDetailPage extends StatelessWidget {
                   elevation: 0,
                 ),
                 icon: const Icon(Icons.check, size: 28, color: Colors.white),
-                label: const Text(
-                  "Mark as Done",
-                  style: TextStyle(
+                label: Text(
+                  isMarked ? "Completed" : "Mark as Done",
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  if (!isMarked) {
+                    await activityService.markDone(
+                        day: DateTime.now(),
+                        activityId: activity.day.toString());
+                    await getPageData();
+                    print("Marked");
+                  }
+                },
               ),
             )
           ],
@@ -359,5 +384,15 @@ class ActivityDetailPage extends StatelessWidget {
             const TextStyle(fontSize: 14, color: AppColors.kSubtitleTextColor),
       ),
     );
+  }
+
+  Future<void> getPageData() async {
+    // örnek: isMarked kontrolü (günü ve id’yi sen belirle)
+    final done = await activityService.isMarked(
+      dateTime: DateTime.now(),
+      activityId: activity.day.toString(), // modeline göre
+    );
+    if (!mounted) return;
+    setState(() => isMarked = done);
   }
 }

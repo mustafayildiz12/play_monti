@@ -54,7 +54,7 @@ class AuthenticationService {
             await databaseService.isUserDetailExist(userCredential.user!.uid);
 
         if (isUserExist && isUserDataExist) {
-          if (currentTercihUser?.status != 1) {
+          if (currentMontiUser?.status != 1) {
             if (isUserDetailExist) {
               await Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.navigationBarPage, (route) => false);
@@ -159,7 +159,7 @@ class AuthenticationService {
 
       final User? currentUser = getUser();
 
-      currentTercihUser = null;
+      currentMontiUser = null;
       // kullanıcının çıktığından emin olduktan sonra
       // locali silme ve navgationu temizleme işlemi yapıyoruz.
       if (currentUser == null) {

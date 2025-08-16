@@ -25,7 +25,8 @@ class DatabaseService {
 
     if (userModel != null) {
       isExist = true;
-      currentTercihUser = userModel;
+      currentMontiUser = userModel;
+
       /*
       if (userModel.isAnonymous == false) {
         await InAppPurchaseService().loginSubscription();
@@ -102,7 +103,7 @@ class DatabaseService {
   Future<void> deleteAccount(BuildContext context) async {
     await _realtimeDatabase
         .ref("users")
-        .child(currentTercihUser!.uid!)
+        .child(currentMontiUser!.uid!)
         .update({"status": 1});
     await authenticationService.logoutFromFirebase(context);
   }

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/service/calendar_repository.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'package:play_monti/constants/app_colors.dart';
@@ -13,12 +15,7 @@ class DailyEvent {
 class StyledCalendarPage extends StatefulWidget {
   const StyledCalendarPage({
     super.key,
-    required this.registrationDate,
-    required this.eventsByDay,
   });
-
-  final DateTime registrationDate; // kayıt tarihi (saat önemli değil)
-  final Map<DateTime, List<DailyEvent>> eventsByDay; // key: DateTime(y,m,d)
 
   @override
   State<StyledCalendarPage> createState() => _StyledCalendarPageState();
@@ -27,12 +24,17 @@ class StyledCalendarPage extends StatefulWidget {
 class _StyledCalendarPageState extends State<StyledCalendarPage> {
   static const kText = Color(0xFF333333);
   static const kMuted = Color(0xFF666666);
-  static const kDotDone = Color(0xFF6BAA75);
-  static const kDotPending = Color(0xFFC2B9A1);
 
   late DateTime _today;
   late DateTime _focusedMonth; // ay bazlı kontrol
   DateTime? _selectedDay;
+
+  // Yeni: servis verisini state'te tutacağız
+  DateTime? _registrationDate;
+  Map<DateTime, List<DailyEvent>> _eventsByDay = {};
+
+  bool loading = true;
+  String? error;
 
   @override
   void initState() {
@@ -40,13 +42,46 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
     _today = _dateOnly(DateTime.now());
     _focusedMonth = DateTime(_today.year, _today.month, 1);
     _selectedDay = _today;
+
+    _loadCalendar(); // async iş için ayrı method
+  }
+
+  Future<void> _loadCalendar() async {
+    try {
+      // Kullanıcının başlangıç tarihi (CalendarService içinde de kullanıyorsun ama
+      // sayfanın enabledDayPredicate hesaplaması için yerelde de lazım)
+      final startStr = currentMontiUser?.startDate;
+      if (startStr == null || startStr.isEmpty) {
+        throw Exception("Kullanıcı startDate bulunamadı.");
+      }
+      final reg = DateTime.parse(startStr);
+
+      // Map<DateTime, List<DailyEvent>> verisini çek
+      final map = await calendarService.buildEventsByDay();
+
+      if (!mounted) return;
+      setState(() {
+        _registrationDate = _dateOnly(reg);
+        _eventsByDay = map;
+        loading = false;
+        error = null;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        loading = false;
+        error = e.toString();
+      });
+    }
   }
 
   DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);
 
   bool _isActiveDay(DateTime day) {
+    if (_registrationDate == null) return false;
     final d = _dateOnly(day);
-    final start = _dateOnly(widget.registrationDate);
+    final start = _registrationDate!;
+    // start <= d <= today  (bugün de dahil)
     return (d.isAtSameMomentAs(start) || d.isAfter(start)) &&
             (d.isAtSameMomentAs(_today) || d.isBefore(_today)) ||
         d.isAtSameMomentAs(_today);
@@ -55,11 +90,23 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
   bool _isFuture(DateTime day) => _dateOnly(day).isAfter(_today);
 
   List<DailyEvent> _eventsOf(DateTime day) {
-    return widget.eventsByDay[_dateOnly(day)] ?? const [];
+    return _eventsByDay[_dateOnly(day)] ?? const [];
   }
 
   @override
   Widget build(BuildContext context) {
+    if (loading) {
+      return const Scaffold(
+        backgroundColor: AppColors.appBgColor,
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+    if (error != null) {
+      return Scaffold(
+        backgroundColor: AppColors.appBgColor,
+        body: Center(child: Text("Hata: $error")),
+      );
+    }
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
       appBar: AppBar(
@@ -137,20 +184,6 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                   enabledDayPredicate: (d) => _isActiveDay(d) && !_isFuture(d),
                   onPageChanged: (fd) => setState(
                       () => _focusedMonth = DateTime(fd.year, fd.month, 1)),
-                  onDaySelected: (selected, focused) {
-                    if (!_isActiveDay(selected) || _isFuture(selected)) return;
-                    setState(() {
-                      _selectedDay = selected;
-                      _focusedMonth = DateTime(focused.year, focused.month, 1);
-                    });
-                    /*
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (_) => _EventSheet(
-                            day: selected, events: _eventsOf(selected)),
-                      );
-                     */
-                  },
                   calendarStyle: CalendarStyle(
                     outsideDaysVisible: false,
                     cellPadding: EdgeInsets.zero,
@@ -171,6 +204,24 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  onDaySelected: (selected, focused) async {
+                    setState(() {
+                      _selectedDay = selected;
+                    });
+
+                    await showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: false,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(16)),
+                      ),
+                      builder: (_) => _EventSheet(
+                        day: selected,
+                        events: _eventsOf(selected),
+                      ),
+                    );
+                  },
                   calendarBuilders: CalendarBuilders(
                     defaultBuilder: (ctx, day, _) {
                       final isToday = isSameDay(day, _today);
@@ -182,10 +233,11 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                       );
                     },
                     disabledBuilder: (ctx, day, _) {
-                      if (isSameDay(day, _today)) {
+                      final isToday = isSameDay(day, _today);
+                      if (isToday) {
                         return _ActiveDayCell(
                           day: day,
-                          isToday: true,
+                          isToday: isToday,
                           selected: isSameDay(_selectedDay, day),
                           events: _eventsOf(day),
                         );
@@ -194,7 +246,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                     },
                     markerBuilder: (ctx, day, events) {
                       if (events.isEmpty) return const SizedBox.shrink();
-                      final e = events.cast<DailyEvent>().take(2).toList();
+                      final e = events.toList();
                       return Positioned(
                         bottom: 10,
                         left: 0,
@@ -203,14 +255,21 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(e.length, (i) {
                             final color = e[i].isDone
-                                ? AppColors.kLightGreenColor
+                                ? (day.day == DateTime.now().day
+                                    ? AppColors.kCalendarLightGreenColor
+                                    : AppColors.kDarkGreenColor)
                                 : AppColors.kCalendarLockTextColor;
+                            const borderColor = Colors.white;
                             return Container(
-                              width: 8,
-                              height: 8,
+                              width: 9,
+                              height: 9,
                               margin: EdgeInsets.only(right: i == 0 ? 3 : 0),
                               decoration: BoxDecoration(
-                                  color: color, shape: BoxShape.circle),
+                                color: color,
+                                shape: BoxShape.circle,
+                                border:
+                                    Border.all(width: .5, color: borderColor),
+                              ),
                             );
                           }),
                         ),
@@ -277,7 +336,20 @@ class _ActiveDayCell extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () {}, // tap event TableCalendar’dan geliyor (onDaySelected)
+        onTap: () async {
+          await showModalBottomSheet(
+            context: context,
+            isScrollControlled: false,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+            ),
+            builder: (_) => _EventSheet(
+              day: day,
+              events:
+                  events, // <-- buradaki events zaten _ActiveDayCell'e geliyor
+            ),
+          );
+        }, // tap event TableCalendar’dan geliyor (onDaySelected)
         borderRadius: BorderRadius.circular(10),
         splashColor: Colors.black12,
         child: Stack(
@@ -291,6 +363,56 @@ class _ActiveDayCell extends StatelessWidget {
             // Dot’lar calendarBuilders.markerBuilder ile ekleniyor (Positioned bottom)
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _EventSheet extends StatelessWidget {
+  const _EventSheet({required this.day, required this.events});
+  final DateTime day;
+  final List<DailyEvent> events;
+
+  @override
+  Widget build(BuildContext context) {
+    // Local kopya: StatefulBuilder ile sheet içinde anlık güncelleme
+    final local =
+        events.map((e) => DailyEvent(id: e.id, isDone: e.isDone)).toList();
+
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).padding.bottom + 16,
+        left: 16,
+        right: 16,
+        top: 12,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 40,
+            height: 4,
+            decoration: BoxDecoration(
+              color: const Color(0xFFE5E7EB),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text('${day.day}.${day.month}.${day.year}',
+              style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          ...local.map((e) => ListTile(
+                dense: true,
+                leading: Icon(
+                  e.isDone ? Icons.check_circle : Icons.radio_button_unchecked,
+                  color: e.isDone ? Colors.green : Colors.red,
+                ),
+                title: Text('Activity ${e.id}',
+                    style: const TextStyle(fontWeight: FontWeight.w600)),
+                subtitle: Text(e.isDone ? 'Completed' : 'Pending'),
+              )),
+          const SizedBox(height: 8),
+        ],
       ),
     );
   }
@@ -356,52 +478,6 @@ class _Legend extends StatelessWidget {
             style: const TextStyle(
                 color: _StyledCalendarPageState.kMuted, fontSize: 12)),
       ],
-    );
-  }
-}
-
-class _EventSheet extends StatelessWidget {
-  const _EventSheet({required this.day, required this.events});
-  final DateTime day;
-  final List<DailyEvent> events;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).padding.bottom + 16,
-          left: 16,
-          right: 16,
-          top: 12),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFE5E7EB),
-                  borderRadius: BorderRadius.circular(2))),
-          const SizedBox(height: 10),
-          Text('${day.day}.${day.month}.${day.year}',
-              style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: 8),
-          ...events.map((e) => ListTile(
-                dense: true,
-                leading: Icon(
-                    e.isDone
-                        ? Icons.check_circle
-                        : Icons.radio_button_unchecked,
-                    color: e.isDone
-                        ? _StyledCalendarPageState.kDotDone
-                        : _StyledCalendarPageState.kDotPending),
-                title: Text('Event ${e.id}',
-                    style: const TextStyle(fontWeight: FontWeight.w600)),
-                subtitle: Text(e.isDone ? 'Completed' : 'Pending'),
-              )),
-          const SizedBox(height: 8),
-        ],
-      ),
     );
   }
 }
