@@ -10,7 +10,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool _obscure = true;
@@ -34,18 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 32),
-                  TextField(
-                    controller: usernameController,
-                    decoration: InputDecoration(
-                      labelText: "Kullanıcı adı",
-                      prefixIcon: const Icon(Icons.person_outline),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  const SizedBox(height: 18),
                   TextField(
                     controller: emailController,
                     decoration: InputDecoration(
@@ -82,7 +69,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       onPressed: () async {
                         await authenticationService.registerAndSaveUser(
                             email: emailController.text,
-                            name: usernameController.text,
                             password: passwordController.text,
                             context: context);
                       }, // Sen bağlayacaksın

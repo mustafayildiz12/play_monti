@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/service/authentication_service.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
@@ -33,7 +34,6 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   // Palette (önceki ekranlarla uyumlu)
-  static const bg = Color(0xFFF9F5F0);
   static const textDark = Color(0xFF333333);
   static const textMuted = Color(0xFF666666);
   static const textHint = Color(0xFF999999);
@@ -54,8 +54,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
       appBar: AppBar(backgroundColor: AppColors.appBgColor),
@@ -261,6 +259,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     'Made with 🌱 for growing minds',
                     style: TextStyle(color: textHint, fontSize: 12),
                   ),
+                  const SizedBox(height: 12),
+                  TextButton(
+                      onPressed: () async {
+                        await authenticationService.logoutFromFirebase(context);
+                      },
+                      child: const Text("Çıkış Yap"))
                 ],
               ),
             ),

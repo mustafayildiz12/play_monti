@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
@@ -19,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.appBgColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28.0),
@@ -67,6 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     height: 48,
                     child: ElevatedButton(
+                      style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(AppColors.kButtonColor2),
+                        foregroundColor: WidgetStatePropertyAll(AppColors.kCalendarLightGreenColor)
+                      ),
                       onPressed: () async {
                         await authenticationService.login(context,
                             email: emailController.text,

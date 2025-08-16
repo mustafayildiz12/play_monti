@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/database_service.dart';
 
 class OnboardingFlow extends StatefulWidget {
@@ -53,15 +56,16 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
     }
   ];
 
-  void _handleNext() {
+  Future<void> _handleNext() async {
     if (_step < 3) {
       setState(() {
         _step++;
       });
     } else {
-
-      databaseService.updateUserTimeData(
+      await databaseService.updateUserTimeData(
           ageActivity: _ageGroup, userName: _name, language: _language);
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.navigationBarPage, (_) => false);
     }
   }
 
@@ -429,8 +433,9 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         child: ElevatedButton(
           onPressed: _canProceed() ? _handleNext : null,
           style: ElevatedButton.styleFrom(
-            backgroundColor:
-                _canProceed() ? AppColors.kButtonGreenColor : const Color(0xFFC2B9A1),
+            backgroundColor: _canProceed()
+                ? AppColors.kButtonGreenColor
+                : const Color(0xFFC2B9A1),
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

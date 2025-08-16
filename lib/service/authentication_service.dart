@@ -50,10 +50,18 @@ class AuthenticationService {
         final bool isUserDataExist = await databaseService
             .getAdminBasicInfoFromRealTime(userCredential.user!.uid);
 
+        final bool isUserDetailExist =
+            await databaseService.isUserDetailExist(userCredential.user!.uid);
+
         if (isUserExist && isUserDataExist) {
           if (currentTercihUser?.status != 1) {
-            await Navigator.pushNamedAndRemoveUntil(
-                context, AppRoutes.navigationBarPage, (route) => false);
+            if (isUserDetailExist) {
+              await Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.navigationBarPage, (route) => false);
+            } else {
+              await Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.onboFlowPage, (route) => false);
+            }
           } else {
             customSnackBar.error(
                 "Bu hesap silinmiş. Lütfen farklı bir hesap ile tekrar deneyiniz.");
@@ -83,7 +91,6 @@ class AuthenticationService {
   /// Hata durumunda uygun hata mesajını gösterir.
   Future<void> registerAndSaveUser({
     required String email,
-    required String name,
     required String password,
     required BuildContext context,
   }) async {
@@ -96,7 +103,6 @@ class AuthenticationService {
           databaseService.addUserToRealTime(
             MontiUserModel(
                 uid: credential.user!.uid,
-                userName: name,
                 userEmail: email,
                 userPassword: password,
                 createDateTimeStamp: DateTime.now().millisecondsSinceEpoch),
@@ -107,7 +113,7 @@ class AuthenticationService {
             .getAdminBasicInfoFromRealTime(credential.user!.uid);
 
         await Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.navigationBarPage, (route) => false);
+            context, AppRoutes.onboFlowPage, (route) => false);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -160,7 +166,7 @@ class AuthenticationService {
         await localStorage.erase();
 
         await Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.navigationBarPage, (route) => false);
+            context, AppRoutes.loginPage, (route) => false);
       }
     } catch (e) {
       print(e.toString());
@@ -195,6 +201,9 @@ class AuthenticationService {
         final bool isUserDataExist =
             await databaseService.getAdminBasicInfoFromRealTime(uid);
 
+        final bool isUserDetailExist =
+            await databaseService.isUserDetailExist(uid);
+
         if (!isUserDataExist) {
           final Map<String, dynamic>? profile =
               userCredential.additionalUserInfo?.profile;
@@ -211,8 +220,13 @@ class AuthenticationService {
           });
         }
 
-        await Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.navigationBarPage, (route) => false);
+        if (isUserDetailExist) {
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.navigationBarPage, (route) => false);
+        } else {
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.onboFlowPage, (route) => false);
+        }
       } else {
         debugPrint("User bulunamadı.");
       }

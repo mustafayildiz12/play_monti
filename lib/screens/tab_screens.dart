@@ -7,7 +7,6 @@ import 'package:play_monti/screens/Favorites/favorites_screen.dart';
 import 'package:play_monti/screens/Guide/guide_screen.dart';
 import 'package:play_monti/screens/Home/home_screen.dart';
 import 'package:play_monti/screens/Settings/settings_screen.dart';
-import 'package:play_monti/screens/dummy_screens.dart';
 
 class MainTabNavigator extends StatefulWidget {
   const MainTabNavigator({super.key});

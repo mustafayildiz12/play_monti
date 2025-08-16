@@ -6,7 +6,9 @@ class MontiUserModel {
       this.userEmail,
       this.status,
       this.createDateTimeStamp,
-      this.deviceId});
+      this.deviceId,
+      this.ageActivity,
+      this.selectedLanguage});
 
   factory MontiUserModel.fromMap(Map<String, dynamic> map) {
     return MontiUserModel(
@@ -17,15 +19,18 @@ class MontiUserModel {
       status: map["status"],
       deviceId: map["deviceId"],
       createDateTimeStamp: map["createDateTimeStamp"] ?? 0,
+      ageActivity: map['ageActivity'],
     );
   }
-  String? userName;
-  String? userPassword;
-  String? uid;
-  String? userEmail;
-  int? status;
-  int? createDateTimeStamp;
-  String? deviceId;
+  final String? userName;
+  final String? userPassword;
+  final String? uid;
+  final String? userEmail;
+  final int? status;
+  final int? createDateTimeStamp;
+  final String? deviceId;
+  final String? ageActivity;
+  final String? selectedLanguage;
 
   Map<String, dynamic> toMap() {
     return {
@@ -35,7 +40,9 @@ class MontiUserModel {
       "userEmail": userEmail,
       "status": status,
       "createDateTimeStamp": createDateTimeStamp,
-      "deviceId": deviceId
+      "deviceId": deviceId,
+      'ageActivity': ageActivity,
+      'selectedLanguage': selectedLanguage
     };
   }
 }

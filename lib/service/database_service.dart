@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,28 @@ class DatabaseService {
     if (userModel != null) {
       isExist = true;
       currentTercihUser = userModel;
+      /*
+      if (userModel.isAnonymous == false) {
+        await InAppPurchaseService().loginSubscription();
+      }
+       */
+    }
+
+    return isExist;
+  }
+
+  Future<bool> isUserDetailExist(String userId) async {
+    bool isExist = false;
+
+    final MontiUserModel? userModel =
+        await getDataFromRealtimeDatabase<MontiUserModel?>(
+            "users/$userId", (d) => MontiUserModel.fromMap(d));
+
+    if (userModel != null &&
+        userModel.ageActivity != null &&
+        userModel.userName != null) {
+      isExist = true;
+
       /*
       if (userModel.isAnonymous == false) {
         await InAppPurchaseService().loginSubscription();

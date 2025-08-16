@@ -131,7 +131,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                                   await infoStorage.write("onboarding", true);
                                   await Navigator.of(context)
                                       .pushReplacementNamed(
-                                          AppRoutes.onboFlowPage);
+                                          AppRoutes.loginPage);
                                 },
                           child: _currentIndex < _pages.length - 1
                               ? const Row(

@@ -34,8 +34,14 @@ Future<void> main() async {
   if (user != null) {
     final bool isUserExist =
         await databaseService.getAdminBasicInfoFromRealTime(user.uid);
+    final bool isUserDetailExist =
+        await databaseService.isUserDetailExist(user.uid);
     if (isUserExist) {
-      AppRoutes.initialRoute = AppRoutes.navigationBarPage;
+      if (isUserDetailExist) {
+        AppRoutes.initialRoute = AppRoutes.navigationBarPage;
+      } else {
+        AppRoutes.initialRoute = AppRoutes.onboFlowPage;
+      }
     } else {
       AppRoutes.initialRoute = AppRoutes.loginPage;
     }
