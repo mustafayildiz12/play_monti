@@ -30,7 +30,7 @@ class AppPages {
       page: () => const MainTabNavigator(),
     ),
     GetPage(
-      name: AppRoutes.activityDetailPage,
+      name: "${AppRoutes.activityDetailPage}/:id/:date",
       page: () => const ActivityDetailPage(),
     ),
   ];

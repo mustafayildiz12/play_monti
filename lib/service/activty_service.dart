@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
 /// TercihService sınıfı, Firebase Realtime Database ile etkileşim için gerekli metodları içerir.
@@ -7,15 +8,15 @@ import 'package:play_monti/service/authentication_service.dart';
 class ActivityService {
   final FirebaseDatabase _realtimeDatabase = FirebaseDatabase.instance;
 
-  DatabaseReference _refFor(String uid, DateTime dateTime, String activityId) {
-    final key = dateKey(dateTime);
-      String group = currentMontiUser!.ageActivity!;
-    return _realtimeDatabase.ref('userActivities/$uid/$group/$key/$activityId');
+  DatabaseReference _refFor(String uid, String dateTime, String activityId) {
+    String group = currentMontiUser!.ageActivity!;
+    return _realtimeDatabase
+        .ref('userActivities/$uid/$group/$dateTime/$activityId');
   }
 
   /// Yapıldı olarak işaretle
   Future<void> markDone({
-    required DateTime day,
+    required String day,
     required String activityId,
   }) async {
     final uid = authenticationService.getUser()!.uid;
@@ -27,7 +28,7 @@ class ActivityService {
 
   /// Geri al (yapılmadı)
   Future<void> markUndone({
-    required DateTime day,
+    required String day,
     required String activityId,
   }) async {
     final uid = authenticationService.getUser()!.uid;
@@ -35,16 +36,15 @@ class ActivityService {
   }
 
   Future<bool> isMarked({
-    required DateTime dateTime,
+    required String dateTime,
     required String activityId,
   }) async {
     final uid = authenticationService.getUser()!.uid;
-    final key = dateKey(dateTime);
 
     String group = currentMontiUser!.ageActivity!;
 
-    final ref =
-        _realtimeDatabase.ref('userActivities/$uid/$group/$key/$activityId');
+    final ref = _realtimeDatabase
+        .ref('userActivities/$uid/$group/$dateTime/$activityId');
     final snap = await ref.get();
 
     if (!snap.exists || snap.value == null) {
@@ -66,6 +66,62 @@ class ActivityService {
     return "${day.year.toString().padLeft(4, '0')}-"
         "${day.month.toString().padLeft(2, '0')}-"
         "${day.day.toString().padLeft(2, '0')}";
+  }
+
+  Future<String?> getIndexActivityName({
+    required String dayIndex,
+  }) async {
+    final String group = currentMontiUser!.ageActivity!;
+
+    final DatabaseReference ref = _realtimeDatabase.ref(group);
+
+    final DataSnapshot snapshot = await ref.get();
+
+    if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
+      final Map<String, dynamic> data =
+          Map<String, dynamic>.from(snapshot.value as Map);
+
+      for (final entry in data.entries) {
+        final Map<String, dynamic> activityData =
+            Map<String, dynamic>.from(entry.value);
+
+        ActivityListModel model = ActivityListModel.fromJson(activityData);
+
+        if (model.day.toString() == dayIndex) {
+          return model.activityName;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  Future<ActivityListModel?> getActivityDetail({
+    required String dayIndex,
+  }) async {
+    final String group = currentMontiUser!.ageActivity!;
+
+    final DatabaseReference ref = _realtimeDatabase.ref(group);
+
+    final DataSnapshot snapshot = await ref.get();
+
+    if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
+      final Map<String, dynamic> data =
+          Map<String, dynamic>.from(snapshot.value as Map);
+
+      for (final entry in data.entries) {
+        final Map<String, dynamic> activityData =
+            Map<String, dynamic>.from(entry.value);
+
+        ActivityListModel model = ActivityListModel.fromJson(activityData);
+
+        if (model.day.toString() == dayIndex) {
+          return model;
+        }
+      }
+    }
+
+    return null;
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
 import 'package:play_monti/service/database_service.dart';
@@ -221,8 +222,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> getTodaysActivities() async {
-    List<ActivityListModel> todaysA =
-        await databaseService.getTodayActivities(activitiesPath: "18-24");
+    List<ActivityListModel> todaysA = await databaseService.getTodayActivities(
+        activitiesPath: currentMontiUser!.ageActivity!);
 
     setState(() {
       todaysActivities = todaysA;

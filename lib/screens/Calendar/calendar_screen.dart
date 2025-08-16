@@ -1,15 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:play_monti/constants/app_constants.dart';
-import 'package:play_monti/service/calendar_repository.dart';
+import 'package:play_monti/constants/app_routes.dart';
+import 'package:play_monti/service/activty_service.dart';
+import 'package:play_monti/service/calendar_service.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'package:play_monti/constants/app_colors.dart';
 
 class DailyEvent {
   final String id;
-  final bool isDone; // true: tamamlandı (yeşil), false: bekliyor (bej)
-  DailyEvent({required this.id, required this.isDone});
+  final bool isDone;
+  String? activityName;
+  DailyEvent({required this.id, required this.isDone, this.activityName});
 }
 
 class StyledCalendarPage extends StatefulWidget {
@@ -205,22 +209,21 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                     ),
                   ),
                   onDaySelected: (selected, focused) async {
-                    setState(() {
-                      _selectedDay = selected;
-                    });
+                    List<DailyEvent> events = _eventsOf(selected);
 
-                    await showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: false,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(16)),
-                      ),
-                      builder: (_) => _EventSheet(
-                        day: selected,
-                        events: _eventsOf(selected),
-                      ),
-                    );
+                    String? firstActivity = await activityService
+                        .getIndexActivityName(dayIndex: events.first.id);
+                    String? secondActivity = await activityService
+                        .getIndexActivityName(dayIndex: events.last.id);
+
+                    if (firstActivity != null) {
+                      events.first.activityName = firstActivity;
+                    }
+                    if (secondActivity != null) {
+                      events.last.activityName = secondActivity;
+                    }
+
+                    await calendarBottomSheet(selected, events);
                   },
                   calendarBuilders: CalendarBuilders(
                     defaultBuilder: (ctx, day, _) {
@@ -230,6 +233,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                         isToday: isToday,
                         selected: isSameDay(_selectedDay, day),
                         events: _eventsOf(day),
+                        onBack: _loadCalendar,
                       );
                     },
                     disabledBuilder: (ctx, day, _) {
@@ -240,6 +244,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                           isToday: isToday,
                           selected: isSameDay(_selectedDay, day),
                           events: _eventsOf(day),
+                          onBack: _loadCalendar,
                         );
                       }
                       return _LockedDayCell(day: day);
@@ -305,20 +310,46 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
       ),
     );
   }
+
+  Future<void> calendarBottomSheet(
+      DateTime selected, List<DailyEvent> events) async {
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: false,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) => _EventSheet(
+        day: selected,
+        events: events,
+      ),
+    ).then((value) {
+      if (value != null && value is List) {
+        String id = value.first;
+        String dateKey = activityService.dateKey(value.last);
+        Navigator.pushNamed(
+                context, "${AppRoutes.activityDetailPage}/$id/$dateKey")
+            .then((_) async {
+          await _loadCalendar();
+        });
+      }
+    });
+  }
 }
 
 class _ActiveDayCell extends StatelessWidget {
-  const _ActiveDayCell({
-    required this.day,
-    required this.isToday,
-    required this.selected,
-    required this.events,
-  });
+  const _ActiveDayCell(
+      {required this.day,
+      required this.isToday,
+      required this.selected,
+      required this.events,
+      required this.onBack});
 
   final DateTime day;
   final bool isToday;
   final bool selected;
   final List<DailyEvent> events;
+  final Function onBack;
 
   static const kText = _StyledCalendarPageState.kText;
 
@@ -337,6 +368,18 @@ class _ActiveDayCell extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () async {
+          String? firstActivity = await activityService.getIndexActivityName(
+              dayIndex: events.first.id);
+          String? secondActivity = await activityService.getIndexActivityName(
+              dayIndex: events.last.id);
+
+          if (firstActivity != null) {
+            events.first.activityName = firstActivity;
+          }
+          if (secondActivity != null) {
+            events.last.activityName = secondActivity;
+          }
+
           await showModalBottomSheet(
             context: context,
             isScrollControlled: false,
@@ -348,7 +391,17 @@ class _ActiveDayCell extends StatelessWidget {
               events:
                   events, // <-- buradaki events zaten _ActiveDayCell'e geliyor
             ),
-          );
+          ).then((value) async {
+            if (value != null && value is List) {
+              String id = value.first;
+              String date = activityService.dateKey(day);
+              await Navigator.pushNamed(
+                      context, "${AppRoutes.activityDetailPage}/$id/$date")
+                  .then((_) async {
+                onBack();
+              });
+            }
+          });
         }, // tap event TableCalendar’dan geliyor (onDaySelected)
         borderRadius: BorderRadius.circular(10),
         splashColor: Colors.black12,
@@ -369,16 +422,16 @@ class _ActiveDayCell extends StatelessWidget {
 }
 
 class _EventSheet extends StatelessWidget {
-  const _EventSheet({required this.day, required this.events});
+  const _EventSheet({
+    required this.day,
+    required this.events,
+  });
+
   final DateTime day;
   final List<DailyEvent> events;
 
   @override
   Widget build(BuildContext context) {
-    // Local kopya: StatefulBuilder ile sheet içinde anlık güncelleme
-    final local =
-        events.map((e) => DailyEvent(id: e.id, isDone: e.isDone)).toList();
-
     return Padding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).padding.bottom + 16,
@@ -389,6 +442,7 @@ class _EventSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // drag handle
           Container(
             width: 40,
             height: 4,
@@ -397,26 +451,76 @@ class _EventSheet extends StatelessWidget {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          const SizedBox(height: 10),
-          Text('${day.day}.${day.month}.${day.year}',
-              style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: 8),
-          ...local.map((e) => ListTile(
-                dense: true,
-                leading: Icon(
-                  e.isDone ? Icons.check_circle : Icons.radio_button_unchecked,
-                  color: e.isDone ? Colors.green : Colors.red,
+          const SizedBox(height: 12),
+
+          // Başlık satırı: Tarih + durum etiketi
+          Text(
+            DateFormat('d MMMM y EEEE', 'tr_TR')
+                .format(day), // 16 Ağustos 2025 Cumartesi
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
                 ),
-                title: Text('Activity ${e.id}',
-                    style: const TextStyle(fontWeight: FontWeight.w600)),
-                subtitle: Text(e.isDone ? 'Completed' : 'Pending'),
-              )),
+          ),
           const SizedBox(height: 8),
+          const Divider(height: 1),
+
+          // Aktiviteler
+          ...events.map((e) {
+            return Column(
+              children: [
+                ListTile(
+                  dense: false,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+                  leading: Icon(
+                    e.isDone
+                        ? Icons.check_circle_rounded
+                        : Icons.radio_button_unchecked,
+                    color: e.isDone
+                        ? const Color(0xFF6BAA75)
+                        : const Color(0xFFC2B9A1),
+                    size: 24,
+                  ),
+                  title: Text(
+                    // DailyEvent'e activityName/title eklediysen onu göster,
+                    // yoksa fallback:
+                    ((e as dynamic).activityName != null)
+                        ? (e as dynamic).activityName as String
+                        : 'Activity ${e.id}',
+                    style: const TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  subtitle: Text(
+                    e.isDone ? 'Completed' : 'Pending',
+                    style: TextStyle(
+                      color: e.isDone
+                          ? const Color(0xFF6BAA75)
+                          : const Color(0xFF666666),
+                    ),
+                  ),
+                  // Sağda "Git" butonu
+                  trailing: TextButton.icon(
+                    onPressed: () async {
+                      // Önce sheet’i kapat, sonra navigasyon
+                      Navigator.pop(context, [e.id, day]);
+                    },
+                    icon: const Icon(Icons.open_in_new, size: 18),
+                    label: const Text('Git'),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
+                    ),
+                  ),
+                ),
+                const Divider(height: 1),
+              ],
+            );
+          }),
         ],
       ),
     );
   }
 }
+
+// Küçük yardımcı (renk koyulaştırma)
 
 class _LockedDayCell extends StatelessWidget {
   const _LockedDayCell({required this.day});

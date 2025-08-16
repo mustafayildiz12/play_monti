@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/jsonfiles/18-24.dart';
 import 'package:play_monti/constants/jsonfiles/24-36.dart';
+import 'package:play_monti/constants/jsonfiles/36-48.dart';
 import 'package:play_monti/constants/jsonfiles/48-60.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/service/database_service.dart';
@@ -42,7 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 16),
           TextButton(
             onPressed: () async {
-              for (var element in firstList) {
+              for (var element in thirdList) {
                 await databaseService.add3648(item: element);
               }
             },
