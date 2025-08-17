@@ -16,7 +16,7 @@ class CalendarService {
     final DateTime today = DateTime.now();
     final DateTime start = DateTime(
         registrationDate.year, registrationDate.month, registrationDate.day);
-    final DateTime end = DateTime(today.year, today.month, today.day);
+    final DateTime end = DateTime(today.year, today.month, today.day + 3);
 
     // 1) Kullanıcının TÜM gün tamamlanmalarını tek seferde al
     final DataSnapshot allDaysSnap =

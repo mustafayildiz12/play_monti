@@ -3,15 +3,18 @@ import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activity_card.dart';
-import 'package:play_monti/service/activty_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ActivitiesCarousel extends StatefulWidget {
   final List<ActivityListModel> activities;
   final double cardWidth;
+  final String dateKey;
 
   const ActivitiesCarousel(
-      {super.key, required this.activities, required this.cardWidth});
+      {super.key,
+      required this.activities,
+      required this.cardWidth,
+      required this.dateKey});
 
   @override
   State<ActivitiesCarousel> createState() => _ActivitiesCarouselState();
@@ -69,9 +72,9 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                     activity: activity,
                     onTap: () async {
                       String id = activity.day.toString();
-                      String dateKey = activityService.dateKey(DateTime.now());
+
                       await Navigator.pushNamed(context,
-                          "${AppRoutes.activityDetailPage}/$id/$dateKey");
+                          "${AppRoutes.activityDetailPage}/$id/${widget.dateKey}");
                     },
                   ),
                 ),

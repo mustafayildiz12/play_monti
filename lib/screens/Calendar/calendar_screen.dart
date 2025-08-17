@@ -79,19 +79,24 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
     }
   }
 
+  DateTime get _maxEnabledDate =>
+      _dateOnly(_today.add(const Duration(days: 3)));
+
   DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);
 
   bool _isActiveDay(DateTime day) {
     if (_registrationDate == null) return false;
     final d = _dateOnly(day);
     final start = _registrationDate!;
-    // start <= d <= today  (bugün de dahil)
+    final end = _maxEnabledDate; // bugün + 3
     return (d.isAtSameMomentAs(start) || d.isAfter(start)) &&
-            (d.isAtSameMomentAs(_today) || d.isBefore(_today)) ||
-        d.isAtSameMomentAs(_today);
+        (d.isAtSameMomentAs(end) || d.isBefore(end));
   }
 
-  bool _isFuture(DateTime day) => _dateOnly(day).isAfter(_today);
+  bool _isFuture(DateTime day) {
+    // bugün + 3'ten sonrası "future"
+    return _dateOnly(day).isAfter(_maxEnabledDate);
+  }
 
   List<DailyEvent> _eventsOf(DateTime day) {
     return _eventsByDay[_dateOnly(day)] ?? const [];

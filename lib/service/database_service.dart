@@ -205,6 +205,15 @@ class DatabaseService {
     return list;
   }
 
+  /// 5) Seçili gündeki gösterilecek iki aktivite
+  Future<List<ActivityListModel>> getSelectedDayActivities(
+      {required String activitiesPath, required int dayIndex}) async {
+    final days = _dayNumbersForIndex(dayIndex);
+    // Aktiviteleri çek ve sadece gerekli 2 "day"i filtrele
+    final list = await getActivities(path: activitiesPath, onlyDays: days);
+    return list;
+  }
+
   Future<List<ActivityListModel>> getActivities({
     required String path,
     List<int>? onlyDays, // sadece bu day’leri döndürmek için

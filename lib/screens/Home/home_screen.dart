@@ -3,6 +3,7 @@ import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
+import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/database_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,12 +18,17 @@ class _HomeScreenState extends State<HomeScreen> {
   final String userName = "Guest";
 
   final int completedCount = 8;
+
+  int currentDayIndex = 0;
+  int initialDayIndex = 0;
+
+  List<int> dayIndexes = [];
   // Örnek ilerleme
   List<ActivityListModel> todaysActivities = [];
 
   @override
   void initState() {
-    getTodaysActivities();
+    getPageData();
     super.initState();
   }
 
@@ -157,9 +163,51 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Today's Activities",
-                  style: TextStyle(
+                SizedBox(
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(dayIndexes.length, (index) {
+                      int number = dayIndexes[index];
+                      bool isSelected = currentDayIndex == number;
+
+                      return GestureDetector(
+                        onTap: () async {
+                          await getSelectedDayActivities(number);
+                          setState(() {
+                            currentDayIndex = number;
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: isSelected
+                                    ? AppColors.kDarkGreenColor
+                                    : AppColors.kCalendarLockTextColor),
+                            alignment: Alignment.center,
+                            child: Text(
+                              number.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  initialDayIndex == currentDayIndex
+                      ? "Today's Activities"
+                      : "$currentDayIndex. Gün",
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                     color: AppColors.kTitleBlackTextColor,
@@ -170,6 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? ActivitiesCarousel(
                         activities: todaysActivities, // List<Activity>
                         cardWidth: cardWidth,
+                        dateKey: getDateKey(),
                       )
                     : const Center(
                         child: Text("Aktivite Bulunamadı."),
@@ -221,9 +270,82 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  String getDateKey() {
+    DateTime dateTime = DateTime.now();
+    if (initialDayIndex == currentDayIndex) {
+      dateTime = DateTime.now();
+    } else if (initialDayIndex > currentDayIndex) {
+      int difference = initialDayIndex - currentDayIndex;
+      dateTime =
+          DateTime(dateTime.year, dateTime.month, (dateTime.day - difference));
+    } else if (initialDayIndex < currentDayIndex) {
+      int difference = currentDayIndex - initialDayIndex;
+      dateTime =
+          DateTime(dateTime.year, dateTime.month, (dateTime.day + difference));
+    }
+
+    return activityService.dateKey(dateTime);
+  }
+
+  Future<void> getPageData() async {
+    int currentDay = await databaseService.getCurrentDayIndex();
+
+    setState(() {
+      currentDayIndex = currentDay;
+      initialDayIndex = currentDay;
+    });
+    if (currentDayIndex > 3) {
+      dayIndexes = [
+        currentDayIndex - 3,
+        currentDayIndex - 2,
+        currentDayIndex - 1,
+        currentDayIndex,
+        currentDayIndex + 1,
+        currentDayIndex + 2,
+        currentDayIndex + 3
+      ];
+    } else if (currentDayIndex == 1) {
+      dayIndexes = [
+        currentDayIndex,
+        currentDayIndex + 1,
+        currentDayIndex + 2,
+        currentDayIndex + 3
+      ];
+    } else if (currentDayIndex == 2) {
+      dayIndexes = [
+        currentDayIndex - 1,
+        currentDayIndex,
+        currentDayIndex + 1,
+        currentDayIndex + 2,
+        currentDayIndex + 3
+      ];
+    } else if (currentDayIndex == 3) {
+      dayIndexes = [
+        currentDayIndex - 2,
+        currentDayIndex - 1,
+        currentDayIndex,
+        currentDayIndex + 1,
+        currentDayIndex + 2,
+        currentDayIndex + 3
+      ];
+    }
+
+    getTodaysActivities();
+  }
+
   Future<void> getTodaysActivities() async {
     List<ActivityListModel> todaysA = await databaseService.getTodayActivities(
         activitiesPath: currentMontiUser!.ageActivity!);
+
+    setState(() {
+      todaysActivities = todaysA;
+    });
+  }
+
+  Future<void> getSelectedDayActivities(int dayIndex) async {
+    List<ActivityListModel> todaysA =
+        await databaseService.getSelectedDayActivities(
+            activitiesPath: currentMontiUser!.ageActivity!, dayIndex: dayIndex);
 
     setState(() {
       todaysActivities = todaysA;
