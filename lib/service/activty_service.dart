@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
 /// TercihService sınıfı, Firebase Realtime Database ile etkileşim için gerekli metodları içerir.
@@ -122,6 +123,17 @@ class ActivityService {
     }
 
     return null;
+  }
+
+  Future<void> addWeeklyActivity(
+      {required String ageGroup,
+      required String language,
+      required FinalActivityModel activityModel}) async {
+    String milliSecondTime = DateTime.now().millisecondsSinceEpoch.toString();
+    await _realtimeDatabase
+        .ref("$ageGroup/$language")
+        .child(milliSecondTime)
+        .set(activityModel.toJson());
   }
 }
 

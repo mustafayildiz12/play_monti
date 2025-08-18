@@ -9,4 +9,6 @@ class AppRoutes {
   static String navigationBarPage = "/navigationBar";
 
   static String activityDetailPage = "/activityDetail";
+
+  static String uploadActivityPage = "/uploadActivity";
 }
