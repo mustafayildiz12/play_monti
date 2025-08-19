@@ -18,7 +18,7 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
   final TextEditingController csvFileNameController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final List<FinalActivityModel> excelItems = [];
+  List<FinalActivityModel> excelItems = [];
 
   String selectedAgeType = "18-24";
   List<String> ageTypes = ["18-24", "24-36", "36-48", "48-60"];
@@ -226,7 +226,7 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
           }
 
           if (hataOlanSatirlar.isEmpty) {
-            await addProjects(excelItems);
+            await addProjects();
           }
         }
       } catch (e) {
@@ -235,15 +235,16 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
     }
   }
 
-  Future<void> addProjects(List<FinalActivityModel> activityModel) async {
+  Future<void> addProjects() async {
     try {
-      for (var e in activityModel) {
+      for (var e in excelItems) {
         await activityService.addWeeklyActivity(
             ageGroup: selectedAgeType,
             language: selectedLanguage,
             activityModel: e);
       }
       customSnackBar.success("Başarılı");
+      excelItems = [];
     } catch (e) {
       customSnackBar.error("$e");
     }

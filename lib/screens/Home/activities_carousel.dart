@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
-import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/screens/Home/activity_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ActivitiesCarousel extends StatefulWidget {
-  final List<ActivityListModel> activities;
+  final List<FinalActivityModel> activities;
   final double cardWidth;
   final String dateKey;
 
@@ -64,7 +64,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             controller: _pageController,
             itemCount: activityCount,
             itemBuilder: (context, index) {
-              ActivityListModel activity = widget.activities[index];
+              FinalActivityModel activity = widget.activities[index];
               return Center(
                 child: SizedBox(
                   width: widget.cardWidth,

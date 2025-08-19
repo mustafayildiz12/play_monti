@@ -30,7 +30,7 @@ class FinalActivityModel {
         activityName: json['activity_name'],
         ageGroup: json['age_group'],
         activityType: json['activity_type'],
-        improvementArea: json['improvement_name'],
+        improvementArea: json['improvement_area'],
         materials: json['materials'],
         stepByStep: json['step_by_step'],
         clue: json['clue'],

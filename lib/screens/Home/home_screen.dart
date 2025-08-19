@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
-import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/database_service.dart';
@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<int> dayIndexes = [];
   // Örnek ilerleme
-  List<ActivityListModel> todaysActivities = [];
+  List<FinalActivityModel> todaysActivities = [];
 
   @override
   void initState() {
@@ -47,116 +47,111 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // HEADER
-            Column(
+            Row(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Good morning, $userName!",
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.kTitleBlackTextColor,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          const Text(
-                            "Today's Montessori activities are ready",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: AppColors.kSubtitleTextColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: AppColors.kButtonGreenColor,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '🌱',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                // Progress Card
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  padding: const EdgeInsets.all(20),
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          const Text(
-                            "Monthly Progress",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.kTitleBlackTextColor,
-                            ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            "$completedCount/30",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.kButtonGreenColor,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        "Good morning, $userName!",
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.kTitleBlackTextColor,
+                        ),
                       ),
-                      const SizedBox(height: 12),
-                      // Progress Bar
-                      Stack(
-                        children: [
-                          Container(
-                            height: 8,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF0F0F0),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
-                          Container(
-                            height: 8,
-                            width: ((completedCount / 30) * width)
-                                .clamp(0, width - 88),
-                            decoration: BoxDecoration(
-                              color: AppColors.kButtonGreenColor,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 4),
                       const Text(
-                        "A new Montessori set unlocks each day",
+                        "Today's Montessori activities are ready",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: AppColors.kSubtitleTextColor,
                         ),
                       ),
                     ],
                   ),
                 ),
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: AppColors.kButtonGreenColor,
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      '🌱',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
               ],
+            ),
+            const SizedBox(height: 20),
+            // HEADER
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        "Monthly Progress",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.kTitleBlackTextColor,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        "$completedCount/30",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.kButtonGreenColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  // Progress Bar
+                  Stack(
+                    children: [
+                      Container(
+                        height: 8,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF0F0F0),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      Container(
+                        height: 8,
+                        width: ((completedCount / 30) * width)
+                            .clamp(0, width - 88),
+                        decoration: BoxDecoration(
+                          color: AppColors.kButtonGreenColor,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    "A new Montessori set unlocks each day",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.kSubtitleTextColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 16),
 
@@ -227,43 +222,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             // Daily Tip Section
             const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                gradient: const LinearGradient(
-                  colors: [
-                    AppColors.kDarkGreenColor,
-                    AppColors.kLightGreenColor
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              padding: const EdgeInsets.all(24),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "💡 Montessori Tip",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    "Let your child work at their own pace. The goal is concentration and independence, not speed.",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      height: 1.43,
-                      // opacity Flutter'da ayrı, burada işlevsel
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ),
@@ -334,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> getTodaysActivities() async {
-    List<ActivityListModel> todaysA = await databaseService.getTodayActivities(
+    List<FinalActivityModel> todaysA = await databaseService.getTodayActivities(
         activitiesPath: currentMontiUser!.ageActivity!);
 
     setState(() {
@@ -343,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> getSelectedDayActivities(int dayIndex) async {
-    List<ActivityListModel> todaysA =
+    List<FinalActivityModel> todaysA =
         await databaseService.getSelectedDayActivities(
             activitiesPath: currentMontiUser!.ageActivity!, dayIndex: dayIndex);
 

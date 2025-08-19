@@ -1,6 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:play_monti/constants/app_constants.dart';
-import 'package:play_monti/models/activity_list_model.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
@@ -74,7 +73,9 @@ class ActivityService {
   }) async {
     final String group = currentMontiUser!.ageActivity!;
 
-    final DatabaseReference ref = _realtimeDatabase.ref(group);
+    const String language = "/tr";
+
+    final DatabaseReference ref = _realtimeDatabase.ref(group + language);
 
     final DataSnapshot snapshot = await ref.get();
 
@@ -86,7 +87,7 @@ class ActivityService {
         final Map<String, dynamic> activityData =
             Map<String, dynamic>.from(entry.value);
 
-        ActivityListModel model = ActivityListModel.fromJson(activityData);
+        FinalActivityModel model = FinalActivityModel.fromJson(activityData);
 
         if (model.day.toString() == dayIndex) {
           return model.activityName;
@@ -97,12 +98,14 @@ class ActivityService {
     return null;
   }
 
-  Future<ActivityListModel?> getActivityDetail({
+  Future<FinalActivityModel?> getActivityDetail({
     required String dayIndex,
   }) async {
     final String group = currentMontiUser!.ageActivity!;
 
-    final DatabaseReference ref = _realtimeDatabase.ref(group);
+    const String language = "/tr";
+
+    final DatabaseReference ref = _realtimeDatabase.ref(group + language);
 
     final DataSnapshot snapshot = await ref.get();
 
@@ -114,7 +117,7 @@ class ActivityService {
         final Map<String, dynamic> activityData =
             Map<String, dynamic>.from(entry.value);
 
-        ActivityListModel model = ActivityListModel.fromJson(activityData);
+        FinalActivityModel model = FinalActivityModel.fromJson(activityData);
 
         if (model.day.toString() == dayIndex) {
           return model;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
-import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/models/final_activity_model.dart';
 
 class ActivityCard extends StatelessWidget {
-  final ActivityListModel activity;
+  final FinalActivityModel activity;
   final VoidCallback onTap;
 
   const ActivityCard({
@@ -20,7 +20,7 @@ class ActivityCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       color: Colors.white,
       margin: EdgeInsets.zero,
-      child: Column(
+      child: ListView(
         children: [
           // Image (emoji background)
           Container(
@@ -37,10 +37,10 @@ class ActivityCard extends StatelessWidget {
                 end: Alignment.bottomRight,
               ),
             ),
-            child: const Center(
+            child: Center(
               child: Text(
-                "💧",
-                style: TextStyle(fontSize: 64),
+                activity.emoji,
+                style: const TextStyle(fontSize: 64),
               ),
             ),
           ),
@@ -62,7 +62,7 @@ class ActivityCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        activity.improvementName,
+                        activity.activityType,
                         style: const TextStyle(
                           fontSize: 12,
                           color: AppColors.kDarkGreenColor,
@@ -71,7 +71,7 @@ class ActivityCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      activity.ageGroup.split("(").first,
+                      activity.ageGroup,
                       style: const TextStyle(
                         fontSize: 12,
                         color: AppColors.kSubtitleTextColor,
@@ -81,7 +81,7 @@ class ActivityCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  activity.activityName.split("(").first,
+                  activity.activityName,
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -109,7 +109,7 @@ class ActivityCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    activity.activityType,
+                    activity.improvementArea,
                     style: const TextStyle(
                       fontSize: 12,
                       color: AppColors.kSubtitleTextColor,
@@ -141,7 +141,46 @@ class ActivityCard extends StatelessWidget {
                     ),
                     onPressed: onTap,
                   ),
-                )
+                ),
+                const SizedBox(height: 16),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    gradient: const LinearGradient(
+                      colors: [
+                        AppColors.kDarkGreenColor,
+                        AppColors.kLightGreenColor
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "💡 Montessori Tip",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        activity.apothegm,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          height: 1.43,
+                          // opacity Flutter'da ayrı, burada işlevsel
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

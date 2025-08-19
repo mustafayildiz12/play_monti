@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:play_monti/constants/app_colors.dart';
-import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/activty_service.dart';
 
 class ActivityDetailPage extends StatefulWidget {
@@ -13,7 +13,7 @@ class ActivityDetailPage extends StatefulWidget {
 }
 
 class _ActivityDetailPageState extends State<ActivityDetailPage> {
-  ActivityListModel? activity;
+  FinalActivityModel? activity;
 
   bool isMarked = false;
 
@@ -75,6 +75,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
 
   SingleChildScrollView bodyWidget() {
     List<String> steps = createSteps(activity!.stepByStep);
+    List<String> materials = createMaterials(activity!.materials);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -92,9 +93,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               ),
             ),
             alignment: Alignment.center,
-            child: const Text(
-              "💧",
-              style: TextStyle(
+            child: Text(
+              activity!.emoji,
+              style: const TextStyle(
                 fontSize: 80,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
@@ -113,7 +114,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  activity!.improvementName,
+                  activity!.improvementArea,
                   style: const TextStyle(
                     fontSize: 14,
                     color: AppColors.kDarkGreenColor,
@@ -198,10 +199,14 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                       color: AppColors.kTitleBlackTextColor,
                     ),
                   ),
-                  customMaterialListItem(itemName: "Small Pitcher"),
-                  customMaterialListItem(itemName: "2 cups"),
-                  customMaterialListItem(itemName: "Towel"),
-                  customMaterialListItem(itemName: "Tray"),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: materials.length,
+                    itemBuilder: (context, index) {
+                      String item = materials[index];
+                      return customMaterialListItem(itemName: item);
+                    },
+                  ),
                 ],
               ),
             ),
@@ -231,7 +236,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                     itemCount: steps.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
+                        padding: const EdgeInsets.only(bottom: 12.0),
                         child: customStepItem(
                             number: (index + 1).toString(),
                             title: steps[index]),
@@ -308,8 +313,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
   }
 
   List<String> createSteps(String stepByStep) {
-    // Satırlara böl
-    RegExp exp = RegExp(r'\d+\.\s');
+    RegExp exp = RegExp(r'\d+[\.\)]\s*');
 
     List<String> steps =
         stepByStep.split(exp).where((e) => e.trim().isNotEmpty).toList();
@@ -317,12 +321,20 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
     return steps;
   }
 
+  List<String> createMaterials(String materials) {
+    return materials
+        .split(",") // virgüle göre ayır
+        .map((e) => e.trim()) // boşlukları temizle
+        .where((e) => e.isNotEmpty) // boş elemanları at
+        .toList();
+  }
+
   Widget customStepItem({required String number, required String title}) {
     return Stack(
       children: [
         Container(
-          width: 36,
-          height: 36,
+          width: 32,
+          height: 32,
           decoration: const BoxDecoration(
               shape: BoxShape.circle, color: AppColors.kButtonGreenColor),
           alignment: Alignment.center,
@@ -352,26 +364,29 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
     );
   }
 
-  Row customMaterialListItem({required String itemName}) {
-    return Row(
-      children: [
-        const Icon(
-          Icons.circle,
-          color: AppColors.kDarkGreenColor,
-          size: 16,
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Text(
-            itemName,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: AppColors.kTitleBlackTextColor,
-            ),
+  Widget customMaterialListItem({required String itemName}) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.circle,
+            color: AppColors.kDarkGreenColor,
+            size: 16,
           ),
-        )
-      ],
+          const SizedBox(width: 16),
+          Expanded(
+            child: Text(
+              itemName,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.kTitleBlackTextColor,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -391,7 +406,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
   }
 
   Future<void> getPageData() async {
-    ActivityListModel? activityListModel =
+    FinalActivityModel? activityListModel =
         await activityService.getActivityDetail(dayIndex: id);
 
     if (activityListModel != null) {

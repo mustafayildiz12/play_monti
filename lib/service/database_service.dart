@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_constants.dart';
-import 'package:play_monti/models/activity_list_model.dart';
+import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/models/monti_user_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
@@ -195,7 +195,7 @@ class DatabaseService {
   }
 
   /// 5) Bugün gösterilecek iki aktivite
-  Future<List<ActivityListModel>> getTodayActivities({
+  Future<List<FinalActivityModel>> getTodayActivities({
     required String activitiesPath,
   }) async {
     final dayIndex = await getCurrentDayIndex();
@@ -206,7 +206,7 @@ class DatabaseService {
   }
 
   /// 5) Seçili gündeki gösterilecek iki aktivite
-  Future<List<ActivityListModel>> getSelectedDayActivities(
+  Future<List<FinalActivityModel>> getSelectedDayActivities(
       {required String activitiesPath, required int dayIndex}) async {
     final days = _dayNumbersForIndex(dayIndex);
     // Aktiviteleri çek ve sadece gerekli 2 "day"i filtrele
@@ -214,13 +214,15 @@ class DatabaseService {
     return list;
   }
 
-  Future<List<ActivityListModel>> getActivities({
+  Future<List<FinalActivityModel>> getActivities({
     required String path,
     List<int>? onlyDays, // sadece bu day’leri döndürmek için
   }) async {
-    final List<ActivityListModel> activities = [];
+    final List<FinalActivityModel> activities = [];
 
-    final DatabaseReference ref = _realtimeDatabase.ref(path);
+    const String languagePAth = "/tr";
+
+    final DatabaseReference ref = _realtimeDatabase.ref(path + languagePAth);
 
     final DataSnapshot snapshot = await ref.get();
 
@@ -232,7 +234,7 @@ class DatabaseService {
         final Map<String, dynamic> activityData =
             Map<String, dynamic>.from(entry.value);
 
-        ActivityListModel model = ActivityListModel.fromJson(activityData);
+        FinalActivityModel model = FinalActivityModel.fromJson(activityData);
 
         if (onlyDays == null || (onlyDays.contains(model.day))) {
           activities.add(model);
