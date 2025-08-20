@@ -45,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
             Row(
