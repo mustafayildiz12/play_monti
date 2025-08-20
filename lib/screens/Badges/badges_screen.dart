@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
 class BadgesScreen extends StatefulWidget {
   const BadgesScreen({
@@ -14,8 +15,33 @@ class BadgesScreen extends StatefulWidget {
 
 class _BadgesScreenState extends State<BadgesScreen> {
   int totalActivityCount = 0;
-
   int completedActivities = 0;
+
+  final badges = <BadgeTier>[
+    BadgeTier(
+      title: 'Seed',
+      icon: '🌱',
+      targetCount: 3,
+    ),
+    BadgeTier(
+      title: 'Sprout',
+      icon: '🌿',
+      targetCount: 7,
+    ),
+    BadgeTier(
+      title: 'Blossom',
+      icon: '🌸',
+      targetCount: 15,
+    ),
+    BadgeTier(
+      title: 'Tree',
+      icon: '🌳',
+      targetCount: 30,
+    ),
+  ];
+
+  bool isLoading = false;
+
   @override
   void initState() {
     getPageData();
@@ -26,238 +52,221 @@ class _BadgesScreenState extends State<BadgesScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const textDark = Color(0xFF333333);
-    const textMuted = Color(0xFF666666);
-    const greenLight = Color(0xFF91A88E);
-    const greenDark = Color(0xFF6BAA75);
-
-    final badges = <BadgeTier>[
-      BadgeTier(
-        title: 'Seed',
-        icon: '🌱',
-        targetCount: 3,
-      ),
-      BadgeTier(
-        title: 'Sprout',
-        icon: '🌿',
-        targetCount: 7,
-      ),
-      BadgeTier(
-        title: 'Blossom',
-        icon: '🌸',
-        targetCount: 15,
-      ),
-      BadgeTier(
-        title: 'Tree',
-        icon: '🌳',
-        targetCount: 30,
-      ),
-    ];
-
-    return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      appBar: AppBar(
+    return CustomLoader(
+      inAsyncCall: isLoading,
+      child: Scaffold(
         backgroundColor: AppColors.appBgColor,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        // boş başlık; kendi header’ımız var
-      ),
-      body: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Achievement Badges',
-                    style: TextStyle(
-                        color: AppColors.kTitleBlackTextColor,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Celebrate your Montessori journey milestones',
-                    style: TextStyle(
-                        color: AppColors.kSubtitleTextColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(height: 24),
-                ],
+        appBar: AppBar(
+          backgroundColor: AppColors.appBgColor,
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
+          // boş başlık; kendi header’ımız var
+        ),
+        body: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Achievement Badges',
+                      style: TextStyle(
+                          color: AppColors.kTitleBlackTextColor,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Celebrate your Montessori journey milestones',
+                      style: TextStyle(
+                          color: AppColors.kSubtitleTextColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: 24),
+                  ],
+                ),
               ),
             ),
-          ),
 
-          // Top Summary Card
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    // Count
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: Column(
+            // Top Summary Card
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      // Count
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Column(
+                          children: [
+                            Text(
+                              '$completedActivities',
+                              style: theme.textTheme.displaySmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.kButtonGreenColor,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Activities Completed',
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: AppColors.kSubtitleTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Progress Bar (to 30)
+                      AnimatedGradientBar(
+                        value: (completedActivities / totalActivityCount)
+                            .clamp(0.0, 1.0),
+                        height: 12,
+                        background: const Color(0xFFF0F0F0),
+                        gradient: const LinearGradient(
+                          colors: [
+                            AppColors.kButtonGreenColor,
+                            AppColors.kDarkGreenColor
+                          ],
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                        ),
+                        radius: 999,
+                        duration: const Duration(milliseconds: 600),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            '$completedActivities',
-                            style: theme.textTheme.displaySmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: greenLight,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Activities Completed',
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: textMuted,
-                            ),
-                          ),
+                          Text(completedActivities.toString(),
+                              style: theme.textTheme.labelSmall?.copyWith(
+                                  color: AppColors.kSubtitleTextColor)),
+                          Text('$totalActivityCount activities',
+                              style: theme.textTheme.labelSmall?.copyWith(
+                                  color: AppColors.kSubtitleTextColor)),
                         ],
-                      ),
-                    ),
-                    // Progress Bar (to 30)
-                    AnimatedGradientBar(
-                      value: (completedActivities  /
-                              totalActivityCount)
-                          .clamp(0.0, 1.0),
-                      height: 12,
-                      background: const Color(0xFFF0F0F0),
-                      gradient: const LinearGradient(
-                        colors: [greenLight, greenDark],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                      ),
-                      radius: 999,
-                      duration: const Duration(milliseconds: 600),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(completedActivities.toString(),
-                            style: theme.textTheme.labelSmall
-                                ?.copyWith(color: textMuted)),
-                        Text('$totalActivityCount activities',
-                            style: theme.textTheme.labelSmall
-                                ?.copyWith(color: textMuted)),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
-          // Badge Cards
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            sliver: SliverList.separated(
-              itemBuilder: (context, index) {
-                final tier = badges[index];
-                final earned = completedActivities  >=
-                    tier.targetCount;
-                final progress = (completedActivities  /
-                        tier.targetCount)
-                    .clamp(0.0, 1.0);
-                return BadgeCard(
-                  title: tier.title,
-                  icon: tier.icon,
-                  targetCount: tier.targetCount,
-                  currentCount: completedActivities,
-                  earned: earned,
-                  progress: progress,
-                  colors: (earned
-                      ? BadgeColors(
-                          ringColor: greenLight.withOpacity(0.2),
-                          circleGradient: const LinearGradient(
-                            colors: [
-                              Color(0xFF4ADE80), // green-400-ish
-                              Color(0xFF22C55E), // green-500-ish
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          progressColorA: greenLight,
-                          progressColorB: greenDark,
-                          textMain: textDark,
-                          textSub: textMuted,
-                        )
-                      : BadgeColors(
-                          ringColor: Colors.transparent,
-                          circleGradient: const LinearGradient(
-                            colors: [Color(0xFFF5F5F5), Color(0xFFF5F5F5)],
-                          ),
-                          progressColorA: greenLight,
-                          progressColorB: greenLight,
-                          textMain: const Color(0xFF999999),
-                          textSub: const Color(0xFF999999),
-                        )),
-                );
-              },
-              separatorBuilder: (_, __) => const SizedBox(height: 12),
-              itemCount: badges.length,
-            ),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
-          // CTA Banner
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [greenLight, greenDark],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
+                      )
+                    ],
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Text(
-                      'Keep Growing! 🌱',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      "Every activity completed is a step forward in your child's development journey.",
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: Colors.white.withOpacity(0.9),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
                 ),
               ),
             ),
-          ),
-        ],
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+            // Badge Cards
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverList.separated(
+                itemBuilder: (context, index) {
+                  final tier = badges[index];
+                  final earned = completedActivities >= tier.targetCount;
+                  final progress =
+                      (completedActivities / tier.targetCount).clamp(0.0, 1.0);
+                  return BadgeCard(
+                    title: tier.title,
+                    icon: tier.icon,
+                    targetCount: tier.targetCount,
+                    currentCount: completedActivities,
+                    earned: earned,
+                    progress: progress,
+                    colors: (earned
+                        ? BadgeColors(
+                            ringColor:
+                                AppColors.kButtonGreenColor.withOpacity(0.2),
+                            circleGradient: const LinearGradient(
+                              colors: [
+                                Color(0xFF4ADE80), // green-400-ish
+                                Color(0xFF22C55E), // green-500-ish
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            progressColorA: AppColors.kButtonGreenColor,
+                            progressColorB: AppColors.kDarkGreenColor,
+                            textMain: AppColors.kTitleBlackTextColor,
+                            textSub: AppColors.kSubtitleTextColor,
+                          )
+                        : BadgeColors(
+                            ringColor: Colors.transparent,
+                            circleGradient: const LinearGradient(
+                              colors: [Color(0xFFF5F5F5), Color(0xFFF5F5F5)],
+                            ),
+                            progressColorA: AppColors.kButtonGreenColor,
+                            progressColorB: AppColors.kButtonGreenColor,
+                            textMain: const Color(0xFF999999),
+                            textSub: const Color(0xFF999999),
+                          )),
+                  );
+                },
+                separatorBuilder: (_, __) => const SizedBox(height: 12),
+                itemCount: badges.length,
+              ),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+            // CTA Banner
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        AppColors.kButtonGreenColor,
+                        AppColors.kDarkGreenColor
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Keep Growing! 🌱',
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        "Every activity completed is a step forward in your child's development journey.",
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: Colors.white.withOpacity(0.9),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Future<void> getPageData() async {
+    setState(() {
+      isLoading = true;
+    });
     int count = await databaseService.getActivityCount();
     setState(() {
       totalActivityCount = count;
       completedActivities = currentMontiUser!.completedActivities ?? 0;
+      isLoading = false;
     });
   }
 }

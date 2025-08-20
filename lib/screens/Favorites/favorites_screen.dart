@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/favorite_activity_model.dart';
 import 'package:play_monti/service/activty_service.dart';
+import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({
@@ -19,11 +20,15 @@ class FavoritesScreen extends StatefulWidget {
 
 class _FavoritesPageState extends State<FavoritesScreen> {
   final _searchCtrl = TextEditingController();
+
+  bool isLoading = false;
+
   @override
   void initState() {
-    super.initState();
-    _searchCtrl.text = widget.initialQuery;
+    
+   
     getPageData();
+    super.initState();
   }
 
   @override
@@ -36,101 +41,126 @@ class _FavoritesPageState extends State<FavoritesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      appBar: AppBar(
+    return CustomLoader(
+      inAsyncCall: isLoading,
+      child: Scaffold(
         backgroundColor: AppColors.appBgColor,
-      ),
-      body: CustomScrollView(
-        slivers: [
-          // Header
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Favorite Activities',
-                          style: TextStyle(
-                              color: AppColors.kTitleBlackTextColor,
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          '${favoriteActivityList.length} saved activities',
-                          style: const TextStyle(
-                              color: AppColors.kSubtitleTextColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
+        appBar: AppBar(
+          backgroundColor: AppColors.appBgColor,
+        ),
+        body: CustomScrollView(
+          slivers: [
+            // Header
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Favorite Activities',
+                            style: TextStyle(
+                                color: AppColors.kTitleBlackTextColor,
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '${getFilteredList().length} saved activities',
+                            style: const TextStyle(
+                                color: AppColors.kSubtitleTextColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  // Kırmızı kalp ikonlu daire
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFE4E6), // red-100
-                      borderRadius: BorderRadius.circular(999),
+                    // Kırmızı kalp ikonlu daire
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFE4E6), // red-100
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      alignment: Alignment.center,
+                      child: const Icon(
+                        Icons.favorite,
+                        color: Color(0xFFEF4444), // red-500
+                      ),
                     ),
-                    alignment: Alignment.center,
-                    child: const Icon(
-                      Icons.favorite,
-                      color: Color(0xFFEF4444), // red-500
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
 
-          // Search
-          SliverToBoxAdapter(
-            child: Padding(
+            // Search
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: _SearchField(
+                  controller: _searchCtrl,
+                  hint: 'Search favorites...',
+                  onChanged: (_) => setState(() {}),
+                ),
+              ),
+            ),
+
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+            SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: _SearchField(
-                controller: _searchCtrl,
-                hint: 'Search favorites...',
-                onChanged: (_) => setState(() {}),
+              sliver: SliverList.separated(
+                itemBuilder: (context, i) {
+                  final a = getFilteredList()[i];
+                  return _ActivityCard(
+                    activity: a,
+                    onTap: () {},
+                  );
+                },
+                separatorBuilder: (_, __) => const SizedBox(height: 12),
+                itemCount: getFilteredList().length,
               ),
             ),
-          ),
 
-          const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            sliver: SliverList.separated(
-              itemBuilder: (context, i) {
-                final a = favoriteActivityList[i];
-                return _ActivityCard(
-                  activity: a,
-                  onTap: () {},
-                );
-              },
-              separatorBuilder: (_, __) => const SizedBox(height: 12),
-              itemCount: favoriteActivityList.length,
-            ),
-          ),
-
-          const SliverToBoxAdapter(child: SizedBox(height: 24)),
-        ],
+            const SliverToBoxAdapter(child: SizedBox(height: 24)),
+          ],
+        ),
       ),
     );
   }
 
+  List<FavoriteActivityModel> getFilteredList() {
+    List<FavoriteActivityModel> filteredList = [];
+    if (_searchCtrl.text.isNotEmpty) {
+      filteredList = favoriteActivityList
+          .where((e) =>
+              e.activityName
+                  .toLowerCase()
+                  .contains(_searchCtrl.text.toLowerCase()) ||
+              e.activityType
+                  .toLowerCase()
+                  .contains(_searchCtrl.text.toLowerCase()))
+          .toList();
+    } else {
+      filteredList = favoriteActivityList;
+    }
+    return filteredList;
+  }
+
   Future<void> getPageData() async {
+    setState(() {
+      isLoading = true;
+    });
     List<FavoriteActivityModel> favs =
         await activityService.getFavoriteActivities();
 
     setState(() {
       favoriteActivityList = favs;
+      isLoading = false;
     });
   }
 }
