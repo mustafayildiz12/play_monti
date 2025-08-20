@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/models/favorite_activity_model.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
@@ -8,10 +9,16 @@ import 'package:play_monti/service/authentication_service.dart';
 class ActivityService {
   final FirebaseDatabase _realtimeDatabase = FirebaseDatabase.instance;
 
-  DatabaseReference _refFor(String uid, String dateTime, String activityId) {
+  DatabaseReference _activityRefFor(
+      String uid, String dateTime, String activityId) {
     String group = currentMontiUser!.ageActivity!;
     return _realtimeDatabase
         .ref('userActivities/$uid/$group/$dateTime/$activityId');
+  }
+
+  DatabaseReference _favoriteRefFor(String uid, String activityId) {
+    String group = currentMontiUser!.ageActivity!;
+    return _realtimeDatabase.ref('userFavorites/$uid/$group/$activityId');
   }
 
   /// Yapıldı olarak işaretle
@@ -20,7 +27,7 @@ class ActivityService {
     required String activityId,
   }) async {
     final uid = authenticationService.getUser()!.uid;
-    await _refFor(uid, day, activityId).set({
+    await _activityRefFor(uid, day, activityId).set({
       'isDone': true,
       'doneAt': ServerValue.timestamp,
     });
@@ -32,7 +39,7 @@ class ActivityService {
     required String activityId,
   }) async {
     final uid = authenticationService.getUser()!.uid;
-    await _refFor(uid, day, activityId).remove();
+    await _activityRefFor(uid, day, activityId).remove();
   }
 
   Future<bool> isMarked({
@@ -137,6 +144,99 @@ class ActivityService {
         .ref("$ageGroup/$language")
         .child(milliSecondTime)
         .set(activityModel.toJson());
+  }
+
+  /// Favorileri Düzenleme
+
+  /// Yapıldı olarak işaretle
+  Future<void> markFavorite({
+    required String day,
+    required FinalActivityModel activityModel,
+  }) async {
+    final uid = authenticationService.getUser()!.uid;
+
+    FavoriteActivityModel favoriteActivityModel = FavoriteActivityModel(
+        day: activityModel.day,
+        activityName: activityModel.activityName,
+        ageGroup: activityModel.ageGroup,
+        activityType: activityModel.activityType,
+        improvementArea: activityModel.improvementArea,
+        emoji: activityModel.emoji,
+        isFavorite: true,
+        date: day);
+    await _favoriteRefFor(
+      uid,
+      activityModel.day.toString(),
+    ).set(favoriteActivityModel.toJson());
+  }
+
+  /// Geri al (yapılmadı)
+  Future<void> markUnFavorite({
+    required String day,
+    required String activityId,
+  }) async {
+    final uid = authenticationService.getUser()!.uid;
+    await _favoriteRefFor(uid, activityId).remove();
+  }
+
+  Future<bool> isFavorite({
+    required String dateTime,
+    required String activityId,
+  }) async {
+    final uid = authenticationService.getUser()!.uid;
+
+    String group = currentMontiUser!.ageActivity!;
+
+    final ref = _realtimeDatabase.ref('userFavorites/$uid/$group/$activityId');
+    final snap = await ref.get();
+
+    if (!snap.exists || snap.value == null) {
+      return false; // hiç kayıt yok, yapılmamış
+    }
+
+    try {
+      final data = Map<String, dynamic>.from(snap.value as Map);
+      return data['isFavorite'] == true;
+    } catch (_) {
+      return false; // beklenmedik format -> yapılmamış say
+    }
+  }
+
+  Future<List<FavoriteActivityModel>> getFavoriteActivities() async {
+    final List<FavoriteActivityModel> favorites = [];
+
+    String uid = authenticationService.getUser()!.uid;
+
+    String group = currentMontiUser!.ageActivity!;
+
+    final DatabaseReference ref =
+        _realtimeDatabase.ref('userFavorites/$uid/$group');
+
+    final DataSnapshot snapshot = await ref.get();
+
+    if (snapshot.exists && snapshot.value is List<Object?>) {
+      final List<Object?> data = snapshot.value as List<Object?>;
+
+      for (final item in data) {
+        if (item == null) continue;
+
+        // Firebase'den gelen item Map<String, dynamic> tipinde olmalı
+        final Map<String, dynamic> activityData =
+            Map<String, dynamic>.from(item as Map);
+
+        final FavoriteActivityModel model =
+            FavoriteActivityModel.fromJson(activityData);
+
+        if (model.isFavorite) {
+          favorites.add(model);
+        }
+      }
+    }
+
+    // 4) Tüm listeyi "day" alanına göre sortla (gün sıralaması doğru mu emin olmak için)
+    favorites.sort((a, b) => (a.day ?? 0).compareTo(b.day ?? 0));
+
+    return favorites;
   }
 }
 

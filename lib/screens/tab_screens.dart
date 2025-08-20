@@ -30,28 +30,7 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
       const HomeScreen(),
       const StyledCalendarPage(),
       const BadgesScreen(),
-      const FavoritesScreen(activities: [
-        FavActivity(
-          id: 'water_pouring',
-          title: 'Water Pouring',
-          description:
-              'Build practical life skills and hand coordination through careful water pouring.',
-          emoji: '💧',
-          category: 'practical life',
-          ageRange: '1–3 years',
-          tags: ['life skills', 'motor control', 'focus'],
-        ),
-        FavActivity(
-          id: 'banana-pealing',
-          title: 'Banana Pealing',
-          description:
-              'Build practical life skills and hand coordination through careful water pouring.',
-          emoji: '🍌',
-          category: 'practical life',
-          ageRange: '1–3 years',
-          tags: ['life skills', 'motor control', 'focus'],
-        ),
-      ]),
+      const FavoritesScreen(),
       const GuidePage(),
       const SettingsPage(),
     ];

@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.appBgColor,
       appBar: AppBar(
         backgroundColor: AppColors.appBgColor,
+        surfaceTintColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

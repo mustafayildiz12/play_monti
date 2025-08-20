@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/service/database_service.dart';
 
-class BadgesScreen extends StatelessWidget {
+class BadgesScreen extends StatefulWidget {
   const BadgesScreen({
     super.key,
-    this.totalActivities = 3,
-    this.totalGoal = 30,
   });
 
-  final int totalActivities;
-  final int totalGoal;
+  @override
+  State<BadgesScreen> createState() => _BadgesScreenState();
+}
+
+class _BadgesScreenState extends State<BadgesScreen> {
+  int totalActivityCount = 0;
+
+  int completedActivities = 0;
+  @override
+  void initState() {
+    getPageData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    const bg = Color(0xFFF9F5F0);
+
     const textDark = Color(0xFF333333);
     const textMuted = Color(0xFF666666);
     const greenLight = Color(0xFF91A88E);
@@ -98,7 +109,7 @@ class BadgesScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            '$totalActivities',
+                            '$completedActivities',
                             style: theme.textTheme.displaySmall?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: greenLight,
@@ -116,7 +127,9 @@ class BadgesScreen extends StatelessWidget {
                     ),
                     // Progress Bar (to 30)
                     AnimatedGradientBar(
-                      value: (totalActivities / totalGoal).clamp(0.0, 1.0),
+                      value: (completedActivities  /
+                              totalActivityCount)
+                          .clamp(0.0, 1.0),
                       height: 12,
                       background: const Color(0xFFF0F0F0),
                       gradient: const LinearGradient(
@@ -131,10 +144,10 @@ class BadgesScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('0',
+                        Text(completedActivities.toString(),
                             style: theme.textTheme.labelSmall
                                 ?.copyWith(color: textMuted)),
-                        Text('$totalGoal activities',
+                        Text('$totalActivityCount activities',
                             style: theme.textTheme.labelSmall
                                 ?.copyWith(color: textMuted)),
                       ],
@@ -152,14 +165,16 @@ class BadgesScreen extends StatelessWidget {
             sliver: SliverList.separated(
               itemBuilder: (context, index) {
                 final tier = badges[index];
-                final earned = totalActivities >= tier.targetCount;
-                final progress =
-                    (totalActivities / tier.targetCount).clamp(0.0, 1.0);
+                final earned = completedActivities  >=
+                    tier.targetCount;
+                final progress = (completedActivities  /
+                        tier.targetCount)
+                    .clamp(0.0, 1.0);
                 return BadgeCard(
                   title: tier.title,
                   icon: tier.icon,
                   targetCount: tier.targetCount,
-                  currentCount: totalActivities,
+                  currentCount: completedActivities,
                   earned: earned,
                   progress: progress,
                   colors: (earned
@@ -236,6 +251,14 @@ class BadgesScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> getPageData() async {
+    int count = await databaseService.getActivityCount();
+    setState(() {
+      totalActivityCount = count;
+      completedActivities = currentMontiUser!.completedActivities ?? 0;
+    });
   }
 }
 

@@ -98,6 +98,26 @@ class DatabaseService {
     });
   }
 
+  Future<void> updateUserActivityCount({
+    required bool isCompleted,
+  }) async {
+    User? user = authenticationService.getUser();
+
+    int activityCount = currentMontiUser!.completedActivities ?? 0;
+
+    if (isCompleted) {
+      activityCount = activityCount + 1;
+    } else {
+      activityCount = activityCount - 1;
+    }
+    await _realtimeDatabase
+        .ref('users')
+        .child(user!.uid)
+        .update({"completedActivities": activityCount}).then((v) {
+      currentMontiUser!.completedActivities = activityCount;
+    });
+  }
+
   /// Kullanıcı hesabını siler.
   /// @param context - BuildContext nesnesi
   Future<void> deleteAccount(BuildContext context) async {
@@ -246,6 +266,25 @@ class DatabaseService {
     activities.sort((a, b) => (a.day ?? 0).compareTo(b.day ?? 0));
 
     return activities;
+  }
+
+  Future<int> getActivityCount() async {
+    int totalActivityCount = 0;
+    const String languagePAth = "/tr";
+    String ageGroup = currentMontiUser!.ageActivity!;
+
+    final DatabaseReference ref =
+        _realtimeDatabase.ref(ageGroup + languagePAth);
+
+    final DataSnapshot snapshot = await ref.get();
+
+    if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
+      final Map<String, dynamic> data =
+          Map<String, dynamic>.from(snapshot.value as Map);
+
+      totalActivityCount = data.entries.length;
+    }
+    return totalActivityCount;
   }
 }
 

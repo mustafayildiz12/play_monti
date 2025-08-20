@@ -16,6 +16,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
   FinalActivityModel? activity;
 
   bool isMarked = false;
+  bool isFavorite = false;
 
   String id = "";
 
@@ -52,15 +53,30 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             ),
           ),
         ),
-        actions: const [
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Icon(
-              Icons.favorite,
-              color: AppColors.kTitleBlackTextColor,
+        actions: [
+          GestureDetector(
+            onTap: () async {
+              if (isFavorite) {
+                await activityService.markUnFavorite(
+                    day: dateTime, activityId: activity!.day.toString());
+              } else {
+                await activityService.markFavorite(
+                    day: dateTime, activityModel: activity!);
+              }
+
+              await checkIsFavorite();
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.favorite,
+                color: isFavorite
+                    ? Colors.redAccent
+                    : AppColors.kTitleBlackTextColor,
+              ),
             ),
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
         ],
         bottom: const PreferredSize(
             preferredSize: Size(double.infinity, 1), child: Divider()),
@@ -414,6 +430,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
         activity = activityListModel;
       });
       await checkIsMarked();
+      await checkIsFavorite();
     }
   }
 
@@ -425,5 +442,15 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
     );
     if (!mounted) return;
     setState(() => isMarked = done);
+  }
+
+  Future<void> checkIsFavorite() async {
+    // örnek: isMarked kontrolü (günü ve id’yi sen belirle)
+    final fav = await activityService.isFavorite(
+      dateTime: dateTime,
+      activityId: activity!.day.toString(), // modeline göre
+    );
+    if (!mounted) return;
+    setState(() => isFavorite = fav);
   }
 }

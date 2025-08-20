@@ -102,6 +102,7 @@ class AuthenticationService {
         await Future.wait([
           databaseService.addUserToRealTime(
             MontiUserModel(
+                completedActivities: 0,
                 uid: credential.user!.uid,
                 userEmail: email,
                 userPassword: password,
@@ -211,6 +212,7 @@ class AuthenticationService {
               .addUserToRealTime(
             MontiUserModel(
                 uid: uid,
+                completedActivities: 0,
                 userEmail: profile!['email'],
                 userName: profile['name'],
                 createDateTimeStamp: DateTime.now().millisecondsSinceEpoch),
@@ -276,6 +278,7 @@ class AuthenticationService {
               .addUserToRealTime(
             MontiUserModel(
                 uid: uid,
+                completedActivities: 0,
                 userEmail: profile!['email'],
                 userName: profile['name'],
                 createDateTimeStamp: DateTime.now().millisecondsSinceEpoch),
