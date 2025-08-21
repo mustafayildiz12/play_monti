@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/favorite_activity_model.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
@@ -25,8 +26,6 @@ class _FavoritesPageState extends State<FavoritesScreen> {
 
   @override
   void initState() {
-    
-   
     getPageData();
     super.initState();
   }
@@ -44,10 +43,7 @@ class _FavoritesPageState extends State<FavoritesScreen> {
     return CustomLoader(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: AppColors.appBgColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.appBgColor,
-        ),
+        appBar: AppBar(),
         body: CustomScrollView(
           slivers: [
             // Header
@@ -118,7 +114,6 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                   final a = getFilteredList()[i];
                   return _ActivityCard(
                     activity: a,
-                    onTap: () {},
                   );
                 },
                 separatorBuilder: (_, __) => const SizedBox(height: 12),
@@ -213,10 +208,9 @@ class _SearchField extends StatelessWidget {
 
 /// Activity card
 class _ActivityCard extends StatelessWidget {
-  const _ActivityCard({required this.activity, this.onTap});
+  const _ActivityCard({required this.activity});
 
   final FavoriteActivityModel activity;
-  final VoidCallback? onTap;
 
   static const textDark = Color(0xFF333333);
   static const textMuted = Color(0xFF666666);
@@ -225,7 +219,12 @@ class _ActivityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(16),
-      onTap: onTap,
+      onTap: () async {
+        String id = activity.day.toString();
+        String date = activity.date;
+        await Navigator.pushNamed(
+            context, "${AppRoutes.activityDetailPage}/$id/$date");
+      },
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,

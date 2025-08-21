@@ -80,7 +80,7 @@ class ActivityService {
   }) async {
     final String group = currentMontiUser!.ageActivity!;
 
-    const String language = "/tr";
+    String language = currentMontiUser!.languageCode != null ? "/${currentMontiUser!.languageCode}" : "/en";
 
     final DatabaseReference ref = _realtimeDatabase.ref(group + language);
 
@@ -110,7 +110,7 @@ class ActivityService {
   }) async {
     final String group = currentMontiUser!.ageActivity!;
 
-    const String language = "/tr";
+    String language = currentMontiUser!.languageCode != null ? "/${currentMontiUser!.languageCode}" : "/en";
 
     final DatabaseReference ref = _realtimeDatabase.ref(group + language);
 

@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/final_activity_model.dart';
+import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/models/monti_user_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
 
@@ -95,6 +97,25 @@ class DatabaseService {
       "userName": userName,
       "ageActivity": ageActivity,
       "language": language
+    });
+  }
+
+  Future<void> updateUserLanguage({required LanguageModel language}) async {
+    User? user = authenticationService.getUser();
+    await _realtimeDatabase.ref('users').child(user!.uid).update({
+      "language": language.languageName,
+      "languageCode": language.languageCode
+    }).then((_) {
+      currentMontiUser!.languageCode = language.languageCode;
+    });
+  }
+
+  Future<void> updateUserActivity({required AgeGroupModel ageGroup}) async {
+    User? user = authenticationService.getUser();
+    await _realtimeDatabase.ref('users').child(user!.uid).update({
+      "ageActivity": ageGroup.ageGroupCode,
+    }).then((_) {
+      currentMontiUser!.ageActivity = ageGroup.ageGroupCode;
     });
   }
 
@@ -240,9 +261,11 @@ class DatabaseService {
   }) async {
     final List<FinalActivityModel> activities = [];
 
-    const String languagePAth = "/tr";
+    String language = currentMontiUser!.languageCode != null
+        ? "/${currentMontiUser!.languageCode}"
+        : "/en";
 
-    final DatabaseReference ref = _realtimeDatabase.ref(path + languagePAth);
+    final DatabaseReference ref = _realtimeDatabase.ref(path + language);
 
     final DataSnapshot snapshot = await ref.get();
 
@@ -270,11 +293,13 @@ class DatabaseService {
 
   Future<int> getActivityCount() async {
     int totalActivityCount = 0;
-    const String languagePAth = "/tr";
-    String ageGroup = currentMontiUser!.ageActivity!;
 
-    final DatabaseReference ref =
-        _realtimeDatabase.ref(ageGroup + languagePAth);
+    String ageGroup = currentMontiUser!.ageActivity!;
+    String language = currentMontiUser!.languageCode != null
+        ? "/${currentMontiUser!.languageCode}"
+        : "/en";
+
+    final DatabaseReference ref = _realtimeDatabase.ref(ageGroup + language);
 
     final DataSnapshot snapshot = await ref.get();
 

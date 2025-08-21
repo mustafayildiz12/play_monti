@@ -1,32 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/models/age_group_model.dart';
+import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
+import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
     super.key,
-    this.username = 'mustti',
-    this.language = 'Turkish',
-    this.ageLabel = '🧒 3–8 years',
-    this.notificationsOn = true,
-    this.version = 'v1.0.0',
-    this.onLanguageChanged,
-    this.onAgeGroupChanged,
-    this.onNotificationsChanged,
-    this.onFeedbackTap,
   });
-
-  final String username;
-  final String language;
-  final String ageLabel;
-  final bool notificationsOn;
-  final String version;
-
-  final ValueChanged<String>? onLanguageChanged;
-  final ValueChanged<String>? onAgeGroupChanged;
-  final ValueChanged<bool>? onNotificationsChanged;
-  final VoidCallback? onFeedbackTap;
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -40,23 +26,42 @@ class _SettingsPageState extends State<SettingsPage> {
   static const greenLight = Color(0xFF91A88E);
   static const greenDark = Color(0xFF6BAA75);
 
-  late String _language;
-  late String _ageLabel;
-  late bool _notificationsOn;
+  bool _notificationsOn = false;
+
+  LanguageModel? selectedLanguage;
+  AgeGroupModel? selectedAgeGroup;
 
   @override
   void initState() {
+    if (Get.locale!.languageCode == "en") {
+      selectedAgeGroup = enAgeGroupList
+          .singleWhere((e) => e.ageGroupCode == currentMontiUser?.ageActivity);
+    } else {
+      selectedAgeGroup = trAgeGroupList
+          .singleWhere((e) => e.ageGroupCode == currentMontiUser?.ageActivity);
+    }
+
     super.initState();
-    _language = widget.language;
-    _ageLabel = widget.ageLabel;
-    _notificationsOn = widget.notificationsOn;
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (Get.locale != null) {
+      if (Get.locale!.languageCode == "en") {
+        selectedLanguage =
+            enLanguageList.singleWhere((e) => e.languageCode == "en");
+      } else {
+        selectedLanguage =
+            trLanguageList.singleWhere((e) => e.languageCode == "tr");
+      }
+    }
+    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      appBar: AppBar(backgroundColor: AppColors.appBgColor),
+      appBar: AppBar(),
       body: CustomScrollView(
         slivers: [
           // Header
@@ -114,7 +119,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.username,
+                          Text(currentMontiUser?.userName ?? "",
                               style: const TextStyle(
                                 color: textDark,
                                 fontWeight: FontWeight.w600,
@@ -122,7 +127,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               )),
                           const SizedBox(height: 4),
                           Text(
-                            '$_language • $_ageLabel',
+                            '${selectedLanguage?.languageName} • ${selectedAgeGroup?.ageGroupCode}',
                             style:
                                 const TextStyle(color: textMuted, fontSize: 13),
                           ),
@@ -142,7 +147,7 @@ class _SettingsPageState extends State<SettingsPage> {
             leadingIcon: Ionicons.globe_outline,
             onTap: _pickLanguage,
             title: 'Language',
-            subtitle: _language,
+            subtitle: selectedLanguage?.languageName ?? "",
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 12)),
 
@@ -152,7 +157,7 @@ class _SettingsPageState extends State<SettingsPage> {
             leadingIcon: Ionicons.people,
             onTap: _pickAgeGroup,
             title: "Child's Age Group",
-            subtitle: _ageLabel,
+            subtitle: selectedAgeGroup?.ageGroupName ?? "",
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 12)),
 
@@ -229,15 +234,13 @@ class _SettingsPageState extends State<SettingsPage> {
           _SliverSettingTile(
             leadingBg: const Color(0xFFF0F8F0),
             leadingIcon: Ionicons.chatbox_outline,
-            onTap: widget.onFeedbackTap ??
-                () {
-                  // Basit demo: SnackBar
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                        content:
-                            Text('Thanks for helping us improve MontiTime!')),
-                  );
-                },
+            onTap: () {
+              // Basit demo: SnackBar
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                    content: Text('Thanks for helping us improve MontiTime!')),
+              );
+            },
             title: 'Send Feedback',
             subtitle: 'Help us improve MontiTime',
           ),
@@ -250,9 +253,9 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
               child: Column(
                 children: [
-                  Text(
-                    'MontiTime ${widget.version}',
-                    style: const TextStyle(color: textHint, fontSize: 12),
+                  const Text(
+                    'MontiTime 1.0.0',
+                    style: TextStyle(color: textHint, fontSize: 12),
                   ),
                   const SizedBox(height: 6),
                   const Text(
@@ -261,10 +264,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const SizedBox(height: 12),
                   TextButton(
-                      onPressed: () async {
-                        await authenticationService.logoutFromFirebase(context);
-                      },
-                      child: const Text("Çıkış Yap"))
+                    onPressed: () async {
+                      await authenticationService.logoutFromFirebase(context);
+                    },
+                    child: const Text("Çıkış Yap"),
+                  )
                 ],
               ),
             ),
@@ -277,50 +281,65 @@ class _SettingsPageState extends State<SettingsPage> {
   // ——— Actions ———
 
   Future<void> _pickLanguage() async {
-    final selected = await showModalBottomSheet<String>(
+    final selected = await showModalBottomSheet<LanguageModel>(
       context: context,
       backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (_) => _PickerSheet(
+      builder: (_) => _LanguagePickerSheet(
         title: 'Choose language',
-        options: const ['Turkish', 'English', 'Deutsch', 'Français', 'Español'],
-        initial: _language,
+        options:
+            Get.locale?.languageCode == "en" ? enLanguageList : trLanguageList,
+        initial: selectedLanguage,
       ),
     );
-    if (selected != null && selected != _language) {
-      setState(() => _language = selected);
-      widget.onLanguageChanged?.call(selected);
+    if (selected != null && selected != selectedLanguage) {
+      setState(() {
+        selectedLanguage = selected;
+      });
+
+      if (selectedLanguage?.languageCode == "en") {
+        selectedLanguage =
+            enLanguageList.singleWhere((e) => e.languageCode == "en");
+        selectedAgeGroup = enAgeGroupList.singleWhere(
+            (e) => e.ageGroupCode == currentMontiUser?.ageActivity);
+      } else {
+        selectedLanguage =
+            trLanguageList.singleWhere((e) => e.languageCode == "tr");
+        selectedAgeGroup = trAgeGroupList.singleWhere(
+            (e) => e.ageGroupCode == currentMontiUser?.ageActivity);
+      }
+      await databaseService.updateUserLanguage(language: selectedLanguage!);
+      await Get.updateLocale(Locale(selectedLanguage!.languageCode));
     }
   }
 
   Future<void> _pickAgeGroup() async {
-    final selected = await showModalBottomSheet<String>(
+    final selected = await showModalBottomSheet<AgeGroupModel>(
       context: context,
       backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (_) => _PickerSheet(
+      builder: (_) => _AgePickerSheet(
         title: "Choose child's age group",
-        options: const [
-          '👶 0–2 years',
-          '🧒 3–8 years',
-          '🧑 9–12 years',
-        ],
-        initial: _ageLabel,
+        options:
+            Get.locale?.languageCode == "en" ? enAgeGroupList : trAgeGroupList,
       ),
     );
-    if (selected != null && selected != _ageLabel) {
-      setState(() => _ageLabel = selected);
-      widget.onAgeGroupChanged?.call(selected);
+    if (selected != null && selected != selectedAgeGroup) {
+      setState(() {
+        selectedAgeGroup = selected;
+      });
+
+      await databaseService.updateUserActivity(ageGroup: selectedAgeGroup!);
+      customSnackBar.success("Aktiviteler güncellendi");
     }
   }
 
   void _toggleNotifications(bool v) {
     setState(() => _notificationsOn = v);
-    widget.onNotificationsChanged?.call(v);
   }
 }
 
@@ -412,16 +431,16 @@ class _LeadingIcon extends StatelessWidget {
   }
 }
 
-class _PickerSheet extends StatelessWidget {
-  const _PickerSheet({
+class _LanguagePickerSheet extends StatelessWidget {
+  const _LanguagePickerSheet({
     required this.title,
     required this.options,
-    required this.initial,
+    this.initial,
   });
 
   final String title;
-  final List<String> options;
-  final String initial;
+  final List<LanguageModel> options;
+  final LanguageModel? initial;
 
   @override
   Widget build(BuildContext context) {
@@ -449,7 +468,56 @@ class _PickerSheet extends StatelessWidget {
                 )),
             const SizedBox(height: 12),
             ...options.map((o) => _PickerOption(
-                  text: o,
+                  text: o.languageName,
+                  selected: o == initial,
+                  onTap: () => Navigator.pop(context, o),
+                )),
+            const SizedBox(height: 6),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AgePickerSheet extends StatelessWidget {
+  const _AgePickerSheet({
+    required this.title,
+    required this.options,
+    this.initial,
+  });
+
+  final String title;
+  final List<AgeGroupModel> options;
+  final AgeGroupModel? initial;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 36,
+              height: 4,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE5E7EB),
+                borderRadius: BorderRadius.circular(999),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: _SettingsColors.textDark,
+                  fontSize: 16,
+                )),
+            const SizedBox(height: 12),
+            ...options.map((o) => _PickerOption(
+                  text: o.ageGroupName,
                   selected: o == initial,
                   onTap: () => Navigator.pop(context, o),
                 )),

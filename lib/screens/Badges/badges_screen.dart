@@ -55,13 +55,7 @@ class _BadgesScreenState extends State<BadgesScreen> {
     return CustomLoader(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: AppColors.appBgColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.appBgColor,
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
-          // boş başlık; kendi header’ımız var
-        ),
+        appBar: AppBar(),
         body: CustomScrollView(
           slivers: [
             const SliverToBoxAdapter(

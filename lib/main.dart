@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_pages.dart';
 import 'package:play_monti/constants/app_routes.dart';
+import 'package:play_monti/constants/app_theme.dart';
 import 'package:play_monti/constants/app_translation.dart';
 import 'package:play_monti/firebase_options.dart';
 import 'package:play_monti/service/authentication_service.dart';
@@ -67,11 +67,7 @@ Future<void> runMyApp() async {
       locale: const Locale('tr'), // Varsayılan dil
       fallbackLocale: const Locale('en'), // Yedek dil
 
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: AppColors.kButtonGreenColor),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.appTheme,
       initialRoute: AppRoutes.initialRoute,
       getPages: AppPages.pages,
     ),

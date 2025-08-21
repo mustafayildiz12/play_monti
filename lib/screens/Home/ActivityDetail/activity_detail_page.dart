@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/activty_service.dart';
+import 'package:play_monti/service/database_service.dart';
 
 class ActivityDetailPage extends StatefulWidget {
   const ActivityDetailPage({super.key});
@@ -120,24 +121,30 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
           ),
           const SizedBox(height: 16),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: AppColors.kMoreLightGreenColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  activity!.improvementArea,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: AppColors.kDarkGreenColor,
-                    fontWeight: FontWeight.w500,
+              Expanded(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: AppColors.kMoreLightGreenColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    activity!.improvementArea,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: AppColors.kDarkGreenColor,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
+              const SizedBox(width: 8),
               Text(
                 activity!.ageGroup.split("(").first,
                 style: const TextStyle(
@@ -346,7 +353,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
   }
 
   Widget customStepItem({required String number, required String title}) {
-    return Stack(
+    return Row(
       children: [
         Container(
           width: 32,
@@ -360,10 +367,8 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
           ),
         ),
-        Positioned(
-          left: 48,
-          top: 5,
-          right: 0,
+        const SizedBox(width: 12),
+        Expanded(
           child: Text(
             title,
             maxLines: 3,
@@ -442,6 +447,10 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
     );
     if (!mounted) return;
     setState(() => isMarked = done);
+
+    if (done) {
+      await databaseService.updateUserActivityCount(isCompleted: true);
+    }
   }
 
   Future<void> checkIsFavorite() async {

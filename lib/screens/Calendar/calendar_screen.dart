@@ -111,13 +111,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
     return CustomLoader(
       inAsyncCall: loading,
       child: Scaffold(
-        backgroundColor: AppColors.appBgColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.appBgColor,
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
-          // boş başlık; kendi header’ımız var
-        ),
+        appBar: AppBar(),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

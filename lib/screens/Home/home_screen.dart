@@ -36,21 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.sizeOf(context).width;
 
     final double cardWidth = width - 48;
 
     return CustomLoader(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: AppColors.appBgColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.appBgColor,
-          surfaceTintColor: Colors.transparent,
-        ),
+        appBar: AppBar(),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
-          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
               Row(
