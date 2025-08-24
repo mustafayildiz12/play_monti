@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/final_activity_model.dart';
+import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
 class ActivityDetailPage extends StatefulWidget {
   const ActivityDetailPage({super.key});
@@ -18,9 +20,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
 
   bool isMarked = false;
   bool isFavorite = false;
+  bool isLoading = false;
 
   String id = "";
-
   String dateTime = "";
 
   @override
@@ -38,55 +40,56 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.appBgColor,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Icon(
-              Icons.arrow_back,
-              color: AppColors.kTitleBlackTextColor,
-            ),
-          ),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () async {
-              if (isFavorite) {
-                await activityService.markUnFavorite(
-                    day: dateTime, activityId: activity!.day.toString());
-              } else {
-                await activityService.markFavorite(
-                    day: dateTime, activityModel: activity!);
-              }
-
-              await checkIsFavorite();
+    return CustomLoader(
+      inAsyncCall: isLoading,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
             },
-            child: CircleAvatar(
+            child: const CircleAvatar(
               backgroundColor: Colors.white,
               child: Icon(
-                Icons.favorite,
-                color: isFavorite
-                    ? Colors.redAccent
-                    : AppColors.kTitleBlackTextColor,
+                Icons.arrow_back,
+                color: AppColors.kTitleBlackTextColor,
               ),
             ),
           ),
-          const SizedBox(width: 16),
-        ],
-        bottom: const PreferredSize(
-            preferredSize: Size(double.infinity, 1), child: Divider()),
+          actions: [
+            GestureDetector(
+              onTap: () async {
+                if (isFavorite) {
+                  await activityService.markUnFavorite(
+                      day: dateTime, activityId: activity!.day.toString());
+                } else {
+                  await activityService.markFavorite(
+                      day: dateTime, activityModel: activity!);
+                }
+
+                await checkIsFavorite();
+              },
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.favorite,
+                  color: isFavorite
+                      ? Colors.redAccent
+                      : AppColors.kTitleBlackTextColor,
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+          ],
+          bottom: const PreferredSize(
+              preferredSize: Size(double.infinity, 1), child: Divider()),
+        ),
+        body: activity == null
+            ? const Center(
+                child: Text("Aktivite Getirilemedi"),
+              )
+            : bodyWidget(),
       ),
-      body: activity == null
-          ? const Center(
-              child: Text("Aktivite Getirilemedi"),
-            )
-          : bodyWidget(),
     );
   }
 
@@ -329,8 +332,49 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 }
               },
             ),
-          )
+          ),
+          const SizedBox(height: 16),
+          GestureDetector(
+            onTap: () async {
+              await showFeedbackBottomSheet();
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.thumb_up, color: AppColors.kDarkGreenColor),
+                  const SizedBox(width: 12),
+                  const Text(
+                    "Rate this Activity",
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  ),
+                  const SizedBox(width: 12),
+                  Icon(Icons.thumb_down,
+                      color:
+                          AppColors.kSubtitleTextColor.withValues(alpha: 0.8)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
         ],
+      ),
+    );
+  }
+
+  Future<void> showFeedbackBottomSheet() async {
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => FeedbackBottomSheet(
+        finalActivityModel: activity!,
       ),
     );
   }
@@ -427,6 +471,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
   }
 
   Future<void> getPageData() async {
+    setState(() {
+      isLoading = true;
+    });
     FinalActivityModel? activityListModel =
         await activityService.getActivityDetail(dayIndex: id);
 
@@ -437,6 +484,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
       await checkIsMarked();
       await checkIsFavorite();
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   Future<void> checkIsMarked() async {

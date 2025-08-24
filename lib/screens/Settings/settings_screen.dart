@@ -5,6 +5,7 @@ import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/language_model.dart';
+import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/service/database_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
@@ -234,12 +235,8 @@ class _SettingsPageState extends State<SettingsPage> {
           _SliverSettingTile(
             leadingBg: const Color(0xFFF0F8F0),
             leadingIcon: Ionicons.chatbox_outline,
-            onTap: () {
-              // Basit demo: SnackBar
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                    content: Text('Thanks for helping us improve MontiTime!')),
-              );
+            onTap: () async {
+              await showFeedbackBottomSheet();
             },
             title: 'Send Feedback',
             subtitle: 'Help us improve MontiTime',
@@ -275,6 +272,16 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> showFeedbackBottomSheet() async {
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const FeedbackBottomSheet(),
     );
   }
 
