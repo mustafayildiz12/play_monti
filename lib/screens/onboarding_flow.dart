@@ -3,7 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
+import 'package:play_monti/models/age_group_model.dart';
+import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/service/database_service.dart';
 
 class OnboardingFlow extends StatefulWidget {
@@ -18,43 +21,8 @@ class OnboardingFlow extends StatefulWidget {
 class _OnboardingFlowState extends State<OnboardingFlow> {
   int _step = 1;
   String _name = '';
-  String _language = 'Turkish';
-  String _ageGroup = '';
-
-  final List<String> _languages = [
-    'Turkish',
-    'English',
-    'Spanish',
-    'French',
-    'German',
-    'Italian',
-    'Portuguese',
-    'Russian'
-  ];
-
-  final List<Map<String, String>> _ageGroups = [
-    {
-      'id': '0-1',
-      'label': '0–1 years',
-      'icon': '👶',
-      'description': 'Infant activities',
-      'age-group': '18-24',
-    },
-    {
-      'id': '1-3',
-      'label': '1–3 years',
-      'icon': '🚼',
-      'description': 'Toddler development',
-      'age-group': '24-36',
-    },
-    {
-      'id': '3-8',
-      'label': '3–8 years',
-      'icon': '🧒',
-      'description': 'Preschool & early school',
-      'age-group': '36-48',
-    }
-  ];
+  LanguageModel? selectedLanguage;
+  AgeGroupModel? selectedAgeGroup;
 
   Future<void> _handleNext() async {
     if (_step < 3) {
@@ -62,8 +30,14 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         _step++;
       });
     } else {
+      currentMontiUser!.ageActivity = selectedAgeGroup!.ageGroupCode;
+      currentMontiUser!.languageCode = selectedLanguage!.languageCode;
+
       await databaseService.updateUserTimeData(
-          ageActivity: _ageGroup, userName: _name, language: _language);
+          ageActivity: selectedAgeGroup!.ageGroupCode,
+          userName: _name,
+          language: selectedLanguage!.languageName,
+          languageCode: selectedLanguage!.languageCode);
       Navigator.pushNamedAndRemoveUntil(
           context, AppRoutes.navigationBarPage, (_) => false);
     }
@@ -74,12 +48,24 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
       case 1:
         return _name.trim().isNotEmpty;
       case 2:
-        return _language.isNotEmpty;
+        return selectedLanguage != null;
       case 3:
-        return _ageGroup.isNotEmpty;
+        return selectedAgeGroup != null;
       default:
         return false;
     }
+  }
+
+  @override
+  void initState() {
+    if (Get.locale!.languageCode == "en") {
+      selectedLanguage =
+          enLanguageList.singleWhere((e) => e.languageCode == "en");
+    } else {
+      selectedLanguage =
+          trLanguageList.singleWhere((e) => e.languageCode == "tr");
+    }
+    super.initState();
   }
 
   @override
@@ -276,10 +262,12 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         SizedBox(
           height: 320,
           child: ListView.builder(
-            itemCount: _languages.length,
+            itemCount: enLanguageList.length,
             itemBuilder: (context, index) {
-              final language = _languages[index];
-              final isSelected = _language == language;
+              final language = Get.locale?.languageCode == "en"
+                  ? enLanguageList[index]
+                  : trLanguageList[index];
+              final isSelected = selectedLanguage == language;
 
               return Container(
                 margin: const EdgeInsets.only(bottom: 12),
@@ -288,11 +276,19 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                   child: InkWell(
                     onTap: () async {
                       setState(() {
-                        _language = language;
+                        selectedLanguage = language;
                       });
 
+                      if (selectedLanguage?.languageCode == "en") {
+                        selectedLanguage = enLanguageList
+                            .singleWhere((e) => e.languageCode == "en");
+                      } else {
+                        selectedLanguage = trLanguageList
+                            .singleWhere((e) => e.languageCode == "tr");
+                      }
+
                       Locale locale;
-                      if (language == "Turkish") {
+                      if (language.languageCode == "tr") {
                         locale = const Locale("tr");
                       } else {
                         locale = const Locale("en");
@@ -310,7 +306,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        language,
+                        language.languageName,
                         style: TextStyle(
                           fontSize: 16,
                           color: isSelected
@@ -360,67 +356,45 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
           ],
         ),
         const SizedBox(height: 32),
-        Column(
-          children: _ageGroups.map((group) {
-            final isSelected = _ageGroup == group['age-group'];
+        SizedBox(
+          height: 370,
+          child: ListView.builder(
+            itemCount: enAgeGroupList.length,
+            itemBuilder: (context, index) {
+              final ageGroup = Get.locale?.languageCode == "en"
+                  ? enAgeGroupList[index]
+                  : trAgeGroupList[index];
 
-            return Container(
-              margin: const EdgeInsets.only(bottom: 16),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () => setState(() => _ageGroup = group['age-group']!),
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: isSelected
-                          ? AppColors.kButtonGreenColor
-                          : Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          group['icon']!,
-                          style: const TextStyle(fontSize: 32),
+              bool isSelected = selectedAgeGroup == ageGroup;
+              return Container(
+                margin: const EdgeInsets.only(bottom: 16),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedAgeGroup = ageGroup;
+                      });
+                    },
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? AppColors.kButtonGreenColor
+                              : Colors.white,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                group['label']!,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: isSelected
-                                      ? Colors.white
-                                      : AppColors.kTitleBlackTextColor,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                group['description']!,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: isSelected
-                                      ? Colors.white.withValues(alpha: 0.8)
-                                      : AppColors.kSubtitleTextColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                        child: Text(
+                          ageGroup.ageGroupName,
+                          style: const TextStyle(fontSize: 18),
+                        )),
                   ),
                 ),
-              ),
-            );
-          }).toList(),
-        ),
+              );
+            },
+          ),
+        )
       ],
     );
   }

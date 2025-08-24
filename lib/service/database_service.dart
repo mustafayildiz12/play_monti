@@ -91,12 +91,15 @@ class DatabaseService {
   Future<void> updateUserTimeData(
       {required String ageActivity,
       required String userName,
-      required String language}) async {
+      required String language,
+      required String languageCode
+      }) async {
     User? user = authenticationService.getUser();
     await _realtimeDatabase.ref('users').child(user!.uid).update({
       "userName": userName,
       "ageActivity": ageActivity,
-      "language": language
+      "language": language,
+      "languageCode": languageCode
     });
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
+import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,116 +17,128 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   bool _obscure = true;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28.0),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.lock_outline, size: 64, color: Colors.blue[700]),
-                  const SizedBox(height: 24),
-                  const Text(
-                    "Giriş Yap",
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 32),
-                  TextField(
-                    controller: emailController,
-                    decoration: InputDecoration(
-                      labelText: "E-posta",
-                      prefixIcon: const Icon(Icons.email_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
+    return CustomLoader(
+      inAsyncCall: isLoading,
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28.0),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.lock_outline, size: 64, color: Colors.blue[700]),
+                    const SizedBox(height: 24),
+                    const Text(
+                      "Giriş Yap",
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 32),
+                    TextField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        labelText: "E-posta",
+                        prefixIcon: const Icon(Icons.email_outlined),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    const SizedBox(height: 18),
+                    TextField(
+                      controller: passwordController,
+                      obscureText: _obscure,
+                      decoration: InputDecoration(
+                        labelText: "Şifre",
+                        prefixIcon: const Icon(Icons.lock_outline),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscure
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: () => setState(() => _obscure = !_obscure),
+                        ),
                       ),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  const SizedBox(height: 18),
-                  TextField(
-                    controller: passwordController,
-                    obscureText: _obscure,
-                    decoration: InputDecoration(
-                      labelText: "Şifre",
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                            _obscure ? Icons.visibility : Icons.visibility_off),
-                        onPressed: () => setState(() => _obscure = !_obscure),
+                    const SizedBox(height: 18),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll(AppColors.kButtonColor2),
+                            foregroundColor: WidgetStatePropertyAll(
+                                AppColors.kCalendarLightGreenColor)),
+                        onPressed: () async {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          await authenticationService.login(context,
+                              email: emailController.text,
+                              password: passwordController.text);
+                          setState(() {
+                            isLoading = false;
+                          });
+                        }, // Sen bağlayacaksın
+                        child: const Text("Giriş Yap"),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 18),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: ElevatedButton(
-                      style: const ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(AppColors.kButtonColor2),
-                        foregroundColor: WidgetStatePropertyAll(AppColors.kCalendarLightGreenColor)
-                      ),
-                      onPressed: () async {
-                        await authenticationService.login(context,
-                            email: emailController.text,
-                            password: passwordController.text);
-                      }, // Sen bağlayacaksın
-                      child: const Text("Giriş Yap"),
+                    const SizedBox(height: 16),
+                    const Row(
+                      children: [
+                        Expanded(child: Divider()),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: Text("veya"),
+                        ),
+                        Expanded(child: Divider()),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Row(
-                    children: [
-                      Expanded(child: Divider()),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Text("veya"),
-                      ),
-                      Expanded(child: Divider()),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: OutlinedButton.icon(
-                      icon: Image.asset(
-                        "assets/google.png",
-                        height: 24,
-                      ),
-                      label: const Text("Google ile Giriş"),
-                      onPressed: () async {
-                        await authenticationService.signInWithGoogle(
-                            context: context);
-                      }, // Google sign-in
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  if (Platform.isIOS)
+                    const SizedBox(height: 16),
                     SizedBox(
                       width: double.infinity,
                       height: 48,
                       child: OutlinedButton.icon(
-                        icon: const Icon(Icons.apple, size: 24),
-                        label: const Text("Apple ile Giriş"),
-                        onPressed: () {}, // Apple sign-in
+                        icon: Image.asset(
+                          "assets/google.png",
+                          height: 24,
+                        ),
+                        label: const Text("Google ile Giriş"),
+                        onPressed: () async {
+                          await authenticationService.signInWithGoogle(
+                              context: context);
+                        }, // Google sign-in
                       ),
                     ),
-                  const SizedBox(height: 20),
-                  TextButton(
-                    onPressed: () => Navigator.pushReplacementNamed(
-                        context, AppRoutes.registerPage),
-                    child: const Text("Hesabın yok mu? Kayıt Ol"),
-                  ),
-                ],
+                    const SizedBox(height: 12),
+                    if (Platform.isIOS)
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: OutlinedButton.icon(
+                          icon: const Icon(Icons.apple, size: 24),
+                          label: const Text("Apple ile Giriş"),
+                          onPressed: () {}, // Apple sign-in
+                        ),
+                      ),
+                    const SizedBox(height: 20),
+                    TextButton(
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, AppRoutes.registerPage),
+                      child: const Text("Hesabın yok mu? Kayıt Ol"),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

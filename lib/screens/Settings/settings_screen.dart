@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
@@ -259,7 +260,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     'Made with 🌱 for growing minds',
                     style: TextStyle(color: textHint, fontSize: 12),
                   ),
-                  const SizedBox(height: 12),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, AppRoutes.uploadActivityPage);
+                    },
+                    child: const Text("Excel Sayfası"),
+                  ),
                   TextButton(
                     onPressed: () async {
                       await authenticationService.logoutFromFirebase(context);
