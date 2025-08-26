@@ -64,9 +64,8 @@ Future<void> runMyApp() async {
       title: 'MontiTime',
       debugShowCheckedModeBanner: false,
       translations: AppTranslations(),
-      locale: const Locale('tr'), // Varsayılan dil
+      locale: const Locale('en'), // Varsayılan dil
       fallbackLocale: const Locale('en'), // Yedek dil
-
       theme: AppTheme.appTheme,
       initialRoute: AppRoutes.initialRoute,
       getPages: AppPages.pages,

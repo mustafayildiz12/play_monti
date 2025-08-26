@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:get/utils.dart';
+
 class MontessoriFirstOnboarding extends StatefulWidget {
   const MontessoriFirstOnboarding({super.key});
 
@@ -99,17 +101,17 @@ class _MontessoriFirstOnboardingState extends State<MontessoriFirstOnboarding>
               // Soft shape animasyonlu container
               Center(child: softShape(shapeWidth)),
               const Spacer(flex: 2),
-              const Text(
-                "Why Offline?",
-                style: TextStyle(
+              Text(
+                "why_offline".tr,
+                style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2C3E50)),
               ),
               const SizedBox(height: 16),
-              const Text(
-                "Most early childhood apps need the internet. But giving screens to toddlers can be risky.",
-                style: TextStyle(
+              Text(
+                "why_offline_description".tr,
+                style: const TextStyle(
                     fontSize: 18, color: Color(0xFF5A6C7D), height: 1.4),
                 textAlign: TextAlign.center,
               ),

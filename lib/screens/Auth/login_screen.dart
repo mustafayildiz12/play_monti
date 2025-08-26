@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
@@ -32,18 +33,18 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.lock_outline, size: 64, color: Colors.blue[700]),
+                    Image.asset("assets/logo.png"),
                     const SizedBox(height: 24),
-                    const Text(
-                      "Giriş Yap",
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    Text(
+                      "welcome".tr,
+                      style: const TextStyle(
+                          fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 32),
                     TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        labelText: "E-posta",
+                        labelText: "email".tr,
                         prefixIcon: const Icon(Icons.email_outlined),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
@@ -56,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                       controller: passwordController,
                       obscureText: _obscure,
                       decoration: InputDecoration(
-                        labelText: "Şifre",
+                        labelText: "password".tr,
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
@@ -90,18 +91,21 @@ class _LoginPageState extends State<LoginPage> {
                             isLoading = false;
                           });
                         }, // Sen bağlayacaksın
-                        child: const Text("Giriş Yap"),
+                        child: Text(
+                          "login".tr,
+                          style: const TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const Row(
+                    Row(
                       children: [
-                        Expanded(child: Divider()),
+                        const Expanded(child: Divider()),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Text("veya"),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text("or".tr),
                         ),
-                        Expanded(child: Divider()),
+                        const Expanded(child: Divider()),
                       ],
                     ),
                     const SizedBox(height: 16),
@@ -113,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                           "assets/google.png",
                           height: 24,
                         ),
-                        label: const Text("Google ile Giriş"),
+                        label: Text("loginGoogle".tr),
                         onPressed: () async {
                           await authenticationService.signInWithGoogle(
                               context: context);
@@ -127,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: 48,
                         child: OutlinedButton.icon(
                           icon: const Icon(Icons.apple, size: 24),
-                          label: const Text("Apple ile Giriş"),
+                          label: Text("loginApple".tr),
                           onPressed: () {}, // Apple sign-in
                         ),
                       ),
@@ -135,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextButton(
                       onPressed: () => Navigator.pushReplacementNamed(
                           context, AppRoutes.registerPage),
-                      child: const Text("Hesabın yok mu? Kayıt Ol"),
+                      child: Text("donthaveAccount".tr),
                     ),
                   ],
                 ),

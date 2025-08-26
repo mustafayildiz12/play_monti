@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class MontessoriFourthOnboarding extends StatefulWidget {
   const MontessoriFourthOnboarding({super.key});
@@ -61,9 +62,9 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
                 const Spacer(flex: 2),
                 Center(child: animatedShieldIcon()),
                 const Spacer(flex: 2),
-                const Text(
-                  "Our Safer Approach",
-                  style: TextStyle(
+                Text(
+                  "safer_approach_title".tr,
+                  style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2C3E50),
@@ -71,33 +72,33 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 12),
-                const Text(
-                  "That's why this app works completely offline.",
-                  style: TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
+                Text(
+                  "safer_approach_subtitle".tr,
+                  style: const TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("✅ No ads",
-                          style: TextStyle(
+                      Text("safer_approach_no_ads".tr,
+                          style: const TextStyle(
                               fontSize: 18, color: Color(0xFF2C3E50))),
-                      Text("✅ No tracking",
-                          style: TextStyle(
+                      Text("safer_approach_no_tracking".tr,
+                          style: const TextStyle(
                               fontSize: 18, color: Color(0xFF2C3E50))),
-                      Text("✅ No distractions",
-                          style: TextStyle(
+                      Text("safer_approach_no_distractions".tr,
+                          style: const TextStyle(
                               fontSize: 18, color: Color(0xFF2C3E50))),
                     ],
                   ),
                 ),
                 const SizedBox(height: 12),
-                const Text(
-                  "Only Montessori-based, screen-light learning.",
-                  style: TextStyle(
+                Text(
+                  "safer_approach_montessori".tr,
+                  style: const TextStyle(
                       fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
                   textAlign: TextAlign.center,
                 ),

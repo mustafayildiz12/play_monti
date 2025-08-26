@@ -21,19 +21,20 @@ class DatabaseService {
   Future<bool> getAdminBasicInfoFromRealTime(String userId) async {
     bool isExist = false;
 
-    final MontiUserModel? userModel =
-        await getDataFromRealtimeDatabase<MontiUserModel?>(
-            "users/$userId", (d) => MontiUserModel.fromMap(d));
+    try {
+      final MontiUserModel? userModel =
+          await getDataFromRealtimeDatabase<MontiUserModel?>(
+              "users/$userId", (d) => MontiUserModel.fromMap(d));
 
-    if (userModel != null) {
-      isExist = true;
-      currentMontiUser = userModel;
+      print(userModel);
 
-      /*
-      if (userModel.isAnonymous == false) {
-        await InAppPurchaseService().loginSubscription();
+      if (userModel != null) {
+        isExist = true;
+        currentMontiUser = userModel;
       }
-       */
+      print(userModel);
+    } catch (e) {
+      print(e.toString());
     }
 
     return isExist;
@@ -42,20 +43,18 @@ class DatabaseService {
   Future<bool> isUserDetailExist(String userId) async {
     bool isExist = false;
 
-    final MontiUserModel? userModel =
-        await getDataFromRealtimeDatabase<MontiUserModel?>(
-            "users/$userId", (d) => MontiUserModel.fromMap(d));
+    try {
+      final MontiUserModel? userModel =
+          await getDataFromRealtimeDatabase<MontiUserModel?>(
+              "users/$userId", (d) => MontiUserModel.fromMap(d));
 
-    if (userModel != null &&
-        userModel.ageActivity != null &&
-        userModel.userName != null) {
-      isExist = true;
-
-      /*
-      if (userModel.isAnonymous == false) {
-        await InAppPurchaseService().loginSubscription();
+      if (userModel != null &&
+          userModel.ageActivity != null &&
+          userModel.userName != null) {
+        isExist = true;
       }
-       */
+    } catch (e) {
+      print(e.toString());
     }
 
     return isExist;
@@ -70,8 +69,10 @@ class DatabaseService {
     try {
       final DataSnapshot snapshot = await _realtimeDatabase.ref(path).get();
 
+       print(snapshot.value);
+
       if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
-        //  print(snapshot.value);
+        print(snapshot.value);
         final Map<String, dynamic> data =
             Map<String, dynamic>.from(snapshot.value as Map);
         return fromMap(data);
@@ -92,8 +93,7 @@ class DatabaseService {
       {required String ageActivity,
       required String userName,
       required String language,
-      required String languageCode
-      }) async {
+      required String languageCode}) async {
     User? user = authenticationService.getUser();
     await _realtimeDatabase.ref('users').child(user!.uid).update({
       "userName": userName,

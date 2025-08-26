@@ -77,6 +77,8 @@ class AuthenticationService {
       } else {
         customSnackBar.warning("Hatalı kullanıcı adı ya da şifre");
       }
+    } catch (e) {
+      print(e.toString());
     }
   }
 

@@ -126,9 +126,9 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Daily Montessori activities for your child',
-            style: TextStyle(
+          Text(
+            'daily_montessori'.tr,
+            style: const TextStyle(
               fontSize: 14,
               color: AppColors.kSubtitleTextColor,
             ),
@@ -178,26 +178,26 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
   Widget _buildStep1() {
     return Column(
       children: [
-        const Column(
+        Column(
           children: [
-            Icon(
+            const Icon(
               Icons.person_outline,
               size: 48,
               color: AppColors.kButtonGreenColor,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              'Welcome!',
-              style: TextStyle(
+              'welcome'.tr,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: AppColors.kTitleBlackTextColor,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
-              'What should we call you?',
-              style: TextStyle(
+              'what_call_you'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 color: AppColors.kSubtitleTextColor,
               ),
@@ -209,7 +209,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         TextField(
           onChanged: (value) => setState(() => _name = value),
           decoration: InputDecoration(
-            hintText: 'Enter your name',
+            hintText: 'enter_name_hint'.tr,
             hintStyle: const TextStyle(color: Color(0xFF999999)),
             filled: true,
             fillColor: Colors.white,
@@ -231,26 +231,26 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
   Widget _buildStep2() {
     return Column(
       children: [
-        const Column(
+        Column(
           children: [
-            Icon(
+            const Icon(
               Icons.language_outlined,
               size: 48,
               color: AppColors.kButtonGreenColor,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              'Choose Language',
-              style: TextStyle(
+              'choose_language'.tr,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: AppColors.kTitleBlackTextColor,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
-              'Select your preferred language',
-              style: TextStyle(
+              'select_language'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 color: AppColors.kSubtitleTextColor,
               ),
@@ -328,26 +328,26 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
   Widget _buildStep3() {
     return Column(
       children: [
-        const Column(
+        Column(
           children: [
-            Icon(
+            const Icon(
               Icons.people_outline,
               size: 48,
               color: AppColors.kButtonGreenColor,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              'Child\'s Age Group',
-              style: TextStyle(
+              "child_age_group".tr,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: AppColors.kTitleBlackTextColor,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
-              'This helps us show age-appropriate activities',
-              style: TextStyle(
+              'child_age_help'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 color: AppColors.kSubtitleTextColor,
               ),
@@ -419,7 +419,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                _step == 3 ? 'Get Started' : 'Continue',
+                _step == 3 ? 'get_started_button'.tr : 'continue_or_start'.tr,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,

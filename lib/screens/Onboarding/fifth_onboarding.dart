@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:get/utils.dart';
+
 class MontessoriFifthOnboarding extends StatefulWidget {
   const MontessoriFifthOnboarding({super.key});
 
@@ -95,24 +97,24 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
                   ],
                 ),
                 const Spacer(flex: 2),
-                const Text(
-                  "Let's Get Started",
-                  style: TextStyle(
+                Text(
+                  "get_started_title".tr,
+                  style: const TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF2C3E50)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Real Montessori activities.",
-                  style: TextStyle(fontSize: 18, color: Color(0xFF5A6C7D)),
+                Text(
+                  "get_started_subtitle".tr,
+                  style: const TextStyle(fontSize: 18, color: Color(0xFF5A6C7D)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 12),
-                const Text(
-                  "Anytime.\nAnywhere.\nNo internet needed.",
-                  style: TextStyle(
+                Text(
+                  "get_started_anytime".tr,
+                  style: const TextStyle(
                       fontSize: 20, color: Color(0xFF2C3E50), height: 1.6),
                   textAlign: TextAlign.center,
                 ),

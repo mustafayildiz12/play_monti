@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class MontessoriSecondOnboarding extends StatelessWidget {
   const MontessoriSecondOnboarding({super.key});
@@ -61,26 +62,26 @@ class MontessoriSecondOnboarding extends StatelessWidget {
               const Spacer(flex: 2),
               Center(child: parentChildFigure()),
               const Spacer(flex: 2),
-              const Text(
-                "The Risks of Early Screens",
-                style: TextStyle(
+              Text(
+                "early_screens_title".tr,
+                style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2C3E50)),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
-              const Text(
-                "Screens at age 0-4 may delay brain development.",
-                style: TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
+              Text(
+                "early_screens_subtitle".tr,
+                style: const TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
               const Text("📱🧠", style: TextStyle(fontSize: 28)),
               const SizedBox(height: 8),
-              const Text(
-                "Studies show increased risks of:\n• Speech delay\n• Poor attention\n• Less emotional regulation",
-                style: TextStyle(
+              Text(
+                "early_screens_risks".tr,
+                style: const TextStyle(
                     fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
                 textAlign: TextAlign.center,
               ),

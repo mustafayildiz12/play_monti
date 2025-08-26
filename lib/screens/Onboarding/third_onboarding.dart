@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class MontessoriThirdOnboarding extends StatelessWidget {
   const MontessoriThirdOnboarding({super.key});
@@ -29,32 +30,32 @@ class MontessoriThirdOnboarding extends StatelessWidget {
               const Spacer(flex: 2),
               Center(child: handsActivity()),
               const Spacer(flex: 2),
-              const Text(
-                "What Builds a Brain?",
-                style: TextStyle(
+              Text(
+                "builds_brain_title".tr,
+                style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2C3E50)),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
-              const Text(
-                "Real play builds real brains. 🖐️👀👂",
-                style: TextStyle(
+              Text(
+                "builds_brain_play".tr,
+                style: const TextStyle(
                     fontSize: 16, color: Color(0xFF5A6C7D), height: 1.4),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 6),
-              const Text(
-                "Active exploration wires the brain faster than passive screen viewing.",
-                style: TextStyle(
+              Text(
+                "builds_brain_exploration".tr,
+                style: const TextStyle(
                     fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
-              const Text(
-                "Let's grow, not just watch.",
-                style: TextStyle(
+              Text(
+                "builds_brain_grow".tr,
+                style: const TextStyle(
                   fontSize: 16,
                   fontStyle: FontStyle.italic,
                   color: Color(0xFF5A6C7D),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
@@ -30,18 +31,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.person_add_alt,
-                        size: 64, color: Colors.green[700]),
+                    Image.asset("assets/logo.png"),
                     const SizedBox(height: 24),
-                    const Text(
-                      "Kayıt Ol",
-                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    Text(
+                      "register".tr,
+                      style: const TextStyle(
+                          fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 32),
                     TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        labelText: "E-posta",
+                        labelText: "email".tr,
                         prefixIcon: const Icon(Icons.email_outlined),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
@@ -54,14 +55,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: passwordController,
                       obscureText: _obscure,
                       decoration: InputDecoration(
-                        labelText: "Şifre",
+                        labelText: "password".tr,
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
                         ),
                         suffixIcon: IconButton(
-                          icon: Icon(
-                              _obscure ? Icons.visibility : Icons.visibility_off),
+                          icon: Icon(_obscure
+                              ? Icons.visibility
+                              : Icons.visibility_off),
                           onPressed: () => setState(() => _obscure = !_obscure),
                         ),
                       ),
@@ -83,14 +85,17 @@ class _RegisterPageState extends State<RegisterPage> {
                             isLoading = false;
                           });
                         }, // Sen bağlayacaksın
-                        child: const Text("Kayıt Ol"),
+                        child: Text(
+                          "register".tr,
+                          style: const TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20),
                     TextButton(
                       onPressed: () => Navigator.pushReplacementNamed(
                           context, AppRoutes.loginPage),
-                      child: const Text("Zaten hesabın var mı? Giriş Yap"),
+                      child: Text("alreadyHaveAccount".tr),
                     ),
                   ],
                 ),

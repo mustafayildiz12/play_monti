@@ -14,7 +14,58 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
-          // Navigation
+          "get_started_button_tr": "Başla",
+          "continue_or_start_tr": "Devam Et",
+          "child_age_help_tr":
+              "Bu, yaşa uygun aktiviteler göstermemize yardımcı olur",
+
+          "child_age_group_tr": "Çocuğun Yaş Grubu",
+          "select_language_tr": "Tercih ettiğiniz dili seçin",
+          "choose_language_tr": "Dil Seçin",
+          "enter_name_hint_tr": "Adınızı giriniz",
+          "what_call_you_tr": "Size nasıl hitap edelim?",
+          "daily_montessori_tr":
+              "Çocuğunuz için günlük Montessori aktiviteleri",
+          "back": "Geri",
+          "next": "İleri",
+          "get_started_anytime_tr":
+              "Her zaman.\nHer yerde.\nİnternet gerekmez.",
+          "get_started_subtitle_tr": "Gerçek Montessori aktiviteleri.",
+          "get_started_title_tr": "Hadi Başlayalım",
+          "safer_approach_montessori_tr":
+              "Sadece Montessori temelli, ekrana az maruz bırakan öğrenme.",
+          "safer_approach_no_distractions_tr": "✅ Dikkat dağıtıcı unsurlar yok",
+          "safer_approach_no_tracking_tr": "✅ Takip yok",
+          "safer_approach_no_ads_tr": "✅ Reklamsız",
+          "safer_approach_subtitle_tr":
+              "İşte bu yüzden bu uygulama tamamen çevrimdışı çalışır.",
+
+          "safer_approach_title_tr": "Daha Güvenli Yaklaşımımız",
+          "builds_brain_grow_tr": "Sadece izlemeyelim, birlikte büyüyelim.",
+          "builds_brain_exploration_tr":
+              "Aktif keşif, pasif ekran izlemeye göre beyni daha hızlı bağlantılarla güçlendirir.",
+
+          "builds_brain_play_tr":
+              "Gerçek oyun gerçek beyinleri geliştirir. 🖐️👀👂",
+          "builds_brain_title_tr": "Beyni Ne Geliştirir?",
+          "early_screens_risks_tr":
+              "Araştırmalar şu risklerin arttığını göstermektedir:\n• Konuşma gecikmesi\n• Dikkat dağınıklığı\n• Daha az duygusal kontrol",
+          "early_screens_subtitle_tr":
+              "0-4 yaş arası ekran kullanımı beyin gelişimini geciktirebilir.",
+
+          "early_screens_title_tr": "Erken Ekranların Riskleri",
+          "why_offline_description_tr":
+              "Çoğu erken çocukluk uygulaması internete ihtiyaç duyar. Ancak küçük çocuklara ekran vermek riskli olabilir.",
+          "why_offline_tr": "Neden Çevrimdışı?",
+          "alreadyHaveAccount": "Zaten hesabın var mı? Giriş Yap",
+          "register": "Kayıt Ol",
+          "donthaveAccount": "Hesabın yok mu? Kayıt Ol",
+          "loginApple": "Apple ile Giriş",
+          "loginGoogle": "Google ile Giriş",
+          "or": "veya",
+          "login": "Giriş Yap",
+          'password': "Şifre",
+          'email': "E Posta",
           'home': 'Ana Sayfa',
           'calendar': 'Takvim',
           'badges': 'Rozetler',
@@ -93,21 +144,62 @@ class AppTranslations extends Translations {
           'beginner': 'Başlangıç',
           'intermediate': 'Orta',
           'advanced': 'İleri',
-          'loading': 'Yükleniyor',
+          'loading': 'Yükleniyor ...',
           'error': 'Hata',
           'retry': 'Tekrar Dene',
           'save': 'Kaydet',
           'delete': 'Sil',
           'edit': 'Düzenle',
           'close': 'Kapat',
-          'back': 'Geri',
-          'next': 'İleri',
           'previous': 'Önceki',
           'done': 'Tamam',
           'skip': 'Geç',
         },
         'en': {
-          // Navigation
+          "get_started_button": "Get Started",
+          "continue_or_start": "Continue",
+          "child_age_help": "This helps us show age-appropriate activities",
+          "child_age_group": "Child's Age Group",
+          "select_language": "Select your preferred language",
+          "choose_language": "Choose Language",
+          "enter_name_hint": "Enter your name",
+          "what_call_you": "What should we call you?",
+          "daily_montessori": "Daily Montessori activities for your child",
+          "back": "Back",
+          "next": "Next",
+          "get_started_anytime": "Anytime.\nAnywhere.\nNo internet needed.",
+          "get_started_subtitle": "Real Montessori activities.",
+          "get_started_title": "Let's Get Started",
+          "safer_approach_montessori":
+              "Only Montessori-based, screen-light learning.",
+          "safer_approach_no_distractions": "✅ No distractions",
+          "safer_approach_no_tracking": "✅ No tracking",
+          "safer_approach_no_ads": "✅ No ads",
+          "safer_approach_subtitle":
+              "That's why this app works completely offline.",
+          "safer_approach_title": "Our Safer Approach",
+          "builds_brain_grow": "Let's grow, not just watch.",
+          "builds_brain_exploration":
+              "Active exploration wires the brain faster than passive screen viewing.",
+          "builds_brain_play": "Real play builds real brains. 🖐️👀👂",
+          "builds_brain_title": "What Builds a Brain?",
+          "early_screens_risks":
+              "Studies show increased risks of:\n• Speech delay\n• Poor attention\n• Less emotional regulation",
+          "early_screens_subtitle":
+              "Screens at age 0-4 may delay brain development.",
+          "early_screens_title": "The Risks of Early Screens",
+          "why_offline_description":
+              "Most early childhood apps need the internet. But giving screens to toddlers can be risky.",
+          "why_offline": "Why Offline?",
+          "alreadyHaveAccount": "Already have account? Sign In",
+          "register": "Register",
+          "donthaveAccount": "Don't have account? Register",
+          "loginApple": "Sign in with Apple",
+          "loginGoogle": "Sign in with Google",
+          "or": "or",
+          "login": "Login",
+          'password': "Password",
+          'email': "E Mail",
           'home': 'Home',
           'calendar': 'Calendar',
           'badges': 'Badges',
@@ -185,15 +277,13 @@ class AppTranslations extends Translations {
           'beginner': 'Beginner',
           'intermediate': 'Intermediate',
           'advanced': 'Advanced',
-          'loading': 'Loading',
+          'loading': 'Loading ...',
           'error': 'Error',
           'retry': 'Retry',
           'save': 'Save',
           'delete': 'Delete',
           'edit': 'Edit',
           'close': 'Close',
-          'back': 'Back',
-          'next': 'Next',
           'previous': 'Previous',
           'done': 'Done',
           'skip': 'Skip',

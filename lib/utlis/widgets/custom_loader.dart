@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({
@@ -7,13 +8,11 @@ class CustomLoader extends StatelessWidget {
     super.key,
     this.opacity = 0.3,
     this.color = Colors.black,
-    this.loadingText = "Yükleniyor ...",
   });
   final Widget child;
   final bool inAsyncCall;
   final double opacity;
   final Color color;
-  final String? loadingText;
 
   @override
   Widget build(BuildContext context) {
@@ -71,17 +70,15 @@ class CustomLoader extends StatelessWidget {
                         strokeWidth: 3,
                       ),
                     ),
-                    if (loadingText != null) ...[
-                      const SizedBox(height: 16),
-                      Text(
-                        loadingText!,
-                        style:  TextStyle(
-                          color: Colors.green.shade400,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    const SizedBox(height: 16),
+                    Text(
+                      "loading".tr,
+                      style: TextStyle(
+                        color: Colors.green.shade400,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
+                    ),
                   ],
                 ),
               ),

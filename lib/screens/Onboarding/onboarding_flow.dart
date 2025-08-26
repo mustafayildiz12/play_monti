@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/screens/Onboarding/fifth_onboarding.dart';
@@ -106,10 +107,10 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                               shape: const StadiumBorder(),
                             ),
                             onPressed: _back,
-                            child: const Row(
+                            child: Row(
                               children: [
-                                Icon(Icons.arrow_back_ios),
-                                Text('Back'),
+                                const Icon(Icons.arrow_back_ios),
+                                Text('back'.tr),
                               ],
                             ),
                           ),
@@ -134,13 +135,13 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                                           AppRoutes.loginPage);
                                 },
                           child: _currentIndex < _pages.length - 1
-                              ? const Row(
+                              ? Row(
                                   children: [
-                                    Text('Next'),
-                                    Icon(Icons.arrow_forward_ios)
+                                    Text('next'.tr),
+                                    const Icon(Icons.arrow_forward_ios)
                                   ],
                                 )
-                              : const Text("Get Started"),
+                              : Text("getStarted".tr),
                         ),
                       ],
                     ),
