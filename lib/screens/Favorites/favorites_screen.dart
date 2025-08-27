@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/favorite_activity_model.dart';
 import 'package:play_monti/service/activty_service.dart';
@@ -8,12 +10,7 @@ import 'package:play_monti/utlis/widgets/custom_loader.dart';
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({
     super.key,
-    this.initialQuery = '',
-    this.initialCategory,
   });
-
-  final String initialQuery;
-  final String? initialCategory;
 
   @override
   State<FavoritesScreen> createState() => _FavoritesPageState();
@@ -23,6 +20,8 @@ class _FavoritesPageState extends State<FavoritesScreen> {
   final _searchCtrl = TextEditingController();
 
   bool isLoading = false;
+
+  List<FavoriteActivityModel> favoriteActivityList = [];
 
   @override
   void initState() {
@@ -35,8 +34,6 @@ class _FavoritesPageState extends State<FavoritesScreen> {
     _searchCtrl.dispose();
     super.dispose();
   }
-
-  List<FavoriteActivityModel> favoriteActivityList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -56,16 +53,18 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Favorite Activities',
-                            style: TextStyle(
+                          Text(
+                            'favorite_activites'.tr,
+                            style: const TextStyle(
                                 color: AppColors.kTitleBlackTextColor,
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            '${getFilteredList().length} saved activities',
+                            AppLocalization.currentLangCode == "en"
+                                ? '${getFilteredList().length} saved activities'
+                                : '${getFilteredList().length} aktivite kaydedildi',
                             style: const TextStyle(
                                 color: AppColors.kSubtitleTextColor,
                                 fontSize: 16,
@@ -99,7 +98,7 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: _SearchField(
                   controller: _searchCtrl,
-                  hint: 'Search favorites...',
+                  hint: 'searchFavorites'.tr,
                   onChanged: (_) => setState(() {}),
                 ),
               ),

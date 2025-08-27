@@ -19,7 +19,6 @@ class AppTranslations extends Translations {
           "continue_or_start": "Devam Et",
           "child_age_help_tr":
               "Bu, yaşa uygun aktiviteler göstermemize yardımcı olur",
-
           "child_age_group_tr": "Çocuğun Yaş Grubu",
           "select_language_tr": "Tercih ettiğiniz dili seçin",
           "choose_language_tr": "Dil Seçin",
@@ -175,9 +174,51 @@ class AppTranslations extends Translations {
               "Geçmiş etkinlikleri görüntüleyin ve ilerlemenizi takip edin.",
           'pending': "Beklemede",
           "activity": "Aktivite",
-          "go": "Git"
+          "go": "Git",
+          "seed": "Tohum",
+          "sprout": "Filiz",
+          "blossom": "Çiçek",
+          "tree": "Ağaç",
+          "achievement_badges": "Başarı Rozetleri",
+          "celebrate_monti":
+              "Montessori yolculuğunuzun kilometre taşlarını kutlayın",
+          "activities": "aktiviteler",
+          "keep_growing": "Gelişmeye devam et! 🌱",
+          "activity_journey":
+              "Tamamlanan her aktivite, çocuğunuzun gelişim yolculuğunda bir adım ileriye gitmektir.",
+          "earned": "Kazanıldı! 🎉",
+          "favorite_activites": "Favori Aktiviteler",
+          "remember": '💡 Unutma',
+          "quide_subtitle":
+              "Montessori mükemmellikle değil, ilerlemeyle ilgilidir. Bağımsızlığa doğru atılan her küçük adım, kutlanmaya değer bir zaferdir.",
+          "discover_quide":
+              "Montessori eğitiminin temel ilkelerini ve bu eğitimin bağımsız, kendine güvenen çocukları nasıl yetiştirdiğini keşfedin.",
+          "quide_observe":
+              "Çocuğunuzun ilgi alanlarını, ihtiyaçlarını ve gelişim aşamasını anlamak için gözlem sanatını öğrenin.",
+               "quide_create": "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın."
         },
         'en': {
+          "quide_create":
+              "Create an environment that promotes independence and learning with simple, practical changes.",
+          "quide_observe":
+              "Learn the art of observation to understand your child's interests, needs, and developmental stage.",
+          "discover_quide":
+              "Discover the core principles of Montessori education and how it nurtures independent, confident children.",
+          "quide_subtitle":
+              "Montessori is not about perfection—it's about progress. Every small step towards independence is a victory worth celebrating.",
+          "remember": '💡 Remember',
+          "favorite_activites": "Favorite Activities",
+          "earned": "Earned! 🎉",
+          "activity_journey":
+              "Every activity completed is a step forward in your child's development journey.",
+          "keep_growing": "Keep Growing! 🌱",
+          "activities": "activities",
+          "celebrate_monti": "Celebrate your Montessori journey milestones",
+          "achievement_badges": "Achievement Badges",
+          "tree": "Tree",
+          "blossom": "Blossom",
+          "sprout": "Sprout",
+          "seed": "Seed",
           "go": "Go",
           "activity": "Activity",
           "view_progress": "View the past activities and track your progress.",
@@ -293,6 +334,7 @@ class AppTranslations extends Translations {
           'whatIsMontessori': 'What is Montessori?',
           'howToObserve': 'How to Observe Your Child',
           'settingUpSpace': 'Setting up a Montessori Space at Home',
+
           // Settings
 
           'customizeExperience': 'Customize your MontiTime experience',

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/service/database_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
@@ -19,22 +21,22 @@ class _BadgesScreenState extends State<BadgesScreen> {
 
   final badges = <BadgeTier>[
     BadgeTier(
-      title: 'Seed',
+      title: 'seed'.tr,
       icon: '🌱',
       targetCount: 3,
     ),
     BadgeTier(
-      title: 'Sprout',
+      title: 'sprout'.tr,
       icon: '🌿',
       targetCount: 7,
     ),
     BadgeTier(
-      title: 'Blossom',
+      title: 'blossom'.tr,
       icon: '🌸',
       targetCount: 15,
     ),
     BadgeTier(
-      title: 'Tree',
+      title: 'tree'.tr,
       icon: '🌳',
       targetCount: 30,
     ),
@@ -58,28 +60,28 @@ class _BadgesScreenState extends State<BadgesScreen> {
         appBar: AppBar(),
         body: CustomScrollView(
           slivers: [
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Achievement Badges',
-                      style: TextStyle(
+                      "achievement_badges".tr,
+                      style: const TextStyle(
                           color: AppColors.kTitleBlackTextColor,
                           fontSize: 32,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      'Celebrate your Montessori journey milestones',
-                      style: TextStyle(
+                      'celebrate_monti'.tr,
+                      style: const TextStyle(
                           color: AppColors.kSubtitleTextColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                   ],
                 ),
               ),
@@ -111,7 +113,7 @@ class _BadgesScreenState extends State<BadgesScreen> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Activities Completed',
+                              'activitiesCompleted'.tr,
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: AppColors.kSubtitleTextColor,
                               ),
@@ -143,7 +145,7 @@ class _BadgesScreenState extends State<BadgesScreen> {
                           Text(completedActivities.toString(),
                               style: theme.textTheme.labelSmall?.copyWith(
                                   color: AppColors.kSubtitleTextColor)),
-                          Text('$totalActivityCount activities',
+                          Text('$totalActivityCount ${'activities'.tr}',
                               style: theme.textTheme.labelSmall?.copyWith(
                                   color: AppColors.kSubtitleTextColor)),
                         ],
@@ -173,8 +175,8 @@ class _BadgesScreenState extends State<BadgesScreen> {
                     progress: progress,
                     colors: (earned
                         ? BadgeColors(
-                            ringColor:
-                                AppColors.kButtonGreenColor.withOpacity(0.2),
+                            ringColor: AppColors.kButtonGreenColor
+                                .withValues(alpha: 0.2),
                             circleGradient: const LinearGradient(
                               colors: [
                                 Color(0xFF4ADE80), // green-400-ish
@@ -226,7 +228,7 @@ class _BadgesScreenState extends State<BadgesScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'Keep Growing! 🌱',
+                        'keep_growing'.tr,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -235,9 +237,9 @@ class _BadgesScreenState extends State<BadgesScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "Every activity completed is a step forward in your child's development journey.",
+                        "activity_journey".tr,
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -404,7 +406,9 @@ class BadgeCard extends StatelessWidget {
 
                 // Subtitle / requirement
                 Text(
-                  'Complete $targetCount activities',
+                  AppLocalization.currentLangCode == "en"
+                      ? 'Complete $targetCount activities'
+                      : "$targetCount aktivite tamamla",
                   style: TextStyle(
                     fontSize: 13,
                     color: earned ? textSub : textSub,
@@ -428,13 +432,15 @@ class BadgeCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    '$currentCount/$targetCount activities',
+                    AppLocalization.currentLangCode == "en"
+                        ? '$currentCount/$targetCount activities'
+                        : '$currentCount/$targetCount aktivite',
                     style: TextStyle(fontSize: 12, color: textSub),
                   ),
                 ] else ...[
-                  const Text(
-                    'Earned! 🎉',
-                    style: TextStyle(
+                  Text(
+                    'earned'.tr,
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Color(0xFF6BAA75),
                       fontWeight: FontWeight.w600,

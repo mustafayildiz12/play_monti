@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:play_monti/constants/app_colors.dart';
+import 'package:play_monti/constants/app_localization.dart';
 
-class GuidePage extends StatelessWidget {
+class GuidePage extends StatefulWidget {
   const GuidePage({
     super.key,
-    this.items = demoGuides,
     this.onOpen,
-    this.title = 'Montessori Guide',
-    this.subtitle = 'Essential insights for your Montessori journey',
   });
 
-  final List<GuideItem> items;
   final void Function(GuideItem item)? onOpen;
-  final String title;
-  final String subtitle;
 
   // Renkler (önceki ekranlarla uyumlu)
   static const bg = Color(0xFFF9F5F0);
@@ -22,6 +18,32 @@ class GuidePage extends StatelessWidget {
   static const textHint = Color(0xFF999999);
   static const greenLight = Color(0xFF91A88E);
   static const greenDark = Color(0xFF6BAA75);
+
+  @override
+  State<GuidePage> createState() => _GuidePageState();
+}
+
+class _GuidePageState extends State<GuidePage> {
+  List<GuideItem> items = [
+    GuideItem(
+      id: 'what_is_montessori',
+      title: 'whatIsMontessori'.tr,
+      excerpt: 'discover_quide'.tr,
+      minutes: 5,
+    ),
+    GuideItem(
+      id: 'observe_your_child',
+      title: 'howToObserve'.tr,
+      excerpt: "quide_observe".tr,
+      minutes: 4,
+    ),
+    GuideItem(
+      id: 'setup_space',
+      title: 'settingUpSpace'.tr,
+      excerpt: 'quide_create'.tr,
+      minutes: 6,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +63,7 @@ class GuidePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      "montessoriGuide".tr,
                       style: const TextStyle(
                           color: AppColors.kTitleBlackTextColor,
                           fontSize: 32,
@@ -49,7 +71,7 @@ class GuidePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      subtitle,
+                      "essentialInsights".tr,
                       style: const TextStyle(
                           color: AppColors.kSubtitleTextColor,
                           fontSize: 16,
@@ -68,7 +90,7 @@ class GuidePage extends StatelessWidget {
                   final item = items[i];
                   return _GuideCard(
                     item: item,
-                    onTap: () => onOpen?.call(item),
+                    onTap: () => widget.onOpen?.call(item),
                   );
                 },
                 separatorBuilder: (_, __) => const SizedBox(height: 12),
@@ -81,27 +103,27 @@ class GuidePage extends StatelessWidget {
             // Remember banner
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal:16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: greenDark,
+                    color: GuidePage.greenDark,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   padding: const EdgeInsets.all(16),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '💡 Remember',
-                        style: TextStyle(
+                        "remember".tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
-                        "Montessori is not about perfection—it's about progress. Every small step towards independence is a victory worth celebrating.",
-                        style: TextStyle(
+                        "quide_subtitle".tr,
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 13,
                           height: 1.35,
@@ -209,7 +231,7 @@ class _GuideCard extends StatelessWidget {
                         const _ClockIcon(size: 16, color: textHint),
                         const SizedBox(width: 6),
                         Text(
-                          '${item.minutes} min read',
+                        AppLocalization.currentLangCode == "en" ?  '${item.minutes} min read': "${item.minutes} dakika okuma",
                           style: const TextStyle(
                             color: textHint,
                             fontSize: 12,
@@ -344,28 +366,3 @@ class _BookPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
-
-/// Örnek veri
-const demoGuides = [
-  GuideItem(
-    id: 'what_is_montessori',
-    title: 'What is Montessori?',
-    excerpt:
-        'Discover the core principles of Montessori education and how it nurtures independent, confident children.',
-    minutes: 5,
-  ),
-  GuideItem(
-    id: 'observe_your_child',
-    title: 'How to Observe Your Child',
-    excerpt:
-        "Learn the art of observation to understand your child's interests, needs, and developmental stage.",
-    minutes: 4,
-  ),
-  GuideItem(
-    id: 'setup_space',
-    title: 'Setting up a Montessori Space at Home',
-    excerpt:
-        'Create an environment that promotes independence and learning with simple, practical changes.',
-    minutes: 6,
-  ),
-];
