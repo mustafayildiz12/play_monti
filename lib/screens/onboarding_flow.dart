@@ -290,8 +290,10 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                       Locale locale;
                       if (language.languageCode == "tr") {
                         locale = const Locale("tr");
+                        infoStorage.write("languageCode", "tr");
                       } else {
                         locale = const Locale("en");
+                        infoStorage.write("languageCode", "en");
                       }
                       await Get.updateLocale(locale);
                     },

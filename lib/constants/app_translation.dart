@@ -170,8 +170,18 @@ class AppTranslations extends Translations {
           "step_by_step": "Adım Adım Talimatlar",
           "activity_duration": "Süre: 15-20 Dakika",
           "rate_activity": "Aktiviteyi Oyla",
+          "activity_calendar": "Etkinlik Takvimi",
+          "view_progress":
+              "Geçmiş etkinlikleri görüntüleyin ve ilerlemenizi takip edin.",
+          'pending': "Beklemede",
+          "activity": "Aktivite",
+          "go": "Git"
         },
         'en': {
+          "go": "Go",
+          "activity": "Activity",
+          "view_progress": "View the past activities and track your progress.",
+          "activity_calendar": "Activity Calendar",
           "rate_activity": "Rate this Activity",
           "activity_duration": "Duration: 15-20 Minutes",
           "step_by_step": "Step by Step Instructions",
@@ -256,6 +266,7 @@ class AppTranslations extends Translations {
           'addToFavorites': 'Add to Favorites',
           'downloadPDF': 'Download PDF',
           'completed': 'Completed!',
+          'pending': "Pending",
           // Calendar
           'activityCalendar': 'Activity Calendar',
           'viewPastActivities': 'View past activities and track your progress',

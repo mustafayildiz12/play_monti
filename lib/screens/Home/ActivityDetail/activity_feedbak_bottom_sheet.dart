@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/models/feedback_model.dart';
 
 import 'package:play_monti/models/final_activity_model.dart';
@@ -62,7 +62,7 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
           isLiked: _selected == FeedbackType.dislike ? 0 : 1,
           activityId: widget.finalActivityModel!.day,
           activityGroup: widget.finalActivityModel!.ageGroup,
-          language: currentMontiUser!.languageCode!,
+          language: AppLocalization.currentLangCode,
           createDate: DateTime.now().toIso8601String());
 
       await feedbackService.addActivityFeedback(feedbackmodel: feedbackmodel);

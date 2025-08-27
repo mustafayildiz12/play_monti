@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/screens/Badges/badges_screen.dart';
@@ -48,36 +49,36 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
             const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.home_outline),
-            activeIcon: Icon(Ionicons.home),
-            label: 'Home',
+            icon: const Icon(Ionicons.home_outline),
+            activeIcon: const Icon(Ionicons.home),
+            label: 'home'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.calendar_outline),
-            activeIcon: Icon(Ionicons.calendar),
-            label: 'Calendar',
+            icon: const Icon(Ionicons.calendar_outline),
+            activeIcon: const Icon(Ionicons.calendar),
+            label: 'calendar'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.trophy_outline),
-            activeIcon: Icon(Ionicons.trophy),
-            label: 'Badges',
+            icon: const Icon(Ionicons.trophy_outline),
+            activeIcon: const Icon(Ionicons.trophy),
+            label: 'badges'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.heart_outline),
-            activeIcon: Icon(Ionicons.heart),
-            label: 'Favorites',
+            icon: const Icon(Ionicons.heart_outline),
+            activeIcon: const Icon(Ionicons.heart),
+            label: 'favorites'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.book_outline),
-            activeIcon: Icon(Ionicons.book),
-            label: 'Guide',
+            icon: const Icon(Ionicons.book_outline),
+            activeIcon: const Icon(Ionicons.book),
+            label: 'guide'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.settings_outline),
-            activeIcon: Icon(Ionicons.settings),
-            label: 'Settings',
+            icon: const Icon(Ionicons.settings_outline),
+            activeIcon: const Icon(Ionicons.settings),
+            label: 'settings'.tr,
           ),
         ],
       ),

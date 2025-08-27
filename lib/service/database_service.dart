@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/models/language_model.dart';
@@ -69,7 +70,7 @@ class DatabaseService {
     try {
       final DataSnapshot snapshot = await _realtimeDatabase.ref(path).get();
 
-       print(snapshot.value);
+      print(snapshot.value);
 
       if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
         print(snapshot.value);
@@ -264,9 +265,7 @@ class DatabaseService {
   }) async {
     final List<FinalActivityModel> activities = [];
 
-    String language = currentMontiUser!.languageCode != null
-        ? "/${currentMontiUser!.languageCode}"
-        : "/en";
+    String language = AppLocalization.getLanguageCodeParam;
 
     final DatabaseReference ref = _realtimeDatabase.ref(path + language);
 
@@ -298,9 +297,7 @@ class DatabaseService {
     int totalActivityCount = 0;
 
     String ageGroup = currentMontiUser!.ageActivity!;
-    String language = currentMontiUser!.languageCode != null
-        ? "/${currentMontiUser!.languageCode}"
-        : "/en";
+    String language = AppLocalization.getLanguageCodeParam;
 
     final DatabaseReference ref = _realtimeDatabase.ref(ageGroup + language);
 

@@ -325,6 +325,7 @@ class _SettingsPageState extends State<SettingsPage> {
             (e) => e.ageGroupCode == currentMontiUser?.ageActivity);
       }
       await databaseService.updateUserLanguage(language: selectedLanguage!);
+      await infoStorage.write("languageCode", selectedLanguage!.languageCode);
       await Get.updateLocale(Locale(selectedLanguage!.languageCode));
     }
   }

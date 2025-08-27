@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/models/favorite_activity_model.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
@@ -80,7 +81,7 @@ class ActivityService {
   }) async {
     final String group = currentMontiUser!.ageActivity!;
 
-    String language = currentMontiUser!.languageCode != null ? "/${currentMontiUser!.languageCode}" : "/en";
+    String language = AppLocalization.getLanguageCodeParam;
 
     final DatabaseReference ref = _realtimeDatabase.ref(group + language);
 
@@ -110,7 +111,7 @@ class ActivityService {
   }) async {
     final String group = currentMontiUser!.ageActivity!;
 
-    String language = currentMontiUser!.languageCode != null ? "/${currentMontiUser!.languageCode}" : "/en";
+    String language = AppLocalization.getLanguageCodeParam;
 
     final DatabaseReference ref = _realtimeDatabase.ref(group + language);
 

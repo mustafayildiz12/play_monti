@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
@@ -115,22 +116,22 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                "Activity Calendar",
-                style: TextStyle(
+                "activity_calendar".tr,
+                style: const TextStyle(
                     color: AppColors.kTitleBlackTextColor,
                     fontSize: 32,
                     fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 8),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                "View the past activities and track your progress.",
-                style: TextStyle(
+                "view_progress".tr,
+                style: const TextStyle(
                     color: AppColors.kSubtitleTextColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500),
@@ -148,7 +149,8 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TableCalendar<DailyEvent>(
-                    locale: 'tr_TR',
+                    locale:
+                        Get.locale?.languageCode == "tr" ? 'tr_TR' : "en_US",
                     firstDay: DateTime(2010, 1, 1),
                     lastDay: DateTime(2030, 12, 31),
                     focusedDay: _focusedMonth,
@@ -281,21 +283,21 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                   const Divider(color: Color(0xFFF0F0F0)),
 
                   // Legend
-                  const Wrap(
+                  Wrap(
                     alignment: WrapAlignment.center,
                     spacing: 24,
                     runSpacing: 8,
                     children: [
                       _Legend(
                           color: AppColors.kDarkGreenColor,
-                          label: 'Today',
+                          label: 'today'.tr,
                           textOnColor: true),
                       _Legend(
                           color: AppColors.kCalendarLightGreenColor,
-                          label: 'Past'),
+                          label: 'past'.tr),
                       _Legend(
                           color: AppColors.kCalendarLockBgColor,
-                          label: 'Locked'),
+                          label: 'locked'.tr),
                     ],
                   ),
                 ],
@@ -481,11 +483,11 @@ class _EventSheet extends StatelessWidget {
                     // yoksa fallback:
                     ((e as dynamic).activityName != null)
                         ? (e as dynamic).activityName as String
-                        : 'Activity ${e.id}',
+                        : '${"activity".tr} ${e.id}',
                     style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                   subtitle: Text(
-                    e.isDone ? 'Completed' : 'Pending',
+                    e.isDone ? 'completed'.tr : 'pending'.tr,
                     style: TextStyle(
                       color: e.isDone
                           ? const Color(0xFF6BAA75)
@@ -499,7 +501,7 @@ class _EventSheet extends StatelessWidget {
                       Navigator.pop(context, [e.id, day]);
                     },
                     icon: const Icon(Icons.open_in_new, size: 18),
-                    label: const Text('Git'),
+                    label: Text('go'.tr),
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 8),
