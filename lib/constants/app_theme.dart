@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:play_monti/constants/app_colors.dart';
 
 class AppTheme {
@@ -8,6 +9,11 @@ class AppTheme {
       backgroundColor: AppColors.appBgColor,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: AppColors.appBgColor, // Status bar arka planı
+        statusBarIconBrightness: Brightness.dark, // Android ikonları beyaz
+        statusBarBrightness: Brightness.dark,
+      ),
     ),
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.kButtonGreenColor),
     useMaterial3: true,

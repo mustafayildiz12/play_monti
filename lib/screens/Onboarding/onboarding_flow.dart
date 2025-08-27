@@ -141,7 +141,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                                     const Icon(Icons.arrow_forward_ios)
                                   ],
                                 )
-                              : Text("getStarted".tr),
+                              : Text("get_started_button".tr),
                         ),
                       ],
                     ),

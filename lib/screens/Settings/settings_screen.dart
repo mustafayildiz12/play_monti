@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
-import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
@@ -63,221 +62,225 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: CustomScrollView(
-        slivers: [
-          // Header
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Settings',
-                    style: TextStyle(
-                        color: AppColors.kTitleBlackTextColor,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    'Customize your MontiTime experience',
-                    style: TextStyle(
-                        color: AppColors.kSubtitleTextColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Profile card
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            // Header
+            SliverToBoxAdapter(
+              child: Padding(
                 padding: const EdgeInsets.all(16),
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 64,
-                      height: 64,
-                      decoration: const BoxDecoration(
-                        color: greenLight,
-                        shape: BoxShape.circle,
-                      ),
-                      alignment: Alignment.center,
-                      child: const Icon(Icons.person,
-                          color: Colors.white, size: 32),
+                    Text(
+                      'settings'.tr,
+                      style: const TextStyle(
+                          color: AppColors.kTitleBlackTextColor,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(currentMontiUser?.userName ?? "",
+                    const SizedBox(height: 6),
+                    Text(
+                      'customizeExperience'.tr,
+                      style: const TextStyle(
+                          color: AppColors.kSubtitleTextColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Profile card
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 64,
+                        height: 64,
+                        decoration: const BoxDecoration(
+                          color: greenLight,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: const Icon(Icons.person,
+                            color: Colors.white, size: 32),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(currentMontiUser?.userName ?? "",
+                                style: const TextStyle(
+                                  color: textDark,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                )),
+                            const SizedBox(height: 4),
+                            Text(
+                              '${selectedLanguage?.languageName} • ${selectedAgeGroup?.ageGroupCode}',
                               style: const TextStyle(
-                                color: textDark,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                              )),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${selectedLanguage?.languageName} • ${selectedAgeGroup?.ageGroupCode}',
-                            style:
-                                const TextStyle(color: textMuted, fontSize: 13),
-                          ),
-                        ],
+                                  color: textMuted, fontSize: 13),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 16)),
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
 
-          // Language
-          _SliverSettingTile(
-            leadingBg: const Color(0xFFF0F8F0),
-            leadingIcon: Ionicons.globe_outline,
-            onTap: _pickLanguage,
-            title: 'Language',
-            subtitle: selectedLanguage?.languageName ?? "",
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 12)),
+            // Language
+            _SliverSettingTile(
+              leadingBg: const Color(0xFFF0F8F0),
+              leadingIcon: Ionicons.globe_outline,
+              onTap: _pickLanguage,
+              title: 'language'.tr,
+              subtitle: selectedLanguage?.languageName ?? "",
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 12)),
 
-          // Age group
-          _SliverSettingTile(
-            leadingBg: const Color(0xFFF0F8F0),
-            leadingIcon: Ionicons.people,
-            onTap: _pickAgeGroup,
-            title: "Child's Age Group",
-            subtitle: selectedAgeGroup?.ageGroupName ?? "",
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 12)),
+            // Age group
+            _SliverSettingTile(
+              leadingBg: const Color(0xFFF0F8F0),
+              leadingIcon: Ionicons.people,
+              onTap: _pickAgeGroup,
+              title: "child_age_group".tr,
+              subtitle: selectedAgeGroup?.ageGroupName ?? "",
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 12)),
 
-          // Notifications (switch)
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
+            // Notifications (switch)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                  child: Row(
+                    children: [
+                      const _LeadingIcon(
+                        bg: Color(0xFFF0F8F0),
+                        icon: Ionicons.notifications_outline,
+                        iconColor: greenDark,
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('notifications'.tr,
+                                style: const TextStyle(
+                                  color: textDark,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                )),
+                            const SizedBox(height: 2),
+                            Text('dailyReminders'.tr,
+                                style: const TextStyle(
+                                    color: textMuted, fontSize: 13)),
+                          ],
+                        ),
+                      ),
+                      // Custom switch görünümü
+                      GestureDetector(
+                        onTap: () => _toggleNotifications(!_notificationsOn),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          width: 54,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: _notificationsOn
+                                ? greenLight
+                                : const Color(0xFFE5E7EB),
+                            borderRadius: BorderRadius.circular(999),
+                          ),
+                          alignment: _notificationsOn
+                              ? Alignment.centerRight
+                              : Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: Container(
+                            width: 22,
+                            height: 22,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: Row(
+              ),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 12)),
+
+            // Feedback
+            _SliverSettingTile(
+              leadingBg: const Color(0xFFF0F8F0),
+              leadingIcon: Ionicons.chatbox_outline,
+              onTap: () async {
+                await showFeedbackBottomSheet();
+              },
+              title: 'sendFeedback'.tr,
+              subtitle: 'helpImprove'.tr,
+            ),
+
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+            // Footer
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                child: Column(
                   children: [
-                    const _LeadingIcon(
-                      bg: Color(0xFFF0F8F0),
-                      icon: Ionicons.notifications_outline,
-                      iconColor: greenDark,
+                    const Text(
+                      'MontiTime 1.0.0',
+                      style: TextStyle(color: textHint, fontSize: 12),
                     ),
-                    const SizedBox(width: 16),
-                    const Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Notifications',
-                              style: TextStyle(
-                                color: textDark,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                              )),
-                          SizedBox(height: 2),
-                          Text('Daily activity reminders',
-                              style: TextStyle(color: textMuted, fontSize: 13)),
-                        ],
-                      ),
+                    const SizedBox(height: 6),
+                    Text(
+                      "made_with".tr,
+                      style: const TextStyle(color: textHint, fontSize: 12),
                     ),
-                    // Custom switch görünümü
-                    GestureDetector(
-                      onTap: () => _toggleNotifications(!_notificationsOn),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        width: 54,
-                        height: 28,
-                        decoration: BoxDecoration(
-                          color: _notificationsOn
-                              ? greenLight
-                              : const Color(0xFFE5E7EB),
-                          borderRadius: BorderRadius.circular(999),
-                        ),
-                        alignment: _notificationsOn
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Container(
-                          width: 22,
-                          height: 22,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      ),
+                    /*
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.uploadActivityPage);
+                      },
+                      child: const Text("Excel Sayfası"),
                     ),
+                    */
+                    TextButton(
+                      onPressed: () async {
+                        await authenticationService.logoutFromFirebase(context);
+                      },
+                      child: Text("log_out".tr),
+                    )
                   ],
                 ),
               ),
             ),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 12)),
-
-          // Feedback
-          _SliverSettingTile(
-            leadingBg: const Color(0xFFF0F8F0),
-            leadingIcon: Ionicons.chatbox_outline,
-            onTap: () async {
-              await showFeedbackBottomSheet();
-            },
-            title: 'Send Feedback',
-            subtitle: 'Help us improve MontiTime',
-          ),
-
-          const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
-          // Footer
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-              child: Column(
-                children: [
-                  const Text(
-                    'MontiTime 1.0.0',
-                    style: TextStyle(color: textHint, fontSize: 12),
-                  ),
-                  const SizedBox(height: 6),
-                  const Text(
-                    'Made with 🌱 for growing minds',
-                    style: TextStyle(color: textHint, fontSize: 12),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.uploadActivityPage);
-                    },
-                    child: const Text("Excel Sayfası"),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      await authenticationService.logoutFromFirebase(context);
-                    },
-                    child: const Text("Çıkış Yap"),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -337,7 +340,7 @@ class _SettingsPageState extends State<SettingsPage> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (_) => _AgePickerSheet(
+      builder: (_) => AgePickerSheet(
         title: "Choose child's age group",
         options:
             Get.locale?.languageCode == "en" ? enAgeGroupList : trAgeGroupList,
@@ -482,7 +485,7 @@ class _LanguagePickerSheet extends StatelessWidget {
                   fontSize: 16,
                 )),
             const SizedBox(height: 12),
-            ...options.map((o) => _PickerOption(
+            ...options.map((o) => PickerOption(
                   text: o.languageName,
                   selected: o == initial,
                   onTap: () => Navigator.pop(context, o),
@@ -495,8 +498,9 @@ class _LanguagePickerSheet extends StatelessWidget {
   }
 }
 
-class _AgePickerSheet extends StatelessWidget {
-  const _AgePickerSheet({
+class AgePickerSheet extends StatelessWidget {
+  const AgePickerSheet({
+    super.key,
     required this.title,
     required this.options,
     this.initial,
@@ -531,7 +535,7 @@ class _AgePickerSheet extends StatelessWidget {
                   fontSize: 16,
                 )),
             const SizedBox(height: 12),
-            ...options.map((o) => _PickerOption(
+            ...options.map((o) => PickerOption(
                   text: o.ageGroupName,
                   selected: o == initial,
                   onTap: () => Navigator.pop(context, o),
@@ -544,8 +548,9 @@ class _AgePickerSheet extends StatelessWidget {
   }
 }
 
-class _PickerOption extends StatelessWidget {
-  const _PickerOption({
+class PickerOption extends StatelessWidget {
+  const PickerOption({
+    super.key,
     required this.text,
     required this.selected,
     required this.onTap,

@@ -77,7 +77,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                 onChange: (size) {
                   // Ölçüm geldiğinde yüksekliği güncelle
                   if (size.height > 0 && size.height != _currentHeight) {
-                    setState(() => _currentHeight = size.height);
+                    setState(() => _currentHeight = size.height + 25);
                   }
                 },
                 child: ActivityCard(
@@ -156,6 +156,36 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                       ),
                     ),
                   ),
+                Positioned(
+                  top: -10,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.kLightGreenColor
+                              .withValues(alpha: 0.08),
+                          blurRadius: 10,
+                          spreadRadius: 2,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      radius: 28,
+                      backgroundColor:
+                          AppColors.kLightGreenColor.withValues(alpha: 0.28),
+                      child: Text(
+                        _currentIndex == 0
+                            ? widget.activities.first.emoji
+                            : widget.activities.last.emoji,
+                        style: const TextStyle(fontSize: 28),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

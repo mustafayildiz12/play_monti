@@ -48,10 +48,6 @@ class _GuidePageState extends State<GuidePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.appBgColor,
-      ),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -231,7 +227,9 @@ class _GuideCard extends StatelessWidget {
                         const _ClockIcon(size: 16, color: textHint),
                         const SizedBox(width: 6),
                         Text(
-                        AppLocalization.currentLangCode == "en" ?  '${item.minutes} min read': "${item.minutes} dakika okuma",
+                          AppLocalization.currentLangCode == "en"
+                              ? '${item.minutes} min read'
+                              : "${item.minutes} dakika okuma",
                           style: const TextStyle(
                             color: textHint,
                             fontSize: 12,

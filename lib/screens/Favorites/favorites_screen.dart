@@ -40,88 +40,89 @@ class _FavoritesPageState extends State<FavoritesScreen> {
     return CustomLoader(
       inAsyncCall: isLoading,
       child: Scaffold(
-        appBar: AppBar(),
-        body: CustomScrollView(
-          slivers: [
-            // Header
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'favorite_activites'.tr,
-                            style: const TextStyle(
-                                color: AppColors.kTitleBlackTextColor,
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            AppLocalization.currentLangCode == "en"
-                                ? '${getFilteredList().length} saved activities'
-                                : '${getFilteredList().length} aktivite kaydedildi',
-                            style: const TextStyle(
-                                color: AppColors.kSubtitleTextColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
+        body: SafeArea(
+          child: CustomScrollView(
+            slivers: [
+              // Header
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'favorite_activities'.tr,
+                              style: const TextStyle(
+                                  color: AppColors.kTitleBlackTextColor,
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              AppLocalization.currentLangCode == "en"
+                                  ? '${getFilteredList().length} saved activities'
+                                  : '${getFilteredList().length} aktivite kaydedildi',
+                              style: const TextStyle(
+                                  color: AppColors.kSubtitleTextColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    // Kırmızı kalp ikonlu daire
-                    Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFFE4E6), // red-100
-                        borderRadius: BorderRadius.circular(999),
+                      // Kırmızı kalp ikonlu daire
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFFE4E6), // red-100
+                          borderRadius: BorderRadius.circular(999),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.favorite,
+                          color: Color(0xFFEF4444), // red-500
+                        ),
                       ),
-                      alignment: Alignment.center,
-                      child: const Icon(
-                        Icons.favorite,
-                        color: Color(0xFFEF4444), // red-500
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            // Search
-            SliverToBoxAdapter(
-              child: Padding(
+          
+              // Search
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: _SearchField(
+                    controller: _searchCtrl,
+                    hint: 'searchFavorites'.tr,
+                    onChanged: (_) => setState(() {}),
+                  ),
+                ),
+              ),
+          
+              const SliverToBoxAdapter(child: SizedBox(height: 16)),
+          
+              SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: _SearchField(
-                  controller: _searchCtrl,
-                  hint: 'searchFavorites'.tr,
-                  onChanged: (_) => setState(() {}),
+                sliver: SliverList.separated(
+                  itemBuilder: (context, i) {
+                    final a = getFilteredList()[i];
+                    return _ActivityCard(
+                      activity: a,
+                    );
+                  },
+                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                  itemCount: getFilteredList().length,
                 ),
               ),
-            ),
-
-            const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              sliver: SliverList.separated(
-                itemBuilder: (context, i) {
-                  final a = getFilteredList()[i];
-                  return _ActivityCard(
-                    activity: a,
-                  );
-                },
-                separatorBuilder: (_, __) => const SizedBox(height: 12),
-                itemCount: getFilteredList().length,
-              ),
-            ),
-
-            const SliverToBoxAdapter(child: SizedBox(height: 24)),
-          ],
+          
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
+            ],
+          ),
         ),
       ),
     );

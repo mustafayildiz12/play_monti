@@ -52,6 +52,232 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
     _loadCalendar(); // async iş için ayrı method
   }
 
+  DateTime get _maxEnabledDate =>
+      _dateOnly(_today.add(const Duration(days: 3)));
+
+  DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);
+
+  bool _isActiveDay(DateTime day) {
+    if (_registrationDate == null) return false;
+    final d = _dateOnly(day);
+    final start = _registrationDate!;
+    final end = _maxEnabledDate; // bugün + 3
+    return (d.isAtSameMomentAs(start) || d.isAfter(start)) &&
+        (d.isAtSameMomentAs(end) || d.isBefore(end));
+  }
+
+  bool _isFuture(DateTime day) {
+    // bugün + 3'ten sonrası "future"
+    return _dateOnly(day).isAfter(_maxEnabledDate);
+  }
+
+  List<DailyEvent> _eventsOf(DateTime day) {
+    return _eventsByDay[_dateOnly(day)] ?? const [];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomLoader(
+      inAsyncCall: loading,
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  "activity_calendar".tr,
+                  style: const TextStyle(
+                      color: AppColors.kTitleBlackTextColor,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  "view_progress".tr,
+                  style: const TextStyle(
+                      color: AppColors.kSubtitleTextColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TableCalendar<DailyEvent>(
+                      locale:
+                          Get.locale?.languageCode == "tr" ? 'tr_TR' : "en_US",
+                      firstDay: DateTime(2010, 1, 1),
+                      lastDay: DateTime(2030, 12, 31),
+                      focusedDay: _focusedMonth,
+                      calendarFormat: CalendarFormat.month,
+                      startingDayOfWeek: StartingDayOfWeek.sunday,
+                      availableGestures: AvailableGestures.horizontalSwipe,
+                      availableCalendarFormats: const {
+                        CalendarFormat.month: 'Month'
+                      },
+                      headerStyle: const HeaderStyle(
+                        titleCentered: true,
+                        titleTextStyle: TextStyle(
+                            color: AppColors.kTitleBlackTextColor,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      daysOfWeekStyle: const DaysOfWeekStyle(
+                        weekdayStyle: TextStyle(
+                            color: AppColors.kTitleBlackTextColor,
+                            fontWeight: FontWeight.w500),
+                        weekendStyle: TextStyle(
+                            color: AppColors.kTitleBlackTextColor,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      headerVisible: true,
+                      daysOfWeekVisible: true,
+                      eventLoader: _eventsOf,
+                      rowHeight: 60,
+                      selectedDayPredicate: (d) => isSameDay(_selectedDay, d),
+                      enabledDayPredicate: (d) =>
+                          _isActiveDay(d) && !_isFuture(d),
+                      onPageChanged: (fd) => setState(
+                          () => _focusedMonth = DateTime(fd.year, fd.month, 1)),
+                      calendarStyle: CalendarStyle(
+                        outsideDaysVisible: false,
+                        cellPadding: EdgeInsets.zero,
+                        tablePadding: EdgeInsets.zero,
+                        markerMargin: EdgeInsets.zero,
+                        cellMargin: const EdgeInsets.symmetric(
+                            horizontal: 2, vertical: 4),
+                        selectedTextStyle: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16),
+                        weekendTextStyle: const TextStyle(color: Colors.red),
+                        selectedDecoration: BoxDecoration(
+                          color: AppColors.kLightGreenColor, // zemin şeffaf
+                          shape:
+                              BoxShape.rectangle, // istersen kare de yapabilirsin
+          
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onDaySelected: (selected, focused) async {
+                        List<DailyEvent> events = _eventsOf(selected);
+          
+                        String? firstActivity = await activityService
+                            .getIndexActivityName(dayIndex: events.first.id);
+                        String? secondActivity = await activityService
+                            .getIndexActivityName(dayIndex: events.last.id);
+          
+                        if (firstActivity != null) {
+                          events.first.activityName = firstActivity;
+                        }
+                        if (secondActivity != null) {
+                          events.last.activityName = secondActivity;
+                        }
+          
+                        await calendarBottomSheet(selected, events);
+                      },
+                      calendarBuilders: CalendarBuilders(
+                        defaultBuilder: (ctx, day, _) {
+                          final isToday = isSameDay(day, _today);
+                          return _ActiveDayCell(
+                            day: day,
+                            isToday: isToday,
+                            selected: isSameDay(_selectedDay, day),
+                            events: _eventsOf(day),
+                            onBack: _loadCalendar,
+                          );
+                        },
+                        disabledBuilder: (ctx, day, _) {
+                          final isToday = isSameDay(day, _today);
+                          if (isToday) {
+                            return _ActiveDayCell(
+                              day: day,
+                              isToday: isToday,
+                              selected: isSameDay(_selectedDay, day),
+                              events: _eventsOf(day),
+                              onBack: _loadCalendar,
+                            );
+                          }
+                          return _LockedDayCell(day: day);
+                        },
+                        markerBuilder: (ctx, day, events) {
+                          if (events.isEmpty) return const SizedBox.shrink();
+                          final e = events.toList();
+                          return Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(e.length, (i) {
+                                final color = e[i].isDone
+                                    ? (day.day == DateTime.now().day
+                                        ? AppColors.kCalendarLightGreenColor
+                                        : AppColors.kDarkGreenColor)
+                                    : AppColors.kCalendarLockTextColor;
+                                const borderColor = Colors.white;
+                                return Container(
+                                  width: 9,
+                                  height: 9,
+                                  margin: EdgeInsets.only(right: i == 0 ? 3 : 0),
+                                  decoration: BoxDecoration(
+                                    color: color,
+                                    shape: BoxShape.circle,
+                                    border:
+                                        Border.all(width: .5, color: borderColor),
+                                  ),
+                                );
+                              }),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+          
+                    const SizedBox(height: 16),
+                    const Divider(color: Color(0xFFF0F0F0)),
+          
+                    // Legend
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 24,
+                      runSpacing: 8,
+                      children: [
+                        _Legend(
+                            color: AppColors.kDarkGreenColor,
+                            label: 'today'.tr,
+                            textOnColor: true),
+                        _Legend(
+                            color: AppColors.kCalendarLightGreenColor,
+                            label: 'past'.tr),
+                        _Legend(
+                            color: AppColors.kCalendarLockBgColor,
+                            label: 'locked'.tr),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Future<void> _loadCalendar() async {
     setState(() {
       loading = true;
@@ -82,231 +308,6 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
         error = e.toString();
       });
     }
-  }
-
-  DateTime get _maxEnabledDate =>
-      _dateOnly(_today.add(const Duration(days: 3)));
-
-  DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);
-
-  bool _isActiveDay(DateTime day) {
-    if (_registrationDate == null) return false;
-    final d = _dateOnly(day);
-    final start = _registrationDate!;
-    final end = _maxEnabledDate; // bugün + 3
-    return (d.isAtSameMomentAs(start) || d.isAfter(start)) &&
-        (d.isAtSameMomentAs(end) || d.isBefore(end));
-  }
-
-  bool _isFuture(DateTime day) {
-    // bugün + 3'ten sonrası "future"
-    return _dateOnly(day).isAfter(_maxEnabledDate);
-  }
-
-  List<DailyEvent> _eventsOf(DateTime day) {
-    return _eventsByDay[_dateOnly(day)] ?? const [];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomLoader(
-      inAsyncCall: loading,
-      child: Scaffold(
-        appBar: AppBar(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                "activity_calendar".tr,
-                style: const TextStyle(
-                    color: AppColors.kTitleBlackTextColor,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                "view_progress".tr,
-                style: const TextStyle(
-                    color: AppColors.kSubtitleTextColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Container(
-              margin: const EdgeInsets.all(16),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TableCalendar<DailyEvent>(
-                    locale:
-                        Get.locale?.languageCode == "tr" ? 'tr_TR' : "en_US",
-                    firstDay: DateTime(2010, 1, 1),
-                    lastDay: DateTime(2030, 12, 31),
-                    focusedDay: _focusedMonth,
-                    calendarFormat: CalendarFormat.month,
-                    startingDayOfWeek: StartingDayOfWeek.sunday,
-                    availableGestures: AvailableGestures.horizontalSwipe,
-                    availableCalendarFormats: const {
-                      CalendarFormat.month: 'Month'
-                    },
-                    headerStyle: const HeaderStyle(
-                      titleCentered: true,
-                      titleTextStyle: TextStyle(
-                          color: AppColors.kTitleBlackTextColor,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    daysOfWeekStyle: const DaysOfWeekStyle(
-                      weekdayStyle: TextStyle(
-                          color: AppColors.kTitleBlackTextColor,
-                          fontWeight: FontWeight.w500),
-                      weekendStyle: TextStyle(
-                          color: AppColors.kTitleBlackTextColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    headerVisible: true,
-                    daysOfWeekVisible: true,
-                    eventLoader: _eventsOf,
-                    rowHeight: 60,
-                    selectedDayPredicate: (d) => isSameDay(_selectedDay, d),
-                    enabledDayPredicate: (d) =>
-                        _isActiveDay(d) && !_isFuture(d),
-                    onPageChanged: (fd) => setState(
-                        () => _focusedMonth = DateTime(fd.year, fd.month, 1)),
-                    calendarStyle: CalendarStyle(
-                      outsideDaysVisible: false,
-                      cellPadding: EdgeInsets.zero,
-                      tablePadding: EdgeInsets.zero,
-                      markerMargin: EdgeInsets.zero,
-                      cellMargin: const EdgeInsets.symmetric(
-                          horizontal: 2, vertical: 4),
-                      selectedTextStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16),
-                      weekendTextStyle: const TextStyle(color: Colors.red),
-                      selectedDecoration: BoxDecoration(
-                        color: AppColors.kLightGreenColor, // zemin şeffaf
-                        shape:
-                            BoxShape.rectangle, // istersen kare de yapabilirsin
-
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onDaySelected: (selected, focused) async {
-                      List<DailyEvent> events = _eventsOf(selected);
-
-                      String? firstActivity = await activityService
-                          .getIndexActivityName(dayIndex: events.first.id);
-                      String? secondActivity = await activityService
-                          .getIndexActivityName(dayIndex: events.last.id);
-
-                      if (firstActivity != null) {
-                        events.first.activityName = firstActivity;
-                      }
-                      if (secondActivity != null) {
-                        events.last.activityName = secondActivity;
-                      }
-
-                      await calendarBottomSheet(selected, events);
-                    },
-                    calendarBuilders: CalendarBuilders(
-                      defaultBuilder: (ctx, day, _) {
-                        final isToday = isSameDay(day, _today);
-                        return _ActiveDayCell(
-                          day: day,
-                          isToday: isToday,
-                          selected: isSameDay(_selectedDay, day),
-                          events: _eventsOf(day),
-                          onBack: _loadCalendar,
-                        );
-                      },
-                      disabledBuilder: (ctx, day, _) {
-                        final isToday = isSameDay(day, _today);
-                        if (isToday) {
-                          return _ActiveDayCell(
-                            day: day,
-                            isToday: isToday,
-                            selected: isSameDay(_selectedDay, day),
-                            events: _eventsOf(day),
-                            onBack: _loadCalendar,
-                          );
-                        }
-                        return _LockedDayCell(day: day);
-                      },
-                      markerBuilder: (ctx, day, events) {
-                        if (events.isEmpty) return const SizedBox.shrink();
-                        final e = events.toList();
-                        return Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(e.length, (i) {
-                              final color = e[i].isDone
-                                  ? (day.day == DateTime.now().day
-                                      ? AppColors.kCalendarLightGreenColor
-                                      : AppColors.kDarkGreenColor)
-                                  : AppColors.kCalendarLockTextColor;
-                              const borderColor = Colors.white;
-                              return Container(
-                                width: 9,
-                                height: 9,
-                                margin: EdgeInsets.only(right: i == 0 ? 3 : 0),
-                                decoration: BoxDecoration(
-                                  color: color,
-                                  shape: BoxShape.circle,
-                                  border:
-                                      Border.all(width: .5, color: borderColor),
-                                ),
-                              );
-                            }),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-
-                  const SizedBox(height: 16),
-                  const Divider(color: Color(0xFFF0F0F0)),
-
-                  // Legend
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    spacing: 24,
-                    runSpacing: 8,
-                    children: [
-                      _Legend(
-                          color: AppColors.kDarkGreenColor,
-                          label: 'today'.tr,
-                          textOnColor: true),
-                      _Legend(
-                          color: AppColors.kCalendarLightGreenColor,
-                          label: 'past'.tr),
-                      _Legend(
-                          color: AppColors.kCalendarLockBgColor,
-                          label: 'locked'.tr),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 
   Future<void> calendarBottomSheet(

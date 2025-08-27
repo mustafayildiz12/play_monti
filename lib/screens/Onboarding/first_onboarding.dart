@@ -89,6 +89,7 @@ class _MontessoriFirstOnboardingState extends State<MontessoriFirstOnboarding>
     // Responsive için genişliği ayarlayalım
     final double maxWidth = MediaQuery.of(context).size.width * 0.6;
     final double shapeWidth = maxWidth.clamp(180, 280);
+    print(Get.locale?.languageCode);
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFF5E6),

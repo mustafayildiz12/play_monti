@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
 import 'package:get/utils.dart';
 
 class MontessoriFifthOnboarding extends StatefulWidget {
@@ -108,7 +107,7 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
                 const SizedBox(height: 10),
                 Text(
                   "get_started_subtitle".tr,
-                  style: const TextStyle(fontSize: 18, color: Color(0xFF5A6C7D)),
+                  style: const TextStyle(fontSize: 18, color: Color(0xFF2C3E50)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 12),

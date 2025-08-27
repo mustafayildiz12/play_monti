@@ -67,9 +67,31 @@ class AppInitService {
     if (languageCode != null) {
       AppLocalization.locale = Locale(languageCode);
     } else {
-      final locale = WidgetsBinding.instance.platformDispatcher.locale;
-      AppLocalization.locale = locale;
-      infoStorage.write("languageCode", locale.languageCode);
+      Locale deviceLocale = pickBestLocaleFromDevice();
+      AppLocalization.locale = deviceLocale;
+      print(deviceLocale);
+      await infoStorage.write("languageCode", deviceLocale.languageCode);
     }
+  }
+
+  static Locale pickBestLocaleFromDevice() {
+    final locales = WidgetsBinding.instance.platformDispatcher.locales;
+
+    // 1) Tercihlerde TR var mı?
+    final tr = locales.firstWhere(
+      (l) => l.languageCode.toLowerCase() == 'tr',
+      orElse: () => const Locale('und'),
+    );
+    if (tr.languageCode != 'und') return const Locale('tr');
+
+    // 2) Tercihlerde EN var mı?
+    final en = locales.firstWhere(
+      (l) => l.languageCode.toLowerCase() == 'en',
+      orElse: () => const Locale('und'),
+    );
+    if (en.languageCode != 'und') return const Locale('en');
+
+    // 3) Emniyet: TR
+    return const Locale('tr');
   }
 }

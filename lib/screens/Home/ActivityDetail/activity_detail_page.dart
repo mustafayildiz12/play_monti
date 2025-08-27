@@ -45,13 +45,26 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
       child: Scaffold(
         appBar: AppBar(
           leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.arrow_back,
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: CircleAvatar(
+                radius: 36,
+                backgroundColor: AppColors.kLightGreenColor,
+                child: Text(
+                  activity?.emoji ?? "",
+                  style: const TextStyle(fontSize: 24),
+                ),
+              )),
+          title: Padding(
+            padding: const EdgeInsetsGeometry.only(top: 4),
+            child: Text(
+              activity?.activityName ?? "",
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
                 color: AppColors.kTitleBlackTextColor,
               ),
             ),
@@ -70,19 +83,21 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 await checkIsFavorite();
               },
               child: CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: AppColors.kDarkGreenColor,
                 child: Icon(
                   Icons.favorite,
-                  color: isFavorite
-                      ? Colors.redAccent
-                      : AppColors.kTitleBlackTextColor,
+                  color: isFavorite ? Colors.redAccent : Colors.white,
                 ),
               ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 8),
           ],
           bottom: const PreferredSize(
-              preferredSize: Size(double.infinity, 1), child: Divider()),
+            preferredSize: Size(double.infinity, 1),
+            child: Divider(
+              color: AppColors.appBgColor,
+            ),
+          ),
         ),
         body: activity == null
             ? const Center(
@@ -102,28 +117,6 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: double.infinity,
-            height: 250,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              gradient: const LinearGradient(
-                colors: [AppColors.kDarkGreenColor, AppColors.kLightGreenColor],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              activity!.emoji,
-              style: const TextStyle(
-                fontSize: 80,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,27 +150,25 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          Text(
-            activity!.activityName.split("(").first,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              color: AppColors.kTitleBlackTextColor,
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16), color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+              child: Text(
+                activity!.clue,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppColors.kSubtitleTextColor,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
           const SizedBox(height: 16),
-          Text(
-            activity!.clue,
-            style: const TextStyle(
-              fontSize: 15,
-              color: AppColors.kSubtitleTextColor,
-              height: 1.6,
-            ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 24),
           Row(
             children: [
               const Icon(Icons.local_offer_outlined,
@@ -195,7 +186,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               )
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -203,14 +194,14 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               return customSkillChip(title: skills[index]);
             }),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16), color: Colors.white),
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16,
@@ -224,6 +215,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                     ),
                   ),
                   ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: materials.length,
                     itemBuilder: (context, index) {
@@ -235,14 +227,14 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               ),
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16), color: Colors.white),
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16,
@@ -257,6 +249,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                   ),
                   ListView.builder(
                     shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: steps.length,
                     itemBuilder: (context, index) {
                       return Padding(
@@ -273,32 +266,28 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
           ),
           const SizedBox(height: 16),
           Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.kMoreLightGreenColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.query_builder,
-                  color: AppColors.kDarkGreenColor,
-                  size: 28,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    "activity_duration".tr,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: AppColors.kDarkGreenColor,
-                      fontWeight: FontWeight.w600,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16), color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      "❗",
+                      style: TextStyle(fontSize: 20),
                     ),
-                  ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        activity!.warningText,
+                        style: const TextStyle(
+                            color: AppColors.kTitleBlackTextColor),
+                      ),
+                    )
+                  ],
                 ),
-              ],
-            ),
-          ),
+              )),
           const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
@@ -349,7 +338,8 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                   const SizedBox(width: 12),
                   Text(
                     "rate_activity".tr,
-                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                   const SizedBox(width: 12),
                   Icon(Icons.thumb_down,

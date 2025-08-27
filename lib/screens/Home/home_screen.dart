@@ -45,190 +45,195 @@ class _HomeScreenState extends State<HomeScreen> {
     return CustomLoader(
       inAsyncCall: isLoading,
       child: Scaffold(
-        appBar: AppBar(),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${"goodMorning".tr} $userName!",
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.kTitleBlackTextColor,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          "todays_montissoris_ready".tr,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: AppColors.kSubtitleTextColor,
-                          ),
-                        ),
-                      ],
-                    ),
+        appBar: AppBar(
+          title: appbarRow(),
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                // HEADER
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: AppColors.kButtonGreenColor,
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        '🌱',
-                        style: TextStyle(fontSize: 20),
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "monthlyProgress".tr,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.kTitleBlackTextColor,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            "$completedActivities / 30",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.kButtonGreenColor,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      const SizedBox(height: 12),
+                      // Progress Bar
+                      Stack(
+                        children: [
+                          Container(
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF0F0F0),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                          Container(
+                            height: 8,
+                            width: ((completedActivities / 30) * width)
+                                .clamp(0, width - 88),
+                            decoration: BoxDecoration(
+                              color: AppColors.kButtonGreenColor,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        "newSetUnlocks".tr,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: AppColors.kSubtitleTextColor,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              // HEADER
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
                 ),
-                padding: const EdgeInsets.all(20),
-                child: Column(
+                const SizedBox(height: 16),
+          
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          "monthlyProgress".tr,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.kTitleBlackTextColor,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          "$completedActivities / 30",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.kButtonGreenColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    // Progress Bar
-                    Stack(
-                      children: [
-                        Container(
-                          height: 8,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF0F0F0),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                        Container(
-                          height: 8,
-                          width: ((completedActivities / 30) * width)
-                              .clamp(0, width - 88),
-                          decoration: BoxDecoration(
-                            color: AppColors.kButtonGreenColor,
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(dayIndexes.length, (index) {
+                          int number = dayIndexes[index];
+                          bool isSelected = currentDayIndex == number;
+          
+                          return GestureDetector(
+                            onTap: () async {
+                              await getSelectedDayActivities(number);
+                              setState(() {
+                                currentDayIndex = number;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: isSelected
+                                        ? AppColors.kDarkGreenColor
+                                        : AppColors.kCalendarLockTextColor),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  number.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      "newSetUnlocks".tr,
+                      initialDayIndex == currentDayIndex
+                          ? "todaysActivities".tr
+                          : "$currentDayIndex. ${"day".tr}",
                       style: const TextStyle(
-                        fontSize: 12,
-                        color: AppColors.kSubtitleTextColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.kTitleBlackTextColor,
                       ),
                     ),
+                    todaysActivities.isNotEmpty
+                        ? ActivitiesCarousel(
+                            activities: todaysActivities, // List<Activity>
+                            cardWidth: cardWidth,
+                            dateKey: getDateKey(),
+                          )
+                        : Center(
+                            child: Text("no_activity_found".tr),
+                          ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 16),
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 40,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(dayIndexes.length, (index) {
-                        int number = dayIndexes[index];
-                        bool isSelected = currentDayIndex == number;
-
-                        return GestureDetector(
-                          onTap: () async {
-                            await getSelectedDayActivities(number);
-                            setState(() {
-                              currentDayIndex = number;
-                            });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Container(
-                              width: 36,
-                              height: 36,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: isSelected
-                                      ? AppColors.kDarkGreenColor
-                                      : AppColors.kCalendarLockTextColor),
-                              alignment: Alignment.center,
-                              child: Text(
-                                number.toString(),
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    initialDayIndex == currentDayIndex
-                        ? "todaysActivities".tr
-                        : "$currentDayIndex. ${"day".tr}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.kTitleBlackTextColor,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  todaysActivities.isNotEmpty
-                      ? ActivitiesCarousel(
-                          activities: todaysActivities, // List<Activity>
-                          cardWidth: cardWidth,
-                          dateKey: getDateKey(),
-                        )
-                      : Center(
-                          child: Text("no_activity_found".tr),
-                        ),
-                ],
-              ),
-              // Daily Tip Section
-              const SizedBox(height: 16),
-            ],
+                // Daily Tip Section
+                const SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  Row appbarRow() {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "${"goodMorning".tr} $userName!",
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.kTitleBlackTextColor,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                "todays_montissoris_ready".tr,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppColors.kSubtitleTextColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            color: AppColors.kButtonGreenColor,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: const Center(
+            child: Text(
+              '🌱',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
