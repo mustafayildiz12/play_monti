@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/constants/app_pages.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/constants/app_theme.dart';
@@ -64,8 +65,10 @@ Future<void> runMyApp() async {
       title: 'MontiTime',
       debugShowCheckedModeBanner: false,
       translations: AppTranslations(),
-      locale: const Locale('en'), // Varsayılan dil
-      fallbackLocale: const Locale('en'), // Yedek dil
+      locale: AppLocalization.locale, // Varsayılan dil
+      fallbackLocale: AppLocalization.fallbackLocale, // Yedek dil
+      supportedLocales: AppLocalization.supportedLocales,
+      localizationsDelegates: AppLocalization.localizationsDelegates,
       theme: AppTheme.appTheme,
       initialRoute: AppRoutes.initialRoute,
       getPages: AppPages.pages,

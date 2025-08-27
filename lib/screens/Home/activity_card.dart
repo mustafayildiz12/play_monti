@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 
@@ -15,7 +16,8 @@ class ActivityCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       color: Colors.white,
       margin: EdgeInsets.zero,
-      child: Column( // ⬅️ ListView yerine Column
+      child: Column(
+        // ⬅️ ListView yerine Column
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -26,13 +28,17 @@ class ActivityCard extends StatelessWidget {
               height: 192,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [AppColors.kButtonGreenColor, AppColors.kDarkGreenColor],
+                  colors: [
+                    AppColors.kButtonGreenColor,
+                    AppColors.kDarkGreenColor
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
               ),
               child: Center(
-                child: Text(activity.emoji, style: const TextStyle(fontSize: 64)),
+                child:
+                    Text(activity.emoji, style: const TextStyle(fontSize: 64)),
               ),
             ),
           ),
@@ -47,7 +53,8 @@ class ActivityCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.kMoreLightGreenColor,
                         borderRadius: BorderRadius.circular(12),
@@ -63,7 +70,8 @@ class ActivityCard extends StatelessWidget {
                     ),
                     Text(
                       activity.ageGroup,
-                      style: const TextStyle(fontSize: 12, color: AppColors.kSubtitleTextColor),
+                      style: const TextStyle(
+                          fontSize: 12, color: AppColors.kSubtitleTextColor),
                     ),
                   ],
                 ),
@@ -79,20 +87,25 @@ class ActivityCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   activity.clue,
-                  style: const TextStyle(fontSize: 14, color: AppColors.kSubtitleTextColor, height: 1.43),
+                  style: const TextStyle(
+                      fontSize: 14,
+                      color: AppColors.kSubtitleTextColor,
+                      height: 1.43),
                   maxLines: 3, // çok uzarsa sayfa taşmasın (opsiyonel)
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 16),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: AppColors.appBgColor,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     activity.improvementArea,
-                    style: const TextStyle(fontSize: 12, color: AppColors.kSubtitleTextColor),
+                    style: const TextStyle(
+                        fontSize: 12, color: AppColors.kSubtitleTextColor),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -102,12 +115,17 @@ class ActivityCard extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.kButtonGreenColor,
                       padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
                       elevation: 0,
                     ),
-                    icon: const Icon(Icons.play_arrow_rounded, size: 18, color: Colors.white),
-                    label: const Text("Start Activity",
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500)),
+                    icon: const Icon(Icons.play_arrow_rounded,
+                        size: 18, color: Colors.white),
+                    label: Text("startActivity".tr,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500)),
                     onPressed: onTap,
                   ),
                 ),
@@ -117,7 +135,10 @@ class ActivityCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     gradient: const LinearGradient(
-                      colors: [AppColors.kDarkGreenColor, AppColors.kLightGreenColor],
+                      colors: [
+                        AppColors.kDarkGreenColor,
+                        AppColors.kLightGreenColor
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -127,12 +148,16 @@ class ActivityCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text("💡 Montessori Tip",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
+                       Text("💡 ${"montessoriTip".tr}",
+                          style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white)),
                       const SizedBox(height: 8),
                       Text(
                         activity.apothegm,
-                        style: const TextStyle(fontSize: 14, color: Colors.white, height: 1.43),
+                        style: const TextStyle(
+                            fontSize: 14, color: Colors.white, height: 1.43),
                       ),
                     ],
                   ),

@@ -14,8 +14,9 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
-          "get_started_button_tr": "Başla",
-          "continue_or_start_tr": "Devam Et",
+          "day": "gün",
+          "get_started_button": "Başla",
+          "continue_or_start": "Devam Et",
           "child_age_help_tr":
               "Bu, yaşa uygun aktiviteler göstermemize yardımcı olur",
 
@@ -154,8 +155,31 @@ class AppTranslations extends Translations {
           'previous': 'Önceki',
           'done': 'Tamam',
           'skip': 'Geç',
+          "no_activity_found": "Aktivite Bulunamadı.",
+          "todays_montissoris_ready": "Bugünün Montessori etkinlikleri hazır",
+          "daily_montessori": "Çocuğunuz için günlük Montessori etkinlikleri",
+          "what_call_you": "Size nasıl hitap edelim?",
+          "enter_name_hint": "Adınız",
+          "choose_language": "Dil Seç",
+          "select_language": "Tercih ettiğiniz dili seçin",
+          "child_age_group": "Çocuğun Yaş Grubu",
+          "child_age_help":
+              "Bu, yaşa uygun etkinlikleri göstermemize yardımcı olur.",
+          "skills": "Beceriler",
+          "materials_needed": "Gerekli Malzemeler",
+          "step_by_step": "Adım Adım Talimatlar",
+          "activity_duration": "Süre: 15-20 Dakika",
+          "rate_activity": "Aktiviteyi Oyla",
         },
         'en': {
+          "rate_activity": "Rate this Activity",
+          "activity_duration": "Duration: 15-20 Minutes",
+          "step_by_step": "Step by Step Instructions",
+          "materials_needed": "Materials Needed",
+          "skills": "Skills",
+          "todays_montissoris_ready": "Today's Montessori activities are ready",
+          "no_activity_found": "Activity not Found",
+          "day": "day",
           "get_started_button": "Get Started",
           "continue_or_start": "Continue",
           "child_age_help": "This helps us show age-appropriate activities",

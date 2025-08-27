@@ -96,6 +96,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
   SingleChildScrollView bodyWidget() {
     List<String> steps = createSteps(activity!.stepByStep);
     List<String> materials = createMaterials(activity!.materials);
+    List<String> skills = createMaterials(activity!.improvementArea);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -127,26 +128,25 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: AppColors.kMoreLightGreenColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    activity!.improvementArea,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: AppColors.kDarkGreenColor,
-                      fontWeight: FontWeight.w500,
-                    ),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                decoration: BoxDecoration(
+                  color: AppColors.kMoreLightGreenColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  activity!.activityType,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: AppColors.kDarkGreenColor,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
+              const Spacer(),
               const SizedBox(width: 8),
               Text(
                 activity!.ageGroup.split("(").first,
@@ -178,16 +178,16 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 24),
-          const Row(
+          Row(
             children: [
-              Icon(Icons.local_offer_outlined,
+              const Icon(Icons.local_offer_outlined,
                   color: AppColors.kTitleBlackTextColor),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Text(
-                "Skills",
-                style: TextStyle(
+                "skills".tr,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: AppColors.kTitleBlackTextColor,
@@ -197,13 +197,11 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
           ),
           const SizedBox(height: 16),
           Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              customSkillChip(title: "life skills"),
-              customSkillChip(title: "motor control"),
-              customSkillChip(title: "independence"),
-            ],
+            spacing: 8,
+            runSpacing: 8,
+            children: List.generate(skills.length, (index) {
+              return customSkillChip(title: skills[index]);
+            }),
           ),
           const SizedBox(height: 24),
           Container(
@@ -217,9 +215,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16,
                 children: [
-                  const Text(
-                    "Materials Needed",
-                    style: TextStyle(
+                  Text(
+                    "materials_needed".tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: AppColors.kTitleBlackTextColor,
@@ -249,9 +247,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16,
                 children: [
-                  const Text(
-                    "Step by Step Instructions",
-                    style: TextStyle(
+                  Text(
+                    "step_by_step".tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: AppColors.kTitleBlackTextColor,
@@ -280,18 +278,18 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               color: AppColors.kMoreLightGreenColor,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Row(
+            child: Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.query_builder,
                   color: AppColors.kDarkGreenColor,
                   size: 28,
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    "Duration: 15-20 Minutes",
-                    style: TextStyle(
+                    "activity_duration".tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       color: AppColors.kDarkGreenColor,
                       fontWeight: FontWeight.w600,
@@ -317,7 +315,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               ),
               icon: const Icon(Icons.check, size: 28, color: Colors.white),
               label: Text(
-                isMarked ? "Completed" : "Mark as Done",
+                isMarked ? "completed".tr : "markAsDone".tr,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -349,9 +347,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 children: [
                   const Icon(Icons.thumb_up, color: AppColors.kDarkGreenColor),
                   const SizedBox(width: 12),
-                  const Text(
-                    "Rate this Activity",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  Text(
+                    "rate_activity".tr,
+                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                   const SizedBox(width: 12),
                   Icon(Icons.thumb_down,
@@ -390,6 +388,14 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
 
   List<String> createMaterials(String materials) {
     return materials
+        .split(",") // virgüle göre ayır
+        .map((e) => e.trim()) // boşlukları temizle
+        .where((e) => e.isNotEmpty) // boş elemanları at
+        .toList();
+  }
+
+  List<String> createSkills(String skills) {
+    return skills
         .split(",") // virgüle göre ayır
         .map((e) => e.trim()) // boşlukları temizle
         .where((e) => e.isNotEmpty) // boş elemanları at

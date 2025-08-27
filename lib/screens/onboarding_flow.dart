@@ -357,7 +357,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         ),
         const SizedBox(height: 32),
         SizedBox(
-          height: 370,
+          height: 300,
           child: ListView.builder(
             itemCount: enAgeGroupList.length,
             itemBuilder: (context, index) {
@@ -378,7 +378,8 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: Container(
-                        padding: const EdgeInsets.all(24),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 16),
                         decoration: BoxDecoration(
                           color: isSelected
                               ? AppColors.kButtonGreenColor

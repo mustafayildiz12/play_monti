@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/final_activity_model.dart';
@@ -15,10 +16,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // MOCK DATA (bunları ileride Provider vs ile alabilirsin)
-  final String userName = "Guest";
+  String userName = "";
 
-  final int completedCount = 8;
+  int completedActivities = 0;
   int currentDayIndex = 0;
   int initialDayIndex = 0;
 
@@ -30,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    userName = currentMontiUser?.userName ?? "Guest";
+    completedActivities = currentMontiUser!.completedActivities ?? 0;
     getPageData();
     super.initState();
   }
@@ -55,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Good morning, $userName!",
+                          "${"goodMorning".tr} $userName!",
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
@@ -63,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         const SizedBox(height: 4),
-                        const Text(
-                          "Today's Montessori activities are ready",
-                          style: TextStyle(
+                        Text(
+                          "todays_montissoris_ready".tr,
+                          style: const TextStyle(
                             fontSize: 14,
                             color: AppColors.kSubtitleTextColor,
                           ),
@@ -102,9 +104,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Row(
                       children: [
-                        const Text(
-                          "Monthly Progress",
-                          style: TextStyle(
+                        Text(
+                          "monthlyProgress".tr,
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: AppColors.kTitleBlackTextColor,
@@ -112,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const Spacer(),
                         Text(
-                          "$completedCount/30",
+                          "$completedActivities / 30",
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -134,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Container(
                           height: 8,
-                          width: ((completedCount / 30) * width)
+                          width: ((completedActivities / 30) * width)
                               .clamp(0, width - 88),
                           decoration: BoxDecoration(
                             color: AppColors.kButtonGreenColor,
@@ -144,9 +146,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "A new Montessori set unlocks each day",
-                      style: TextStyle(
+                    Text(
+                      "newSetUnlocks".tr,
+                      style: const TextStyle(
                         fontSize: 12,
                         color: AppColors.kSubtitleTextColor,
                       ),
@@ -201,8 +203,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 8),
                   Text(
                     initialDayIndex == currentDayIndex
-                        ? "Today's Activities"
-                        : "$currentDayIndex. Gün",
+                        ? "todaysActivities".tr
+                        : "$currentDayIndex. ${"day".tr}",
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -216,8 +218,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           cardWidth: cardWidth,
                           dateKey: getDateKey(),
                         )
-                      : const Center(
-                          child: Text("Aktivite Bulunamadı."),
+                      : Center(
+                          child: Text("no_activity_found".tr),
                         ),
                 ],
               ),
