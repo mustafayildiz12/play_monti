@@ -72,9 +72,9 @@ class CustomSnackBar {
       overlayColor: Colors.black12,
       mainButton: TextButton(
         onPressed: () => Get.closeCurrentSnackbar(),
-        child: const Text(
-          "TAMAM",
-          style: TextStyle(
+        child: Text(
+          "sn_ok".tr,
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
             fontSize: 12,
@@ -86,7 +86,7 @@ class CustomSnackBar {
 
   Future<void> success(String message) async {
     _showSnackbar(
-      title: "BAŞARILI",
+      title: "sn_success".tr,
       message: message,
       backgroundColor: Colors.blue.shade500,
       icon: const Icon(
@@ -99,7 +99,7 @@ class CustomSnackBar {
 
   Future<void> error(String message) async {
     _showSnackbar(
-      title: "HATA",
+      title: "sn_error".tr,
       message: message,
       backgroundColor: Colors.red.withValues(alpha: 0.9),
       icon: const Icon(
@@ -112,7 +112,7 @@ class CustomSnackBar {
 
   Future<void> warning(String message) async {
     _showSnackbar(
-      title: "UYARI",
+      title: "sn_warn".tr,
       message: message,
       backgroundColor: Colors.orange.withValues(alpha: 0.75),
       icon: const Icon(

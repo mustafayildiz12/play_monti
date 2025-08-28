@@ -14,6 +14,13 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
+          "sn_ok": "TAMAM",
+          "sn_success": "BAŞARILI",
+          "sn_warn": "UYARI",
+          "sn_error": "HATA",
+          "fill_required_fields": "Lütfen gerekli alanları doldurunuz",
+          "reset_password": "Şifremi Sıfırla",
+          "forgot_password": "Şifremi Unuttum",
           // Auth & Common
           "go": "Git",
           "day": "gün",
@@ -167,7 +174,7 @@ class AppTranslations extends Translations {
               "Aktif keşif, pasif ekran izlemeye göre beyni daha hızlı geliştirir.",
           "builds_brain_play":
               "Gerçek oyun, gerçek beyinler geliştirir. 🖐️👀👂",
-               "celebrate_monti":
+          "celebrate_monti":
               "Montessori yolculuğunuzun kilometre taşlarını kutlayın",
           "safer_approach_title": "Daha Güvenli Yaklaşımımız",
           "safer_approach_montessori":
@@ -187,6 +194,13 @@ class AppTranslations extends Translations {
               "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın.",
         },
         'en': {
+          "sn_ok": "OK",
+          "sn_success": "SUCCESS",
+          "sn_warn": "WARNİNG",
+          "sn_error": "ERROR",
+          "fill_required_fields": "Please fill required fields",
+          "reset_password": "Reset Password",
+          "forgot_password": "Forgot Password",
           "quide_create":
               "Create an environment that promotes independence and learning with simple, practical changes.",
           "quide_observe":
@@ -196,7 +210,7 @@ class AppTranslations extends Translations {
           "quide_subtitle":
               "Montessori is not about perfection—it's about progress. Every small step towards independence is a victory worth celebrating.",
           "go": "Go",
-                    "celebrate_monti": "Celebrate your Montessori journey milestones",
+          "celebrate_monti": "Celebrate your Montessori journey milestones",
 
           // Auth & Common
           "day": "day",

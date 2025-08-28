@@ -85,7 +85,6 @@ class AuthenticationService {
   /// Yeni kullanıcı kaydı oluşturur
   ///
   /// [email] - Kullanıcı e-posta adresi
-  /// [name] - Kullanıcı adı
   /// [password] - Kullanıcı şifresi
   /// [context] - BuildContext
   ///
@@ -138,6 +137,23 @@ class AuthenticationService {
     } else {
       return false;
     }
+  }
+
+  Future<bool> forgotPassword({required String email}) async {
+    bool isSendResetEmailSuccess = false;
+    try {
+      await firebaseAuth.sendPasswordResetEmail(
+        email: email,
+      );
+      isSendResetEmailSuccess = true;
+      customSnackBar
+          .success("Şifre sıfırlama isteği mail adresinize gönderildi.");
+    } catch (e) {
+      isSendResetEmailSuccess = false;
+      customSnackBar.error(
+          "Şifre sıfırlama isteği gönderildi. Lütfen daha sonra tekrar deneyiniz.");
+    }
+    return isSendResetEmailSuccess;
   }
 
   /// Mevcut kullanıcının ID'sini döndürür
