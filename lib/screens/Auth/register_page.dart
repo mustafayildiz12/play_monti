@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/service/global_service.dart';
@@ -88,6 +89,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: double.infinity,
                         height: 48,
                         child: ElevatedButton(
+                            style: const ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                  AppColors.kButtonColor2),
+                              foregroundColor: WidgetStatePropertyAll(
+                                  AppColors.kCalendarLightGreenColor)),
                           onPressed: () async {
                             await register();
                           }, // Sen bağlayacaksın

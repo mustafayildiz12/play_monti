@@ -12,7 +12,7 @@ class AppTheme {
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: AppColors.appBgColor, // Status bar arka planı
         statusBarIconBrightness: Brightness.dark, // Android ikonları beyaz
-        statusBarBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
       ),
     ),
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.kButtonGreenColor),
