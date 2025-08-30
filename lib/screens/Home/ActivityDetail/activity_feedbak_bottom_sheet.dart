@@ -1,11 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/models/feedback_model.dart';
 
 import 'package:play_monti/models/final_activity_model.dart';
+import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/service/feedback_service.dart';
+import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 
 /// Geri dönüş tipi
 enum FeedbackType { like, dislike }
@@ -49,15 +52,16 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
   Future<void> _submit() async {
     if (_selected == null) {
       HapticFeedback.selectionClick();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Lütfen beğeni durumunu seçin.')),
-      );
+      customSnackBar.warning('Lütfen beğeni durumunu seçin.');
       return;
     }
     setState(() => _sending = true);
 
     if (widget.finalActivityModel != null) {
       final feedbackmodel = ActivityFeedbackModel(
+          userEmail: currentMontiUser?.userEmail ?? "",
+          userId: authenticationService.getUser()!.uid,
+          userName: currentMontiUser!.userName ?? "",
           feedbackText: _noteCtrl.text.trim(),
           isLiked: _selected == FeedbackType.dislike ? 0 : 1,
           activityId: widget.finalActivityModel!.day,

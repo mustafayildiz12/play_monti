@@ -172,6 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColors.kTitleBlackTextColor,
                       ),
                     ),
+                    const SizedBox(height: 16),
                     todaysActivities.isNotEmpty
                         ? ActivitiesCarousel(
                             activities: todaysActivities, // List<Activity>

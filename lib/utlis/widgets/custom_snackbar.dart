@@ -8,7 +8,7 @@ class CustomSnackBar {
   static final CustomSnackBar _singleton = CustomSnackBar._internal();
 
   // Snackbar Görünüm Sabitleri
-  final Duration _duration = const Duration(seconds: 2);
+  final Duration _duration = const Duration(seconds: 3,milliseconds: 500);
   final double _borderRadius = 8.0;
   final EdgeInsets _margin = const EdgeInsets.symmetric(
     horizontal: 12.0,
