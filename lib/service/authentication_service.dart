@@ -289,6 +289,9 @@ class AuthenticationService {
         final bool isUserDataExist =
             await databaseService.getAdminBasicInfoFromRealTime(uid);
 
+        final bool isUserDetailExist =
+            await databaseService.isUserDetailExist(uid);
+
         if (!isUserDataExist) {
           final Map<String, dynamic>? profile =
               userCredential.additionalUserInfo?.profile;
@@ -297,8 +300,8 @@ class AuthenticationService {
             MontiUserModel(
                 uid: uid,
                 completedActivities: 0,
-                userEmail: profile!['email'],
-                userName: profile['name'],
+                userName: profile!['name'],
+                userEmail: profile['email'],
                 createDateTimeStamp: DateTime.now().millisecondsSinceEpoch),
           )
               .then((v) async {
@@ -306,8 +309,13 @@ class AuthenticationService {
           });
         }
 
-        await Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.navigationBarPage, (route) => false);
+        if (isUserDetailExist) {
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.navigationBarPage, (route) => false);
+        } else {
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.onboFlowPage, (route) => false);
+        }
       } else {
         debugPrint("User bulunamadı.");
       }

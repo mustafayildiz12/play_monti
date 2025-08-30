@@ -116,32 +116,46 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 48,
-                        child: OutlinedButton.icon(
-                          icon: Image.asset(
-                            "assets/google.png",
-                            height: 24,
+                      Column(
+                        children: [
+                          if (Platform.isIOS) ...[
+                            SizedBox(
+                              width: double.infinity,
+                              height: 48,
+                              child: OutlinedButton.icon(
+                                icon: const Icon(Icons.apple, size: 24),
+                                label: Text("loginApple".tr),
+                                onPressed: () async {
+                                  await authenticationService
+                                      .signInWithApple(context);
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                          ],
+                          SizedBox(
+                            width: double.infinity,
+                            height: 48,
+                            child: OutlinedButton.icon(
+                              icon: Image.asset(
+                                "assets/google.png",
+                                height: 24,
+                              ),
+                              label: Text("loginGoogle".tr),
+                              onPressed: () async {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                await authenticationService.signInWithGoogle(
+                                    context: context);
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              },
+                            ),
                           ),
-                          label: Text("loginGoogle".tr),
-                          onPressed: () async {
-                            await authenticationService.signInWithGoogle(
-                                context: context);
-                          }, // Google sign-in
-                        ),
+                        ],
                       ),
-                      const SizedBox(height: 12),
-                      if (Platform.isIOS)
-                        SizedBox(
-                          width: double.infinity,
-                          height: 48,
-                          child: OutlinedButton.icon(
-                            icon: const Icon(Icons.apple, size: 24),
-                            label: Text("loginApple".tr),
-                            onPressed: () {}, // Apple sign-in
-                          ),
-                        ),
                       Row(
                         children: [
                           TextButton(

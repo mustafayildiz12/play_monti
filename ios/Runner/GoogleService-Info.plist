@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>370553554615-ip7qe9l885ssbmgv3m5inci221ev13eh.apps.googleusercontent.com</string>
+	<string>370553554615-sgo7hqpne8v73upk5h8ldukavt2veedj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.370553554615-ip7qe9l885ssbmgv3m5inci221ev13eh</string>
+	<string>com.googleusercontent.apps.370553554615-sgo7hqpne8v73upk5h8ldukavt2veedj</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>370553554615-rfcfsj00qehajnfirc2af1f03ckrh9qd.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyB_HRAkI4kbSRKGtWzTOOIM312qxk0nBVw</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.playMonti</string>
+	<string>com.yildiz.playmonti</string>
 	<key>PROJECT_ID</key>
 	<string>playmonti-9b5c9</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:370553554615:ios:20ef5337aa6afe8d08ef32</string>
+	<string>1:370553554615:ios:eeb60733909cf47508ef32</string>
 	<key>DATABASE_URL</key>
 	<string>https://playmonti-9b5c9-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
