@@ -85,7 +85,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
                 child: Text(
                   "activity_calendar".tr,
                   style: const TextStyle(
@@ -166,27 +166,27 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                         weekendTextStyle: const TextStyle(color: Colors.red),
                         selectedDecoration: BoxDecoration(
                           color: AppColors.kLightGreenColor, // zemin şeffaf
-                          shape:
-                              BoxShape.rectangle, // istersen kare de yapabilirsin
-          
+                          shape: BoxShape
+                              .rectangle, // istersen kare de yapabilirsin
+
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       onDaySelected: (selected, focused) async {
                         List<DailyEvent> events = _eventsOf(selected);
-          
+
                         String? firstActivity = await activityService
                             .getIndexActivityName(dayIndex: events.first.id);
                         String? secondActivity = await activityService
                             .getIndexActivityName(dayIndex: events.last.id);
-          
+
                         if (firstActivity != null) {
                           events.first.activityName = firstActivity;
                         }
                         if (secondActivity != null) {
                           events.last.activityName = secondActivity;
                         }
-          
+
                         await calendarBottomSheet(selected, events);
                       },
                       calendarBuilders: CalendarBuilders(
@@ -232,12 +232,13 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                                 return Container(
                                   width: 9,
                                   height: 9,
-                                  margin: EdgeInsets.only(right: i == 0 ? 3 : 0),
+                                  margin:
+                                      EdgeInsets.only(right: i == 0 ? 3 : 0),
                                   decoration: BoxDecoration(
                                     color: color,
                                     shape: BoxShape.circle,
-                                    border:
-                                        Border.all(width: .5, color: borderColor),
+                                    border: Border.all(
+                                        width: .5, color: borderColor),
                                   ),
                                 );
                               }),
@@ -246,10 +247,10 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
                         },
                       ),
                     ),
-          
+
                     const SizedBox(height: 16),
                     const Divider(color: Color(0xFFF0F0F0)),
-          
+
                     // Legend
                     Wrap(
                       alignment: WrapAlignment.center,

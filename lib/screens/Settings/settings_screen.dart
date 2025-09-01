@@ -352,7 +352,7 @@ class _SettingsPageState extends State<SettingsPage> {
       });
 
       await databaseService.updateUserActivity(ageGroup: selectedAgeGroup!);
-      customSnackBar.success("Aktiviteler güncellendi");
+      customSnackBar.success("activity_updated".tr);
     }
   }
 

@@ -76,7 +76,7 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
                     // change button value to selected value
                     onChanged: (String? newValue) {
                       setState(() {
-                        selectedAgeType = newValue!;
+                        selectedLanguage = newValue!;
                       });
                     },
                   ),

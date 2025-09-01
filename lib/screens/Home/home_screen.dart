@@ -45,14 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return CustomLoader(
       inAsyncCall: isLoading,
       child: Scaffold(
-        appBar: AppBar(
-          title: appbarRow(),
-        ),
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
             child: Column(
               children: [
+                appbarRow(),
+                const SizedBox(height: 16),
                 // HEADER
                 Container(
                   decoration: BoxDecoration(
@@ -118,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-          
+
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -129,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: List.generate(dayIndexes.length, (index) {
                           int number = dayIndexes[index];
                           bool isSelected = currentDayIndex == number;
-          
+
                           return GestureDetector(
                             onTap: () async {
                               await getSelectedDayActivities(number);
