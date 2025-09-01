@@ -77,7 +77,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                 onChange: (size) {
                   // Ölçüm geldiğinde yüksekliği güncelle
                   if (size.height > 0 && size.height != _currentHeight) {
-                    setState(() => _currentHeight = size.height + 25);
+                    setState(() => _currentHeight = size.height + 45);
                   }
                 },
                 child: ActivityCard(
@@ -190,8 +190,6 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             ),
           ),
         ),
-
-        const SizedBox(height: 8),
 
         SmoothPageIndicator(
           controller: _pageController,

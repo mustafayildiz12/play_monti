@@ -49,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 appbarRow(),
                 const SizedBox(height: 16),
@@ -118,77 +119,76 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(dayIndexes.length, (index) {
-                          int number = dayIndexes[index];
-                          bool isSelected = currentDayIndex == number;
-
-                          return GestureDetector(
-                            onTap: () async {
-                              await getSelectedDayActivities(number);
-                              setState(() {
-                                currentDayIndex = number;
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
-                              child: Container(
-                                width: 36,
-                                height: 36,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: isSelected
-                                        ? AppColors.kDarkGreenColor
-                                        : AppColors.kCalendarLockTextColor),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  number.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      initialDayIndex == currentDayIndex
-                          ? "todaysActivities".tr
-                          : "$currentDayIndex. ${"day".tr}",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.kTitleBlackTextColor,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    todaysActivities.isNotEmpty
-                        ? ActivitiesCarousel(
-                            activities: todaysActivities, // List<Activity>
-                            cardWidth: cardWidth,
-                            dateKey: getDateKey(),
-                          )
-                        : Center(
-                            child: Text("no_activity_found".tr),
-                          ),
-                  ],
+                activityDayBuilder(),
+                const SizedBox(height: 8),
+                Text(
+                  initialDayIndex == currentDayIndex
+                      ? "todaysActivities".tr
+                      : "$currentDayIndex. ${"day".tr}",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.kTitleBlackTextColor,
+                  ),
                 ),
                 // Daily Tip Section
                 const SizedBox(height: 16),
+
+                todaysActivities.isNotEmpty
+                    ? ActivitiesCarousel(
+                        activities: todaysActivities, // List<Activity>
+                        cardWidth: cardWidth,
+                        dateKey: getDateKey(),
+                      )
+                    : Center(
+                        child: Text("no_activity_found".tr),
+                      ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox activityDayBuilder() {
+    return SizedBox(
+      height: 40,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(dayIndexes.length, (index) {
+          int number = dayIndexes[index];
+          bool isSelected = currentDayIndex == number;
+
+          return GestureDetector(
+            onTap: () async {
+              await getSelectedDayActivities(number);
+              setState(() {
+                currentDayIndex = number;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isSelected
+                        ? AppColors.kDarkGreenColor
+                        : AppColors.kCalendarLockTextColor),
+                alignment: Alignment.center,
+                child: Text(
+                  number.toString(),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+          );
+        }),
       ),
     );
   }
