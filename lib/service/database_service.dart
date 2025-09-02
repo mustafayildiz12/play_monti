@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/models/age_group_model.dart';
@@ -10,6 +11,7 @@ import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/models/monti_user_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
+import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 
 /// TercihService sınıfı, Firebase Realtime Database ile etkileşim için gerekli metodları içerir.
 /// Kullanıcı tercihleri, sınav bilgileri ve diğer verilerin yönetimini sağlar.
@@ -30,6 +32,7 @@ class DatabaseService {
       print(userModel);
 
       if (userModel != null) {
+        await localStorage.write("username", userModel.userName);
         isExist = true;
         currentMontiUser = userModel;
       }
@@ -149,8 +152,10 @@ class DatabaseService {
     await _realtimeDatabase
         .ref("users")
         .child(currentMontiUser!.uid!)
-        .update({"status": 1});
-    await authenticationService.logoutFromFirebase(context);
+        .update({"status": 1}).then((_) async {
+      customSnackBar.success("account_deleted".tr);
+      await authenticationService.logoutFromFirebase(context);
+    });
   }
 
   Future<void> add1824({required Map<String, dynamic> item}) async {

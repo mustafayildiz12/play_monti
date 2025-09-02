@@ -60,7 +60,7 @@ class _GuidePageState extends State<GuidePage> {
                   children: [
                     Text(
                       "montessoriGuide".tr,
-                      style: const TextStyle(
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: AppColors.kTitleBlackTextColor,
                           fontSize: 32,
                           fontWeight: FontWeight.bold),
@@ -120,9 +120,8 @@ class _GuidePageState extends State<GuidePage> {
                       Text(
                         "quide_subtitle".tr,
                         style: const TextStyle(
-                          color: Colors.white70,
-                          fontSize: 13,
-                          height: 1.35,
+                          color: Colors.white,
+                          fontSize: 14,
                         ),
                       ),
                     ],

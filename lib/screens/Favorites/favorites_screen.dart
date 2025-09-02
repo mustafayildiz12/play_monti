@@ -55,10 +55,13 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                           children: [
                             Text(
                               'favorite_activities'.tr,
-                              style: const TextStyle(
-                                  color: AppColors.kTitleBlackTextColor,
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.bold),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                      color: AppColors.kTitleBlackTextColor,
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 4),
                             Text(
@@ -91,7 +94,7 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                   ),
                 ),
               ),
-          
+
               // Search
               SliverToBoxAdapter(
                 child: Padding(
@@ -103,9 +106,9 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                   ),
                 ),
               ),
-          
+
               const SliverToBoxAdapter(child: SizedBox(height: 16)),
-          
+
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 sliver: SliverList.separated(
@@ -119,7 +122,7 @@ class _FavoritesPageState extends State<FavoritesScreen> {
                   itemCount: getFilteredList().length,
                 ),
               ),
-          
+
               const SliverToBoxAdapter(child: SizedBox(height: 24)),
             ],
           ),

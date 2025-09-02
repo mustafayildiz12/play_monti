@@ -6,6 +6,7 @@ import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
@@ -63,8 +64,7 @@ class AuthenticationService {
                   context, AppRoutes.onboFlowPage, (route) => false);
             }
           } else {
-            customSnackBar.error(
-                "Bu hesap silinmiş. Lütfen farklı bir hesap ile tekrar deneyiniz.");
+            customSnackBar.error("account_deleted".tr);
             await logoutFromFirebase(context);
           }
         }
@@ -267,7 +267,6 @@ class AuthenticationService {
       final credential = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
         ],
         nonce: nonce,
       );
@@ -295,13 +294,13 @@ class AuthenticationService {
         if (!isUserDataExist) {
           final Map<String, dynamic>? profile =
               userCredential.additionalUserInfo?.profile;
+
           await databaseService
               .addUserToRealTime(
             MontiUserModel(
                 uid: uid,
                 completedActivities: 0,
-                userName: profile!['name'],
-                userEmail: profile['email'],
+                userEmail: profile!['email'] ?? "",
                 createDateTimeStamp: DateTime.now().millisecondsSinceEpoch),
           )
               .then((v) async {

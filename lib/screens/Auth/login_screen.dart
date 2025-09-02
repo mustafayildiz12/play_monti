@@ -43,8 +43,11 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 24),
                       Text(
                         "welcome".tr,
-                        style: const TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                fontSize: 28, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 32),
                       TextFormField(

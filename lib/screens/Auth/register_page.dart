@@ -42,8 +42,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(height: 24),
                       Text(
                         "register".tr,
-                        style: const TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                fontSize: 28, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 32),
                       TextFormField(
@@ -89,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: double.infinity,
                         height: 48,
                         child: ElevatedButton(
-                            style: const ButtonStyle(
+                          style: const ButtonStyle(
                               backgroundColor: WidgetStatePropertyAll(
                                   AppColors.kButtonColor2),
                               foregroundColor: WidgetStatePropertyAll(

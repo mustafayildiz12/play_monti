@@ -77,11 +77,10 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
           const expanded = 250.0;
           const threshold = expanded - kToolbarHeight;
           final collapsed = constraints.scrollOffset > threshold;
-    
-          final fg =
-              collapsed ? AppColors.kTitleBlackTextColor : Colors.white;
+
+          final fg = collapsed ? AppColors.kTitleBlackTextColor : Colors.white;
           final bg = collapsed ? Colors.white : Colors.transparent;
-    
+
           return SliverAppBar(
             expandedHeight: expanded,
             backgroundColor: bg,
@@ -97,8 +96,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 : SystemUiOverlayStyle.light,
             leading: IconButton(
               tooltip: 'Geri',
-              icon:
-                  const Icon(Icons.arrow_back), // renk iconTheme’den geliyor
+              icon: const Icon(Icons.arrow_back), // renk iconTheme’den geliyor
               onPressed: () => Navigator.pop(context),
             ),
             actions: [
@@ -121,8 +119,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding:
-                  EdgeInsets.only(left: collapsed ? 56 : 12, bottom: 12),
+              titlePadding: const EdgeInsets.only(bottom: 12),
               title: _ReadableTitle(
                 text: activity!.activityName,
                 // Başlık için mini bir arka plan scrim’i (aşağıda tanımlı)
@@ -134,7 +131,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             ),
           );
         }),
-    
+
         // Üst bilgi (tip/yaş/ipuçları)
         SliverToBoxAdapter(
           child: Padding(
@@ -160,7 +157,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             ),
           ),
         ),
-    
+
         // Yetenekler
         SliverToBoxAdapter(
           child: _SectionTitle(title: "skills".tr),
@@ -175,10 +172,9 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             ),
           ),
         ),
-    
+
         // Malzemeler
-        SliverToBoxAdapter(
-            child: _SectionTitle(title: "materials_needed".tr)),
+        SliverToBoxAdapter(child: _SectionTitle(title: "materials_needed".tr)),
         SliverList.builder(
           itemCount: materials.length,
           itemBuilder: (context, i) => _CardBlock(
@@ -187,7 +183,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             child: _MaterialRow(text: materials[i]),
           ),
         ),
-    
+
         // Adım adım
         SliverToBoxAdapter(child: _SectionTitle(title: "step_by_step".tr)),
         SliverList.builder(
@@ -198,7 +194,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             child: _StepRow(number: i + 1, text: steps[i]),
           ),
         ),
-    
+
         // Uyarı
         SliverToBoxAdapter(
           child: _CardBlock(
@@ -218,7 +214,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
             ),
           ),
         ),
-    
+
         // İşlem butonları
         SliverToBoxAdapter(
           child: Padding(

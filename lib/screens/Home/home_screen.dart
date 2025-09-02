@@ -122,15 +122,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 activityDayBuilder(),
                 const SizedBox(height: 8),
                 Text(
-                  initialDayIndex == currentDayIndex
-                      ? "todaysActivities".tr
-                      : "$currentDayIndex. ${"day".tr}",
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.kTitleBlackTextColor,
-                  ),
-                ),
+                    initialDayIndex == currentDayIndex
+                        ? "todaysActivities".tr
+                        : "$currentDayIndex. ${"day".tr}",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.kTitleBlackTextColor,
+                        )),
                 // Daily Tip Section
                 const SizedBox(height: 16),
 
@@ -141,7 +140,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         dateKey: getDateKey(),
                       )
                     : Center(
-                        child: Text("no_activity_found".tr),
+                        child: Text(
+                          "no_activity_found".tr,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                       ),
               ],
             ),
@@ -200,14 +202,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "${"goodMorning".tr} $userName!",
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.kTitleBlackTextColor,
-                ),
-              ),
+              Text("${"goodMorning".tr} $userName!",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.kTitleBlackTextColor,
+                      )),
               const SizedBox(height: 4),
               Text(
                 "todays_montissoris_ready".tr,

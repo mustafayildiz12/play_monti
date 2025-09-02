@@ -74,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   children: [
                     Text(
                       'settings'.tr,
-                      style: const TextStyle(
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: AppColors.kTitleBlackTextColor,
                           fontSize: 32,
                           fontWeight: FontWeight.bold),
@@ -260,21 +260,50 @@ class _SettingsPageState extends State<SettingsPage> {
                       "made_with".tr,
                       style: const TextStyle(color: textHint, fontSize: 12),
                     ),
-                    /*
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, AppRoutes.uploadActivityPage);
-                      },
-                      child: const Text("Excel Sayfası"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () async {
+                            await authenticationService
+                                .logoutFromFirebase(context);
+                          },
+                          child: Text("log_out".tr),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            await showAdaptiveDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                      "Hesabınızı silmek istediğinize emin misiniz?"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("Hayır"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, true);
+                                      },
+                                      child: const Text("Evet"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ).then((v) async {
+                              if (v != null) {
+                                await databaseService.deleteAccount(context);
+                              }
+                            });
+                          },
+                          child: Text("delete_account".tr),
+                        ),
+                      ],
                     ),
-                    */
-                    TextButton(
-                      onPressed: () async {
-                        await authenticationService.logoutFromFirebase(context);
-                      },
-                      child: Text("log_out".tr),
-                    )
                   ],
                 ),
               ),

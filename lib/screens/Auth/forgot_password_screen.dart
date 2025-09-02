@@ -39,11 +39,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     children: [
                       Image.asset("assets/logo.png"),
                       const SizedBox(height: 24),
-                      Text(
-                        "forgot_password".tr,
-                        style: const TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                      ),
+                      Text("forgot_password".tr,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                  fontSize: 28, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 32),
                       TextFormField(
                         controller: emailController,

@@ -70,10 +70,13 @@ class _BadgesScreenState extends State<BadgesScreen> {
                       children: [
                         Text(
                           "achievement_badges".tr,
-                          style: const TextStyle(
-                              color: AppColors.kTitleBlackTextColor,
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                  color: AppColors.kTitleBlackTextColor,
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 8),
                         Text(

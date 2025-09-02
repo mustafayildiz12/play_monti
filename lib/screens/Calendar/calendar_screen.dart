@@ -85,14 +85,13 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
-                child: Text(
-                  "activity_calendar".tr,
-                  style: const TextStyle(
-                      color: AppColors.kTitleBlackTextColor,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold),
-                ),
+                padding:
+                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
+                child: Text("activity_calendar".tr,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors.kTitleBlackTextColor,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold)),
               ),
               const SizedBox(height: 8),
               Padding(

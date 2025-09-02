@@ -14,6 +14,8 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
+          "account_deleted": "Hesabınız Silindi.",
+          "delete_account": "Hesabı Sil",
           "activity_updated": "Aktiviteler güncellendi",
           "sn_ok": "TAMAM",
           "sn_success": "BAŞARILI",
@@ -195,6 +197,8 @@ class AppTranslations extends Translations {
               "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın.",
         },
         'en': {
+          "account_deleted": "Hesabınız Silindi.",
+          "delete_account": "Delete Account",
           "activity_updated": "Activities updated",
           "sn_ok": "OK",
           "sn_success": "SUCCESS",
