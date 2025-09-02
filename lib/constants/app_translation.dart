@@ -14,6 +14,13 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
+          "rest_pass_send":
+              "Şifre sıfırlama isteği mail adresinize gönderildi.",
+          "rest_pass_not_send":
+              "Şifre sıfırlama isteği gönderilemedi. Lütfen daha sonra tekrar deneyiniz.",
+          "wrong_password": "Hatalı kullanıcı adı ya da şifre",
+          "user_not_found": "Kullanıcı Bulunamadı",
+          "fail_to_login": "Giriş Yapılamadı.",
           "select_rating": "Lütfen beğeni durumunu seçin.",
           "thanks_feedback": "Geri bildiriminiz için teşekkür ederiz.",
           "like": "Beğendim",
@@ -206,6 +213,13 @@ class AppTranslations extends Translations {
               "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın.",
         },
         'en': {
+          "rest_pass_send":
+              "A password reset request has been sent to your email address.",
+          "rest_pass_not_send":
+              "The password reset request could not be sent. Please try again later.",
+          "wrong_password": "Wrong email or password",
+          "user_not_found": "User not found",
+          "fail_to_login": "Failed to login",
           "select_rating": "Please select your rating.",
           "thanks_feedback": "Thank you for your feedback.",
           "like": "Like",

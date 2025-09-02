@@ -71,11 +71,11 @@ class AuthenticationService {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        customSnackBar.warning("Kullanıcı Bulunamadı");
+        customSnackBar.warning("user_not_found".tr);
       } else if (e.code == 'wrong-password') {
-        customSnackBar.warning("Hatalı kullanıcı adı ya da şifre");
+        customSnackBar.warning("wrong_password".tr);
       } else {
-        customSnackBar.warning("Hatalı kullanıcı adı ya da şifre");
+        customSnackBar.warning("wrong_password".tr);
       }
     } catch (e) {
       debugPrint(e.toString());
@@ -119,9 +119,9 @@ class AuthenticationService {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        customSnackBar.warning("Kullanıcı Bulunamadı");
+        customSnackBar.warning("user_not_found".tr);
       } else if (e.code == 'wrong-password') {
-        customSnackBar.warning("Hatalı kullanıcı adı ya da şifre");
+        customSnackBar.warning("wrong_password".tr);
       }
     }
   }
@@ -146,12 +146,10 @@ class AuthenticationService {
         email: email,
       );
       isSendResetEmailSuccess = true;
-      customSnackBar
-          .success("Şifre sıfırlama isteği mail adresinize gönderildi.");
+      customSnackBar.success("rest_pass_send".tr);
     } catch (e) {
       isSendResetEmailSuccess = false;
-      customSnackBar.error(
-          "Şifre sıfırlama isteği gönderildi. Lütfen daha sonra tekrar deneyiniz.");
+      customSnackBar.error("rest_pass_not_send".tr);
     }
     return isSendResetEmailSuccess;
   }
@@ -251,7 +249,7 @@ class AuthenticationService {
         debugPrint("User bulunamadı.");
       }
     } catch (e) {
-      customSnackBar.warning("Giriş Yapılamadı.");
+      customSnackBar.warning("fail_to_login".tr);
       debugPrint("Hata: $e");
       if (e is PlatformException) {
         debugPrint("PlatformException: ${e.message}");
@@ -319,7 +317,7 @@ class AuthenticationService {
         debugPrint("User bulunamadı.");
       }
     } catch (e) {
-      customSnackBar.warning("Giriş Yapılamadı.");
+      customSnackBar.warning("fail_to_login".tr);
       debugPrint("Hata: $e");
 
       if (e is PlatformException) {

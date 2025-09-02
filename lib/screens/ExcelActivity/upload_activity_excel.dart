@@ -243,7 +243,7 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
             language: selectedLanguage,
             activityModel: e);
       }
-      customSnackBar.success("Başarılı");
+      customSnackBar.success("sn_success".tr);
       excelItems = [];
     } catch (e) {
       customSnackBar.error("$e");
