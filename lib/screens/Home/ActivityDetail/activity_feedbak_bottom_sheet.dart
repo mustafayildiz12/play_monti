@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/models/feedback_model.dart';
@@ -52,7 +53,7 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
   Future<void> _submit() async {
     if (_selected == null) {
       HapticFeedback.selectionClick();
-      customSnackBar.warning('Lütfen beğeni durumunu seçin.');
+      customSnackBar.warning('select_rating'.tr);
       return;
     }
     setState(() => _sending = true);
@@ -79,7 +80,7 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
 
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Geri bildiriminiz için teşekkür ederiz.')),
+      SnackBar(content: Text('thanks_feedback'.tr)),
     );
     Navigator.of(context).pop();
   }
@@ -112,7 +113,8 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                     height: 4,
                     margin: const EdgeInsets.only(bottom: 12),
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.onSurface.withOpacity(0.15),
+                      color:
+                          theme.colorScheme.onSurface.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -121,7 +123,7 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   Row(
                     children: [
                       Text(
-                        'Geri Bildirim',
+                        'feedback'.tr,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
@@ -141,14 +143,14 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   Row(
                     children: [
                       _ChoiceChip(
-                        label: 'Beğendim',
+                        label: 'like'.tr,
                         icon: Icons.thumb_up_alt_rounded,
                         selected: _selected == FeedbackType.like,
                         onTap: () => _select(FeedbackType.like),
                       ),
                       const SizedBox(width: 12),
                       _ChoiceChip(
-                        label: 'Beğenmedim',
+                        label: 'dislike'.tr,
                         icon: Icons.thumb_down_alt_rounded,
                         selected: _selected == FeedbackType.dislike,
                         onTap: () => _select(FeedbackType.dislike),
@@ -165,24 +167,12 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                     minLines: 3,
                     textInputAction: TextInputAction.newline,
                     decoration: InputDecoration(
-                      labelText: 'Açıklama (opsiyonel)',
-                      hintText: 'Düşüncelerini kısaca yaz...',
+                      labelText: 'feedback_desc'.tr,
+                      hintText: 'write_your_thoughts'.tr,
                       alignLabelWithHint: true,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 10),
-
-                  // Karakter sayacı (küçük ipucu)
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '${_noteCtrl.text.characters.length} karakter',
-                      style: theme.textTheme.bodySmall
-                          ?.copyWith(color: theme.hintColor),
                     ),
                   ),
 
@@ -196,7 +186,7 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                           onPressed: _sending
                               ? null
                               : () => Navigator.of(context).maybePop(),
-                          child: const Text('Vazgeç'),
+                          child: Text('give_up'.tr),
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -211,7 +201,7 @@ class FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                                       CircularProgressIndicator(strokeWidth: 2),
                                 )
                               : const Icon(Icons.send_rounded),
-                          label: const Text('Gönder'),
+                          label: Text('send'.tr),
                         ),
                       ),
                     ],
@@ -243,7 +233,7 @@ class _ChoiceChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final selBg = theme.colorScheme.primary.withOpacity(0.12);
+    final selBg = theme.colorScheme.primary.withValues(alpha: 0.12);
     final selFg = theme.colorScheme.primary;
     final unSelBg = theme.colorScheme.surfaceContainerHighest;
     final unSelFg = theme.colorScheme.onSurface;
@@ -260,7 +250,7 @@ class _ChoiceChip extends StatelessWidget {
             border: Border.all(
               color: selected
                   ? theme.colorScheme.primary
-                  : theme.dividerColor.withOpacity(0.4),
+                  : theme.dividerColor.withValues(alpha: 0.4),
             ),
             borderRadius: BorderRadius.circular(12),
           ),

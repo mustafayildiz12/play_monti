@@ -215,21 +215,30 @@ class ActivityService {
 
     final DataSnapshot snapshot = await ref.get();
 
-    if (snapshot.exists && snapshot.value is List<Object?>) {
-      final List<Object?> data = snapshot.value as List<Object?>;
+    if (snapshot.exists) {
+      final raw = snapshot.value;
 
-      for (final item in data) {
-        if (item == null) continue;
-
-        // Firebase'den gelen item Map<String, dynamic> tipinde olmalı
-        final Map<String, dynamic> activityData =
-            Map<String, dynamic>.from(item as Map);
-
-        final FavoriteActivityModel model =
-            FavoriteActivityModel.fromJson(activityData);
-
-        if (model.isFavorite) {
-          favorites.add(model);
+      if (raw is Map) {
+        // Sadece value’lar (yani activity map’leri) ile ilgileniyoruz
+        for (final value in raw.values) {
+          if (value is Map) {
+            final map = Map<String, dynamic>.from(value);
+            final model = FavoriteActivityModel.fromJson(map);
+            if (model.isFavorite == true) {
+              favorites.add(model);
+            }
+          }
+        }
+      } // 2) Kaynak veri LIST ise (örn: [null, {...}, null, {...}])
+      else if (raw is List) {
+        for (final item in raw) {
+          if (item is Map) {
+            final map = Map<String, dynamic>.from(item);
+            final model = FavoriteActivityModel.fromJson(map);
+            if (model.isFavorite == true) {
+              favorites.add(model);
+            }
+          }
         }
       }
     }

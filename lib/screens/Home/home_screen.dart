@@ -223,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 48,
           height: 48,
           decoration: BoxDecoration(
-            color: AppColors.kButtonGreenColor,
+            color: AppColors.kDarkGreenColor.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(24),
           ),
           child: const Center(

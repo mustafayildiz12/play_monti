@@ -78,7 +78,7 @@ class AuthenticationService {
         customSnackBar.warning("Hatalı kullanıcı adı ya da şifre");
       }
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -188,7 +188,7 @@ class AuthenticationService {
             context, AppRoutes.loginPage, (route) => false);
       }
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 

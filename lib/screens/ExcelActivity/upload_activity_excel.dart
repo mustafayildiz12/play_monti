@@ -179,7 +179,7 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
 
         final List<String> hataOlanSatirlar = [];
         final String sheetName = excel.tables.keys.first;
-        print(sheetName);
+
         final pblItemsSheet = excel.tables[sheetName];
 
         if (pblItemsSheet == null) {

@@ -69,7 +69,6 @@ class AppInitService {
     } else {
       Locale deviceLocale = pickBestLocaleFromDevice();
       AppLocalization.locale = deviceLocale;
-      print(deviceLocale);
       await infoStorage.write("languageCode", deviceLocale.languageCode);
     }
   }

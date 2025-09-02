@@ -30,14 +30,19 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         _step++;
       });
     } else {
-      currentMontiUser!.ageActivity = selectedAgeGroup!.ageGroupCode;
-      currentMontiUser!.languageCode = selectedLanguage!.languageCode;
+      String startDate = DateTime.now().toIso8601String();
+      currentMontiUser = currentMontiUser?.copyWith(
+          userName: _name,
+          ageActivity: selectedAgeGroup!.ageGroupCode,
+          selectedLanguage: selectedLanguage!.languageCode,
+          startDate: startDate);
 
       await databaseService.updateUserTimeData(
           ageActivity: selectedAgeGroup!.ageGroupCode,
           userName: _name,
           language: selectedLanguage!.languageName,
-          languageCode: selectedLanguage!.languageCode);
+          languageCode: selectedLanguage!.languageCode,
+          startDate: startDate);
       Navigator.pushNamedAndRemoveUntil(
           context, AppRoutes.navigationBarPage, (_) => false);
     }

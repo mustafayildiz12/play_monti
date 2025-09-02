@@ -14,6 +14,15 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
+          "select_rating": "Lütfen beğeni durumunu seçin.",
+          "thanks_feedback": "Geri bildiriminiz için teşekkür ederiz.",
+          "like": "Beğendim",
+          "dislike": "Beğenmedim",
+          "feedback": "Geri Bildirim",
+          "feedback_desc": "Açıklama (opsiyonel)",
+          "give_up": "Vazgeç",
+          "send": "Gönder",
+          "write_your_thoughts": "Düşüncelerini kısaca yaz...",
           "account_deleted": "Hesabınız Silindi.",
           "delete_account": "Hesabı Sil",
           "activity_updated": "Aktiviteler güncellendi",
@@ -197,6 +206,15 @@ class AppTranslations extends Translations {
               "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın.",
         },
         'en': {
+          "select_rating": "Please select your rating.",
+          "thanks_feedback": "Thank you for your feedback.",
+          "like": "Like",
+          "dislike": "Dislike",
+          "feedback": "Feedback",
+          "feedback_desc": "Description",
+          "give_up": "Back",
+          "send": "Send",
+          "write_your_thoughts": "Write down your thoughts in brief...",
           "account_deleted": "Hesabınız Silindi.",
           "delete_account": "Delete Account",
           "activity_updated": "Activities updated",

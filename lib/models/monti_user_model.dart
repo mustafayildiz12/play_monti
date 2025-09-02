@@ -1,33 +1,36 @@
 class MontiUserModel {
-  MontiUserModel(
-      {this.userName,
-      this.userPassword,
-      this.uid,
-      this.userEmail,
-      this.status,
-      this.createDateTimeStamp,
-      this.deviceId,
-      this.ageActivity,
-      this.selectedLanguage,
-      this.startDate,
-      this.completedActivities,
-      this.languageCode});
+  MontiUserModel({
+    this.userName,
+    this.userPassword,
+    this.uid,
+    this.userEmail,
+    this.status,
+    this.createDateTimeStamp,
+    this.deviceId,
+    this.ageActivity,
+    this.selectedLanguage,
+    this.startDate,
+    this.completedActivities,
+    this.languageCode,
+  });
 
   factory MontiUserModel.fromMap(Map<String, dynamic> map) {
     return MontiUserModel(
-        userName: map['userName'],
-        userPassword: map['userPassword'],
-        uid: map['uid'],
-        userEmail: map["userEmail"],
-        status: map["status"],
-        deviceId: map["deviceId"],
-        createDateTimeStamp: map["createDateTimeStamp"] ?? 0,
-        ageActivity: map['ageActivity'],
-        selectedLanguage: map['language'],
-        startDate: map['startDate'],
-        completedActivities: map['completedActivities'] ?? "",
-        languageCode: map['languageCode']);
+      userName: map['userName'],
+      userPassword: map['userPassword'],
+      uid: map['uid'],
+      userEmail: map["userEmail"],
+      status: map["status"],
+      deviceId: map["deviceId"],
+      createDateTimeStamp: map["createDateTimeStamp"] ?? 0,
+      ageActivity: map['ageActivity'],
+      selectedLanguage: map['language'],
+      startDate: map['startDate'],
+      completedActivities: map['completedActivities'] ?? 0,
+      languageCode: map['languageCode'],
+    );
   }
+
   final String? userName;
   final String? userPassword;
   final String? uid;
@@ -35,26 +38,57 @@ class MontiUserModel {
   final int? status;
   final int? createDateTimeStamp;
   final String? deviceId;
-  String? ageActivity;
+  final String? ageActivity;
   final String? selectedLanguage;
   final String? startDate;
-  String? languageCode;
-  int? completedActivities;
+  final String? languageCode;
+  final int? completedActivities;
 
   Map<String, dynamic> toMap() {
     return {
       'userName': userName,
       'userPassword': userPassword,
       'uid': uid,
-      "userEmail": userEmail,
-      "status": status,
-      "createDateTimeStamp": createDateTimeStamp,
-      "deviceId": deviceId,
+      'userEmail': userEmail,
+      'status': status,
+      'createDateTimeStamp': createDateTimeStamp,
+      'deviceId': deviceId,
       'ageActivity': ageActivity,
       'selectedLanguage': selectedLanguage,
       'startDate': startDate,
       'completedActivities': completedActivities,
-      'languageCode': languageCode
+      'languageCode': languageCode,
     };
+  }
+
+  /// copyWith metodu
+  MontiUserModel copyWith({
+    String? userName,
+    String? userPassword,
+    String? uid,
+    String? userEmail,
+    int? status,
+    int? createDateTimeStamp,
+    String? deviceId,
+    String? ageActivity,
+    String? selectedLanguage,
+    String? startDate,
+    int? completedActivities,
+    String? languageCode,
+  }) {
+    return MontiUserModel(
+      userName: userName ?? this.userName,
+      userPassword: userPassword ?? this.userPassword,
+      uid: uid ?? this.uid,
+      userEmail: userEmail ?? this.userEmail,
+      status: status ?? this.status,
+      createDateTimeStamp: createDateTimeStamp ?? this.createDateTimeStamp,
+      deviceId: deviceId ?? this.deviceId,
+      ageActivity: ageActivity ?? this.ageActivity,
+      selectedLanguage: selectedLanguage ?? this.selectedLanguage,
+      startDate: startDate ?? this.startDate,
+      completedActivities: completedActivities ?? this.completedActivities,
+      languageCode: languageCode ?? this.languageCode,
+    );
   }
 }

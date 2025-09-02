@@ -29,16 +29,13 @@ class DatabaseService {
           await getDataFromRealtimeDatabase<MontiUserModel?>(
               "users/$userId", (d) => MontiUserModel.fromMap(d));
 
-      print(userModel);
-
       if (userModel != null) {
         await localStorage.write("username", userModel.userName);
         isExist = true;
         currentMontiUser = userModel;
       }
-      print(userModel);
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
 
     return isExist;
@@ -58,7 +55,7 @@ class DatabaseService {
         isExist = true;
       }
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
 
     return isExist;
@@ -73,10 +70,7 @@ class DatabaseService {
     try {
       final DataSnapshot snapshot = await _realtimeDatabase.ref(path).get();
 
-      print(snapshot.value);
-
       if (snapshot.exists && snapshot.value is Map<Object?, Object?>) {
-        print(snapshot.value);
         final Map<String, dynamic> data =
             Map<String, dynamic>.from(snapshot.value as Map);
         return fromMap(data);
@@ -93,17 +87,20 @@ class DatabaseService {
     await _realtimeDatabase.ref('users').child(user.uid!).set(user.toMap());
   }
 
-  Future<void> updateUserTimeData(
-      {required String ageActivity,
-      required String userName,
-      required String language,
-      required String languageCode}) async {
+  Future<void> updateUserTimeData({
+    required String ageActivity,
+    required String userName,
+    required String language,
+    required String languageCode,
+    required String startDate,
+  }) async {
     User? user = authenticationService.getUser();
     await _realtimeDatabase.ref('users').child(user!.uid).update({
       "userName": userName,
       "ageActivity": ageActivity,
       "language": language,
-      "languageCode": languageCode
+      "languageCode": languageCode,
+      "startDate": startDate
     });
   }
 
@@ -113,7 +110,8 @@ class DatabaseService {
       "language": language.languageName,
       "languageCode": language.languageCode
     }).then((_) {
-      currentMontiUser!.languageCode = language.languageCode;
+      currentMontiUser =
+          currentMontiUser?.copyWith(languageCode: language.languageCode);
     });
   }
 
@@ -122,7 +120,8 @@ class DatabaseService {
     await _realtimeDatabase.ref('users').child(user!.uid).update({
       "ageActivity": ageGroup.ageGroupCode,
     }).then((_) {
-      currentMontiUser!.ageActivity = ageGroup.ageGroupCode;
+      currentMontiUser =
+          currentMontiUser?.copyWith(ageActivity: ageGroup.ageGroupCode);
     });
   }
 
@@ -142,7 +141,8 @@ class DatabaseService {
         .ref('users')
         .child(user!.uid)
         .update({"completedActivities": activityCount}).then((v) {
-      currentMontiUser!.completedActivities = activityCount;
+      currentMontiUser =
+          currentMontiUser?.copyWith(completedActivities: activityCount);
     });
   }
 
@@ -176,17 +176,6 @@ class DatabaseService {
   Future<void> add4860({required Map<String, dynamic> item}) async {
     String milliSecondTime = DateTime.now().millisecondsSinceEpoch.toString();
     await _realtimeDatabase.ref("48-60").child(milliSecondTime).set(item);
-  }
-
-  /// 1) Başlangıç tarihini yaz (kullanıcı kayıt akışında çağır)
-  Future<void> setStartDate({required String startDate}) async {
-    final uid = authenticationService.getUser()!.uid;
-    // Basit validasyon (parse edilemezse hata fırlat)
-
-    await _realtimeDatabase
-        .ref('users')
-        .child(uid)
-        .update({'startDate': startDate});
   }
 
   /// 2-3) Bugün kaçıncı gündeyiz? (1-based)
