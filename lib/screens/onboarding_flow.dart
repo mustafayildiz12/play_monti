@@ -63,6 +63,11 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
 
   @override
   void initState() {
+    if (currentMontiUser?.userName != null &&
+        currentMontiUser!.userName!.isNotEmpty) {
+      _name = currentMontiUser!.userName!;
+      _step++;
+    }
     if (Get.locale!.languageCode == "en") {
       selectedLanguage =
           enLanguageList.singleWhere((e) => e.languageCode == "en");

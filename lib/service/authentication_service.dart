@@ -265,6 +265,7 @@ class AuthenticationService {
       final credential = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName
         ],
         nonce: nonce,
       );
@@ -293,11 +294,19 @@ class AuthenticationService {
           final Map<String, dynamic>? profile =
               userCredential.additionalUserInfo?.profile;
 
+          final String? fullName = (credential.givenName != null)
+              ? '${credential.givenName} ${credential.familyName}'
+              : userCredential
+                  .user?.displayName; // çoğunlukla null olur, yine de deneriz
+
+          print("FullName: $fullName");
+
           await databaseService
               .addUserToRealTime(
             MontiUserModel(
                 uid: uid,
                 completedActivities: 0,
+                userName: fullName,
                 userEmail: profile!['email'] ?? "",
                 createDateTimeStamp: DateTime.now().millisecondsSinceEpoch),
           )
