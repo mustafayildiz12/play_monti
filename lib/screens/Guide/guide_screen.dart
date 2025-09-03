@@ -49,89 +49,214 @@ class _GuidePageState extends State<GuidePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            // Header
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "montessoriGuide".tr,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AppColors.kTitleBlackTextColor,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "montessoriGuide".tr,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors.kTitleBlackTextColor,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      "essentialInsights".tr,
-                      style: const TextStyle(
-                          color: AppColors.kSubtitleTextColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                "essentialInsights".tr,
+                style: const TextStyle(
+                  color: AppColors.kSubtitleTextColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-            ),
-
-            // Guide list
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: SliverList.separated(
-                itemBuilder: (context, i) {
-                  final item = items[i];
-                  return _GuideCard(
-                    item: item,
-                    onTap: () => widget.onOpen?.call(item),
-                  );
-                },
-                separatorBuilder: (_, __) => const SizedBox(height: 12),
-                itemCount: items.length,
-              ),
-            ),
-
-            const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
-            // Remember banner
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: GuidePage.greenDark,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "remember".tr,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
+              const SizedBox(height: 16),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: DataTable(
+                    dataTextStyle: const TextStyle(
+                        fontSize: 14, color: AppColors.kSubtitleTextColor),
+                    headingTextStyle: const TextStyle(
+                        fontSize: 16,
+                        color: AppColors.kTitleBlackTextColor,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "ComicNeue"),
+                    dataRowMinHeight: 60,
+                    dataRowMaxHeight: 75,
+                    dataRowColor: const WidgetStatePropertyAll(Colors.white),
+                    headingRowColor:
+                        WidgetStateProperty.all(AppColors.kDarkGreenColor),
+                    border:
+                        TableBorder.all(color: AppColors.kSubtitleTextColor),
+                    columnSpacing: 0,
+                    horizontalMargin: 0,
+                    columns: [
+                      DataColumn(
+                          label: Expanded(
+                        child: customTableText(
+                          "Özellik",
+                        ),
+                      )),
+                      DataColumn(
+                          label: Expanded(
+                              child: customTableText("Montessori Yaklaşımı"))),
+                      DataColumn(
+                        label: Expanded(
+                          child: customTableText("Geleneksel Yaklaşım"),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        "quide_subtitle".tr,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
+                    ],
+                    rows: [
+                      DataRow(cells: [
+                        DataCell(customTableText("Öğretmenin Rolü")),
+                        DataCell(customTableText(
+                          "Rehber ve gözlemci",
+                        )),
+                        DataCell(customTableText(
+                          "Kontrolör ve bilgi aktarıcısı",
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(customTableText("Sınıf Yapısı")),
+                        DataCell(
+                            customTableText("Öğrenci merkezli, aktif katılım")),
+                        DataCell(customTableText(
+                            "Öğretmen merkezli, pasif dinleme")),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(customTableText("Yaş Grupları")),
+                        DataCell(customTableText(
+                            "Karma yaş grupları (genellikle 3 yaş aralığı)")),
+                        DataCell(
+                            customTableText("Aynı yaştaki çocuklar bir arada")),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(customTableText("Öğrenme Yöntemi")),
+                        DataCell(
+                            customTableText("Deneyimleyerek, somuttan soyuta")),
+                        DataCell(
+                            customTableText("Ezber yoluyla, soyuttan başlama")),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(customTableText("Motivasyon Kaynağı")),
+                        DataCell(customTableText("İçsel başarma duygusu")),
+                        DataCell(
+                            customTableText("Dışsal ödül ve ceza sistemi")),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(customTableText("Materyal Kullanımı")),
+                        DataCell(customTableText(
+                            "Bireysel gelişime yönelik özel materyaller")),
+                        DataCell(customTableText(
+                            "Genellikle tek bir materyal veya oyuncak")),
+                      ]),
                     ],
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Widget customTableText(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: Center(
+        child: Text(
+          text,
+          softWrap: true,
+          textAlign: TextAlign.center, // text satır kırıldığında da ortalansın
+        ),
+      ),
+    );
+  }
+
+  CustomScrollView oldBody(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        // Header
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "montessoriGuide".tr,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors.kTitleBlackTextColor,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  "essentialInsights".tr,
+                  style: const TextStyle(
+                      color: AppColors.kSubtitleTextColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        // Guide list
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          sliver: SliverList.separated(
+            itemBuilder: (context, i) {
+              final item = items[i];
+              return _GuideCard(
+                item: item,
+                onTap: () => widget.onOpen?.call(item),
+              );
+            },
+            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            itemCount: items.length,
+          ),
+        ),
+
+        const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+        // Remember banner
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Container(
+              decoration: BoxDecoration(
+                color: GuidePage.greenDark,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "remember".tr,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "quide_subtitle".tr,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
