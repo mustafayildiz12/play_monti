@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:play_monti/constants/app_colors.dart';
-import 'package:play_monti/constants/app_localization.dart';
+import 'package:play_monti/models/guide_model.dart';
+import 'package:play_monti/screens/Guide/guide_detail_screen.dart';
 
 class GuidePage extends StatefulWidget {
   const GuidePage({
@@ -24,158 +25,19 @@ class GuidePage extends StatefulWidget {
 }
 
 class _GuidePageState extends State<GuidePage> {
-  List<GuideItem> items = [
-    GuideItem(
-      id: 'what_is_montessori',
-      title: 'whatIsMontessori'.tr,
-      excerpt: 'discover_quide'.tr,
-      minutes: 5,
-    ),
-    GuideItem(
-      id: 'observe_your_child',
-      title: 'howToObserve'.tr,
-      excerpt: "quide_observe".tr,
-      minutes: 4,
-    ),
-    GuideItem(
-      id: 'setup_space',
-      title: 'settingUpSpace'.tr,
-      excerpt: 'quide_create'.tr,
-      minutes: 6,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "montessoriGuide".tr,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppColors.kTitleBlackTextColor,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                "essentialInsights".tr,
-                style: const TextStyle(
-                  color: AppColors.kSubtitleTextColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: DataTable(
-                    dataTextStyle: const TextStyle(
-                        fontSize: 14, color: AppColors.kSubtitleTextColor),
-                    headingTextStyle: const TextStyle(
-                        fontSize: 16,
-                        color: AppColors.kTitleBlackTextColor,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: "ComicNeue"),
-                    dataRowMinHeight: 60,
-                    dataRowMaxHeight: 75,
-                    dataRowColor: const WidgetStatePropertyAll(Colors.white),
-                    headingRowColor:
-                        WidgetStateProperty.all(AppColors.kDarkGreenColor),
-                    border:
-                        TableBorder.all(color: AppColors.kSubtitleTextColor),
-                    columnSpacing: 0,
-                    horizontalMargin: 0,
-                    columns: [
-                      DataColumn(
-                          label: Expanded(
-                        child: customTableText(
-                          "Özellik",
-                        ),
-                      )),
-                      DataColumn(
-                          label: Expanded(
-                              child: customTableText("Montessori Yaklaşımı"))),
-                      DataColumn(
-                        label: Expanded(
-                          child: customTableText("Geleneksel Yaklaşım"),
-                        ),
-                      ),
-                    ],
-                    rows: [
-                      DataRow(cells: [
-                        DataCell(customTableText("Öğretmenin Rolü")),
-                        DataCell(customTableText(
-                          "Rehber ve gözlemci",
-                        )),
-                        DataCell(customTableText(
-                          "Kontrolör ve bilgi aktarıcısı",
-                        )),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(customTableText("Sınıf Yapısı")),
-                        DataCell(
-                            customTableText("Öğrenci merkezli, aktif katılım")),
-                        DataCell(customTableText(
-                            "Öğretmen merkezli, pasif dinleme")),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(customTableText("Yaş Grupları")),
-                        DataCell(customTableText(
-                            "Karma yaş grupları (genellikle 3 yaş aralığı)")),
-                        DataCell(
-                            customTableText("Aynı yaştaki çocuklar bir arada")),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(customTableText("Öğrenme Yöntemi")),
-                        DataCell(
-                            customTableText("Deneyimleyerek, somuttan soyuta")),
-                        DataCell(
-                            customTableText("Ezber yoluyla, soyuttan başlama")),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(customTableText("Motivasyon Kaynağı")),
-                        DataCell(customTableText("İçsel başarma duygusu")),
-                        DataCell(
-                            customTableText("Dışsal ödül ve ceza sistemi")),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(customTableText("Materyal Kullanımı")),
-                        DataCell(customTableText(
-                            "Bireysel gelişime yönelik özel materyaller")),
-                        DataCell(customTableText(
-                            "Genellikle tek bir materyal veya oyuncak")),
-                      ]),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget customTableText(String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: Center(
-        child: Text(
-          text,
-          softWrap: true,
-          textAlign: TextAlign.center, // text satır kırıldığında da ortalansın
-        ),
+        child: oldBody(context),
       ),
     );
   }
 
   CustomScrollView oldBody(BuildContext context) {
+    // Map -> List (filtre + sıraya göre)
+    final entries = montessoriQA.entries.toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
     return CustomScrollView(
       slivers: [
         // Header
@@ -206,18 +68,31 @@ class _GuidePageState extends State<GuidePage> {
         ),
 
         // Guide list
+        // Guide grid (2 sütun)
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          sliver: SliverList.separated(
+          sliver: SliverGrid.builder(
+            itemCount: entries.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // her satırda 2 kart
+              crossAxisSpacing: 16, // sütun aralığı
+              mainAxisSpacing: 16, // satır aralığı
+              childAspectRatio: 1, // kart oranı (genişlik / yükseklik)
+            ),
             itemBuilder: (context, i) {
-              final item = items[i];
+              final id = entries[i].key;
+              final qa = entries[i].value;
               return _GuideCard(
-                item: item,
-                onTap: () => widget.onOpen?.call(item),
+                item: qa.q,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => QADetailPage(id: id, qa: qa),
+                    ),
+                  );
+                },
               );
             },
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
-            itemCount: items.length,
           ),
         ),
 
@@ -280,155 +155,106 @@ class GuideItem {
 }
 
 /// Kart bileşeni
-class _GuideCard extends StatelessWidget {
+class _GuideCard extends StatefulWidget {
   const _GuideCard({required this.item, this.onTap});
 
-  final GuideItem item;
+  final String item;
   final VoidCallback? onTap;
 
   static const textDark = GuidePage.textDark;
-  static const textMuted = GuidePage.textMuted;
-  static const textHint = GuidePage.textHint;
-  static const green = GuidePage.greenLight;
+  static const greenDark = GuidePage.greenDark;
+
+  @override
+  State<_GuideCard> createState() => _GuideCardState();
+}
+
+class _GuideCardState extends State<_GuideCard> {
+  bool _hover = false;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(16),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Sol ikon kutusu
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: green,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                alignment: Alignment.center,
-                child: const _BookIcon(size: 24, color: Colors.white),
-              ),
-              const SizedBox(width: 16),
-
-              // Metinler
-              Expanded(
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hover = true),
+      onExit: (_) => setState(() => _hover = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.easeOut,
+        transform: _hover
+            ? (Matrix4.identity()..translate(0.0, -2.0))
+            : Matrix4.identity(),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: _hover
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    blurRadius: 12,
+                    offset: const Offset(0, 6),
+                  )
+                ]
+              : [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha:0.2),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  )
+                ],
+          border: Border.all(
+            color: Colors.black.withValues(alpha:_hover ? 0.06 : 0.1),
+          ),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(16),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: widget.onTap,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 140),
+              child: Padding(
+                padding: const EdgeInsets.all(14),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Başlık
-                    Text(
-                      item.title,
-                      style: const TextStyle(
-                        color: textDark,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
+                    // Üst ikon kapsülü
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: _GuideCard.greenDark,
                       ),
+                      alignment: Alignment.center,
+                      child: const _BookIcon(size: 24, color: Colors.white),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 16),
 
-                    // Excerpt
-                    Text(
-                      item.excerpt,
-                      style: const TextStyle(
-                        color: textMuted,
-                        fontSize: 13,
-                        height: 1.4,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-
-                    // Okuma süresi
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const _ClockIcon(size: 16, color: textHint),
-                        const SizedBox(width: 6),
-                        Text(
-                          AppLocalization.currentLangCode == "en"
-                              ? '${item.minutes} min read'
-                              : "${item.minutes} dakika okuma",
-                          style: const TextStyle(
-                            color: textHint,
-                            fontSize: 12,
-                          ),
+                    // Başlık (çok satırlı, grid’e uygun)
+                    Expanded(
+                      child: Text(
+                        widget.item,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: _GuideCard.textDark,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15,
+                          height: 1.32,
                         ),
-                      ],
+                      ),
                     ),
+
+                    const SizedBox(height: 8),
                   ],
                 ),
               ),
-
-              // İsteğe bağlı sağ ok
-              const SizedBox(width: 8),
-              const Icon(Icons.chevron_right, color: textHint),
-            ],
+            ),
           ),
         ),
       ),
     );
   }
-}
-
-/// Basit saat ikonu (stroke)
-class _ClockIcon extends StatelessWidget {
-  const _ClockIcon({this.size = 18, this.color = Colors.black54});
-  final double size;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: CustomPaint(
-        painter: _ClockPainter(color),
-      ),
-    );
-  }
-}
-
-class _ClockPainter extends CustomPainter {
-  _ClockPainter(this.color);
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final r = size.width / 2;
-    final c = Offset(r, r);
-
-    final stroke = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2;
-
-    // Dış çember
-    canvas.drawCircle(c, r - 1, stroke);
-
-    // Akrep & yelkovan
-    final center = c;
-    final hour = Paint()
-      ..color = color
-      ..strokeWidth = 2
-      ..strokeCap = StrokeCap.round;
-    final minute = Paint()
-      ..color = color
-      ..strokeWidth = 2
-      ..strokeCap = StrokeCap.round;
-
-    // 12 -> 12, 4 yönünde (örnek: 12:20 gibi)
-    canvas.drawLine(center, center + Offset(0, -r / 2), hour);
-    canvas.drawLine(center, center + Offset(r / 2, r / 3), minute);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 /// Basit kitap ikonu (stroke)
