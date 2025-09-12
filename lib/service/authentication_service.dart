@@ -336,6 +336,45 @@ class AuthenticationService {
     }
   }
 
+  Future<void> signInAnnysmous({required BuildContext context}) async {
+    try {
+      final userCredential = await firebaseAuth.signInAnonymously();
+      debugPrint("Signed in with temporary account.");
+      debugPrint("Anonim Id: ${userCredential.user?.uid}");
+
+      final String uid = userCredential.user!.uid;
+
+      final bool isUserDetailExist =
+          await databaseService.isUserDetailExist(uid);
+      await databaseService
+          .addUserToRealTime(MontiUserModel(
+              uid: uid,
+              userName: "Guest",
+              isAnonymous: true,
+              createDateTimeStamp: DateTime.now().millisecondsSinceEpoch))
+          .then((v) async {
+        await databaseService.getAdminBasicInfoFromRealTime(uid);
+      });
+
+      if (isUserDetailExist) {
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.navigationBarPage, (route) => false);
+      } else {
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.onboFlowPage, (route) => false);
+      }
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case "operation-not-allowed":
+          debugPrint("Anonymous auth hasn't been enabled for this project.");
+
+          break;
+        default:
+          debugPrint("Unknown error.");
+      }
+    }
+  }
+
   /// Generates a cryptographically secure random nonce, to be included in a
   /// credential request.
   String generateNonce([int length = 32]) {

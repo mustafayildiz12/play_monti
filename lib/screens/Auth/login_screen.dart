@@ -157,6 +157,25 @@ class _LoginPageState extends State<LoginPage> {
                               },
                             ),
                           ),
+                          const SizedBox(height: 12),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 48,
+                            child: OutlinedButton.icon(
+                              icon: const Icon(Icons.person),
+                              label: Text("loginGuest".tr),
+                              onPressed: () async {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                await authenticationService.signInAnnysmous(
+                                    context: context);
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              },
+                            ),
+                          ),
                         ],
                       ),
                       Row(

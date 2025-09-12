@@ -1,34 +1,34 @@
 class MontiUserModel {
-  MontiUserModel({
-    this.userName,
-    this.userPassword,
-    this.uid,
-    this.userEmail,
-    this.status,
-    this.createDateTimeStamp,
-    this.deviceId,
-    this.ageActivity,
-    this.selectedLanguage,
-    this.startDate,
-    this.completedActivities,
-    this.languageCode,
-  });
+  MontiUserModel(
+      {this.userName,
+      this.userPassword,
+      this.uid,
+      this.userEmail,
+      this.status,
+      this.createDateTimeStamp,
+      this.deviceId,
+      this.ageActivity,
+      this.selectedLanguage,
+      this.startDate,
+      this.completedActivities,
+      this.languageCode,
+      this.isAnonymous});
 
   factory MontiUserModel.fromMap(Map<String, dynamic> map) {
     return MontiUserModel(
-      userName: map['userName'],
-      userPassword: map['userPassword'],
-      uid: map['uid'],
-      userEmail: map["userEmail"],
-      status: map["status"],
-      deviceId: map["deviceId"],
-      createDateTimeStamp: map["createDateTimeStamp"] ?? 0,
-      ageActivity: map['ageActivity'],
-      selectedLanguage: map['language'],
-      startDate: map['startDate'],
-      completedActivities: map['completedActivities'] ?? 0,
-      languageCode: map['languageCode'],
-    );
+        userName: map['userName'],
+        userPassword: map['userPassword'],
+        uid: map['uid'],
+        userEmail: map["userEmail"],
+        status: map["status"],
+        deviceId: map["deviceId"],
+        createDateTimeStamp: map["createDateTimeStamp"] ?? 0,
+        ageActivity: map['ageActivity'],
+        selectedLanguage: map['language'],
+        startDate: map['startDate'],
+        completedActivities: map['completedActivities'] ?? 0,
+        languageCode: map['languageCode'],
+        isAnonymous: map['isAnonymous']);
   }
 
   final String? userName;
@@ -43,6 +43,7 @@ class MontiUserModel {
   final String? startDate;
   final String? languageCode;
   final int? completedActivities;
+  final bool? isAnonymous;
 
   Map<String, dynamic> toMap() {
     return {
@@ -75,20 +76,21 @@ class MontiUserModel {
     String? startDate,
     int? completedActivities,
     String? languageCode,
+    bool? isAnonymous,
   }) {
     return MontiUserModel(
-      userName: userName ?? this.userName,
-      userPassword: userPassword ?? this.userPassword,
-      uid: uid ?? this.uid,
-      userEmail: userEmail ?? this.userEmail,
-      status: status ?? this.status,
-      createDateTimeStamp: createDateTimeStamp ?? this.createDateTimeStamp,
-      deviceId: deviceId ?? this.deviceId,
-      ageActivity: ageActivity ?? this.ageActivity,
-      selectedLanguage: selectedLanguage ?? this.selectedLanguage,
-      startDate: startDate ?? this.startDate,
-      completedActivities: completedActivities ?? this.completedActivities,
-      languageCode: languageCode ?? this.languageCode,
-    );
+        userName: userName ?? this.userName,
+        userPassword: userPassword ?? this.userPassword,
+        uid: uid ?? this.uid,
+        userEmail: userEmail ?? this.userEmail,
+        status: status ?? this.status,
+        createDateTimeStamp: createDateTimeStamp ?? this.createDateTimeStamp,
+        deviceId: deviceId ?? this.deviceId,
+        ageActivity: ageActivity ?? this.ageActivity,
+        selectedLanguage: selectedLanguage ?? this.selectedLanguage,
+        startDate: startDate ?? this.startDate,
+        completedActivities: completedActivities ?? this.completedActivities,
+        languageCode: languageCode ?? this.languageCode,
+        isAnonymous: isAnonymous ?? this.isAnonymous);
   }
 }
