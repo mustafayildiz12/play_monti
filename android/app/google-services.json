@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "370553554615-rfcfsj00qehajnfirc2af1f03ckrh9qd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yildiz.play_monti",
+            "certificate_hash": "efa853566d9eada063d1d0ad623e52884801ada5"
+          }
+        },
+        {
+          "client_id": "370553554615-tctqi1d3fbgcdiqi79pt54cbo3hnrfg2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yildiz.play_monti",
+            "certificate_hash": "b962d71650c5bb494438091e30447dee381ed72f"
+          }
+        },
+        {
           "client_id": "370553554615-j269io3qdree1q31o7abpvrfs81ctv9n.apps.googleusercontent.com",
           "client_type": 3
         }

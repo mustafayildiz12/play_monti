@@ -9,12 +9,19 @@ import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/firebase_options.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 
 class AppInitService {
   static Future<void> initApp() async {
     await init();
     await initLocale();
+    await initPurchase();
     await initRoute();
+  }
+
+  static initPurchase() async {
+    final iap = InAppPurchaseService();
+    await iap.initPlatformState(); // ÖNEMLİ: await
   }
 
   static Future<void> init() async {

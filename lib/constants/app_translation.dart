@@ -11,6 +11,132 @@ class AppTranslations extends Translations {
     // Diğer dillerin kodları, adları, flagleri de aynı şekilde eklenebilir.
   ];
 
+  static Map<String, String> kPaywallI18nEn = {
+    // Top bar
+    'paywall.refresh': 'Refresh',
+
+    // Hero
+    'paywall.title': 'Unlock Montessori Learning — Safely and Playfully',
+    'paywall.subtitle':
+        'Support your child’s natural curiosity with ad-free activities crafted for self-paced growth.',
+
+    // Features (carousel)
+    'paywall.feature.1':
+        'Montessori-inspired activities for math, language, daily life, and sensorial.',
+    'paywall.feature.2':
+        'Build independent thinking and problem-solving through hands-on play.',
+    'paywall.feature.3': 'Safe, ad-free, and kid-friendly interface.',
+    'paywall.feature.4':
+        'Designed for parents and teachers to support self-paced learning.',
+
+    // Plans (titles + subtitles)
+    'paywall.plan.monthly': 'Monthly Plan',
+    'paywall.plan.monthly.subtitle':
+        'Includes a 7-day free trial. Auto-renews unless canceled.',
+    'paywall.plan.yearly': 'Yearly Plan',
+    'paywall.plan.yearly.subtitle':
+        'Best value • 7-day free trial • Cancel anytime.',
+
+    // Prices (dummy strings in your code)
+    'paywall.price.monthly': r'$2.99 / Monthly',
+    'paywall.price.yearly': r'$29.99 / Yearly',
+
+    // Free trial pill
+    'paywall.trial.pill': '7-Day Free Trial',
+
+    // CTA + restore + info
+    'paywall.cta': 'Continue to Premium',
+    'paywall.restore': 'Restore Purchases',
+    'paywall.about': 'About Subscription',
+
+    // Snackbars (dummy)
+    'paywall.snackbar.selected': 'Selected plan: {price} (dummy)',
+    'paywall.snackbar.restore': 'Restore purchases (dummy)',
+
+    // Footer links
+    'paywall.terms': 'Terms of Service',
+    'paywall.privacy': 'Privacy Policy',
+
+    // Parent Gate dialog
+    'paywall.parent_gate.title': 'Parent Check',
+    'paywall.parent_gate.prompt': 'Please enter the answer: {a} + {b} = ?',
+    'paywall.parent_gate.answer_hint': 'Answer',
+    'paywall.parent_gate.note':
+        'This step helps ensure an adult is managing purchases.',
+    'paywall.parent_gate.cancel': 'Cancel',
+    'paywall.parent_gate.continue': 'Continue',
+
+    // Info dialog
+    'paywall.info.title': 'About Subscription',
+    'paywall.info.body':
+        'Subscriptions renew automatically unless canceled at least 24 hours before the end of the current period. '
+            'A {days}-day free trial is included. After the trial, the plan renews at the price shown (Monthly: {monthly_price}, Yearly: {yearly_price}). '
+            'Manage or cancel your subscription in your account settings.',
+  };
+
+  static Map<String, String> kPaywallI18nTr = {
+    // Top bar
+    'paywall.refresh': 'Yenile',
+
+    // Hero
+    'paywall.title': 'Montessori Öğrenimini Güvenle ve Eğlenceyle Aç',
+    'paywall.subtitle':
+        'Çocuğunuzun doğal merakını, kendi hızında gelişim için tasarlanmış reklamsız aktivitelerle destekleyin.',
+
+    // Features (carousel)
+    'paywall.feature.1':
+        'Matematik, dil, günlük yaşam ve duyu alanlarında Montessori esinli aktiviteler.',
+    'paywall.feature.2':
+        'Uygulamalı oyunlarla bağımsız düşünme ve problem çözme becerilerini geliştirin.',
+    'paywall.feature.3': 'Güvenli, reklamsız ve çocuk dostu arayüz.',
+    'paywall.feature.4':
+        'Ebeveynler ve öğretmenler için, çocuğun kendi hızında öğrenimini destekleyen tasarım.',
+
+    // Plans (titles + subtitles)
+    'paywall.plan.monthly': 'Aylık Plan',
+    'paywall.plan.monthly.subtitle':
+        '{days} günlük ücretsiz deneme içerir. İptal edilmediği sürece otomatik yenilenir.',
+    'paywall.plan.yearly': 'Yıllık Plan',
+    'paywall.plan.yearly.subtitle':
+        'En avantajlı • {days} gün ücretsiz deneme • İstediğiniz zaman iptal edin.',
+
+    // Prices (dummy strings in your code)
+    'paywall.price.monthly': r'$2.99 / Aylık',
+    'paywall.price.yearly': r'$29.99 / Yıllık',
+
+    // Free trial pill
+    'paywall.trial.pill': '{days} Gün Ücretsiz Deneme',
+
+    // CTA + restore + info
+    'paywall.cta': 'Premium’a Geç',
+    'paywall.restore': 'Satın Alımları Geri Yükle',
+    'paywall.about': 'Abonelik Hakkında',
+
+    // Snackbars (dummy)
+    'paywall.snackbar.selected': 'Seçilen plan: {price} (deneme)',
+    'paywall.snackbar.restore': 'Satın alımları geri yükle (deneme)',
+
+    // Footer links
+    'paywall.terms': 'Hizmet Şartları',
+    'paywall.privacy': 'Gizlilik Politikası',
+
+    // Parent Gate dialog
+    'paywall.parent_gate.title': 'Ebeveyn Doğrulaması',
+    'paywall.parent_gate.prompt': 'Lütfen yanıtı girin: {a} + {b} = ?',
+    'paywall.parent_gate.answer_hint': 'Yanıt',
+    'paywall.parent_gate.note':
+        'Bu adım satın almaların bir yetişkin tarafından yönetildiğini doğrulamaya yardımcı olur.',
+    'paywall.parent_gate.cancel': 'İptal',
+    'paywall.parent_gate.continue': 'Devam Et',
+
+    // Info dialog
+    'paywall.info.title': 'Abonelik Hakkında',
+    'paywall.info.body':
+        'Abonelikler, mevcut dönem bitmeden en az 24 saat önce iptal edilmediği sürece otomatik yenilenir. '
+            '{days} günlük ücretsiz deneme dahildir. Deneme süresinin ardından plan, gösterilen fiyattan yenilenir (Aylık: {monthly_price}, Yıllık: {yearly_price}). '
+            'Aboneliğinizi hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz.',
+  };
+
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
@@ -50,7 +176,7 @@ class AppTranslations extends Translations {
           "donthaveAccount": "Hesabın yok mu? Kayıt Ol",
           "loginApple": "Apple ile Giriş",
           "loginGoogle": "Google ile Giriş",
-           "loginGuest": "Misafir Girişi",
+          "loginGuest": "Misafir Girişi",
           "or": "veya",
           "login": "Giriş Yap",
           "password": "Şifre",
@@ -212,6 +338,7 @@ class AppTranslations extends Translations {
               "Çocuğunuzun ilgi alanlarını, ihtiyaçlarını ve gelişim aşamasını anlamak için gözlem sanatını öğrenin.",
           "quide_create":
               "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın.",
+          ...kPaywallI18nTr
         },
         'en': {
           "rest_pass_send":
@@ -406,6 +533,7 @@ class AppTranslations extends Translations {
           "safer_approach_no_ads": "✅ No ads",
           "safer_approach_subtitle":
               "That's why this app works completely offline.",
+          ...kPaywallI18nEn
         },
       };
 }

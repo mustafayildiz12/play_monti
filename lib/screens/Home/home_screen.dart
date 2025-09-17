@@ -4,6 +4,7 @@ import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
+import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/database_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
@@ -219,17 +220,32 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            color: AppColors.kDarkGreenColor.withValues(alpha: 0.3),
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: const Center(
-            child: Text(
-              '🌱',
-              style: TextStyle(fontSize: 20),
+        GestureDetector(
+          onTap: () async {
+            await showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
+              ),
+              builder: (_) => const PremiumBottomSheetPlayMonti(),
+            );
+          },
+          child: Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: AppColors.kDarkGreenColor.withValues(alpha: 0.3),
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: const Center(
+              child: Text(
+                '🌱',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
         ),

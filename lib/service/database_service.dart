@@ -11,6 +11,7 @@ import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/models/monti_user_model.dart';
 import 'package:play_monti/service/authentication_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 
 /// TercihService sınıfı, Firebase Realtime Database ile etkileşim için gerekli metodları içerir.
@@ -33,6 +34,8 @@ class DatabaseService {
         await localStorage.write("username", userModel.userName);
         isExist = true;
         currentMontiUser = userModel;
+
+        await InAppPurchaseService().loginSubscription();
       }
     } catch (e) {
       debugPrint(e.toString());
