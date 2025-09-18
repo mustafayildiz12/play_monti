@@ -12,6 +12,7 @@ import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/monti_user_model.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -175,6 +176,7 @@ class AuthenticationService {
       await firebaseAuth.signOut();
 
       final User? currentUser = getUser();
+      await InAppPurchaseService().logoutSubs();
 
       currentMontiUser = null;
       // kullanıcının çıktığından emin olduktan sonra

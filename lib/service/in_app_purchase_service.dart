@@ -137,7 +137,9 @@ class InAppPurchaseService {
     try {
       final String uid = authenticationService.getUser()?.uid ?? '';
       if (uid.isNotEmpty) {
-        customerInfo = (await Purchases.logIn(uid)).customerInfo;
+        LogInResult logInResult = await Purchases.logIn(uid);
+        print("İs Customer Created: ${logInResult.created}");
+        customerInfo = logInResult.customerInfo;
       }
     } on Exception catch (e) {
       debugPrint("Unable to logIn or logOut user in RevenueCat: $e");
@@ -173,26 +175,19 @@ class InAppPurchaseService {
   /// Kullanıcının aktif abonelikleri varsa true, yoksa false döndürür.
   bool checkUserHaveProduct() {
     if (customerInfo != null) {
-      if (customerInfo!.activeSubscriptions.isNotEmpty) {
-        return true;
-      }
-    }
-    
-    return false;
-  }
-
-  bool isOnTrial() {
-    if (customerInfo != null) {
       final entitlement = customerInfo!.entitlements.all["premium"];
       if (entitlement != null && entitlement.isActive) {
         // Trial mı kontrol et
         return entitlement.periodType == PeriodType.trial;
       }
+      if (customerInfo!.activeSubscriptions.isNotEmpty) {
+        return true;
+      }
     }
+
     return false;
   }
 
-  /// Abonelikten çıkış yapar
   ///
   /// RevenueCat üzerinde çıkış yapar ve müşteri bilgilerini günceller.
   Future<void> logoutSubs() async {
