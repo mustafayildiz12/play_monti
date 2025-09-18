@@ -177,6 +177,18 @@ class InAppPurchaseService {
         return true;
       }
     }
+    
+    return false;
+  }
+
+  bool isOnTrial() {
+    if (customerInfo != null) {
+      final entitlement = customerInfo!.entitlements.all["premium"];
+      if (entitlement != null && entitlement.isActive) {
+        // Trial mı kontrol et
+        return entitlement.periodType == PeriodType.trial;
+      }
+    }
     return false;
   }
 
