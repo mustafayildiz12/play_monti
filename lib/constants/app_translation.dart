@@ -32,10 +32,10 @@ class AppTranslations extends Translations {
     // Plans (titles + subtitles)
     'paywall.plan.monthly': 'Monthly Plan',
     'paywall.plan.monthly.subtitle':
-        'Includes a 7-day free trial. Auto-renews unless canceled.',
+        'Includes a 7 day free trial. Auto-renews unless canceled.',
     'paywall.plan.yearly': 'Yearly Plan',
     'paywall.plan.yearly.subtitle':
-        'Best value • 7-day free trial • Cancel anytime.',
+        'Best value • 14 day free trial • Cancel anytime.',
 
     // Prices (dummy strings in your code)
     'paywall.price.monthly': r'$2.99 / Monthly',
@@ -95,10 +95,10 @@ class AppTranslations extends Translations {
     // Plans (titles + subtitles)
     'paywall.plan.monthly': 'Aylık Plan',
     'paywall.plan.monthly.subtitle':
-        '{days} günlük ücretsiz deneme içerir. İptal edilmediği sürece otomatik yenilenir.',
+        '7 günlük ücretsiz deneme içerir. İptal edilmediği sürece otomatik yenilenir.',
     'paywall.plan.yearly': 'Yıllık Plan',
     'paywall.plan.yearly.subtitle':
-        'En avantajlı • {days} gün ücretsiz deneme • İstediğiniz zaman iptal edin.',
+        'En avantajlı • 14 gün ücretsiz deneme • İstediğiniz zaman iptal edin.',
 
     // Prices (dummy strings in your code)
     'paywall.price.monthly': r'$2.99 / Aylık',

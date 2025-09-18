@@ -92,17 +92,25 @@ class InAppPurchaseService {
   ///
   /// RevenueCat üzerinden abonelik ürünlerini yükler ve _subsProducts değişkenine atar.
   /// Hata durumunda konsola hata mesajı yazdırır.
-  Future<void> loadSubs() async {
+  Future<List<StoreProduct>> loadSubs() async {
     try {
+      
       List<StoreProduct> items = await Purchases.getProducts(
         productCategory: ProductCategory.subscription,
         type: PurchaseType.subs,
-        ['monthly_premium', 'yearly_premium'],
+        [
+          'premium_monthly',
+          'premium_yearly',
+          'monthly_premium',
+          'yearly_premium',
+        ],
       );
-
       print(items);
+
+      return items;
     } on PlatformException catch (e) {
       debugPrint("Error loading offerings info: $e");
+      return [];
     }
   }
 
