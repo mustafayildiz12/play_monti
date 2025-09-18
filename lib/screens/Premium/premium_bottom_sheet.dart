@@ -161,16 +161,8 @@ class _PremiumBottomSheetPlayMontiState
       customSnackBar.error("paywall.snackbar.no_product".tr);
       return;
     }
-    try {
-      final result = await Purchases.purchaseStoreProduct(product);
-      // result.customerInfo / entitlements ile premium’u doğrula
-      customSnackBar.success("paywall.snackbar.selected".tr);
-      if (mounted) Navigator.of(context).maybePop();
-    } on PlatformException catch (e) {
-      // Kullanıcı iptal etmiş olabilir vs.
-      debugPrint("Purchase error: $e");
-      customSnackBar.error("paywall.snackbar.purchase_failed".tr);
-    }
+
+    _iap.purchaseSubsItem(product, context);
   }
 
   Future<void> _restore() async {

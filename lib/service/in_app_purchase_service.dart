@@ -4,6 +4,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -94,7 +95,6 @@ class InAppPurchaseService {
   /// Hata durumunda konsola hata mesajı yazdırır.
   Future<List<StoreProduct>> loadSubs() async {
     try {
-      
       List<StoreProduct> items = await Purchases.getProducts(
         productCategory: ProductCategory.subscription,
         type: PurchaseType.subs,
@@ -158,12 +158,13 @@ class InAppPurchaseService {
       var purchaseProduct = await Purchases.purchaseStoreProduct(storeProduct);
       customerInfo = purchaseProduct.customerInfo;
       if (customerInfo!.activeSubscriptions.isNotEmpty) {
-        customSnackBar.success("Abonelik alımı başarılı.");
+        customSnackBar.success("paywall.snackbar.purchase_success".tr);
         Navigator.pop(context);
       }
     } catch (e) {
-      customSnackBar.warning("Satın alım hatası.");
-      debugPrint(e.toString());
+      // Kullanıcı iptal etmiş olabilir vs.
+      debugPrint("Purchase error: $e");
+      customSnackBar.error("paywall.snackbar.purchase_failed".tr);
     }
   }
 

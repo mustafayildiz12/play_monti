@@ -13,6 +13,7 @@ class AppTranslations extends Translations {
 
   static Map<String, String> kPaywallI18nEn = {
     // Top bar
+    "paywall.retry": "Try Again",
     'paywall.refresh': 'Refresh',
 
     // Hero
@@ -51,7 +52,7 @@ class AppTranslations extends Translations {
 
     // Snackbars (dummy)
     'paywall.snackbar.selected': 'Selected plan: {price} (dummy)',
-    'paywall.snackbar.restore': 'Restore purchases (dummy)',
+    'paywall.snackbar.restore': 'Purchases restored successfully',
 
     // Footer links
     'paywall.terms': 'Terms of Service',
@@ -70,11 +71,18 @@ class AppTranslations extends Translations {
     'paywall.info.title': 'About Subscription',
     'paywall.info.body':
         'Subscriptions renew automatically unless canceled at least 24 hours before the end of the current period. '
-            'A {days}-day free trial is included. After the trial, the plan renews at the price shown (Monthly: {monthly_price}, Yearly: {yearly_price}). '
+            'A 7-day free trial is included. After the trial, the plan renews at the price shown (Monthly: 2.99\$, Yearly: 29.99\$). '
             'Manage or cancel your subscription in your account settings.',
+    "paywall.snackbar.no_product": "Please select product",
+    "paywall.snackbar.purchase_failed": "Purchase failed",
+    "paywall.snackbar.purchase_success": "Purchase success",
   };
 
   static Map<String, String> kPaywallI18nTr = {
+    "paywall.snackbar.purchase_success": "Satın alım başarılı",
+    "paywall.retry": "Tekrar Dene",
+    "paywall.snackbar.purchase_failed": "Satın alım başarısız",
+    "paywall.snackbar.no_product": "Lütfen ürün seçin",
     // Top bar
     'paywall.refresh': 'Yenile',
 
@@ -105,7 +113,7 @@ class AppTranslations extends Translations {
     'paywall.price.yearly': r'$29.99 / Yıllık',
 
     // Free trial pill
-    'paywall.trial.pill': '{days} Gün Ücretsiz Deneme',
+    'paywall.trial.pill': '7 Gün Ücretsiz Deneme',
 
     // CTA + restore + info
     'paywall.cta': 'Premium’a Geç',
@@ -133,7 +141,7 @@ class AppTranslations extends Translations {
     'paywall.info.title': 'Abonelik Hakkında',
     'paywall.info.body':
         'Abonelikler, mevcut dönem bitmeden en az 24 saat önce iptal edilmediği sürece otomatik yenilenir. '
-            '{days} günlük ücretsiz deneme dahildir. Deneme süresinin ardından plan, gösterilen fiyattan yenilenir (Aylık: {monthly_price}, Yıllık: {yearly_price}). '
+            '7 günlük ücretsiz deneme dahildir. Deneme süresinin ardından plan, gösterilen fiyattan yenilenir (Aylık: 144₺, Yıllık: 1479₺). '
             'Aboneliğinizi hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz.',
   };
 

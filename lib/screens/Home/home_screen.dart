@@ -7,6 +7,7 @@ import 'package:play_monti/screens/Home/activities_carousel.dart';
 import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,11 +29,16 @@ class _HomeScreenState extends State<HomeScreen> {
   List<FinalActivityModel> todaysActivities = [];
 
   bool isLoading = false;
+  bool isPremium = false;
+
+  InAppPurchaseService inAppPurchaseService = InAppPurchaseService();
 
   @override
   void initState() {
     userName = currentMontiUser?.userName ?? "Guest";
     completedActivities = currentMontiUser!.completedActivities ?? 0;
+
+    isPremium = inAppPurchaseService.checkUserHaveProduct();
     getPageData();
     super.initState();
   }
@@ -47,108 +53,143 @@ class _HomeScreenState extends State<HomeScreen> {
       inAsyncCall: isLoading,
       child: Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                appbarRow(),
-                const SizedBox(height: 16),
-                // HEADER
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  padding: const EdgeInsets.all(20),
+          child: !isPremium
+              ? Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            "monthlyProgress".tr,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.kTitleBlackTextColor,
-                            ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            "$completedActivities / 30",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.kButtonGreenColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      // Progress Bar
-                      Stack(
-                        children: [
-                          Container(
-                            height: 8,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF0F0F0),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
-                          Container(
-                            height: 8,
-                            width: ((completedActivities / 30) * width)
-                                .clamp(0, width - 88),
-                            decoration: BoxDecoration(
-                              color: AppColors.kButtonGreenColor,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        "newSetUnlocks".tr,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: AppColors.kSubtitleTextColor,
-                        ),
+                      appbarRow(),
+                      const SizedBox(height: 48),
+                      Center(
+                        child: ElevatedButton(
+                            onPressed: () async {
+                              await showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+                                builder: (_) =>
+                                    const PremiumBottomSheetPlayMonti(),
+                              ).then((v){
+                                setState(() {
+                                   isPremium = inAppPurchaseService.checkUserHaveProduct();
+                                });
+                              });
+                            },
+                            child: const Text("Abone Ol")),
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(height: 16),
-
-                activityDayBuilder(),
-                const SizedBox(height: 8),
-                Text(
-                    initialDayIndex == currentDayIndex
-                        ? "todaysActivities".tr
-                        : "$currentDayIndex. ${"day".tr}",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.kTitleBlackTextColor,
-                        )),
-                // Daily Tip Section
-                const SizedBox(height: 16),
-
-                todaysActivities.isNotEmpty
-                    ? ActivitiesCarousel(
-                        activities: todaysActivities, // List<Activity>
-                        cardWidth: cardWidth,
-                        dateKey: getDateKey(),
-                      )
-                    : Center(
-                        child: Text(
-                          "no_activity_found".tr,
-                          style: Theme.of(context).textTheme.titleMedium,
+                )
+              : SingleChildScrollView(
+                  padding:
+                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      appbarRow(),
+                      const SizedBox(height: 16),
+                      // HEADER
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "monthlyProgress".tr,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.kTitleBlackTextColor,
+                                  ),
+                                ),
+                                const Spacer(),
+                                Text(
+                                  "$completedActivities / 30",
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.kButtonGreenColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            // Progress Bar
+                            Stack(
+                              children: [
+                                Container(
+                                  height: 8,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFF0F0F0),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                                Container(
+                                  height: 8,
+                                  width: ((completedActivities / 30) * width)
+                                      .clamp(0, width - 88),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.kButtonGreenColor,
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              "newSetUnlocks".tr,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: AppColors.kSubtitleTextColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-              ],
-            ),
-          ),
+                      const SizedBox(height: 16),
+
+                      activityDayBuilder(),
+                      const SizedBox(height: 8),
+                      Text(
+                          initialDayIndex == currentDayIndex
+                              ? "todaysActivities".tr
+                              : "$currentDayIndex. ${"day".tr}",
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.kTitleBlackTextColor,
+                                  )),
+                      // Daily Tip Section
+                      const SizedBox(height: 16),
+
+                      todaysActivities.isNotEmpty
+                          ? ActivitiesCarousel(
+                              activities: todaysActivities, // List<Activity>
+                              cardWidth: cardWidth,
+                              dateKey: getDateKey(),
+                            )
+                          : Center(
+                              child: Text(
+                                "no_activity_found".tr,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ),
+                    ],
+                  ),
+                ),
         ),
       ),
     );
@@ -220,32 +261,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        GestureDetector(
-          onTap: () async {
-            await showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(16),
-                ),
-              ),
-              builder: (_) => const PremiumBottomSheetPlayMonti(),
-            );
-          },
-          child: Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: AppColors.kDarkGreenColor.withValues(alpha: 0.3),
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: const Center(
-              child: Text(
-                '🌱',
-                style: TextStyle(fontSize: 20),
-              ),
+        Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            color: AppColors.kDarkGreenColor.withValues(alpha: 0.3),
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: const Center(
+            child: Text(
+              '🌱',
+              style: TextStyle(fontSize: 20),
             ),
           ),
         ),

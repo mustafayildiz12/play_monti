@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
+import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/calendar_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -39,7 +41,11 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
   DateTime? _registrationDate;
   Map<DateTime, List<DailyEvent>> _eventsByDay = {};
 
+  InAppPurchaseService inAppPurchaseService = InAppPurchaseService();
+
   bool loading = false;
+  bool isPremium = false;
+
   String? error;
 
   @override
@@ -48,6 +54,8 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
     _today = _dateOnly(DateTime.now());
     _focusedMonth = DateTime(_today.year, _today.month, 1);
     _selectedDay = _today;
+
+    isPremium = inAppPurchaseService.checkUserHaveProduct();
 
     _loadCalendar(); // async iş için ayrı method
   }
@@ -322,15 +330,33 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
         day: selected,
         events: events,
       ),
-    ).then((value) {
+    ).then((value) async {
       if (value != null && value is List) {
-        String id = value.first;
-        String dateKey = activityService.dateKey(value.last);
-        Navigator.pushNamed(
-                context, "${AppRoutes.activityDetailPage}/$id/$dateKey")
-            .then((_) async {
-          await _loadCalendar();
-        });
+        if (isPremium) {
+          String id = value.first;
+          String dateKey = activityService.dateKey(value.last);
+          Navigator.pushNamed(
+                  context, "${AppRoutes.activityDetailPage}/$id/$dateKey")
+              .then((_) async {
+            await _loadCalendar();
+          });
+        } else {
+          await showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(16),
+              ),
+            ),
+            builder: (_) => const PremiumBottomSheetPlayMonti(),
+          ).then((v) {
+            setState(() {
+              isPremium = inAppPurchaseService.checkUserHaveProduct();
+            });
+          });
+        }
       }
     });
   }
