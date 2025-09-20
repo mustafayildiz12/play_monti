@@ -12,4 +12,5 @@ class AppRoutes {
 
   static String uploadActivityPage = "/uploadActivity";
   static String forgotPasswordPage = "/forgotPassword";
+  static String trialPage = "/trialPage";
 }

@@ -50,7 +50,6 @@ class InAppPurchaseService {
       } else if (Platform.isIOS) {
         configuration =
             PurchasesConfiguration("appl_lQFGTBNRCQWNZZgOpSqTYPUQHsu");
-        print(configuration.store?.name);
       } else {
         configuration = PurchasesConfiguration("");
         debugPrint("Not supported platform");
@@ -101,11 +100,10 @@ class InAppPurchaseService {
         [
           'premium_monthly',
           'premium_yearly',
-          'monthly_premium',
-          'yearly_premium',
+          'apple_monthly',
+          'apple_yearly',
         ],
       );
-      print(items);
 
       return items;
     } on PlatformException catch (e) {
@@ -138,7 +136,6 @@ class InAppPurchaseService {
       final String uid = authenticationService.getUser()?.uid ?? '';
       if (uid.isNotEmpty) {
         LogInResult logInResult = await Purchases.logIn(uid);
-        print("İs Customer Created: ${logInResult.created}");
         customerInfo = logInResult.customerInfo;
       }
     } on Exception catch (e) {
@@ -198,6 +195,125 @@ class InAppPurchaseService {
       }
     } catch (e) {
       customSnackBar.warning(e.toString());
+    }
+  }
+
+  // InAppPurchaseService sınıfınıza bu metodları ekleyin:
+
+  /// Offerings'leri yükler
+  ///
+  /// RevenueCat üzerinden offerings'leri yükler.
+  /// Hata durumunda boş liste döndürür.
+  Future<List<Package>> loadOfferings() async {
+    try {
+      Offerings offerings = await Purchases.getOfferings();
+
+      if (offerings.current != null) {
+        // Current offering'deki tüm paketleri döndür
+        return offerings.current!.availablePackages;
+      }
+
+      return [];
+    } on PlatformException catch (e) {
+      debugPrint("Error loading offerings: $e");
+      return [];
+    }
+  }
+
+  /// Belirli bir offering'i yükler
+  ///
+  /// [offeringIdentifier] - Yüklenecek offering'in identifier'ı
+  /// Belirli bir offering'deki paketleri döndürür.
+  Future<List<Package>> loadSpecificOffering(String offeringIdentifier) async {
+    try {
+      Offerings offerings = await Purchases.getOfferings();
+
+      final offering = offerings.all[offeringIdentifier];
+      if (offering != null) {
+        return offering.availablePackages;
+      }
+
+      return [];
+    } on PlatformException catch (e) {
+      debugPrint("Error loading specific offering: $e");
+      return [];
+    }
+  }
+
+  /// Package satın alır
+  ///
+  /// [package] - Satın alınacak paket
+  /// [context] - BuildContext
+  ///
+  /// RevenueCat üzerinden package satın alır.
+  /// Package'ler trial bilgilerini içerir.
+  Future<bool> purchasePackage(Package package) async {
+    bool isPurchaseSuccess = false;
+    try {
+      var purchaseResult = await Purchases.purchasePackage(package);
+      customerInfo = purchaseResult.customerInfo;
+
+      if (customerInfo!.activeSubscriptions.isNotEmpty) {
+        customSnackBar.success("paywall.snackbar.purchase_success".tr);
+        isPurchaseSuccess = true;
+      }
+    } catch (e) {
+      isPurchaseSuccess = false;
+      debugPrint("Purchase error: $e");
+      customSnackBar.error("paywall.snackbar.purchase_failed".tr);
+    }
+    return isPurchaseSuccess;
+  }
+
+  /// Package'in trial bilgilerini alır
+  ///
+  /// [package] - İncelenecek paket
+  /// Trial gün sayısını string olarak döndürür, yoksa null.
+  String? getTrialDays(Package package) {
+    try {
+      final product = package.storeProduct;
+      final opt =
+          product.defaultOption ?? (product.subscriptionOptions?.firstOrNull);
+      if (opt == null) return null;
+
+      // Fiyatı 0 olan ilk phase'i trial kabul et
+      final trialPhase = opt.pricingPhases.firstWhere(
+        (ph) => (ph.price.amountMicros ?? 1) == 0,
+        orElse: () => null as PricingPhase,
+      );
+
+      final per = trialPhase.billingPeriod;
+      if (per == null) return null;
+
+      final unit = per.unit.name.toLowerCase();
+      final count = per.value;
+
+      if (unit.startsWith('day')) return '$count';
+      if (unit.startsWith('week')) return '${count * 7}';
+      if (unit.startsWith('month')) return '${count * 30}';
+      if (unit.startsWith('year')) return '${count * 365}';
+
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Package'in tipini belirler (monthly, yearly)
+  String getPackageType(Package package) {
+    // Package type'ına göre
+    switch (package.packageType) {
+      case PackageType.monthly:
+        return 'monthly';
+      case PackageType.annual:
+        return 'yearly';
+
+      default:
+        // Identifier'dan çıkarmaya çalış
+        final id = package.identifier.toLowerCase();
+        if (id.contains('month')) return 'monthly';
+        if (id.contains('year') || id.contains('annual')) return 'yearly';
+        return 'unknown';
     }
   }
 }

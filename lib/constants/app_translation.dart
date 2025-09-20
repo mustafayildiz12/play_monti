@@ -145,9 +145,97 @@ class AppTranslations extends Translations {
             'Aboneliğinizi hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz.',
   };
 
+// Türkçe Çeviriler (tr.dart dosyanıza ekleyin)
+  static Map<String, String> trTranslations = {
+    // Trial page translations
+    'trial.welcome_title': 'Premium Deneyimine\nHoş Geldiniz',
+    'trial.welcome_subtitle':
+        'Tüm premium özellikleri keşfedin ve deneyiminizi bir üst seviyeye taşıyın.',
+
+    'trial.card_title': '{days} Gün Ücretsiz Deneme',
+    'trial.card_subtitle': 'İstediğiniz zaman iptal edebilirsiniz',
+
+    'trial.start_button': '{days} Gün Ücretsiz Başlat',
+    'trial.subscribe_button': 'Planları Görüntüle',
+
+    'trial.footer_info':
+        'Ücretsiz deneme süresi sonunda otomatik olarak ücretlendirme başlar. İstediğiniz zaman iptal edebilirsiniz.',
+    'trial.restore': 'Satın Alımları Geri Yükle',
+
+    'trial.not_available': 'Ücretsiz deneme şu anda mevcut değil',
+    'trial.start_failed': 'Ücretsiz deneme başlatılamadı',
+
+    'error.loading_products': 'Ürünler yüklenemedi',
+    'retry': 'Tekrar Dene',
+  };
+
+// İngilizce Çeviriler (en.dart dosyanıza ekleyin)
+  static Map<String, String> enTranslations = {
+    // Trial page translations
+    'trial.welcome_title': 'Welcome to\nPremium Experience',
+    'trial.welcome_subtitle':
+        'Discover all premium features and take your experience to the next level.',
+
+    'trial.card_title': '{days} Days Free Trial',
+    'trial.card_subtitle': 'Cancel anytime',
+
+    'trial.start_button': 'Start {days} Days Free',
+    'trial.subscribe_button': 'View Plans',
+
+    'trial.footer_info':
+        'Automatic billing starts after free trial period. You can cancel anytime.',
+    'trial.restore': 'Restore Purchases',
+
+    'trial.not_available': 'Free trial is not available right now',
+    'trial.start_failed': 'Failed to start free trial',
+
+    'error.loading_products': 'Failed to load products',
+    'retry': 'Retry',
+  };
+
+  static Map<String, String> trTrialTranslations = {
+    // Trial plan
+    'paywall.plan.trial': 'Ücretsiz Deneme',
+    'paywall.plan.trial.subtitle': 'Sonra otomatik olarak aylık plana geçer',
+    'paywall.plan.trial.price': 'Ücretsiz',
+    'paywall.plan.trial.badge': 'Popüler',
+
+    // CTA button
+    'paywall.cta.trial': '{days} Gün Ücretsiz Başlat',
+
+    // Trial pill
+    'paywall.trial.pill': '{days} gün ücretsiz',
+
+    // Other needed keys
+    'paywall.retry': 'Tekrar Dene',
+    'paywall.snackbar.no_product': 'Seçili ürün bulunamadı',
+    'paywall.snackbar.restore_failed': 'Geri yükleme başarısız',
+  };
+
+  static Map<String, String> enTrialTranslations = {
+    // Trial plan
+    'paywall.plan.trial': 'Free Trial',
+    'paywall.plan.trial.subtitle':
+        'Then automatically continues to monthly plan',
+    'paywall.plan.trial.price': 'Free',
+    'paywall.plan.trial.badge': 'Popular',
+
+    // CTA button
+    'paywall.cta.trial': 'Start {days} Days Free',
+
+    // Trial pill
+    'paywall.trial.pill': '{days} days free',
+
+    // Other needed keys
+    'paywall.retry': 'Retry',
+    'paywall.snackbar.no_product': 'Selected product not found',
+    'paywall.snackbar.restore_failed': 'Restore failed',
+  };
+
   @override
   Map<String, Map<String, String>> get keys => {
         'tr': {
+          "paywall.plan.yearly.badge": "Popüler",
           "rest_pass_send":
               "Şifre sıfırlama isteği mail adresinize gönderildi.",
           "rest_pass_not_send":
@@ -346,9 +434,12 @@ class AppTranslations extends Translations {
               "Çocuğunuzun ilgi alanlarını, ihtiyaçlarını ve gelişim aşamasını anlamak için gözlem sanatını öğrenin.",
           "quide_create":
               "Basit ve pratik değişikliklerle bağımsızlığı ve öğrenmeyi teşvik eden bir ortam yaratın.",
-          ...kPaywallI18nTr
+          ...kPaywallI18nTr,
+          ...trTranslations,
+          ...trTrialTranslations
         },
         'en': {
+          "paywall.plan.yearly.badge": "Popular",
           "rest_pass_send":
               "A password reset request has been sent to your email address.",
           "rest_pass_not_send":
@@ -541,7 +632,9 @@ class AppTranslations extends Translations {
           "safer_approach_no_ads": "✅ No ads",
           "safer_approach_subtitle":
               "That's why this app works completely offline.",
-          ...kPaywallI18nEn
+          ...kPaywallI18nEn,
+          ...enTranslations,
+          ...enTrialTranslations
         },
       };
 }

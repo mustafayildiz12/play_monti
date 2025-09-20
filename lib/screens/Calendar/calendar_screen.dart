@@ -41,10 +41,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
   DateTime? _registrationDate;
   Map<DateTime, List<DailyEvent>> _eventsByDay = {};
 
-  InAppPurchaseService inAppPurchaseService = InAppPurchaseService();
-
   bool loading = false;
-  bool isPremium = false;
 
   String? error;
 
@@ -54,8 +51,6 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
     _today = _dateOnly(DateTime.now());
     _focusedMonth = DateTime(_today.year, _today.month, 1);
     _selectedDay = _today;
-
-    isPremium = inAppPurchaseService.checkUserHaveProduct();
 
     _loadCalendar(); // async iş için ayrı method
   }
@@ -332,31 +327,13 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
       ),
     ).then((value) async {
       if (value != null && value is List) {
-        if (isPremium) {
-          String id = value.first;
-          String dateKey = activityService.dateKey(value.last);
-          Navigator.pushNamed(
-                  context, "${AppRoutes.activityDetailPage}/$id/$dateKey")
-              .then((_) async {
-            await _loadCalendar();
-          });
-        } else {
-          await showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(16),
-              ),
-            ),
-            builder: (_) => const PremiumBottomSheetPlayMonti(),
-          ).then((v) {
-            setState(() {
-              isPremium = inAppPurchaseService.checkUserHaveProduct();
-            });
-          });
-        }
+        String id = value.first;
+        String dateKey = activityService.dateKey(value.last);
+        Navigator.pushNamed(
+                context, "${AppRoutes.activityDetailPage}/$id/$dateKey")
+            .then((_) async {
+          await _loadCalendar();
+        });
       }
     });
   }

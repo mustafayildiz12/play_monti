@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0677D12C2E6300DC0045B336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0677D12B2E6300DC0045B336 /* Assets.xcassets */; };
-		068C5E062E7B5B3000D1C3C7 /* configurationTest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 068C5E052E7B5B3000D1C3C7 /* configurationTest.storekit */; };
-		068C5E082E7B5D0100D1C3C7 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 068C5E072E7B5D0100D1C3C7 /* StoreKitTestCertificate.cer */; };
 		06E48C5A2E7B247B005F61FF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E48C592E7B247B005F61FF /* StoreKit.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
@@ -48,8 +46,6 @@
 /* Begin PBXFileReference section */
 		0551925ABCBC02D81D06A839 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0677D12B2E6300DC0045B336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		068C5E052E7B5B3000D1C3C7 /* configurationTest.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = configurationTest.storekit; sourceTree = "<group>"; };
-		068C5E072E7B5D0100D1C3C7 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		06BBC7132E6318F00080867C /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		06E48C592E7B247B005F61FF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0DDC01F267FDEFA7EE236906 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,8 +138,6 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
-				068C5E052E7B5B3000D1C3C7 /* configurationTest.storekit */,
-				068C5E072E7B5D0100D1C3C7 /* StoreKitTestCertificate.cer */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -276,12 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
-				068C5E082E7B5D0100D1C3C7 /* StoreKitTestCertificate.cer in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				0677D12C2E6300DC0045B336 /* Assets.xcassets in Resources */,
 				9789C43429759E6221345CD5 /* GoogleService-Info.plist in Resources */,
-				068C5E062E7B5B3000D1C3C7 /* configurationTest.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +500,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = J5FKW4Z6N9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -698,7 +690,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = J5FKW4Z6N9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -728,7 +720,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = J5FKW4Z6N9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;

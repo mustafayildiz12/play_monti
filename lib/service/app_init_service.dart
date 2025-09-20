@@ -50,7 +50,12 @@ class AppInitService {
           await databaseService.isUserDetailExist(user.uid);
       if (isUserExist) {
         if (isUserDetailExist) {
-          AppRoutes.initialRoute = AppRoutes.navigationBarPage;
+          bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+          if (isUserPremium) {
+            AppRoutes.initialRoute = AppRoutes.navigationBarPage;
+          } else {
+            AppRoutes.initialRoute = AppRoutes.trialPage;
+          }
         } else {
           AppRoutes.initialRoute = AppRoutes.onboFlowPage;
         }

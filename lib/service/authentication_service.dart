@@ -58,8 +58,16 @@ class AuthenticationService {
         if (isUserExist && isUserDataExist) {
           if (currentMontiUser?.status != 1) {
             if (isUserDetailExist) {
-              await Navigator.pushNamedAndRemoveUntil(
-                  context, AppRoutes.navigationBarPage, (route) => false);
+              bool isUserPremium =
+                  InAppPurchaseService().checkUserHaveProduct();
+
+              if (isUserPremium) {
+                await Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoutes.navigationBarPage, (route) => false);
+              } else {
+                await Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoutes.trialPage, (route) => false);
+              }
             } else {
               await Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.onboFlowPage, (route) => false);
@@ -241,8 +249,15 @@ class AuthenticationService {
         }
 
         if (isUserDetailExist) {
-          await Navigator.pushNamedAndRemoveUntil(
-              context, AppRoutes.navigationBarPage, (route) => false);
+          bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+
+          if (isUserPremium) {
+            await Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.navigationBarPage, (route) => false);
+          } else {
+            await Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.trialPage, (route) => false);
+          }
         } else {
           await Navigator.pushNamedAndRemoveUntil(
               context, AppRoutes.onboFlowPage, (route) => false);
@@ -318,8 +333,15 @@ class AuthenticationService {
         }
 
         if (isUserDetailExist) {
-          await Navigator.pushNamedAndRemoveUntil(
-              context, AppRoutes.navigationBarPage, (route) => false);
+          bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+
+          if (isUserPremium) {
+            await Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.navigationBarPage, (route) => false);
+          } else {
+            await Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.trialPage, (route) => false);
+          }
         } else {
           await Navigator.pushNamedAndRemoveUntil(
               context, AppRoutes.onboFlowPage, (route) => false);
@@ -359,8 +381,15 @@ class AuthenticationService {
       });
 
       if (isUserDetailExist) {
-        await Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.navigationBarPage, (route) => false);
+        bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+
+        if (isUserPremium) {
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.navigationBarPage, (route) => false);
+        } else {
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.trialPage, (route) => false);
+        }
       } else {
         await Navigator.pushNamedAndRemoveUntil(
             context, AppRoutes.onboFlowPage, (route) => false);

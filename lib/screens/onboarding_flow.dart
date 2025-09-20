@@ -44,7 +44,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
           languageCode: selectedLanguage!.languageCode,
           startDate: startDate);
       Navigator.pushNamedAndRemoveUntil(
-          context, AppRoutes.navigationBarPage, (_) => false);
+          context, AppRoutes.trialPage, (_) => false);
     }
   }
 

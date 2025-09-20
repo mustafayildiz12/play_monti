@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/service/in_app_purchase_service.dart';
@@ -11,7 +12,14 @@ import 'package:url_launcher/url_launcher.dart';
 enum PremiumType { monthly, yearly }
 
 class PremiumBottomSheetPlayMonti extends StatefulWidget {
-  const PremiumBottomSheetPlayMonti({super.key});
+  final bool showTrialFirst;
+  final String? offeringIdentifier; // Belirli bir offering kullanmak için
+
+  const PremiumBottomSheetPlayMonti({
+    super.key,
+    this.showTrialFirst = false,
+    this.offeringIdentifier,
+  });
 
   @override
   State<PremiumBottomSheetPlayMonti> createState() =>
@@ -33,145 +41,24 @@ class _PremiumBottomSheetPlayMontiState
 
   int pageIndex = 0;
 
-  // Dinamik ürün state’i
+  // Dinamik offering state'i
   final InAppPurchaseService _iap = InAppPurchaseService();
   bool _loading = true;
   String? _error;
 
-  StoreProduct? _monthlyProduct;
-  StoreProduct? _yearlyProduct;
+  Package? _monthlyPackage;
+  Package? _yearlyPackage;
+
+  // StoreProduct? _monthlyProduct;
+//  StoreProduct? _yearlyProduct;
+
+  List<Package> _allPackages = [];
 
   @override
   void initState() {
     super.initState();
-    _loadProducts();
-  }
-
-  Future<void> _loadProducts() async {
-    try {
-      setState(() {
-        _loading = true;
-        _error = null;
-      });
-
-      // Senin verdiğin loadSubs() yöntemi getProducts çağırıyor.
-      // Alternatif direkt çağrı: Purchases.getProducts([...])
-      final items =
-          await _iap.loadSubs(); // <-- service’ine bu yöntemi eklersen harika
-      // Eğer bu method yoksa: final items = await Purchases.getProducts(
-      //   productCategory: ProductCategory.subscription,
-      //   type: PurchaseType.subs,
-      //   ['premium_monthly','premium_yearly','monthly_premium','yearly_premium'],
-      // );
-
-      // Aylık/Yıllık eşleştir
-      StoreProduct? monthly;
-      StoreProduct? yearly;
-      for (final p in items) {
-        if (_isMonthly(p)) monthly = p;
-        if (_isYearly(p)) yearly = p;
-      }
-
-      setState(() {
-        _monthlyProduct = monthly;
-        _yearlyProduct = yearly;
-        // Mevcut olana göre default seçim
-        if (_monthlyProduct == null && _yearlyProduct != null) {
-          selectedType = PremiumType.yearly;
-        } else {
-          selectedType = PremiumType.monthly;
-        }
-      });
-    } on PlatformException catch (e) {
-      setState(() {
-        _error = e.message ?? e.toString();
-      });
-    } finally {
-      if (mounted) {
-        setState(() => _loading = false);
-      }
-    }
-  }
-
-  // “P1M” ya da id’de “month” geçenleri aylık kabul et
-  bool _isMonthly(StoreProduct p) {
-    final per = _periodIso(p);
-    return per == 'P1M' ||
-        p.identifier.toLowerCase().contains('month') ||
-        p.title.toLowerCase().contains('month');
-  }
-
-  // “P1Y” ya da id’de “year” geçenleri yıllık kabul et
-  bool _isYearly(StoreProduct p) {
-    final per = _periodIso(p);
-    return per == 'P1Y' ||
-        p.identifier.toLowerCase().contains('year') ||
-        p.title.toLowerCase().contains('year');
-  }
-
-  String _periodIso(StoreProduct p) {
-    // purchases_flutter son sürümlerde subscriptionPeriod ISO8601 string’i dönebiliyor.
-    // Senin log’unda en sonda “, P1M” gördüm; yoksa “P1M/P1Y” yi subscriptionOptions üzerinden çıkaralım.
-    try {
-      final sub = p.subscriptionPeriod; // bazı sürümlerde mevcut
-      if (sub != null && sub.isNotEmpty) return sub;
-    } catch (_) {}
-    // Fallback: aktif option’ın billingPeriod’ı
-    try {
-      final opt = p.defaultOption ?? (p.subscriptionOptions?.firstOrNull);
-      final iso = opt?.billingPeriod?.iso8601 ?? '';
-      if (iso.isNotEmpty) return iso;
-    } catch (_) {}
-    return '';
-  }
-
-  // Ücretsiz deneme “gün” bilgisi (0 ise pill gösterme)
-  String? _trialDays(StoreProduct p) {
-    try {
-      final opt = p.defaultOption ?? (p.subscriptionOptions?.firstOrNull);
-      if (opt == null) return null;
-      // PricingPhase’lerde fiyatı 0 olan ilk phase trial kabul edelim
-      final trialPhase = opt.pricingPhases.firstWhere(
-        (ph) => (ph.price.amountMicros ?? 1) == 0,
-        orElse: () => null as PricingPhase,
-      );
-
-      final per = trialPhase.billingPeriod;
-      if (per == null) return null;
-      // Sadece gün/ay/yıl sayısını yorumla
-      final unit = per.unit.name.toLowerCase(); // day, week, month, year
-      final count = per.value;
-      // App’te “7”/“14” gibi kısa yazıyorsun, onu dönelim:
-      if (unit.startsWith('day')) return '$count';
-      if (unit.startsWith('week')) return '${count * 7}';
-      if (unit.startsWith('month')) return '${count * 30}';
-      if (unit.startsWith('year')) return '${count * 365}';
-      return null;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  StoreProduct? get _selectedProduct =>
-      selectedType == PremiumType.monthly ? _monthlyProduct : _yearlyProduct;
-
-  Future<void> _purchaseSelected() async {
-    final product = _selectedProduct;
-    if (product == null) {
-      customSnackBar.error("paywall.snackbar.no_product".tr);
-      return;
-    }
-
-    _iap.purchaseSubsItem(product, context);
-  }
-
-  Future<void> _restore() async {
-    try {
-      await _iap.restorePurchases();
-      customSnackBar.success("paywall.snackbar.restore".tr);
-    } catch (e) {
-      customSnackBar.error("paywall.snackbar.restore_failed".tr);
-    }
+    _loadOfferings();
+    //  _loadProducts();
   }
 
   @override
@@ -229,7 +116,7 @@ class _PremiumBottomSheetPlayMontiState
                   Text(_error!, style: const TextStyle(color: Colors.red)),
                   const SizedBox(height: 8),
                   FilledButton.tonal(
-                    onPressed: _loadProducts,
+                    onPressed: _loadOfferings,
                     child: Text("paywall.retry".tr),
                   ),
                 ] else
@@ -324,6 +211,21 @@ class _PremiumBottomSheetPlayMontiState
                           const SizedBox(height: 16),
 
                           // MONTHLY
+                          if (_monthlyPackage != null) ...[
+                            _buildPackageCard(
+                                _monthlyPackage!, PremiumType.monthly),
+                            const SizedBox(height: 16),
+                          ],
+
+                          // YEARLY
+                          if (_yearlyPackage != null) ...[
+                            _buildPackageCard(
+                                _yearlyPackage!, PremiumType.yearly),
+                            const SizedBox(height: 16),
+                          ],
+
+                          /*
+                          // MONTHLY
                           if (_monthlyProduct != null) ...[
                             _PlanCard(
                               title: "paywall.plan.monthly".tr,
@@ -352,22 +254,28 @@ class _PremiumBottomSheetPlayMontiState
                                   () => selectedType = PremiumType.yearly),
                             ),
                           ],
+                          */
                           const SizedBox(height: 16),
+
                           // CTA
                           SizedBox(
                             width: double.infinity,
                             height: 52,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF10B981),
+                                backgroundColor: _hasTrialSelected()
+                                    ? const Color(0xFF10B981)
+                                    : const Color(0xFF3B82F6),
                                 foregroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12)),
                               ),
                               onPressed: _purchaseSelected,
-                              child: Text("paywall.cta".tr,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w700)),
+                              child: Text(
+                                _getButtonText(),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w700),
+                              ),
                             ),
                           ),
 
@@ -411,12 +319,17 @@ class _PremiumBottomSheetPlayMontiState
                   children: [
                     TextButton(
                       onPressed: () async {
-                        final uri = Uri.parse(
-                            "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/");
-                        if (await canLaunchUrl(uri)) {
-                          await launchUrl(uri,
-                              mode: LaunchMode.externalApplication);
+                        String url = "";
+                        if (GetPlatform.isIOS) {
+                          url =
+                              "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/";
+                        } else if (GetPlatform.isAndroid) {
+                          url =
+                              "https://play.google.com/intl/ALL_tr/about/play-terms/";
                         }
+                        await launchUrl(
+                          Uri.parse(url),
+                        );
                       },
                       child: Text(
                         "paywall.terms".tr,
@@ -453,6 +366,420 @@ class _PremiumBottomSheetPlayMontiState
       ),
     );
   }
+
+  bool _hasTrialSelected() {
+    final package = _selectedPackage;
+    if (package != null) {
+      final trialDays = _iap.getTrialDays(package);
+      return trialDays != null && trialDays != "0";
+    }
+    return false;
+  }
+
+  Widget _buildPackageCard(Package package, PremiumType type) {
+    final selected = selectedType == type;
+    final trialDays = _iap.getTrialDays(package);
+    final hasFreeTrial = trialDays != null && trialDays != "0";
+
+    String title;
+    String subtitle;
+    String? chipText;
+
+    switch (type) {
+      case PremiumType.monthly:
+        title = "paywall.plan.monthly".tr;
+        subtitle = hasFreeTrial
+            ? "paywall.plan.monthly.trial_subtitle"
+                .trParams({"days": trialDays})
+            : "paywall.plan.monthly.subtitle".tr;
+        break;
+      case PremiumType.yearly:
+        title = "paywall.plan.yearly".tr;
+        subtitle = hasFreeTrial
+            ? "paywall.plan.yearly.trial_subtitle".trParams({"days": trialDays})
+            : "paywall.plan.yearly.subtitle".tr;
+        // Yıllık plan genelde en popüler
+        chipText = "paywall.plan.yearly.badge".tr; // "En Popüler" vb.
+        break;
+    }
+
+    final gradient = selected
+        ? const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.white, Color(0xFFEFF7FF), Color(0xFFE6F7EE)],
+          )
+        : null;
+
+    return InkWell(
+      onTap: () => setState(() => selectedType = type),
+      child: Container(
+        height: 128,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: selected ? null : Colors.white,
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
+          ],
+          border: selected
+              ? Border.all(color: const Color(0xFF93C5FD), width: 1)
+              : null,
+        ),
+        padding: const EdgeInsets.fromLTRB(12, 10, 8, 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Title + Radio
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                Radio<bool>(
+                  value: true,
+                  groupValue: selected,
+                  onChanged: (_) => setState(() => selectedType = type),
+                  fillColor: WidgetStatePropertyAll(Colors.green.shade500),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ],
+            ),
+
+            // Price row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Fiyat
+                Text(
+                  package.storeProduct.priceString,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(width: 8),
+
+                // Trial pill
+                if (hasFreeTrial)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFDCFCE7),
+                      borderRadius: BorderRadius.circular(999),
+                      border: Border.all(color: const Color(0xFF16A34A)),
+                    ),
+                    child: Text(
+                      "paywall.trial.pill".trParams({"days": trialDays}),
+                      style: const TextStyle(
+                        fontSize: 11.5,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF166534),
+                      ),
+                    ),
+                  ),
+
+                const Spacer(),
+
+                // Badge
+                if (chipText != null && chipText.isNotEmpty)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      chipText,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+
+            // Subtitle
+            Row(
+              children: [
+                const Icon(CupertinoIcons.info,
+                    size: 16, color: Colors.black54),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 11.5,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+/*
+  Future<void> _loadProducts() async {
+    try {
+      setState(() {
+        _loading = true;
+        _error = null;
+      });
+
+      // Senin verdiğin loadSubs() yöntemi getProducts çağırıyor.
+      // Alternatif direkt çağrı: Purchases.getProducts([...])
+      final items =
+          await _iap.loadSubs(); // <-- service’ine bu yöntemi eklersen harika
+      // Eğer bu method yoksa: final items = await Purchases.getProducts(
+      //   productCategory: ProductCategory.subscription,
+      //   type: PurchaseType.subs,
+      //   ['premium_monthly','premium_yearly','monthly_premium','yearly_premium'],
+      // );
+
+      // Aylık/Yıllık eşleştir
+      StoreProduct? monthly;
+      StoreProduct? yearly;
+      for (final p in items) {
+        if (_isMonthly(p)) monthly = p;
+        if (_isYearly(p)) yearly = p;
+      }
+
+      setState(() {
+        _monthlyProduct = monthly;
+        _yearlyProduct = yearly;
+        // Mevcut olana göre default seçim
+        if (_monthlyProduct == null && _yearlyProduct != null) {
+          selectedType = PremiumType.yearly;
+        } else {
+          selectedType = PremiumType.monthly;
+        }
+      });
+    } on PlatformException catch (e) {
+      setState(() {
+        _error = e.message ?? e.toString();
+      });
+    } finally {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
+    }
+  }
+
+  // “P1M” ya da id’de “month” geçenleri aylık kabul et
+  bool _isMonthly(StoreProduct p) {
+    final per = _periodIso(p);
+    return per == 'P1M' ||
+        p.identifier.toLowerCase().contains('month') ||
+        p.title.toLowerCase().contains('month');
+  }
+
+  // “P1Y” ya da id’de “year” geçenleri yıllık kabul et
+  bool _isYearly(StoreProduct p) {
+    final per = _periodIso(p);
+    return per == 'P1Y' ||
+        p.identifier.toLowerCase().contains('year') ||
+        p.title.toLowerCase().contains('year');
+  }
+
+  String _periodIso(StoreProduct p) {
+    // purchases_flutter son sürümlerde subscriptionPeriod ISO8601 string’i dönebiliyor.
+    // Senin log’unda en sonda “, P1M” gördüm; yoksa “P1M/P1Y” yi subscriptionOptions üzerinden çıkaralım.
+    try {
+      final sub = p.subscriptionPeriod; // bazı sürümlerde mevcut
+      if (sub != null && sub.isNotEmpty) return sub;
+    } catch (_) {}
+    // Fallback: aktif option’ın billingPeriod’ı
+    try {
+      final opt = p.defaultOption ?? (p.subscriptionOptions?.firstOrNull);
+      final iso = opt?.billingPeriod?.iso8601 ?? '';
+      if (iso.isNotEmpty) return iso;
+    } catch (_) {}
+    return '';
+  }
+ */
+
+  // Ücretsiz deneme “gün” bilgisi (0 ise pill gösterme)
+  String? _trialDays(StoreProduct p) {
+    try {
+      final opt = p.defaultOption ?? (p.subscriptionOptions?.firstOrNull);
+      if (opt == null) return null;
+      // PricingPhase’lerde fiyatı 0 olan ilk phase trial kabul edelim
+      final trialPhase = opt.pricingPhases.firstWhere(
+        (ph) => (ph.price.amountMicros ?? 1) == 0,
+        orElse: () => null as PricingPhase,
+      );
+
+      final per = trialPhase.billingPeriod;
+      if (per == null) return null;
+      // Sadece gün/ay/yıl sayısını yorumla
+      final unit = per.unit.name.toLowerCase(); // day, week, month, year
+      final count = per.value;
+      // App’te “7”/“14” gibi kısa yazıyorsun, onu dönelim:
+      if (unit.startsWith('day')) return '$count';
+      if (unit.startsWith('week')) return '${count * 7}';
+      if (unit.startsWith('month')) return '${count * 30}';
+      if (unit.startsWith('year')) return '${count * 365}';
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> _loadOfferings() async {
+    try {
+      setState(() {
+        _loading = true;
+        _error = null;
+      });
+
+      List<Package> packages;
+
+      // Belirli bir offering istendiyse onu yükle, yoksa current'ı al
+      if (widget.offeringIdentifier != null) {
+        packages = await _iap.loadSpecificOffering(widget.offeringIdentifier!);
+      } else {
+        packages = await _iap.loadOfferings();
+      }
+
+      // Paketleri tipine göre ayır
+      Package? monthly;
+      Package? yearly;
+
+      for (final package in packages) {
+        final type = _iap.getPackageType(package);
+        switch (type) {
+          case 'monthly':
+            monthly = package;
+            break;
+          case 'yearly':
+            yearly = package;
+            break;
+        }
+      }
+
+      setState(() {
+        _allPackages = packages;
+        _monthlyPackage = monthly;
+        _yearlyPackage = yearly;
+
+        // Default seçim: trial öne çıkarılacaksa ve trial varsa onu seç
+        if (widget.showTrialFirst) {
+          // Hangi pakette daha uzun trial varsa onu seç
+          final monthlyTrial =
+              monthly != null ? _iap.getTrialDays(monthly) : null;
+          final yearlyTrial = yearly != null ? _iap.getTrialDays(yearly) : null;
+
+          if (monthlyTrial != null && yearlyTrial != null) {
+            final monthlyDays = int.tryParse(monthlyTrial) ?? 0;
+            final yearlyDays = int.tryParse(yearlyTrial) ?? 0;
+            selectedType = yearlyDays > monthlyDays
+                ? PremiumType.yearly
+                : PremiumType.monthly;
+          } else if (monthlyTrial != null) {
+            selectedType = PremiumType.monthly;
+          } else if (yearlyTrial != null) {
+            selectedType = PremiumType.yearly;
+          } else {
+            selectedType =
+                monthly != null ? PremiumType.monthly : PremiumType.yearly;
+          }
+        } else {
+          selectedType =
+              monthly != null ? PremiumType.monthly : PremiumType.yearly;
+        }
+      });
+    } on PlatformException catch (e) {
+      setState(() {
+        _error = e.message ?? e.toString();
+      });
+    } finally {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
+    }
+  }
+
+  Package? get _selectedPackage =>
+      selectedType == PremiumType.monthly ? _monthlyPackage : _yearlyPackage;
+
+  Future<void> _purchaseSelected() async {
+    final package = _selectedPackage;
+    if (package == null) {
+      customSnackBar.error("paywall.snackbar.no_product".tr);
+      return;
+    }
+
+    bool isSuccess = await _iap.purchasePackage(package);
+    if (isSuccess) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.navigationBarPage, (_) => false);
+    }
+  }
+
+  Future<void> _restore() async {
+    try {
+      await _iap.restorePurchases();
+    } catch (e) {
+      customSnackBar.error("paywall.snackbar.restore_failed".tr);
+    }
+  }
+
+  String _getButtonText() {
+    final package = _selectedPackage;
+    if (package != null) {
+      final trialDays = _iap.getTrialDays(package);
+      if (trialDays != null && trialDays != "0") {
+        return "paywall.cta.trial".trParams({"days": trialDays});
+      }
+    }
+    return "paywall.cta".tr;
+  }
+}
+
+class _InfoDialog extends StatelessWidget {
+  const _InfoDialog();
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("paywall.info.title".tr),
+      content: SingleChildScrollView(
+        child: Text(
+          "paywall.info.body".tr,
+        ),
+      ),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(context), child: Text("close".tr)),
+      ],
+    );
+  }
+}
+
+class _Feature {
+  final IconData icon;
+  final String title;
+  const _Feature({required this.icon, required this.title});
 }
 
 class _PlanCard extends StatelessWidget {
@@ -620,57 +947,4 @@ class _PlanCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class _FreeTrialPill extends StatelessWidget {
-  const _FreeTrialPill({
-    required this.day,
-    super.key,
-  });
-  final String day;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: const Color(0xFFDCFCE7),
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: const Color(0xFF16A34A)),
-      ),
-      child: Text(
-        "paywall.trial.pill".tr,
-        style: const TextStyle(
-            fontSize: 11.5,
-            fontWeight: FontWeight.w700,
-            color: Color(0xFF166534)),
-      ),
-    );
-  }
-}
-
-class _InfoDialog extends StatelessWidget {
-  const _InfoDialog();
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("paywall.info.title".tr),
-      content: SingleChildScrollView(
-        child: Text(
-          "paywall.info.body".tr,
-        ),
-      ),
-      actions: [
-        TextButton(
-            onPressed: () => Navigator.pop(context), child: Text("close".tr)),
-      ],
-    );
-  }
-}
-
-class _Feature {
-  final IconData icon;
-  final String title;
-  const _Feature({required this.icon, required this.title});
 }

@@ -6,6 +6,7 @@ import 'package:play_monti/screens/Auth/register_page.dart';
 import 'package:play_monti/screens/ExcelActivity/upload_activity_excel.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_detail_page.dart';
 import 'package:play_monti/screens/Onboarding/onboarding_flow.dart';
+import 'package:play_monti/screens/Premium/trial_offering_page.dart';
 import 'package:play_monti/screens/onboarding_flow.dart';
 import 'package:play_monti/screens/tab_screens.dart';
 
@@ -33,6 +34,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.navigationBarPage,
       page: () => const MainTabNavigator(),
+    ),
+    GetPage(
+      name: AppRoutes.trialPage,
+      page: () => const TrialOfferingPage(),
     ),
     GetPage(
       name: "${AppRoutes.activityDetailPage}/:id/:date",
