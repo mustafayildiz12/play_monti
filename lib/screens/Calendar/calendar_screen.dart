@@ -1,13 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
-import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/calendar_service.dart';
-import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
 import 'package:table_calendar/table_calendar.dart';
 
