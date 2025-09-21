@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -6,8 +7,10 @@ import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
+import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -32,6 +35,9 @@ class _SettingsPageState extends State<SettingsPage> {
   LanguageModel? selectedLanguage;
   AgeGroupModel? selectedAgeGroup;
 
+  bool isPremium = false;
+  InAppPurchaseService iap = InAppPurchaseService();
+
   @override
   void initState() {
     if (Get.locale!.languageCode == "en") {
@@ -41,6 +47,8 @@ class _SettingsPageState extends State<SettingsPage> {
       selectedAgeGroup = trAgeGroupList
           .singleWhere((e) => e.ageGroupCode == currentMontiUser?.ageActivity);
     }
+
+    getPageData();
 
     super.initState();
   }
@@ -57,6 +65,13 @@ class _SettingsPageState extends State<SettingsPage> {
       }
     }
     super.didChangeDependencies();
+  }
+
+  void getPageData() async {
+    bool premium = await iap.checkUserHaveProduct();
+    setState(() {
+      isPremium = premium;
+    });
   }
 
   @override
@@ -141,6 +156,43 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const SliverToBoxAdapter(child: SizedBox(height: 16)),
+            if (!isPremium) ...[
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 56,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: const Color(0xFF3B82F6),
+                        side: const BorderSide(
+                            color: Color(0xFF3B82F6), width: 2),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: _showSubscriptionOptions,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(CupertinoIcons.star),
+                          const SizedBox(width: 8),
+                          Text(
+                            "paywall.cta".tr,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 16)),
+            ],
 
             // Language
             _SliverSettingTile(
@@ -325,6 +377,17 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   // ——— Actions ———
+
+  void _showSubscriptionOptions() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const PremiumBottomSheetPlayMonti(
+        showTrialFirst: true, // Trial'ı öne çıkar
+      ),
+    );
+  }
 
   Future<void> _pickLanguage() async {
     final selected = await showModalBottomSheet<LanguageModel>(

@@ -50,7 +50,9 @@ class AppInitService {
           await databaseService.isUserDetailExist(user.uid);
       if (isUserExist) {
         if (isUserDetailExist) {
-          bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+          InAppPurchaseService iap = InAppPurchaseService();
+          bool isUserPremium =
+              await iap.checkUserHaveProduct() || await iap.isTrial();
           if (isUserPremium) {
             AppRoutes.initialRoute = AppRoutes.navigationBarPage;
           } else {

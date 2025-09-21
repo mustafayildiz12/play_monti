@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:play_monti/constants/app_colors.dart';
@@ -34,10 +36,19 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
     _Feature(icon: CupertinoIcons.person_2_fill, title: "paywall.feature.4".tr),
   ];
 
+  bool isTrial = false;
+
   @override
   void initState() {
     super.initState();
     _loadProducts();
+  }
+
+  void checkIsTrial() async {
+    bool trial = await _iap.isTrial();
+    setState(() {
+      isTrial = trial;
+    });
   }
 
   Future<void> _loadProducts() async {
@@ -102,13 +113,10 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
   }
 
   Future<void> _startTrial() async {
-    if (_trialProduct == null) {
-      customSnackBar.error("trial.not_available".tr);
-      return;
-    }
-
     try {
-      await _iap.purchaseSubsItem(_trialProduct!, context);
+      await infoStorage.write("trialCount", 1);
+      await Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.navigationBarPage, (_) => false);
     } catch (e) {
       customSnackBar.error("trial.start_failed".tr);
     }
@@ -181,9 +189,6 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
   }
 
   Widget _buildMainContent(ThemeData theme, double screenHeight) {
-    final trialDays =
-        _trialProduct != null ? _getTrialDays(_trialProduct!) : null;
-
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -218,12 +223,6 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
 
             SizedBox(height: screenHeight * 0.08),
 
-            // Trial Card (eğer trial product varsa)
-            if (_trialProduct != null && trialDays != null) ...[
-              _buildTrialCard(trialDays),
-              const SizedBox(height: 20),
-            ],
-
             // Action Buttons
             _buildActionButtons(),
           ],
@@ -240,7 +239,7 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -298,62 +297,10 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
     );
   }
 
-  Widget _buildTrialCard(String trialDays) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFDCFCE7),
-            Color(0xFFBBF7D0),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFF10B981), width: 2),
-      ),
-      child: Column(
-        children: [
-          const Icon(
-            CupertinoIcons.gift,
-            size: 32,
-            color: Color(0xFF059669),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            "trial.card_title".trParams({"days": trialDays}),
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: Color(0xFF059669),
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            "trial.card_subtitle".tr,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF047857),
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildActionButtons() {
-    final trialDays =
-        _trialProduct != null ? _getTrialDays(_trialProduct!) : null;
-
     return Column(
       children: [
-        // Trial Button (eğer trial product varsa)
-        if (_trialProduct != null && trialDays != null) ...[
+        if (isTrial) ...[
           SizedBox(
             width: double.infinity,
             height: 56,
@@ -373,7 +320,7 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
                   const Icon(CupertinoIcons.play_circle),
                   const SizedBox(width: 8),
                   Text(
-                    "trial.start_button".trParams({"days": trialDays}),
+                    "trial.start_button".tr,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -414,41 +361,6 @@ class _TrialOfferingPageState extends State<TrialOfferingPage> {
               ],
             ),
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildFooterInfo() {
-    return Column(
-      children: [
-        Text(
-          "trial.footer_info".tr,
-          style: const TextStyle(
-            fontSize: 12,
-            color: Colors.black54,
-            fontWeight: FontWeight.w500,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () async {
-                await _iap.restorePurchases();
-              },
-              child: Text(
-                "trial.restore".tr,
-                style: const TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ],
         ),
       ],
     );

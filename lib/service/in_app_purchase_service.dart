@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -170,7 +171,7 @@ class InAppPurchaseService {
   /// Kullanıcının aktif aboneliği olup olmadığını kontrol eder
   ///
   /// Kullanıcının aktif abonelikleri varsa true, yoksa false döndürür.
-  bool checkUserHaveProduct() {
+  Future<bool> checkUserHaveProduct() async {
     if (customerInfo != null) {
       final entitlement = customerInfo!.entitlements.all["premium"];
       if (entitlement != null && entitlement.isActive) {
@@ -182,6 +183,17 @@ class InAppPurchaseService {
       }
     }
 
+    return false;
+  }
+
+  Future<bool> isTrial() async {
+    int? trialCount = infoStorage.read("trialCount");
+   
+    // demek ki ücretsiz deniyor uygulamayı
+    if (trialCount != null && trialCount < 4) {
+      await infoStorage.write("trialCount", trialCount + 1);
+      return true;
+    }
     return false;
   }
 

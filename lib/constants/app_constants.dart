@@ -6,3 +6,8 @@ final GetStorage infoStorage = GetStorage("info");
 
 MontiUserModel? currentMontiUser;
 
+
+// bool isTrialStarted => try for free'ye bastığımızda çalışır
+// bool isPremium => trialdeyse ya da premiumsa
+// 
+

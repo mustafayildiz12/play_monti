@@ -58,8 +58,9 @@ class AuthenticationService {
         if (isUserExist && isUserDataExist) {
           if (currentMontiUser?.status != 1) {
             if (isUserDetailExist) {
+              InAppPurchaseService iap = InAppPurchaseService();
               bool isUserPremium =
-                  InAppPurchaseService().checkUserHaveProduct();
+                  await iap.checkUserHaveProduct() || await iap.isTrial();
 
               if (isUserPremium) {
                 await Navigator.pushNamedAndRemoveUntil(
@@ -249,7 +250,9 @@ class AuthenticationService {
         }
 
         if (isUserDetailExist) {
-          bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+          InAppPurchaseService iap = InAppPurchaseService();
+          bool isUserPremium =
+              await iap.checkUserHaveProduct() || await iap.isTrial();
 
           if (isUserPremium) {
             await Navigator.pushNamedAndRemoveUntil(
@@ -333,7 +336,9 @@ class AuthenticationService {
         }
 
         if (isUserDetailExist) {
-          bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+          InAppPurchaseService iap = InAppPurchaseService();
+          bool isUserPremium =
+              await iap.checkUserHaveProduct() || await iap.isTrial();
 
           if (isUserPremium) {
             await Navigator.pushNamedAndRemoveUntil(
@@ -381,7 +386,9 @@ class AuthenticationService {
       });
 
       if (isUserDetailExist) {
-        bool isUserPremium = InAppPurchaseService().checkUserHaveProduct();
+        InAppPurchaseService iap = InAppPurchaseService();
+        bool isUserPremium =
+            await iap.checkUserHaveProduct() || await iap.isTrial();
 
         if (isUserPremium) {
           await Navigator.pushNamedAndRemoveUntil(

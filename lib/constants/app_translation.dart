@@ -155,7 +155,7 @@ class AppTranslations extends Translations {
     'trial.card_title': '{days} Gün Ücretsiz Deneme',
     'trial.card_subtitle': 'İstediğiniz zaman iptal edebilirsiniz',
 
-    'trial.start_button': '{days} Gün Ücretsiz Başlat',
+    'trial.start_button': 'Ücretsiz Dene',
     'trial.subscribe_button': 'Planları Görüntüle',
 
     'trial.footer_info':
@@ -179,7 +179,7 @@ class AppTranslations extends Translations {
     'trial.card_title': '{days} Days Free Trial',
     'trial.card_subtitle': 'Cancel anytime',
 
-    'trial.start_button': 'Start {days} Days Free',
+    'trial.start_button': 'Start Free Trial',
     'trial.subscribe_button': 'View Plans',
 
     'trial.footer_info':
