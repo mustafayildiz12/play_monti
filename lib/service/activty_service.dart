@@ -248,6 +248,42 @@ class ActivityService {
 
     return favorites;
   }
+
+  Future<List<FinalActivityModel>> getAllActivities(
+      {required String age, required String language}) async {
+    final List<FinalActivityModel> getAllActivities = [];
+
+    final DatabaseReference ref = _realtimeDatabase.ref(age).child(language);
+
+    final DataSnapshot snapshot = await ref.get();
+
+    if (snapshot.exists) {
+      final raw = snapshot.value;
+
+      if (raw is Map) {
+        for (final value in raw.values) {
+          if (value is Map) {
+            final map = Map<String, dynamic>.from(value);
+            final model = FinalActivityModel.fromJson(map);
+
+            getAllActivities.add(model);
+          }
+        }
+      } // 2) Kaynak veri LIST ise (örn: [null, {...}, null, {...}])
+      else if (raw is List) {
+        for (final item in raw) {
+          if (item is Map) {
+            final map = Map<String, dynamic>.from(item);
+            final model = FinalActivityModel.fromJson(map);
+
+            getAllActivities.add(model);
+          }
+        }
+      }
+    }
+
+    return getAllActivities;
+  }
 }
 
 final ActivityService activityService = ActivityService();

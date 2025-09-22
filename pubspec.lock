@@ -562,6 +562,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
+  syncfusion_flutter_core:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_core
+      sha256: e8e351522b7c3442609e04f1613f29b7917147bb3de41dbd3c1ec4169cf1888d
+      url: "https://pub.dev"
+    source: hosted
+    version: "31.1.20"
+  syncfusion_flutter_datagrid:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_datagrid
+      sha256: "5699d6ef698bb29b19267fdbf22b9dbd4a4dbedcd853c7cfced75a31272757bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "31.1.20"
   table_calendar:
     dependency: "direct main"
     description:
@@ -708,4 +724,4 @@ packages:
     version: "6.6.1"
 sdks:
   dart: ">=3.9.0 <4.0.0"
-  flutter: ">=3.35.0"
+  flutter: ">=3.35.1"

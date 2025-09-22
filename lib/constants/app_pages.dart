@@ -3,6 +3,7 @@ import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/screens/Auth/forgot_password_screen.dart';
 import 'package:play_monti/screens/Auth/login_screen.dart';
 import 'package:play_monti/screens/Auth/register_page.dart';
+import 'package:play_monti/screens/ExcelActivity/activities_screen.dart';
 import 'package:play_monti/screens/ExcelActivity/upload_activity_excel.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_detail_page.dart';
 import 'package:play_monti/screens/Onboarding/onboarding_flow.dart';
@@ -12,6 +13,8 @@ import 'package:play_monti/screens/tab_screens.dart';
 
 class AppPages {
   static List<GetPage<dynamic>>? pages = [
+    GetPage(
+        name: AppRoutes.activityTable, page: () => const ActivitiesTablePage()),
     GetPage(
         name: AppRoutes.uploadActivityPage,
         page: () => const UploadActivityExcel()),

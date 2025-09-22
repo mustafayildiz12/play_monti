@@ -5,6 +5,7 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:excel/excel.dart' as excel_lib;
 import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/service/activty_service.dart';
+import 'package:play_monti/utlis/widgets/custom_loader.dart';
 import 'package:play_monti/utlis/widgets/custom_snackbar.dart';
 
 class UploadActivityExcel extends StatefulWidget {
@@ -27,94 +28,101 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
   List<String> languages = ["tr", "en", "sp", "fr"];
 
   List<int> bytes = [];
+
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Yeni Aktivite"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Row(children: [
-                Expanded(
-                  child: DropdownButton(
-                    value: selectedAgeType,
+    return CustomLoader(
+      inAsyncCall: isLoading,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Yeni Aktivite"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Row(children: [
+                  Expanded(
+                    child: DropdownButton(
+                      value: selectedAgeType,
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
 
-                    // Array list of items
-                    items: ageTypes.map((String items) {
-                      return DropdownMenuItem(value: items, child: Text(items));
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedAgeType = newValue!;
-                      });
-                    },
+                      // Array list of items
+                      items: ageTypes.map((String items) {
+                        return DropdownMenuItem(
+                            value: items, child: Text(items));
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedAgeType = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: DropdownButton(
+                      value: selectedLanguage,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: languages.map((String items) {
+                        return DropdownMenuItem(
+                            value: items, child: Text(items));
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedLanguage = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ]),
+                const SizedBox(height: 16),
+                TextFormField(
+                  controller: csvFileNameController,
+                  onTap: () async {
+                    final excelBytes = await _pickFiles();
+                    setState(() {
+                      bytes = excelBytes;
+                    });
+                  },
+                  readOnly: true,
+                  decoration: const InputDecoration(
+                    label: Text("Dosya Seç"),
                   ),
                 ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: DropdownButton(
-                    value: selectedLanguage,
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      try {
+                        await tabloKontrolIslemleri();
+                      } catch (e) {
+                        setState(() {
+                          excelItems.clear();
+                          bytes.clear();
+                        });
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
-
-                    // Array list of items
-                    items: languages.map((String items) {
-                      return DropdownMenuItem(value: items, child: Text(items));
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedLanguage = newValue!;
-                      });
-                    },
-                  ),
-                ),
-              ]),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: csvFileNameController,
-                onTap: () async {
-                  final excelBytes = await _pickFiles();
-                  setState(() {
-                    bytes = excelBytes;
-                  });
-                },
-                readOnly: true,
-                decoration: const InputDecoration(
-                  label: Text("Dosya Seç"),
-                ),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    try {
-                      await tabloKontrolIslemleri();
-                    } catch (e) {
-                      setState(() {
-                        excelItems.clear();
-                        bytes.clear();
-                      });
-
-                      debugPrint("Excel Hatası: $e");
+                        debugPrint("Excel Hatası: $e");
+                      }
                     }
-                  }
-                },
-                child: const Text("Kaydet"),
-              )
-            ],
+                  },
+                  child: const Text("Kaydet"),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -216,8 +224,12 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
               stepByStep: row[kSteps]!.value!.toString(),
               clue: row[kClue]!.value!.toString(),
               emoji: row[kEmoji]!.value!.toString(),
-              warningText: row[kSecurity]!.value!.toString(),
-              apothegm: row[kApothegm]!.value!.toString(),
+              warningText: row[kSecurity] != null
+                  ? row[kSecurity]!.value!.toString()
+                  : "",
+              apothegm: row[kApothegm] != null
+                  ? row[kApothegm]!.value?.toString() ?? ""
+                  : "",
             );
 
             setState(() {
@@ -236,6 +248,9 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
   }
 
   Future<void> addProjects() async {
+    setState(() {
+      isLoading = true;
+    });
     try {
       for (var e in excelItems) {
         await activityService.addWeeklyActivity(
@@ -248,6 +263,9 @@ class _UploadActivityExcelState extends State<UploadActivityExcel> {
     } catch (e) {
       customSnackBar.error("$e");
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   void clearFile() {

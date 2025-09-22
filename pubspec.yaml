@@ -60,6 +60,9 @@ dependencies:
   purchases_flutter: ^9.6.1
   url_launcher: ^6.3.2
 
+  syncfusion_flutter_datagrid: ^31.1.20
+  syncfusion_flutter_core: ^31.1.20
+
   excel: ^4.0.6
   file_picker: ^8.3.1
 
