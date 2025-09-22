@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -88,23 +90,15 @@ class AppInitService {
   }
 
   static Locale pickBestLocaleFromDevice() {
-    final locales = WidgetsBinding.instance.platformDispatcher.locales;
+    final String defaultLocale = Platform.localeName;
+    print("Default Locale: $defaultLocale");
 
-    // 1) Tercihlerde TR var mı?
-    final tr = locales.firstWhere(
-      (l) => l.languageCode.toLowerCase() == 'tr',
-      orElse: () => const Locale('und'),
-    );
-    if (tr.languageCode != 'und') return const Locale('tr');
-
-    // 2) Tercihlerde EN var mı?
-    final en = locales.firstWhere(
-      (l) => l.languageCode.toLowerCase() == 'en',
-      orElse: () => const Locale('und'),
-    );
-    if (en.languageCode != 'und') return const Locale('en');
-
-    // 3) Emniyet: TR
-    return const Locale('tr');
+    if (defaultLocale.contains("tr")) {
+      return const Locale("tr");
+    } else if (defaultLocale.toLowerCase().toString().contains("en")) {
+      return const Locale("en");
+    } else {
+      return const Locale("tr");
+    }
   }
 }
