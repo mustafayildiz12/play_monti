@@ -286,23 +286,3 @@ class _ActivitiesTablePageState extends State<ActivitiesTablePage> {
     );
   }
 }
-
-/// DataPager ile DataGridSource'u bağlamak için küçük bir delegate.
-/// (DataGridSource satırları zaten tutuyor; burada yalnızca "view"u sayfalıyoruz.)
-class _PagerDelegate extends DataPagerDelegate {
-  final ActivitiesDataSource dataSource;
-  final int rowsPerPage;
-
-  _PagerDelegate(this.dataSource, {required this.rowsPerPage});
-
-  int _startRowIndex = 0;
-
-  @override
-  int get rowCount => dataSource.rows.length;
-
-  @override
-  List<DataGridRow> provideRows(int startIndex, int endIndex) {
-    _startRowIndex = startIndex;
-    return dataSource.rows.getRange(startIndex, endIndex).toList();
-  }
-}

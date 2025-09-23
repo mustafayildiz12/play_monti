@@ -284,6 +284,46 @@ class ActivityService {
 
     return getAllActivities;
   }
+
+  Future<bool> deleteActivity(
+      {required String age,
+      required String language,
+      required String docId}) async {
+    bool isDeleted = false;
+
+    try {
+      final DatabaseReference ref =
+          _realtimeDatabase.ref(age).child(language).child(docId);
+
+      await ref.remove();
+      isDeleted = true;
+    } catch (e) {
+      isDeleted = false;
+      print("Aktivite Silinemedi: $e");
+    }
+    return isDeleted;
+  }
+
+  Future<bool> updateActivity({
+    required FinalActivityModel finalActivity,
+    required String age,
+    required String language,
+    required String docId,
+  }) async {
+    bool isUpdated = false;
+
+    try {
+      final DatabaseReference ref =
+          _realtimeDatabase.ref(age).child(language).child(docId);
+
+      await ref.update(finalActivity.toJson());
+      isUpdated = true;
+    } catch (e) {
+      isUpdated = false;
+      print("Aktivite Silinemedi: $e");
+    }
+    return isUpdated;
+  }
 }
 
 final ActivityService activityService = ActivityService();

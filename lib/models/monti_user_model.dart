@@ -12,7 +12,8 @@ class MontiUserModel {
       this.startDate,
       this.completedActivities,
       this.languageCode,
-      this.isAnonymous});
+      this.isAnonymous,
+      this.isAdmin});
 
   factory MontiUserModel.fromMap(Map<String, dynamic> map) {
     return MontiUserModel(
@@ -28,7 +29,8 @@ class MontiUserModel {
         startDate: map['startDate'],
         completedActivities: map['completedActivities'] ?? 0,
         languageCode: map['languageCode'],
-        isAnonymous: map['isAnonymous']);
+        isAnonymous: map['isAnonymous'],
+        isAdmin: map['isAdmin']);
   }
 
   final String? userName;
@@ -44,6 +46,7 @@ class MontiUserModel {
   final String? languageCode;
   final int? completedActivities;
   final bool? isAnonymous;
+  final bool? isAdmin;
 
   Map<String, dynamic> toMap() {
     return {
@@ -59,25 +62,26 @@ class MontiUserModel {
       'startDate': startDate,
       'completedActivities': completedActivities,
       'languageCode': languageCode,
+      'isAdmin': isAdmin
     };
   }
 
   /// copyWith metodu
-  MontiUserModel copyWith({
-    String? userName,
-    String? userPassword,
-    String? uid,
-    String? userEmail,
-    int? status,
-    int? createDateTimeStamp,
-    String? deviceId,
-    String? ageActivity,
-    String? selectedLanguage,
-    String? startDate,
-    int? completedActivities,
-    String? languageCode,
-    bool? isAnonymous,
-  }) {
+  MontiUserModel copyWith(
+      {String? userName,
+      String? userPassword,
+      String? uid,
+      String? userEmail,
+      int? status,
+      int? createDateTimeStamp,
+      String? deviceId,
+      String? ageActivity,
+      String? selectedLanguage,
+      String? startDate,
+      int? completedActivities,
+      String? languageCode,
+      bool? isAnonymous,
+      bool? isAdmin}) {
     return MontiUserModel(
         userName: userName ?? this.userName,
         userPassword: userPassword ?? this.userPassword,
@@ -91,6 +95,7 @@ class MontiUserModel {
         startDate: startDate ?? this.startDate,
         completedActivities: completedActivities ?? this.completedActivities,
         languageCode: languageCode ?? this.languageCode,
-        isAnonymous: isAnonymous ?? this.isAnonymous);
+        isAnonymous: isAnonymous ?? this.isAnonymous,
+        isAdmin: isAdmin ?? this.isAdmin);
   }
 }

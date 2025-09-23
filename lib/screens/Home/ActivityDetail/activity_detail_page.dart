@@ -196,24 +196,30 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
         ),
 
         // Uyarı
-        SliverToBoxAdapter(
-          child: _CardBlock(
-            margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("❗", style: TextStyle(fontSize: 20)),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    activity!.warningText,
-                    style: t.bodyMedium?.copyWith(color: Colors.black87),
+        if (activity!.warningText.isNotEmpty) ...[
+          SliverToBoxAdapter(
+            child: _CardBlock(
+              margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("❗", style: TextStyle(fontSize: 20)),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      activity!.warningText,
+                      style: t.bodyMedium?.copyWith(color: Colors.black87),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
+        ] else ...[
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 16),
+          )
+        ],
 
         // İşlem butonları
         SliverToBoxAdapter(

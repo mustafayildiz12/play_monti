@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
+import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
@@ -360,6 +361,26 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
+
+            if (currentMontiUser?.isAdmin == true)
+              SliverToBoxAdapter(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.uploadActivityPage);
+                        },
+                        child: const Text("Yükle")),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.activityTable);
+                        },
+                        child: const Text("Aktiviteler")),
+                  ],
+                ),
+              )
           ],
         ),
       ),
