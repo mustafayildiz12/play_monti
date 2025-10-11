@@ -7,7 +7,7 @@ import 'package:play_monti/screens/ExcelActivity/activities_screen.dart';
 import 'package:play_monti/screens/ExcelActivity/upload_activity_excel.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_detail_page.dart';
 import 'package:play_monti/screens/Onboarding/onboarding_flow.dart';
-import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
+import 'package:play_monti/screens/Premium/premium_paywall.dart';
 import 'package:play_monti/screens/onboarding_flow.dart';
 import 'package:play_monti/screens/tab_screens.dart';
 

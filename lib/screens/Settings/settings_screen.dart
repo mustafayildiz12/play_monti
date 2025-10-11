@@ -8,7 +8,7 @@ import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/models/age_group_model.dart';
 import 'package:play_monti/models/language_model.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_feedbak_bottom_sheet.dart';
-import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
+import 'package:play_monti/screens/Premium/premium_paywall.dart';
 import 'package:play_monti/service/authentication_service.dart';
 import 'package:play_monti/service/database_service.dart';
 import 'package:play_monti/service/in_app_purchase_service.dart';
