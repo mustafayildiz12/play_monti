@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_localization.dart';
 import 'package:play_monti/constants/app_routes.dart';
@@ -19,6 +21,7 @@ class AppInitService {
     await initLocale();
     await initPurchase();
     await initRoute();
+    _initSetSystemUIOverlayStyle();
   }
 
   static initPurchase() async {
@@ -100,5 +103,18 @@ class AppInitService {
     } else {
       return const Locale("tr");
     }
+  }
+
+  static void _initSetSystemUIOverlayStyle() {
+    // İçerik status/nav barın arkasına uzansın:
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: [SystemUiOverlay.top],
+    );
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: AppColors.appBgColor,
+          statusBarBrightness: Brightness.light),
+    );
   }
 }

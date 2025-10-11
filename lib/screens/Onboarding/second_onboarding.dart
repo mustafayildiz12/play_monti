@@ -1,8 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/utils.dart';
 
-class MontessoriSecondOnboarding extends StatelessWidget {
+class MontessoriSecondOnboarding extends StatefulWidget {
   const MontessoriSecondOnboarding({super.key});
+
+  @override
+  State<MontessoriSecondOnboarding> createState() =>
+      _MontessoriSecondOnboardingState();
+}
+
+class _MontessoriSecondOnboardingState
+    extends State<MontessoriSecondOnboarding> {
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFF8F4F0),
+          statusBarBrightness: Brightness.light),
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFF8F4F0),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+          child: Column(
+            children: [
+              const Spacer(flex: 2),
+              Center(child: parentChildFigure()),
+              const Spacer(flex: 2),
+              Text(
+                "early_screens_title".tr,
+                style: const TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF2C3E50)),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                "early_screens_subtitle".tr,
+                style: const TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              const Text("📱🧠", style: TextStyle(fontSize: 28)),
+              const SizedBox(height: 8),
+              Text(
+                "early_screens_risks".tr,
+                style: const TextStyle(
+                    fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
+                textAlign: TextAlign.center,
+              ),
+              const Spacer(flex: 4),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget parentChildFigure() {
     return SizedBox(
@@ -46,49 +107,6 @@ class MontessoriSecondOnboarding extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF8F4F0),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
-          child: Column(
-            children: [
-              const Spacer(flex: 2),
-              Center(child: parentChildFigure()),
-              const Spacer(flex: 2),
-              Text(
-                "early_screens_title".tr,
-                style: const TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF2C3E50)),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                "early_screens_subtitle".tr,
-                style: const TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 10),
-              const Text("📱🧠", style: TextStyle(fontSize: 28)),
-              const SizedBox(height: 8),
-              Text(
-                "early_screens_risks".tr,
-                style: const TextStyle(
-                    fontSize: 14, color: Color(0xFF6B7B8C), height: 1.4),
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(flex: 4),
-            ],
-          ),
-        ),
       ),
     );
   }

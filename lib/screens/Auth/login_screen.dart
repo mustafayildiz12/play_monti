@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:play_monti/constants/app_colors.dart';
 import 'package:play_monti/constants/app_routes.dart';
@@ -23,6 +24,16 @@ class _LoginPageState extends State<LoginPage> {
   bool isLoading = false;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: AppColors.appBgColor,
+          statusBarBrightness: Brightness.light),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

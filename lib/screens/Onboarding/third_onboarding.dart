@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/utils.dart';
 
-class MontessoriThirdOnboarding extends StatelessWidget {
+class MontessoriThirdOnboarding extends StatefulWidget {
   const MontessoriThirdOnboarding({super.key});
 
-  Widget handsActivity() {
-    return Container(
-      width: 180,
-      height: 140,
-      decoration: BoxDecoration(
-        color: const Color(0xFF4A90A4),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: const Center(
-        child: Text("👐", style: TextStyle(fontSize: 48)),
-      ),
+  @override
+  State<MontessoriThirdOnboarding> createState() =>
+      _MontessoriThirdOnboardingState();
+}
+
+class _MontessoriThirdOnboardingState extends State<MontessoriThirdOnboarding> {
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFF0FAF5),
+          statusBarBrightness: Brightness.light),
     );
+    super.initState();
   }
 
   @override
@@ -66,6 +69,20 @@ class MontessoriThirdOnboarding extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget handsActivity() {
+    return Container(
+      width: 180,
+      height: 140,
+      decoration: BoxDecoration(
+        color: const Color(0xFF4A90A4),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: const Center(
+        child: Text("👐", style: TextStyle(fontSize: 48)),
       ),
     );
   }

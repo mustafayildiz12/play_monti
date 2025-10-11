@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/utils.dart';
 
 class MontessoriFourthOnboarding extends StatefulWidget {
@@ -16,7 +17,6 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
 
   @override
   void initState() {
-    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -25,19 +25,20 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
     _scaleAnim = Tween<double>(begin: 1, end: 1.08).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFE8F3FF),
+          statusBarBrightness: Brightness.light),
+    );
+
+    super.initState();
   }
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  Widget animatedShieldIcon() {
-    return ScaleTransition(
-      scale: _scaleAnim,
-      child: Image.asset('assets/shield.png', width: 90, height: 90),
-    );
   }
 
   @override
@@ -74,7 +75,8 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
                 const SizedBox(height: 12),
                 Text(
                   "safer_approach_subtitle".tr,
-                  style: const TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
+                  style:
+                      const TextStyle(fontSize: 16, color: Color(0xFF5A6C7D)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
@@ -108,6 +110,13 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
           ),
         ),
       ),
+    );
+  }
+
+  Widget animatedShieldIcon() {
+    return ScaleTransition(
+      scale: _scaleAnim,
+      child: Image.asset('assets/shield.png', width: 90, height: 90),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:math';
 
 import 'package:get/utils.dart';
@@ -18,7 +19,6 @@ class _MontessoriFirstOnboardingState extends State<MontessoriFirstOnboarding>
 
   @override
   void initState() {
-    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
@@ -27,6 +27,13 @@ class _MontessoriFirstOnboardingState extends State<MontessoriFirstOnboarding>
     _animation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFFFF5E6),
+          statusBarBrightness: Brightness.light),
+    );
+    super.initState();
   }
 
   @override

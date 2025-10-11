@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:math';
 import 'package:get/utils.dart';
 
@@ -32,6 +33,12 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
     _iconController4 = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 2500))
       ..repeat(reverse: true);
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFF5F7FA),
+          statusBarBrightness: Brightness.light),
+    );
   }
 
   @override
@@ -41,24 +48,6 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
     _iconController3.dispose();
     _iconController4.dispose();
     super.dispose();
-  }
-
-  Widget animatedIcon(
-      {required String emoji,
-      required AnimationController controller,
-      double delay = 0}) {
-    return AnimatedBuilder(
-      animation: controller,
-      builder: (context, child) {
-        final offsetY =
-            sin(controller.value * 2 * pi + delay) * 7; // 7px yukarı-aşağı
-        return Transform.translate(
-          offset: Offset(0, offsetY),
-          child: child,
-        );
-      },
-      child: Image.asset(emoji, width: 48, height: 48),
-    );
   }
 
   @override
@@ -107,7 +96,8 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
                 const SizedBox(height: 10),
                 Text(
                   "get_started_subtitle".tr,
-                  style: const TextStyle(fontSize: 18, color: Color(0xFF2C3E50)),
+                  style:
+                      const TextStyle(fontSize: 18, color: Color(0xFF2C3E50)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 12),
@@ -123,6 +113,24 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
           ),
         ),
       ),
+    );
+  }
+
+  Widget animatedIcon(
+      {required String emoji,
+      required AnimationController controller,
+      double delay = 0}) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        final offsetY =
+            sin(controller.value * 2 * pi + delay) * 7; // 7px yukarı-aşağı
+        return Transform.translate(
+          offset: Offset(0, offsetY),
+          child: child,
+        );
+      },
+      child: Image.asset(emoji, width: 48, height: 48),
     );
   }
 }
