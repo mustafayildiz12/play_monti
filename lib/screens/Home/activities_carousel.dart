@@ -10,13 +10,16 @@ class ActivitiesCarousel extends StatefulWidget {
   final List<FinalActivityModel> activities;
   final double cardWidth;
   final String dateKey;
+  final bool isUserPremium;
+  final Function refreshPremium;
 
-  const ActivitiesCarousel({
-    super.key,
-    required this.activities,
-    required this.cardWidth,
-    required this.dateKey,
-  });
+  const ActivitiesCarousel(
+      {super.key,
+      required this.activities,
+      required this.cardWidth,
+      required this.dateKey,
+      required this.isUserPremium,
+      required this.refreshPremium});
 
   @override
   State<ActivitiesCarousel> createState() => _ActivitiesCarouselState();
@@ -113,11 +116,23 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                         child: ActivityCard(
                           activity: activity,
                           onTap: () async {
-                            final id = activity.day.toString();
-                            await Navigator.pushNamed(
-                              context,
-                              "${AppRoutes.activityDetailPage}/$id/${widget.dateKey}",
-                            );
+                            if (!widget.isUserPremium) {
+                              await Navigator.pushNamed(
+                                      context, AppRoutes.premiumPaywall)
+                                  .then((
+                                v,
+                              ) async {
+                                if (v != null && v == true) {
+                                  await widget.refreshPremium();
+                                }
+                              });
+                            } else {
+                              final id = activity.day.toString();
+                              await Navigator.pushNamed(
+                                context,
+                                "${AppRoutes.activityDetailPage}/$id/${widget.dateKey}",
+                              );
+                            }
                           },
                         ),
                       ),

@@ -52,7 +52,18 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
     });
 
     getPageData();
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: AppColors.appBgColor,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+    ));
+    super.dispose();
   }
 
   @override

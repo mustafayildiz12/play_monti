@@ -6,6 +6,7 @@ import 'package:play_monti/models/final_activity_model.dart';
 import 'package:play_monti/screens/Home/activities_carousel.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/database_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,14 +28,24 @@ class _HomeScreenState extends State<HomeScreen> {
   List<FinalActivityModel> todaysActivities = [];
 
   bool isLoading = false;
+  bool isUserPremium = false;
 
   @override
   void initState() {
     userName = currentMontiUser?.userName ?? "Guest";
     completedActivities = currentMontiUser!.completedActivities ?? 0;
 
+    checkUserPremium();
     getPageData();
     super.initState();
+  }
+
+  Future<void> checkUserPremium() async {
+    InAppPurchaseService iap = InAppPurchaseService();
+    bool isP = await iap.isPremium();
+    setState(() {
+      isUserPremium = isP;
+    });
   }
 
   @override
@@ -138,6 +149,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? ActivitiesCarousel(
                         activities: todaysActivities, // List<Activity>
                         cardWidth: cardWidth,
+                        isUserPremium: isUserPremium,
+                        refreshPremium: () async {
+                          await checkUserPremium();
+                        },
                         dateKey: getDateKey(),
                       )
                     : Center(

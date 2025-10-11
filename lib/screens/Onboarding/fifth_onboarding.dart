@@ -36,8 +36,10 @@ class _MontessoriFifthOnboardingState extends State<MontessoriFifthOnboarding>
 
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: Color(0xFFF5F7FA),
-          statusBarBrightness: Brightness.light),
+        statusBarColor: Color(0xFFF5F7FA),
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
   }
 

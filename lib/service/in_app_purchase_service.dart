@@ -188,7 +188,7 @@ class InAppPurchaseService {
 
   Future<bool> isTrial() async {
     int? trialCount = infoStorage.read("trialCount");
-   
+
     // demek ki ücretsiz deniyor uygulamayı
     if (trialCount != null && trialCount < 4) {
       await infoStorage.write("trialCount", trialCount + 1);
@@ -327,5 +327,10 @@ class InAppPurchaseService {
         if (id.contains('year') || id.contains('annual')) return 'yearly';
         return 'unknown';
     }
+  }
+
+  Future<bool> isPremium() async {
+    bool isUserPremium = await checkUserHaveProduct() || await isTrial();
+    return isUserPremium;
   }
 }

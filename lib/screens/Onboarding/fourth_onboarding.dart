@@ -28,8 +28,10 @@ class _MontessoriFourthOnboardingState extends State<MontessoriFourthOnboarding>
 
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: Color(0xFFE8F3FF),
-          statusBarBrightness: Brightness.light),
+        statusBarColor: Color(0xFFE8F3FF),
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
 
     super.initState();

@@ -5,6 +5,7 @@ import 'package:play_monti/constants/app_constants.dart';
 import 'package:play_monti/constants/app_routes.dart';
 import 'package:play_monti/service/activty_service.dart';
 import 'package:play_monti/service/calendar_service.dart';
+import 'package:play_monti/service/in_app_purchase_service.dart';
 import 'package:play_monti/utlis/widgets/custom_loader.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -336,7 +337,7 @@ class _StyledCalendarPageState extends State<StyledCalendarPage> {
   }
 }
 
-class _ActiveDayCell extends StatelessWidget {
+class _ActiveDayCell extends StatefulWidget {
   const _ActiveDayCell(
       {required this.day,
       required this.isToday,
@@ -353,8 +354,29 @@ class _ActiveDayCell extends StatelessWidget {
   static const kText = _StyledCalendarPageState.kText;
 
   @override
+  State<_ActiveDayCell> createState() => _ActiveDayCellState();
+}
+
+class _ActiveDayCellState extends State<_ActiveDayCell> {
+  bool isUserPremium = false;
+
+  @override
+  void initState() {
+    checkUserPremium();
+    super.initState();
+  }
+
+  Future<void> checkUserPremium() async {
+    InAppPurchaseService iap = InAppPurchaseService();
+    bool isP = await iap.isPremium();
+    setState(() {
+      isUserPremium = isP;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final fg = isToday ? Colors.white : kText;
+    final fg = widget.isToday ? Colors.white : _ActiveDayCell.kText;
 
     // Hover benzeri görsel geri bildirim için InkWell kullanıyoruz.
     return Container(
@@ -367,40 +389,50 @@ class _ActiveDayCell extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () async {
-          String? firstActivity = await activityService.getIndexActivityName(
-              dayIndex: events.first.id);
-          String? secondActivity = await activityService.getIndexActivityName(
-              dayIndex: events.last.id);
+          if (!isUserPremium) {
+            await Navigator.pushNamed(context, AppRoutes.premiumPaywall).then((
+              v,
+            ) async {
+              if (v != null && v == true) {
+                await checkUserPremium();
+              }
+            });
+          } else {
+            String? firstActivity = await activityService.getIndexActivityName(
+                dayIndex: widget.events.first.id);
+            String? secondActivity = await activityService.getIndexActivityName(
+                dayIndex: widget.events.last.id);
 
-          if (firstActivity != null) {
-            events.first.activityName = firstActivity;
-          }
-          if (secondActivity != null) {
-            events.last.activityName = secondActivity;
-          }
-
-          await showModalBottomSheet(
-            context: context,
-            isScrollControlled: false,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-            ),
-            builder: (_) => _EventSheet(
-              day: day,
-              events:
-                  events, // <-- buradaki events zaten _ActiveDayCell'e geliyor
-            ),
-          ).then((value) async {
-            if (value != null && value is List) {
-              String id = value.first;
-              String date = activityService.dateKey(day);
-              await Navigator.pushNamed(
-                      context, "${AppRoutes.activityDetailPage}/$id/$date")
-                  .then((_) async {
-                onBack();
-              });
+            if (firstActivity != null) {
+              widget.events.first.activityName = firstActivity;
             }
-          });
+            if (secondActivity != null) {
+              widget.events.last.activityName = secondActivity;
+            }
+
+            await showModalBottomSheet(
+              context: context,
+              isScrollControlled: false,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              ),
+              builder: (_) => _EventSheet(
+                day: widget.day,
+                events: widget
+                    .events, // <-- buradaki events zaten _ActiveDayCell'e geliyor
+              ),
+            ).then((value) async {
+              if (value != null && value is List) {
+                String id = value.first;
+                String date = activityService.dateKey(widget.day);
+                await Navigator.pushNamed(
+                        context, "${AppRoutes.activityDetailPage}/$id/$date")
+                    .then((_) async {
+                  widget.onBack();
+                });
+              }
+            });
+          }
         }, // tap event TableCalendar’dan geliyor (onDaySelected)
         borderRadius: BorderRadius.circular(10),
         splashColor: Colors.black12,
@@ -408,7 +440,7 @@ class _ActiveDayCell extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Text(
-              '${day.day}',
+              '${widget.day.day}',
               style: TextStyle(
                   color: fg, fontSize: 14, fontWeight: FontWeight.w600),
             ),

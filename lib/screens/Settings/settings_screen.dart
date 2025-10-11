@@ -36,8 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
   LanguageModel? selectedLanguage;
   AgeGroupModel? selectedAgeGroup;
 
-  bool isPremium = false;
-  InAppPurchaseService iap = InAppPurchaseService();
+  bool isUserPremium = false;
 
   @override
   void initState() {
@@ -49,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
           .singleWhere((e) => e.ageGroupCode == currentMontiUser?.ageActivity);
     }
 
-    getPageData();
+    checkUserPremium();
 
     super.initState();
   }
@@ -68,10 +67,11 @@ class _SettingsPageState extends State<SettingsPage> {
     super.didChangeDependencies();
   }
 
-  void getPageData() async {
-    bool premium = await iap.checkUserHaveProduct();
+  Future<void> checkUserPremium() async {
+    InAppPurchaseService iap = InAppPurchaseService();
+    bool isP = await iap.isPremium();
     setState(() {
-      isPremium = premium;
+      isUserPremium = isP;
     });
   }
 
@@ -157,7 +157,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const SliverToBoxAdapter(child: SizedBox(height: 16)),
-            if (!isPremium) ...[
+            if (!isUserPremium) ...[
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -399,15 +399,14 @@ class _SettingsPageState extends State<SettingsPage> {
 
   // ——— Actions ———
 
-  void _showSubscriptionOptions() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => const PremiumBottomSheetPlayMonti(
-        showTrialFirst: true, // Trial'ı öne çıkar
-      ),
-    );
+  Future<void> _showSubscriptionOptions() async {
+    await Navigator.pushNamed(context, AppRoutes.premiumPaywall).then((
+      v,
+    ) async {
+      if (v != null && v == true) {
+        await checkUserPremium();
+      }
+    });
   }
 
   Future<void> _pickLanguage() async {

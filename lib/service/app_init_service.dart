@@ -55,14 +55,7 @@ class AppInitService {
           await databaseService.isUserDetailExist(user.uid);
       if (isUserExist) {
         if (isUserDetailExist) {
-          InAppPurchaseService iap = InAppPurchaseService();
-          bool isUserPremium =
-              await iap.checkUserHaveProduct() || await iap.isTrial();
-          if (isUserPremium) {
-            AppRoutes.initialRoute = AppRoutes.navigationBarPage;
-          } else {
-            AppRoutes.initialRoute = AppRoutes.trialPage;
-          }
+          AppRoutes.initialRoute = AppRoutes.navigationBarPage;
         } else {
           AppRoutes.initialRoute = AppRoutes.onboFlowPage;
         }
@@ -111,10 +104,10 @@ class AppInitService {
       SystemUiMode.manual,
       overlays: [SystemUiOverlay.top],
     );
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-          statusBarColor: AppColors.appBgColor,
-          statusBarBrightness: Brightness.light),
-    );
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: AppColors.appBgColor,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+    ));
   }
 }

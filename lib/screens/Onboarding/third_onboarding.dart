@@ -15,8 +15,10 @@ class _MontessoriThirdOnboardingState extends State<MontessoriThirdOnboarding> {
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: Color(0xFFF0FAF5),
-          statusBarBrightness: Brightness.light),
+        statusBarColor: Color(0xFFF0FAF5),
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
     super.initState();
   }

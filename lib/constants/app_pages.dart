@@ -7,7 +7,7 @@ import 'package:play_monti/screens/ExcelActivity/activities_screen.dart';
 import 'package:play_monti/screens/ExcelActivity/upload_activity_excel.dart';
 import 'package:play_monti/screens/Home/ActivityDetail/activity_detail_page.dart';
 import 'package:play_monti/screens/Onboarding/onboarding_flow.dart';
-import 'package:play_monti/screens/Premium/trial_offering_page.dart';
+import 'package:play_monti/screens/Premium/premium_bottom_sheet.dart';
 import 'package:play_monti/screens/onboarding_flow.dart';
 import 'package:play_monti/screens/tab_screens.dart';
 
@@ -39,16 +39,13 @@ class AppPages {
       page: () => const MainTabNavigator(),
     ),
     GetPage(
-      name: AppRoutes.trialPage,
-      page: () => const TrialOfferingPage(),
-    ),
-    GetPage(
       name: "${AppRoutes.activityDetailPage}/:id/:date",
       page: () => const ActivityDetailPage(),
     ),
     GetPage(
       name: AppRoutes.forgotPasswordPage,
       page: () => const ForgotPasswordScreen(),
-    )
+    ),
+    GetPage(name: AppRoutes.premiumPaywall, page: () => const PremiumPaywall()),
   ];
 }

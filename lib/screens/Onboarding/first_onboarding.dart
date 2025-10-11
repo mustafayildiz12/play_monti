@@ -30,8 +30,10 @@ class _MontessoriFirstOnboardingState extends State<MontessoriFirstOnboarding>
 
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: Color(0xFFFFF5E6),
-          statusBarBrightness: Brightness.light),
+        statusBarColor: Color(0xFFFFF5E6),
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
     super.initState();
   }

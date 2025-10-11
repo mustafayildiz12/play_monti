@@ -11,23 +11,21 @@ import 'package:url_launcher/url_launcher.dart';
 
 enum PremiumType { monthly, yearly }
 
-class PremiumBottomSheetPlayMonti extends StatefulWidget {
+class PremiumPaywall extends StatefulWidget {
   final bool showTrialFirst;
   final String? offeringIdentifier; // Belirli bir offering kullanmak için
 
-  const PremiumBottomSheetPlayMonti({
+  const PremiumPaywall({
     super.key,
     this.showTrialFirst = false,
     this.offeringIdentifier,
   });
 
   @override
-  State<PremiumBottomSheetPlayMonti> createState() =>
-      _PremiumBottomSheetPlayMontiState();
+  State<PremiumPaywall> createState() => _PremiumPaywallState();
 }
 
-class _PremiumBottomSheetPlayMontiState
-    extends State<PremiumBottomSheetPlayMonti> {
+class _PremiumPaywallState extends State<PremiumPaywall> {
   PremiumType selectedType = PremiumType.monthly;
 
   final List<_Feature> features = [
@@ -49,27 +47,20 @@ class _PremiumBottomSheetPlayMontiState
   Package? _monthlyPackage;
   Package? _yearlyPackage;
 
-  // StoreProduct? _monthlyProduct;
-//  StoreProduct? _yearlyProduct;
-
-  List<Package> _allPackages = [];
+  List<Package> allPackages = [];
 
   @override
   void initState() {
     super.initState();
     _loadOfferings();
-    //  _loadProducts();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return DraggableScrollableSheet(
-      minChildSize: 0.5,
-      initialChildSize: 0.9,
-      maxChildSize: 0.92,
-      builder: (c, s) => SafeArea(
+    return Scaffold(
+      body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
             color: AppColors.appBgColor,
@@ -272,7 +263,7 @@ class _PremiumBottomSheetPlayMontiState
                               ),
                               onPressed: _purchaseSelected,
                               child: Text(
-                                _getButtonText(),
+                                _getButtonTextLocalized(),
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w700),
                               ),
@@ -318,6 +309,11 @@ class _PremiumBottomSheetPlayMontiState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
+                      style: const ButtonStyle(
+                        padding: WidgetStatePropertyAll(
+                          EdgeInsets.all(4),
+                        ),
+                      ),
                       onPressed: () async {
                         String url = "";
                         if (GetPlatform.isIOS) {
@@ -339,8 +335,13 @@ class _PremiumBottomSheetPlayMontiState
                             color: Colors.black87),
                       ),
                     ),
-                    const Icon(Icons.circle, size: 6),
+                    const Icon(Icons.circle, size: 4),
                     TextButton(
+                      style: const ButtonStyle(
+                        padding: WidgetStatePropertyAll(
+                          EdgeInsets.all(4),
+                        ),
+                      ),
                       onPressed: () async {
                         final uri = Uri.parse(
                             "https://kuyumcu-fd31a.firebaseapp.com/#/playMontiPolicy");
@@ -357,6 +358,8 @@ class _PremiumBottomSheetPlayMontiState
                             color: Colors.black87),
                       ),
                     ),
+                    const Icon(Icons.circle, size: 4),
+                    manageSubs()
                   ],
                 ),
               ],
@@ -388,16 +391,11 @@ class _PremiumBottomSheetPlayMontiState
     switch (type) {
       case PremiumType.monthly:
         title = "paywall.plan.monthly".tr;
-        subtitle = hasFreeTrial
-            ? "paywall.plan.monthly.trial_subtitle"
-                .trParams({"days": trialDays})
-            : "paywall.plan.monthly.subtitle".tr;
+        subtitle = _planLabelLocalized(package, type);
         break;
       case PremiumType.yearly:
         title = "paywall.plan.yearly".tr;
-        subtitle = hasFreeTrial
-            ? "paywall.plan.yearly.trial_subtitle".trParams({"days": trialDays})
-            : "paywall.plan.yearly.subtitle".tr;
+        subtitle = _planLabelLocalized(package, type);
         // Yıllık plan genelde en popüler
         chipText = "paywall.plan.yearly.badge".tr; // "En Popüler" vb.
         break;
@@ -533,6 +531,32 @@ class _PremiumBottomSheetPlayMontiState
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget manageSubs() {
+    return Visibility(
+      visible: GetPlatform.isAndroid,
+      child: TextButton(
+        style: const ButtonStyle(
+          padding: WidgetStatePropertyAll(
+            EdgeInsets.all(4),
+          ),
+        ),
+        onPressed: () async {
+          final uri =
+              Uri.parse("https://play.google.com/store/account/subscriptions");
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        },
+        child: Text(
+          _lang == 'en' ? "Manage Subscription" : "Aboneliği Yönet",
+          style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            color: Colors.black87,
+          ),
         ),
       ),
     );
@@ -678,7 +702,7 @@ class _PremiumBottomSheetPlayMontiState
       }
 
       setState(() {
-        _allPackages = packages;
+        allPackages = packages;
         _monthlyPackage = monthly;
         _yearlyPackage = yearly;
 
@@ -744,15 +768,68 @@ class _PremiumBottomSheetPlayMontiState
     }
   }
 
-  String _getButtonText() {
-    final package = _selectedPackage;
-    if (package != null) {
-      final trialDays = _iap.getTrialDays(package);
-      if (trialDays != null && trialDays != "0") {
-        return "paywall.cta.trial".trParams({"days": trialDays});
-      }
+  String get _lang => (Get.locale?.languageCode ?? 'en').toLowerCase();
+
+  String _freqLabel(PremiumType type) {
+    final isEn = _lang == 'en';
+    final isMonthly = type == PremiumType.monthly;
+    return isEn ? (isMonthly ? "month" : "year") : (isMonthly ? "ay" : "yıl");
+  }
+
+  /// Paywall kart alt yazısı (trial + trial sonrası yenileme bilgisi)
+  String _planLabelLocalized(Package p, PremiumType type) {
+    final isEn = _lang == 'en';
+    final price = p.storeProduct.priceString; // localized price
+    final freq = _freqLabel(type);
+    final trialDays = _iap.getTrialDays(p);
+
+    final hasTrial = trialDays != null && trialDays != "0";
+
+    if (hasTrial) {
+      // EN: "Includes a 7-day free trial. After the trial, it renews at ₺X per month."
+      // TR: "7 gün ücretsiz deneme içerir. Deneme bitince ₺X/ay ile yenilenir."
+      final includesTrial = isEn
+          ? "Includes a $trialDays-day free trial."
+          : "$trialDays gün ücretsiz deneme içerir.";
+
+      final afterTrial = isEn
+          ? "After the trial, it renews at $price per $freq."
+          : "Deneme bitince $price/$freq ile yenilenir.";
+
+      return "$includesTrial $afterTrial";
     }
-    return "paywall.cta".tr;
+
+    // EN: "Automatically renews at ₺X per month."
+    // TR: "Otomatik olarak ₺X/ay ile yenilenir."
+    return isEn
+        ? "Automatically renews at $price per $freq."
+        : "Otomatik olarak $price/$freq ile yenilenir.";
+  }
+
+  /// CTA metni (trial → ücretli geçişi butonda açıkça gösterir)
+  String _getButtonTextLocalized() {
+    final p = _selectedPackage;
+    final isEn = _lang == 'en';
+    if (p == null) return isEn ? "Subscribe" : "Abone Ol";
+
+    final price = p.storeProduct.priceString;
+    final freq = _freqLabel(selectedType);
+    final trialDays = _iap.getTrialDays(p);
+    final hasTrial = trialDays != null && trialDays != "0";
+
+    if (hasTrial) {
+      // EN: "Start 7-day free trial • Then ₺X / month"
+      // TR: "7 gün ücretsiz dene • Sonra ₺X / ay"
+      return isEn
+          ? "Start $trialDays-day free trial • Then $price / $freq"
+          : "$trialDays gün ücretsiz dene • Sonra $price / $freq";
+    }
+
+    // EN: "Subscribe for ₺X / month"
+    // TR: "₺X / ay ile Abone Ol"
+    return isEn
+        ? "Subscribe for $price / $freq"
+        : "$price / $freq ile Abone Ol";
   }
 }
 

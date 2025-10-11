@@ -58,17 +58,8 @@ class AuthenticationService {
         if (isUserExist && isUserDataExist) {
           if (currentMontiUser?.status != 1) {
             if (isUserDetailExist) {
-              InAppPurchaseService iap = InAppPurchaseService();
-              bool isUserPremium =
-                  await iap.checkUserHaveProduct() || await iap.isTrial();
-
-              if (isUserPremium) {
-                await Navigator.pushNamedAndRemoveUntil(
-                    context, AppRoutes.navigationBarPage, (route) => false);
-              } else {
-                await Navigator.pushNamedAndRemoveUntil(
-                    context, AppRoutes.trialPage, (route) => false);
-              }
+              await Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.navigationBarPage, (route) => false);
             } else {
               await Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.onboFlowPage, (route) => false);
@@ -250,17 +241,8 @@ class AuthenticationService {
         }
 
         if (isUserDetailExist) {
-          InAppPurchaseService iap = InAppPurchaseService();
-          bool isUserPremium =
-              await iap.checkUserHaveProduct() || await iap.isTrial();
-
-          if (isUserPremium) {
-            await Navigator.pushNamedAndRemoveUntil(
-                context, AppRoutes.navigationBarPage, (route) => false);
-          } else {
-            await Navigator.pushNamedAndRemoveUntil(
-                context, AppRoutes.trialPage, (route) => false);
-          }
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.navigationBarPage, (route) => false);
         } else {
           await Navigator.pushNamedAndRemoveUntil(
               context, AppRoutes.onboFlowPage, (route) => false);
@@ -319,8 +301,6 @@ class AuthenticationService {
               : userCredential
                   .user?.displayName; // çoğunlukla null olur, yine de deneriz
 
-          print("FullName: $fullName");
-
           await databaseService
               .addUserToRealTime(
             MontiUserModel(
@@ -336,17 +316,8 @@ class AuthenticationService {
         }
 
         if (isUserDetailExist) {
-          InAppPurchaseService iap = InAppPurchaseService();
-          bool isUserPremium =
-              await iap.checkUserHaveProduct() || await iap.isTrial();
-
-          if (isUserPremium) {
-            await Navigator.pushNamedAndRemoveUntil(
-                context, AppRoutes.navigationBarPage, (route) => false);
-          } else {
-            await Navigator.pushNamedAndRemoveUntil(
-                context, AppRoutes.trialPage, (route) => false);
-          }
+          await Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.navigationBarPage, (route) => false);
         } else {
           await Navigator.pushNamedAndRemoveUntil(
               context, AppRoutes.onboFlowPage, (route) => false);
@@ -386,17 +357,8 @@ class AuthenticationService {
       });
 
       if (isUserDetailExist) {
-        InAppPurchaseService iap = InAppPurchaseService();
-        bool isUserPremium =
-            await iap.checkUserHaveProduct() || await iap.isTrial();
-
-        if (isUserPremium) {
-          await Navigator.pushNamedAndRemoveUntil(
-              context, AppRoutes.navigationBarPage, (route) => false);
-        } else {
-          await Navigator.pushNamedAndRemoveUntil(
-              context, AppRoutes.trialPage, (route) => false);
-        }
+        await Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.navigationBarPage, (route) => false);
       } else {
         await Navigator.pushNamedAndRemoveUntil(
             context, AppRoutes.onboFlowPage, (route) => false);

@@ -16,8 +16,10 @@ class _MontessoriSecondOnboardingState
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: Color(0xFFF8F4F0),
-          statusBarBrightness: Brightness.light),
+        statusBarColor: Color(0xFFF8F4F0),
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
     super.initState();
   }

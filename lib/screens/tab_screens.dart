@@ -30,22 +30,25 @@ class _MainTabNavigatorState extends State<MainTabNavigator> {
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: AppColors.appBgColor,
-          statusBarBrightness: Brightness.light),
+        statusBarColor: AppColors.appBgColor,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
     super.initState();
   }
 
+  List<Widget> widgetOptions = <Widget>[
+    const HomeScreen(),
+    const StyledCalendarPage(),
+    const BadgesScreen(),
+    const FavoritesScreen(),
+    const GuidePage(),
+    const SettingsPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    List<Widget> widgetOptions = <Widget>[
-      const HomeScreen(),
-      const StyledCalendarPage(),
-      const BadgesScreen(),
-      const FavoritesScreen(),
-      const GuidePage(),
-      const SettingsPage(),
-    ];
     return Scaffold(
       body: widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

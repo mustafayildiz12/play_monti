@@ -29,8 +29,10 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: AppColors.appBgColor,
-          statusBarBrightness: Brightness.light),
+        statusBarColor: AppColors.appBgColor,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     );
     super.initState();
   }

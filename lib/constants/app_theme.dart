@@ -9,11 +9,6 @@ class AppTheme {
       backgroundColor: AppColors.appBgColor,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.appBgColor, // Status bar arka planı
-        statusBarIconBrightness: Brightness.dark, // Android ikonları beyaz
-        statusBarBrightness: Brightness.light,
-      ),
     ),
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.kButtonGreenColor),
     useMaterial3: true,
